@@ -2,7 +2,12 @@
 
 **`Young Front-End Developer`**
 
-I'm an indie full-stack developer and content creator building my version of the digital world one step at a time. All coding projects are built from the ground up, from planning and designing all the way to solving real-life problems with code. All video content is built the same way, from ideation and planning, all the way to finalizing the content with artistic touches. I publish that content on my YouTube channel "[ForrestKnight][youtube]" to more than 400k subscribers.
+Hello there! I'm Ibragim, a Front-End Web Developer from Ukraine, Odesa.
+
+I am currently pursuing a degree in computer science, my approach to learning in this field involves a combination of structured coursework and self-directed study.
+For the past two years, I have been engaged in a dedicated journey of self-learning programming. This endeavor has been driven by my passion for technology and the desire to acquire practical skills in programming.
+
+I have all skills to become your employee: communication abitilies, teamwork, easy problem solving, adaptability, leadership, time managment, critical thinking and more ! 
 
    <p align="left">
       <a href="https://www.youtube.com/c/fknight?sub_confirmation=1">
