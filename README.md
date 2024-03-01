@@ -9,7 +9,7 @@
 🤝 I possess a comprehensive skill set essential for a successful employee, including strong communication abilities, teamwork, adept problem-solving skills, adaptability, leadership qualities, effective time management, and critical thinking.
 
 🖥️ Below, you'll find some of the technologies I'm proficient in. For a detailed overview of my skills and projects, please visit my portfolio.
-https://my-potfolio-web.netlify.app/
+
 
 📱 Feel free to reach out if you have any questions or opportunities for collaboration. Looking forward to connecting! 
 
