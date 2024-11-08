@@ -64,6 +64,8 @@
 
 ![](https://github-readme-stats.vercel.app/api?username=marve10s&theme=gotham&hide_border=false&include_all_commits=false&count_private=true) ![](https://github-readme-stats.vercel.app/api/top-langs/?username=marve10s&theme=gotham&hide_border=false&include_all_commits=false&count_private=true&layout=compact)
 
+### 🐍 This snake eats my commits
+
 <picture>
   <source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/marve10s/marve10s/output/github-snake-dark.svg" />
   <source media="(prefers-color-scheme: light)" srcset="https://raw.githubusercontent.com/marve10s/marve10s/output/github-snake.svg" />
