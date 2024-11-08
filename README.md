@@ -16,7 +16,7 @@
 
 ### 📄 Download My Resume
 
-[![Download Resume](https://img.shields.io/badge/Download-Resume-blue?style=for-the-badge&logo=adobeacrobatreader&logoColor=white)](https://github.com/Marve10s/yourrepository/raw/main/assets/Ibrahim%20Elkamali%20Resume.pdf)
+[![Download Resume](https://img.shields.io/badge/Download-Resume-blue?style=for-the-badge&logo=adobeacrobatreader&logoColor=white)](https://github.com/Marve10s/Marve10s/raw/main/assets/Ibrahim%20Elkamali%20Resume.pdf)
 
 ### 📞 Connect with Me
 
