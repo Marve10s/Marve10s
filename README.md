@@ -1,45 +1,66 @@
-# 🎉 Welcome to my Github!
+# 🎉 Welcome to My GitHub!
 
-**`🧑‍💻 Young Front-End Developer`**
+### **`🧑‍💻 Young Front-End Developer`**
 
-🌱 Hello there! I'm Ibrahim, an Astro | React Front-End Web Developer from Ukraine, Odesa.
+🌱 **Hello there!** I'm **Ibrahim**, an **Astro | React Front-End Web Developer** from **Odesa, Ukraine**.
 
-🧑‍🎓 Currently, I'm pursuing a degree in computer science, combining structured coursework with self-directed study. Over the past two years, I've embarked on an intensive journey of self-learning programming, fueled by my passion for technology and the drive to acquire practical skills.
+🧑‍🎓 **Currently,** I'm pursuing a degree in computer science, combining structured coursework with self-directed study. Over the past two years, I've embarked on an intensive journey of self-learning programming, fueled by my passion for technology and the drive to acquire practical skills.
 
-🤝 I possess a comprehensive skill set essential for a successful employee, including strong communication abilities, teamwork, adept problem-solving skills, adaptability, leadership qualities, effective time management, and critical thinking.
+🤝 **I possess a comprehensive skill set essential for a successful employee, including strong communication abilities, teamwork, adept problem-solving skills, adaptability, leadership qualities, effective time management, and critical thinking.**
 
-🖥️ Below, you'll find some of the technologies I'm proficient in. For a detailed overview of my skills and projects, please visit my portfolio.
+🖥️ **Below, you'll find some of the technologies I'm proficient in. For a detailed overview of my skills and projects, please visit my portfolio.**
 
-📱 Feel free to reach out if you have any questions or opportunities for collaboration. Looking forward to connecting!
+📱 **Feel free to reach out if you have any questions or opportunities for collaboration. Looking forward to connecting!**
 
-[![Discord](https://img.shields.io/badge/Discord-%237289DA.svg?logo=discord&logoColor=white)](https://discord.com/users/545973026320154637) [![Instagram](https://img.shields.io/badge/Instagram-%23E4405F.svg?logo=Instagram&logoColor=white)](https://instagram.com/_just._.him_) [![Telegram](https://img.shields.io/badge/Telegram-%23008C8C.svg?logo=telegram&logoColor=white)](https://t.me/thecr1nge) [![Upwork](https://img.shields.io/badge/Upwork-%2300A388.svg?logo=upwork&logoColor=white)](https://www.upwork.com/freelancers/ibrahime137)[![Gmail](https://img.shields.io/badge/Gmail-%23D14836.svg?logo=gmail&logoColor=white)](mailto:igrimanigroman@gmail.com)
+---
+
+### 📞 Connect with Me
+
+<p >
+  <a href="https://discord.com/users/545973026320154637" target="_blank" style="margin-right: 15px;">
+    <img src="https://img.icons8.com/color/48/000000/discord-logo.png" alt="Discord" width="50" height="50"/>
+  </a>
+  <a href="https://instagram.com/_just._.him_" target="_blank" style="margin-right: 15px;">
+    <img src="https://img.icons8.com/fluency/48/000000/instagram-new.png" alt="Instagram" width="50" height="50"/>
+  </a>
+  <a href="https://t.me/thecr1nge" target="_blank" style="margin-right: 15px;">
+    <img src="https://img.icons8.com/color/48/000000/telegram-app.png" alt="Telegram" width="50" height="50"/>
+  </a>
+  <a href="https://www.upwork.com/freelancers/ibrahime137" target="_blank" style="margin-right: 15px;">
+    <img src="https://img.icons8.com/ios-filled/50/4CAF50/upwork.png" alt="Upwork" width="50" height="50"/>
+  </a>
+  <a href="mailto:igrimanigroman@gmail.com" target="_blank">
+    <img src="https://img.icons8.com/color/48/000000/gmail.png" alt="Gmail" width="50" height="50"/>
+  </a>
+</p>
+
 [![](https://visitcount.itsvg.in/api?id=marve10s&icon=0&color=0)](https://visitcount.itsvg.in)
 
 ---
 
 # 💻 Tech Stack:
 
-### Languages
+### 🖋️ Languages
 
 ![HTML5](https://img.shields.io/badge/html5-%23E34F26.svg?style=for-the-badge&logo=html5&logoColor=white) ![CSS3](https://img.shields.io/badge/css3-%231572B6.svg?style=for-the-badge&logo=css3&logoColor=white) ![JavaScript](https://img.shields.io/badge/javascript-%23F7DF1E.svg?style=for-the-badge&logo=javascript&logoColor=black) ![TypeScript](https://img.shields.io/badge/typescript-%23007ACC.svg?style=for-the-badge&logo=typescript&logoColor=white)
 
-### Frameworks
+### 📦 Frameworks
 
 ![Astro](https://img.shields.io/badge/Astro-%23FF5D01.svg?style=for-the-badge&logo=astro&logoColor=white) ![React](https://img.shields.io/badge/react-%2320232a.svg?style=for-the-badge&logo=react&logoColor=%2361DAFB)
 
-### CSS Preprocessors
+### 🎨 CSS Preprocessors
 
 ![TailwindCSS](https://img.shields.io/badge/tailwindcss-%2338B2AC.svg?style=for-the-badge&logo=tailwind-css&logoColor=white) ![Bootstrap](https://img.shields.io/badge/bootstrap-%23563D7C.svg?style=for-the-badge&logo=bootstrap&logoColor=white) ![PostCSS](https://img.shields.io/badge/postcss-%23DD3A0A.svg?style=for-the-badge&logo=postcss&logoColor=white) ![Sass](https://img.shields.io/badge/Sass-%23CC6699.svg?style=for-the-badge&logo=sass&logoColor=white) ![Less](https://img.shields.io/badge/Less-%231D365D.svg?style=for-the-badge&logo=less&logoColor=white)
 
-### Tools and Libraries
+### ⚙️ Tools and Libraries
 
 ![Vite](https://img.shields.io/badge/vite-%23646CFF.svg?style=for-the-badge&logo=vite&logoColor=white) ![Parcel](https://img.shields.io/badge/parcel-%23e8b730.svg?style=for-the-badge&logo=data:image/svg+xml;base64,<BASE64_ENCODED_IMAGE>&logoColor=black) ![Webpack](https://img.shields.io/badge/webpack-%238DD6F9.svg?style=for-the-badge&logo=webpack&logoColor=black) ![Framer Motion](https://img.shields.io/badge/framer%20motion-black?style=for-the-badge&logo=framer&logoColor=blue) ![GSAP](https://img.shields.io/badge/GSAP-%234CAF50.svg?style=for-the-badge&logo=greensock&logoColor=white)
 
-### Components Libraries
+### 🧩 Components Libraries
 
 ![Shadcn/UI](https://img.shields.io/badge/shadcn%2Fui-%23000000.svg?style=for-the-badge&logo=placeholder&logoColor=white) ![Animata](https://img.shields.io/badge/animata-blueviolet?style=for-the-badge&logo=animata&logoColor=white) ![MagicUI](https://img.shields.io/badge/magicUI-blue?style=for-the-badge&logo=magic&logoColor=white) ![AccenturityUI](https://img.shields.io/badge/AccenturityUI-lightgrey?style=for-the-badge&logo=accenturityui&logoColor=black)
 
-### Tools & Softwares
+### 🛠️ Tools & Softwares
 
 #### Coder Related
 
@@ -47,7 +68,7 @@
 
 #### Designer Related
 
-## ![Figma](https://img.shields.io/badge/figma-%23F24E1E.svg?style=for-the-badge&logo=figma&logoColor=white) ![Adobe XD](https://img.shields.io/badge/adobe%20xd-%23FF61F6.svg?style=for-the-badge&logo=adobe-xd&logoColor=white)
+![Figma](https://img.shields.io/badge/figma-%23F24E1E.svg?style=for-the-badge&logo=figma&logoColor=white) ![Adobe XD](https://img.shields.io/badge/adobe%20xd-%23FF61F6.svg?style=for-the-badge&logo=adobe-xd&logoColor=white)
 
 # 📊 GitHub Stats:
 
