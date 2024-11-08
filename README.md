@@ -16,26 +16,11 @@
 
 ### 📞 Connect with Me
 
+[![Discord](https://img.shields.io/badge/Discord-%237289DA.svg?logo=discord&logoColor=white&style=for-the-badge)](https://discord.com/users/545973026320154637) [![Instagram](https://img.shields.io/badge/Instagram-%23E4405F.svg?logo=Instagram&logoColor=white&style=for-the-badge)](https://instagram.com/_just._.him_) [![Telegram](https://img.shields.io/badge/Telegram-%23008C8C.svg?logo=telegram&logoColor=white&style=for-the-badge)](https://t.me/thecr1nge) [![Upwork](https://img.shields.io/badge/Upwork-%2300A388.svg?logo=upwork&logoColor=white&style=for-the-badge)](https://www.upwork.com/freelancers/ibrahime137) [![Gmail](https://img.shields.io/badge/Gmail-%23D14836.svg?logo=gmail&logoColor=white&style=for-the-badge)](mailto:igrimanigroman@gmail.com)
+
 <p>
-  <a href="https://discord.com/users/545973026320154637" target="_blank" style="margin-right: 15px; text-decoration: none;">
-    <img src="https://img.icons8.com/color/48/000000/discord-logo.png" alt="Discord" width="50" height="50" style="display: inline-block;"/>
-  </a>
-  <a href="https://instagram.com/_just._.him_" target="_blank" style="margin-right: 15px; text-decoration: none;">
-    <img src="https://img.icons8.com/fluency/48/000000/instagram-new.png" alt="Instagram" width="50" height="50" style="display: inline-block;"/>
-  </a>
-  <a href="https://t.me/thecr1nge" target="_blank" style="margin-right: 15px; text-decoration: none;">
-    <img src="https://img.icons8.com/color/48/000000/telegram-app.png" alt="Telegram" width="50" height="50" style="display: inline-block;"/>
-  </a>
-  <a href="https://www.upwork.com/freelancers/ibrahime137" target="_blank" style="margin-right: 15px; text-decoration: none;">
-    <img src="https://img.icons8.com/ios-filled/50/4CAF50/upwork.png" alt="Upwork" width="50" height="50" style="display: inline-block;"/>
-  </a>
-  <a href="mailto:igrimanigroman@gmail.com" target="_blank" style="text-decoration: none;">
-    <img src="https://img.icons8.com/color/48/000000/gmail.png" alt="Gmail" width="50" height="50" style="display: inline-block;"/>
-  </a>
+  <img src="https://visitcount.itsvg.in/api?id=marve10s&icon=0&color=0" alt="Visitor Count" width="200"/>
 </p>
-
-
-[![](https://visitcount.itsvg.in/api?id=marve10s&icon=0&color=0)](https://visitcount.itsvg.in)
 
 ---
 
