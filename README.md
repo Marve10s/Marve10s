@@ -1,4 +1,4 @@
-# 🧑‍💻  ` 19-years old Astro | React Front-End Developer `
+# 🧑‍💻  ` Ibrahim, 19 | Astro & React Front-End Developer `
 
 🌱 **Hello there!** I'm **Ibrahim**, an **Astro | React Front-End Web Developer** from **Odesa, Ukraine**.
 
