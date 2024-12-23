@@ -1,6 +1,4 @@
-# 🎉 Welcome to My GitHub!
-
-### **`🧑‍💻 19-years old Front-End Developer`**
+# 🧑‍💻  ` 19-years old Astro | React Front-End Developer `
 
 🌱 **Hello there!** I'm **Ibrahim**, an **Astro | React Front-End Web Developer** from **Odesa, Ukraine**.
 
