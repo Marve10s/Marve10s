@@ -21,10 +21,6 @@
 
 [![Discord](https://img.shields.io/badge/Discord-%237289DA.svg?logo=discord&logoColor=white&style=for-the-badge)](https://discord.com/users/545973026320154637) [![Instagram](https://img.shields.io/badge/Instagram-%23E4405F.svg?logo=Instagram&logoColor=white&style=for-the-badge)](https://instagram.com/_just._.him_) [![Telegram](https://img.shields.io/badge/Telegram-%23008C8C.svg?logo=telegram&logoColor=white&style=for-the-badge)](https://t.me/thecr1nge) [![Upwork](https://img.shields.io/badge/Upwork-%2300A388.svg?logo=upwork&logoColor=white&style=for-the-badge)](https://www.upwork.com/freelancers/ibrahime137) [![Gmail](https://img.shields.io/badge/Gmail-%23D14836.svg?logo=gmail&logoColor=white&style=for-the-badge)](mailto:igrimanigroman@gmail.com)
 
-<p>
-  <img src="https://visitcount.itsvg.in/api?id=marve10s&icon=0&color=0" alt="Visitor Count" width="200"/>
-</p>
-
 ---
 
 # 💻 Tech Stack:
