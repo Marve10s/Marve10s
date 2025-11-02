@@ -1,6 +1,6 @@
 # 🧑‍💻  ` Ibrahim, 20 | Full Stack TypeScript Web Developer | Astro · React  `
 
-🌱 **Hello there!** I'm **Ibrahim**, an **Astro | React Front-End Web Developer** from **Odesa, Ukraine**.
+🌱 **Hello there!** I'm **Ibrahim**, an **Full Stack TypeScript Web Developer** from **Odesa, Ukraine**.
 
 🧑‍🎓 **Currently,** I'm pursuing a degree in computer science, combining structured coursework with self-directed study. Over the past two years, I've embarked on an intensive journey of self-learning programming, fueled by my passion for technology and the drive to acquire practical skills.
 
