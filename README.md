@@ -1,4 +1,4 @@
-# 🧑‍💻  ` Ibrahim, 20 | Astro & React Front-End Developer `
+# 🧑‍💻  ` Ibrahim, 20 | Full Stack TypeScript Web Developer | Astro · React  `
 
 🌱 **Hello there!** I'm **Ibrahim**, an **Astro | React Front-End Web Developer** from **Odesa, Ukraine**.
 
