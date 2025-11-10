@@ -15,7 +15,7 @@
 ### 📄 My Resume and Portfolio
 
 [![Download Resume](https://img.shields.io/badge/Download-Resume-blue?style=for-the-badge&logo=adobeacrobatreader&logoColor=white)](https://github.com/user-attachments/files/23328212/Ibrahim.Elkamali.Resume.pdf) 
-[![Visit Portfolio](https://img.shields.io/badge/Visit-Portfolio-blue?style=for-the-badge&logo=vercel&logoColor=white)](https://elkamali.vercel.app/)
+[![Visit Portfolio](https://img.shields.io/badge/Visit-Portfolio-blue?style=for-the-badge&logo=vercel&logoColor=white)](https://elkamali.dev/)
 
 
 ### 📞 Connect with Me
