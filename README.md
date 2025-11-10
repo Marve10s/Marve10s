@@ -2,11 +2,7 @@
 
 🌱 **Hello there!** I'm **Ibrahim**, an **Full Stack TypeScript Web Developer** from **Odesa, Ukraine**.
 
-🧑‍🎓 **Currently,** I'm pursuing a degree in computer science, combining structured coursework with self-directed study. Over the past two years, I've embarked on an intensive journey of self-learning programming, fueled by my passion for technology and the drive to acquire practical skills.
-
-🤝 **I possess a comprehensive skill set essential for a successful employee, including strong communication abilities, teamwork, adept problem-solving skills, adaptability, leadership qualities, effective time management, and critical thinking.**
-
-🖥️ **Below, you'll find some of the technologies I'm proficient in. For a detailed overview of my skills and projects, please visit my portfolio.**
+🖥️ **Below, you'll find some of the technologies I'm using. For a detailed overview of my skills and projects, please visit my portfolio.**
 
 📱 **Feel free to reach out if you have any questions or opportunities for collaboration. Looking forward to connecting!**
 
