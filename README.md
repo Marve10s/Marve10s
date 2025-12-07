@@ -93,7 +93,23 @@
   <img src="https://github-readme-activity-graph.vercel.app/graph?username=Marve10s&theme=react-dark" />
 </p>
 
+<p align="center">
+<img src="https://github-readme-stats.vercel.app/api?username=Marve10s&show_icons=true&theme=tokyonight" height="180em" />
+    
+<img src="https://github-readme-stats.vercel.app/api/top-langs/?username=Marve10s&layout=compact&theme=tokyonight" height="180em" />
+</p>
 
+<div align="center" style="padding: 20px 0;">
+<img src="[https://streak-stats.demolab.com?user=Marve10s&theme=tokyonight&hide_border=true](https://streak-stats.demolab.com/?user=Marve10s&theme=tokyonight&hide_border=true)" alt="GitHub Streak" />
+</div>
+
+<p align="center">
+<img src="https://github-profile-trophy.vercel.app/?username=Marve10s&theme=onedark&margin-w=10&margin-h=10" />
+</p>
+
+<p align="center">
+<img src="https://github-readme-activity-graph.vercel.app/graph?username=Marve10s&theme=react-dark" />
+</p>
 
 ### 🐍 This snake eats my commits
 
