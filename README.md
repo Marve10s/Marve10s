@@ -80,10 +80,6 @@
   <img src="https://github-readme-streak-stats-eight.vercel.app/?user=Marve10s&theme=tokyonight&hide_border=true" height="180em" />
 </p>
 
-<p align="center">
-  <img src="https://github-readme-activity-graph.vercel.app/graph?username=Marve10s&theme=react-dark" />
-</p>
-
 ### 🐍 This snake eats my commits
 
 <picture>
