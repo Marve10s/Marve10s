@@ -10,69 +10,101 @@
 
 📱 If you have any questions or potential opportunities, I would be glad to hear from you. Looking forward to connecting!
 
-
 ---
 
 ### 📄 My Resume and Portfolio
 
-[![Download Resume](https://img.shields.io/badge/Download-Resume-blue?style=for-the-badge&logo=adobeacrobatreader&logoColor=white)](https://github.com/user-attachments/files/23328212/Ibrahim.Elkamali.Resume.pdf) 
-[![Visit Portfolio](https://img.shields.io/badge/Visit-Portfolio-blue?style=for-the-badge&logo=vercel&logoColor=white)](https://elkamali.dev/)
-
+[![Download Resume](https://img.shields.io/badge/Download-Resume-blue?style=flat-square&logo=adobeacrobatreader&logoColor=white)](https://github.com/user-attachments/files/23328212/Ibrahim.Elkamali.Resume.pdf)
+[![Visit Portfolio](https://img.shields.io/badge/Visit-Portfolio-blue?style=flat-square&logo=vercel&logoColor=white)](https://elkamali.dev/)
 
 ### 📞 Connect with Me
 
-[![Discord](https://img.shields.io/badge/Discord-%237289DA.svg?logo=discord&logoColor=white&style=for-the-badge)](https://discord.com/users/545973026320154637) [![Instagram](https://img.shields.io/badge/Instagram-%23E4405F.svg?logo=Instagram&logoColor=white&style=for-the-badge)](https://instagram.com/_just._.him_) [![Telegram](https://img.shields.io/badge/Telegram-%23008C8C.svg?logo=telegram&logoColor=white&style=for-the-badge)](https://t.me/thecr1nge) [![Upwork](https://img.shields.io/badge/Upwork-%2300A388.svg?logo=upwork&logoColor=white&style=for-the-badge)](https://www.upwork.com/freelancers/ibrahime137) [![Gmail](https://img.shields.io/badge/Gmail-%23D14836.svg?logo=gmail&logoColor=white&style=for-the-badge)](mailto:ibrahimelkamali@gmail.com)
+[![Discord](https://img.shields.io/badge/-Discord-7289DA?style=flat-square&logo=discord&logoColor=white)](https://discord.com/users/545973026320154637) [![Instagram](https://img.shields.io/badge/-Instagram-E4405F?style=flat-square&logo=Instagram&logoColor=white)](https://instagram.com/_just._.him_) [![Telegram](https://img.shields.io/badge/-Telegram-008C8C?style=flat-square&logo=telegram&logoColor=white)](https://t.me/thecr1nge) [![Upwork](https://img.shields.io/badge/-Upwork-00A388?style=flat-square&logo=upwork&logoColor=white)](https://www.upwork.com/freelancers/ibrahime137) [![Gmail](https://img.shields.io/badge/-Gmail-D14836?style=flat-square&logo=gmail&logoColor=white)](mailto:ibrahimelkamali@gmail.com)
+
+---
+
+## 🚀 Current Projects
+
+- 🚀 **[Better-Fullstack](https://github.com/Marve10s/Better-Fullstack)** - Full-stack CLI scaffolding tool with TypeScript, Rust, Go & Python support
 
 ---
 
 # 💻 Tech Stack
 
-### 🖋️ Languages
-![HTML5](https://img.shields.io/badge/HTML5-111111.svg?style=for-the-badge&logo=html5&logoColor=white)
-![CSS3](https://img.shields.io/badge/CSS3-111111.svg?style=for-the-badge&logo=css3&logoColor=white)
-![JavaScript](https://img.shields.io/badge/JavaScript-111111.svg?style=for-the-badge&logo=javascript&logoColor=white)
-![TypeScript](https://img.shields.io/badge/TypeScript-111111.svg?style=for-the-badge&logo=typescript&logoColor=white)
+![TypeScript](https://img.shields.io/badge/-TypeScript-3178C6?style=flat-square&logo=typescript&logoColor=white)
+![React](https://img.shields.io/badge/-React-61DAFB?style=flat-square&logo=react&logoColor=black)
+![Astro](https://img.shields.io/badge/-Astro-FF5D01?style=flat-square&logo=astro&logoColor=white)
+![TanStack Start](https://img.shields.io/badge/-TanStack%20Start-1E90FF?style=flat-square&logo=tanstack&logoColor=white)
+![TailwindCSS](https://img.shields.io/badge/-TailwindCSS-06B6D4?style=flat-square&logo=tailwind-css&logoColor=white)
+![Convex](https://img.shields.io/badge/-Convex-EE342F?style=flat-square&logoColor=white)
+![Supabase](https://img.shields.io/badge/-Supabase-3FCF8E?style=flat-square&logo=supabase&logoColor=white)
 
-### 📦 Frameworks
-![Astro](https://img.shields.io/badge/Astro-111111.svg?style=for-the-badge&logo=astro&logoColor=white)
-![React](https://img.shields.io/badge/React-111111.svg?style=for-the-badge&logo=react&logoColor=white)
-![TanStack Start](https://img.shields.io/badge/TanStack%20Start-111111.svg?style=for-the-badge&logo=tanstack&logoColor=white)
-![WXT](https://img.shields.io/badge/WXT-111111.svg?style=for-the-badge&logoColor=white)
-![Hono](https://img.shields.io/badge/Hono-111111.svg?style=for-the-badge&logoColor=white)
+<br>
 
-### 🎨 CSS / Styling
-![TailwindCSS](https://img.shields.io/badge/TailwindCSS-111111.svg?style=for-the-badge&logo=tailwind-css&logoColor=white)
-![shadcn/ui](https://img.shields.io/badge/shadcn%2Fui-111111.svg?style=for-the-badge&logo=shadcnui&logoColor=white)
-![PostCSS](https://img.shields.io/badge/PostCSS-111111.svg?style=for-the-badge&logo=postcss&logoColor=white)
-![Sass](https://img.shields.io/badge/Sass-111111.svg?style=for-the-badge&logo=sass&logoColor=white)
-![Less](https://img.shields.io/badge/Less-111111.svg?style=for-the-badge&logo=less&logoColor=white)
-![SCSS](https://img.shields.io/badge/SCSS-111111.svg?style=for-the-badge&logo=sass&logoColor=white)
+<details>
+<summary>📦 Frameworks</summary>
+<br>
 
-### ⚙️ Tools & Libraries
-![TanStack Router](https://img.shields.io/badge/TanStack%20Router-111111.svg?style=for-the-badge&logo=tanstack&logoColor=white)
-![TanStack Query](https://img.shields.io/badge/TanStack%20Query-111111.svg?style=for-the-badge&logo=tanstack&logoColor=white)
-![Vite](https://img.shields.io/badge/Vite-111111.svg?style=for-the-badge&logo=vite&logoColor=white)
-![Vercel AI SDK](https://img.shields.io/badge/Vercel%20AI%20SDK-111111.svg?style=for-the-badge&logo=vercel&logoColor=white)
-![Framer Motion](https://img.shields.io/badge/Framer%20Motion-111111.svg?style=for-the-badge&logo=framer&logoColor=white)
-![GSAP](https://img.shields.io/badge/GSAP-111111.svg?style=for-the-badge&logo=greensock&logoColor=white)
-![tRPC](https://img.shields.io/badge/tRPC-111111.svg?style=for-the-badge&logo=trpc&logoColor=white)
-![Zod](https://img.shields.io/badge/Zod-111111.svg?style=for-the-badge&logo=zod&logoColor=white)
+![Astro](https://img.shields.io/badge/-Astro-FF5D01?style=flat-square&logo=astro&logoColor=white)
+![React](https://img.shields.io/badge/-React-61DAFB?style=flat-square&logo=react&logoColor=black)
+![TanStack Start](https://img.shields.io/badge/-TanStack%20Start-1E90FF?style=flat-square&logo=tanstack&logoColor=white)
+![WXT](https://img.shields.io/badge/-WXT-111111?style=flat-square&logoColor=white)
+![Hono](https://img.shields.io/badge/-Hono-E36002?style=flat-square&logoColor=white)
 
-### 🗄️ Backend & Databases
-![Supabase](https://img.shields.io/badge/Supabase-111111.svg?style=for-the-badge&logo=supabase&logoColor=white)
-![Convex](https://img.shields.io/badge/Convex-111111.svg?style=for-the-badge&logoColor=white)
-![PostgreSQL](https://img.shields.io/badge/PostgreSQL-111111.svg?style=for-the-badge&logo=postgresql&logoColor=white)
-![Drizzle ORM](https://img.shields.io/badge/Drizzle%20ORM-111111.svg?style=for-the-badge&logoColor=white)
+</details>
 
-#### 👨‍💻 Coder Related
-![VS Code](https://img.shields.io/badge/VS%20Code-111111.svg?style=for-the-badge&logo=visualstudiocode&logoColor=white)
-![Cursor](https://img.shields.io/badge/Cursor-111111.svg?style=for-the-badge&logoColor=white)
-![Git](https://img.shields.io/badge/Git-111111.svg?style=for-the-badge&logo=git&logoColor=white)
-![Netlify](https://img.shields.io/badge/Netlify-111111.svg?style=for-the-badge&logo=netlify&logoColor=white)
-![Vercel](https://img.shields.io/badge/Vercel-111111.svg?style=for-the-badge&logo=vercel&logoColor=white)
-![ChatGPT](https://img.shields.io/badge/ChatGPT-111111.svg?style=for-the-badge&logo=openai&logoColor=white)
-![Claude](https://img.shields.io/badge/Claude-111111.svg?style=for-the-badge&logoColor=white)
-![V0](https://img.shields.io/badge/V0-111111.svg?style=for-the-badge&logoColor=white)
+<details>
+<summary>🎨 CSS / Styling</summary>
+<br>
+
+![TailwindCSS](https://img.shields.io/badge/-TailwindCSS-06B6D4?style=flat-square&logo=tailwind-css&logoColor=white)
+![shadcn/ui](https://img.shields.io/badge/-shadcn%2Fui-000000?style=flat-square&logo=shadcnui&logoColor=white)
+![PostCSS](https://img.shields.io/badge/-PostCSS-DD3A0A?style=flat-square&logo=postcss&logoColor=white)
+![Sass](https://img.shields.io/badge/-Sass-CC6699?style=flat-square&logo=sass&logoColor=white)
+![Less](https://img.shields.io/badge/-Less-1D365D?style=flat-square&logo=less&logoColor=white)
+
+</details>
+
+<details>
+<summary>⚙️ Tools & Libraries</summary>
+<br>
+
+![TanStack Router](https://img.shields.io/badge/-TanStack%20Router-1E90FF?style=flat-square&logo=tanstack&logoColor=white)
+![TanStack Query](https://img.shields.io/badge/-TanStack%20Query-1E90FF?style=flat-square&logo=tanstack&logoColor=white)
+![Vite](https://img.shields.io/badge/-Vite-646CFF?style=flat-square&logo=vite&logoColor=white)
+![Vercel AI SDK](https://img.shields.io/badge/-Vercel%20AI%20SDK-000000?style=flat-square&logo=vercel&logoColor=white)
+![Framer Motion](https://img.shields.io/badge/-Framer%20Motion-0055FF?style=flat-square&logo=framer&logoColor=white)
+![GSAP](https://img.shields.io/badge/-GSAP-88CE02?style=flat-square&logo=greensock&logoColor=black)
+![tRPC](https://img.shields.io/badge/-tRPC-2596BE?style=flat-square&logo=trpc&logoColor=white)
+![Zod](https://img.shields.io/badge/-Zod-3E67B1?style=flat-square&logo=zod&logoColor=white)
+
+</details>
+
+<details>
+<summary>🗄️ Backend & Databases</summary>
+<br>
+
+![Supabase](https://img.shields.io/badge/-Supabase-3FCF8E?style=flat-square&logo=supabase&logoColor=white)
+![Convex](https://img.shields.io/badge/-Convex-EE342F?style=flat-square&logoColor=white)
+![Drizzle ORM](https://img.shields.io/badge/-Drizzle%20ORM-C5F74F?style=flat-square&logoColor=black)
+
+</details>
+
+<details>
+<summary>👨‍💻 Dev Tools</summary>
+<br>
+
+![VS Code](https://img.shields.io/badge/-VS%20Code-007ACC?style=flat-square&logo=visualstudiocode&logoColor=white)
+![Cursor](https://img.shields.io/badge/-Cursor-000000?style=flat-square&logoColor=white)
+![Git](https://img.shields.io/badge/-Git-F05032?style=flat-square&logo=git&logoColor=white)
+![Netlify](https://img.shields.io/badge/-Netlify-00C7B7?style=flat-square&logo=netlify&logoColor=white)
+![Vercel](https://img.shields.io/badge/-Vercel-000000?style=flat-square&logo=vercel&logoColor=white)
+![ChatGPT](https://img.shields.io/badge/-ChatGPT-74aa9c?style=flat-square&logo=openai&logoColor=white)
+![Claude](https://img.shields.io/badge/-Claude-D97757?style=flat-square&logo=anthropic&logoColor=white)
+
+</details>
+
+---
 
 ## 📊 GitHub Stats
 
@@ -87,5 +119,3 @@
   <source media="(prefers-color-scheme: light)" srcset="https://raw.githubusercontent.com/marve10s/marve10s/output/github-snake.svg" />
   <img alt="github-snake" src="https://raw.githubusercontent.com/marve10s/marve10s/output/github-snake.svg" />
 </picture>
-
-
