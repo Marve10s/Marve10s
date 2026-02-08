@@ -24,9 +24,9 @@
 ---
 
 ## 🚀 Current Projects
-
 - 🚀 **[Better-Fullstack](https://github.com/Marve10s/Better-Fullstack)** - Full-stack CLI scaffolding tool with TypeScript, Rust, Go & Python support
-
+- 🔄 **[Better-skills](https://github.com/Marve10s/Better-skills)** - Bidirectional converter between `.agents/skills/` and `.claude/skills/` formats
+  
 ---
 
 # 💻 Tech Stack
