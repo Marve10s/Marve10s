@@ -26,6 +26,7 @@
 ## 🚀 Current Projects
 - 🚀 **[Better-Fullstack](https://github.com/Marve10s/Better-Fullstack)** - Full-stack CLI scaffolding tool with TypeScript, Rust, Go & Python support
 - 🔄 **[Better-skills](https://github.com/Marve10s/Better-skills)** - Bidirectional converter between `.agents/skills/` and `.claude/skills/` formats
+- 🤖 **[Telegram-bot-monitoring](https://github.com/Marve10s/Telegram-bot-monitoring)** - Effect-ts powered Telegram bot that monitors wishlist products on eBay & InstockTrades and sends hourly crons on new finds
   
 ---
 
