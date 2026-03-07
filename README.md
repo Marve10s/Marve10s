@@ -1,4 +1,8 @@
-<h1 align="center">Full Stack TypeScript Web Developer</h1>
+<h1 align="center"><b>Full-Stack TypeScript Web Developer</b></h1>
+
+<p align="center">
+Odesa, Ukraine 🇺🇦 | Age: 20 | 4+ years coding | 2+ years professional experience
+</p>
 
 <p align="center">
 <a href="https://elkamali.dev/"><img src="https://img.shields.io/badge/Portfolio-CFCECD?style=flat-square&labelColor=211E1E&logo=vercel&logoColor=CFCECD" /></a>
@@ -15,8 +19,6 @@
 <a href="mailto:ibrahimelkamali@gmail.com"><img src="https://img.shields.io/badge/Gmail-CFCECD?style=flat-square&labelColor=211E1E&logo=gmail&logoColor=EA4335" /></a>
 <a href="https://discord.com/users/545973026320154637"><img src="https://img.shields.io/badge/Discord-CFCECD?style=flat-square&labelColor=211E1E&logo=discord&logoColor=5865F2" /></a>
 </p>
-
-<p align="center">4+ years coding | 2+ years working professionally</p>
 
 ---
 
