@@ -1,119 +1,123 @@
-# 🧑‍💻  ` Ibrahim, 20 | Full Stack TypeScript Web Developer | Astro · React  `
-
-### 🌱 Hello there! I'm Ibrahim, a Full Stack TypeScript Web Developer from Odesa, Ukraine.
-
-#### 🧑‍🎓 Right now, I'm studying computer science and pairing that with a lot of hands-on learning on my own. For the past two+ years, I have been teaching myself to code, driven by curiosity and a real interest in building things that work in the real world.
-
-🤝 I genuinely love to code. It feels like a form of art to me, and I see myself as a kind of web artist who enjoys creating things that are both functional and expressive.
-
-🖥️ Below is a look at some of the technologies I use. If you want the full picture of my skills and projects, feel free to explore my portfolio.
-
-📱 If you have any questions or potential opportunities, I would be glad to hear from you. Looking forward to connecting!
-
----
-
-### 📄 My Resume and Portfolio
-
-[![Download Resume](https://img.shields.io/badge/Download-Resume-blue?style=flat-square&logo=adobeacrobatreader&logoColor=white)](https://github.com/user-attachments/files/23328212/Ibrahim.Elkamali.Resume.pdf)
-[![Visit Portfolio](https://img.shields.io/badge/Visit-Portfolio-blue?style=flat-square&logo=vercel&logoColor=white)](https://elkamali.dev/)
-
-### 📞 Connect with Me
-
-[![Discord](https://img.shields.io/badge/-Discord-7289DA?style=flat-square&logo=discord&logoColor=white)](https://discord.com/users/545973026320154637) [![Instagram](https://img.shields.io/badge/-Instagram-E4405F?style=flat-square&logo=Instagram&logoColor=white)](https://instagram.com/_just._.him_) [![Telegram](https://img.shields.io/badge/-Telegram-008C8C?style=flat-square&logo=telegram&logoColor=white)](https://t.me/thecr1nge) [![Upwork](https://img.shields.io/badge/-Upwork-00A388?style=flat-square&logo=upwork&logoColor=white)](https://www.upwork.com/freelancers/ibrahime137) [![Gmail](https://img.shields.io/badge/-Gmail-D14836?style=flat-square&logo=gmail&logoColor=white)](mailto:ibrahimelkamali@gmail.com)
-
----
-
-## 🚀 Current Projects
-- 🚀 **[Better-Fullstack](https://github.com/Marve10s/Better-Fullstack)** - Full-stack CLI scaffolding tool with TypeScript, Rust, Go & Python support
-- 🔄 **[Better-skills](https://github.com/Marve10s/Better-skills)** - Bidirectional converter between `.agents/skills/` and `.claude/skills/` formats
-- 🤖 **[Telegram-bot-monitoring](https://github.com/Marve10s/Telegram-bot-monitoring)** - Effect-ts powered Telegram bot that monitors wishlist products on eBay & InstockTrades and sends hourly crons on new finds
-  
----
-
-# 💻 Tech Stack
-
-![TypeScript](https://img.shields.io/badge/-TypeScript-3178C6?style=flat-square&logo=typescript&logoColor=white)
-![React](https://img.shields.io/badge/-React-61DAFB?style=flat-square&logo=react&logoColor=black)
-![Astro](https://img.shields.io/badge/-Astro-FF5D01?style=flat-square&logo=astro&logoColor=white)
-![TanStack Start](https://img.shields.io/badge/-TanStack%20Start-1E90FF?style=flat-square&logo=tanstack&logoColor=white)
-![TailwindCSS](https://img.shields.io/badge/-TailwindCSS-06B6D4?style=flat-square&logo=tailwind-css&logoColor=white)
-![Convex](https://img.shields.io/badge/-Convex-EE342F?style=flat-square&logoColor=white)
-![Supabase](https://img.shields.io/badge/-Supabase-3FCF8E?style=flat-square&logo=supabase&logoColor=white)
-
-<br>
-
-<details>
-<summary>📦 Frameworks</summary>
-<br>
-
-![Astro](https://img.shields.io/badge/-Astro-FF5D01?style=flat-square&logo=astro&logoColor=white)
-![React](https://img.shields.io/badge/-React-61DAFB?style=flat-square&logo=react&logoColor=black)
-![TanStack Start](https://img.shields.io/badge/-TanStack%20Start-1E90FF?style=flat-square&logo=tanstack&logoColor=white)
-![WXT](https://img.shields.io/badge/-WXT-111111?style=flat-square&logoColor=white)
-![Hono](https://img.shields.io/badge/-Hono-E36002?style=flat-square&logoColor=white)
-
-</details>
-
-<details>
-<summary>🎨 CSS / Styling</summary>
-<br>
-
-![TailwindCSS](https://img.shields.io/badge/-TailwindCSS-06B6D4?style=flat-square&logo=tailwind-css&logoColor=white)
-![shadcn/ui](https://img.shields.io/badge/-shadcn%2Fui-000000?style=flat-square&logo=shadcnui&logoColor=white)
-![PostCSS](https://img.shields.io/badge/-PostCSS-DD3A0A?style=flat-square&logo=postcss&logoColor=white)
-![Sass](https://img.shields.io/badge/-Sass-CC6699?style=flat-square&logo=sass&logoColor=white)
-![Less](https://img.shields.io/badge/-Less-1D365D?style=flat-square&logo=less&logoColor=white)
-
-</details>
-
-<details>
-<summary>⚙️ Tools & Libraries</summary>
-<br>
-
-![TanStack Router](https://img.shields.io/badge/-TanStack%20Router-1E90FF?style=flat-square&logo=tanstack&logoColor=white)
-![TanStack Query](https://img.shields.io/badge/-TanStack%20Query-1E90FF?style=flat-square&logo=tanstack&logoColor=white)
-![Vite](https://img.shields.io/badge/-Vite-646CFF?style=flat-square&logo=vite&logoColor=white)
-![Vercel AI SDK](https://img.shields.io/badge/-Vercel%20AI%20SDK-000000?style=flat-square&logo=vercel&logoColor=white)
-![Framer Motion](https://img.shields.io/badge/-Framer%20Motion-0055FF?style=flat-square&logo=framer&logoColor=white)
-![GSAP](https://img.shields.io/badge/-GSAP-88CE02?style=flat-square&logo=greensock&logoColor=black)
-![tRPC](https://img.shields.io/badge/-tRPC-2596BE?style=flat-square&logo=trpc&logoColor=white)
-![Zod](https://img.shields.io/badge/-Zod-3E67B1?style=flat-square&logo=zod&logoColor=white)
-
-</details>
-
-<details>
-<summary>🗄️ Backend & Databases</summary>
-<br>
-
-![Supabase](https://img.shields.io/badge/-Supabase-3FCF8E?style=flat-square&logo=supabase&logoColor=white)
-![Convex](https://img.shields.io/badge/-Convex-EE342F?style=flat-square&logoColor=white)
-![Drizzle ORM](https://img.shields.io/badge/-Drizzle%20ORM-C5F74F?style=flat-square&logoColor=black)
-
-</details>
-
-<details>
-<summary>👨‍💻 Dev Tools</summary>
-<br>
-
-![VS Code](https://img.shields.io/badge/-VS%20Code-007ACC?style=flat-square&logo=visualstudiocode&logoColor=white)
-![Cursor](https://img.shields.io/badge/-Cursor-000000?style=flat-square&logoColor=white)
-![Git](https://img.shields.io/badge/-Git-F05032?style=flat-square&logo=git&logoColor=white)
-![Netlify](https://img.shields.io/badge/-Netlify-00C7B7?style=flat-square&logo=netlify&logoColor=white)
-![Vercel](https://img.shields.io/badge/-Vercel-000000?style=flat-square&logo=vercel&logoColor=white)
-![ChatGPT](https://img.shields.io/badge/-ChatGPT-74aa9c?style=flat-square&logo=openai&logoColor=white)
-![Claude](https://img.shields.io/badge/-Claude-D97757?style=flat-square&logo=anthropic&logoColor=white)
-
-</details>
-
----
-
-## 📊 GitHub Stats
+<h1 align="center">Full Stack TypeScript Web Developer</h1>
 
 <p align="center">
-  <img src="https://github-readme-streak-stats-eight.vercel.app/?user=Marve10s&theme=tokyonight&hide_border=true" height="180em" />
+<a href="https://elkamali.dev/"><img src="https://img.shields.io/badge/Portfolio-CFCECD?style=flat-square&labelColor=211E1E&logo=vercel&logoColor=CFCECD" /></a>
+<a href="https://github.com/user-attachments/files/23328212/Ibrahim.Elkamali.Resume.pdf"><img src="https://img.shields.io/badge/Resume-CFCECD?style=flat-square&labelColor=211E1E&logo=adobeacrobatreader&logoColor=EC1C24" /></a>
 </p>
 
-### 🐍 This snake eats my commits
+<p align="center">
+<a href="https://www.linkedin.com/in/ibrahim-elkamali-94a466292"><img src="https://img.shields.io/badge/LinkedIn-CFCECD?style=flat-square&labelColor=211E1E&logo=data:image/svg%2bxml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNCAyNCIgZmlsbD0iIzBBNjZDMiI+PHBhdGggZD0iTTIwLjQ0NyAyMC40NTJoLTMuNTU0di01LjU2OWMwLTEuMzI4LS4wMjctMy4wMzctMS44NTItMy4wMzctMS44NTMgMC0yLjEzNiAxLjQ0NS0yLjEzNiAyLjkzOXY1LjY2N0g5LjM1MVY5aDMuNDE0djEuNTYxaC4wNDZjLjQ3Ny0uOSAxLjYzNy0xLjg1IDMuMzctMS44NSAzLjYwMSAwIDQuMjY3IDIuMzcgNC4yNjcgNS40NTV2Ni4yODZ6TTUuMzM3IDcuNDMzYTIuMDYyIDIuMDYyIDAgMCAxLTIuMDYzLTIuMDY1IDIuMDY0IDIuMDY0IDAgMSAxIDIuMDYzIDIuMDY1em0xLjc4MiAxMy4wMTlIMy41NTVWOWgzLjU2NHYxMS40NTJ6TTIyLjIyNSAwSDEuNzcxQy43OTIgMCAwIC43NzQgMCAxLjcyOXYyMC41NDJDMCAyMy4yMjcuNzkyIDI0IDEuNzcxIDI0aDIwLjQ1MUMyMy4yIDI0IDI0IDIzLjIyNyAyNCAyMi4yNzFWMS43MjlDMjQgLjc3NCAyMy4yIDAgMjIuMjIyIDBoLjAwM3oiLz48L3N2Zz4=&logoColor=0A66C2" /></a>
+<a href="https://github.com/Marve10s"><img src="https://img.shields.io/badge/GitHub-CFCECD?style=flat-square&labelColor=211E1E&logo=github&logoColor=CFCECD" /></a>
+<a href="https://x.com/MARVELOUSBC"><img src="https://img.shields.io/badge/X-CFCECD?style=flat-square&labelColor=211E1E&logo=x&logoColor=CFCECD" /></a>
+<a href="https://t.me/TheCr1nge"><img src="https://img.shields.io/badge/Telegram-CFCECD?style=flat-square&labelColor=211E1E&logo=telegram&logoColor=26A5E4" /></a>
+<a href="https://www.instagram.com/_just._.him_/"><img src="https://img.shields.io/badge/Instagram-CFCECD?style=flat-square&labelColor=211E1E&logo=instagram&logoColor=E4405F" /></a>
+<a href="https://www.upwork.com/freelancers/~010112495fc6870d30?mp_source=share"><img src="https://img.shields.io/badge/Upwork-CFCECD?style=flat-square&labelColor=211E1E&logo=upwork&logoColor=6FDA44" /></a>
+<a href="https://wa.me/+380665662448"><img src="https://img.shields.io/badge/WhatsApp-CFCECD?style=flat-square&labelColor=211E1E&logo=whatsapp&logoColor=25D366" /></a>
+<a href="mailto:ibrahimelkamali@gmail.com"><img src="https://img.shields.io/badge/Gmail-CFCECD?style=flat-square&labelColor=211E1E&logo=gmail&logoColor=EA4335" /></a>
+<a href="https://discord.com/users/545973026320154637"><img src="https://img.shields.io/badge/Discord-CFCECD?style=flat-square&labelColor=211E1E&logo=discord&logoColor=5865F2" /></a>
+</p>
+
+<p align="center">4+ years coding | 2+ years working professionally</p>
+
+---
+
+## Tech Stack
+
+![TypeScript](https://img.shields.io/badge/TypeScript-CFCECD?style=for-the-badge&labelColor=211E1E&logo=typescript&logoColor=CFCECD)
+![React](https://img.shields.io/badge/React-CFCECD?style=for-the-badge&labelColor=211E1E&logo=react&logoColor=CFCECD)
+![Astro](https://img.shields.io/badge/Astro-CFCECD?style=for-the-badge&labelColor=211E1E&logo=astro&logoColor=CFCECD)
+![TanStack](https://img.shields.io/badge/TanStack-CFCECD?style=for-the-badge&labelColor=211E1E&logo=tanstack&logoColor=CFCECD)
+![TailwindCSS](https://img.shields.io/badge/TailwindCSS-CFCECD?style=for-the-badge&labelColor=211E1E&logo=tailwindcss&logoColor=CFCECD)
+![Convex](https://img.shields.io/badge/Convex-CFCECD?style=for-the-badge&labelColor=211E1E&logoColor=CFCECD)
+
+<details>
+<summary>Frameworks</summary>
+<br>
+
+![Astro](https://img.shields.io/badge/-Astro-211E1E?style=flat-square&logo=astro&logoColor=CFCECD)
+![React](https://img.shields.io/badge/-React-211E1E?style=flat-square&logo=react&logoColor=CFCECD)
+![TanStack Start](https://img.shields.io/badge/-TanStack%20Start-211E1E?style=flat-square&logo=tanstack&logoColor=CFCECD)
+![WXT](https://img.shields.io/badge/-WXT-211E1E?style=flat-square&logoColor=CFCECD)
+![Hono](https://img.shields.io/badge/-Hono-211E1E?style=flat-square&logoColor=CFCECD)
+
+</details>
+
+<details>
+<summary>CSS / Styling</summary>
+<br>
+
+![TailwindCSS](https://img.shields.io/badge/-TailwindCSS-211E1E?style=flat-square&logo=tailwind-css&logoColor=CFCECD)
+![shadcn/ui](https://img.shields.io/badge/-shadcn%2Fui-211E1E?style=flat-square&logo=shadcnui&logoColor=CFCECD)
+![PostCSS](https://img.shields.io/badge/-PostCSS-211E1E?style=flat-square&logo=postcss&logoColor=CFCECD)
+![Sass](https://img.shields.io/badge/-Sass-211E1E?style=flat-square&logo=sass&logoColor=CFCECD)
+![Less](https://img.shields.io/badge/-Less-211E1E?style=flat-square&logo=less&logoColor=CFCECD)
+
+</details>
+
+<details>
+<summary>Tools & Libraries</summary>
+<br>
+
+![TanStack Router](https://img.shields.io/badge/-TanStack%20Router-211E1E?style=flat-square&logo=tanstack&logoColor=CFCECD)
+![TanStack Query](https://img.shields.io/badge/-TanStack%20Query-211E1E?style=flat-square&logo=tanstack&logoColor=CFCECD)
+![Vite](https://img.shields.io/badge/-Vite-211E1E?style=flat-square&logo=vite&logoColor=CFCECD)
+![Vercel AI SDK](https://img.shields.io/badge/-Vercel%20AI%20SDK-211E1E?style=flat-square&logo=vercel&logoColor=CFCECD)
+![Framer Motion](https://img.shields.io/badge/-Framer%20Motion-211E1E?style=flat-square&logo=framer&logoColor=CFCECD)
+![GSAP](https://img.shields.io/badge/-GSAP-211E1E?style=flat-square&logo=greensock&logoColor=CFCECD)
+![tRPC](https://img.shields.io/badge/-tRPC-211E1E?style=flat-square&logo=trpc&logoColor=CFCECD)
+![Zod](https://img.shields.io/badge/-Zod-211E1E?style=flat-square&logo=zod&logoColor=CFCECD)
+
+</details>
+
+<details>
+<summary>Backend & Databases</summary>
+<br>
+
+![Supabase](https://img.shields.io/badge/-Supabase-211E1E?style=flat-square&logo=supabase&logoColor=CFCECD)
+![Convex](https://img.shields.io/badge/-Convex-211E1E?style=flat-square&logoColor=CFCECD)
+![Drizzle ORM](https://img.shields.io/badge/-Drizzle%20ORM-211E1E?style=flat-square&logoColor=CFCECD)
+
+</details>
+
+<details>
+<summary>Dev Tools</summary>
+<br>
+
+![VS Code](https://img.shields.io/badge/-VS%20Code-211E1E?style=flat-square&logo=visualstudiocode&logoColor=CFCECD)
+![Cursor](https://img.shields.io/badge/-Cursor-211E1E?style=flat-square&logoColor=CFCECD)
+![Git](https://img.shields.io/badge/-Git-211E1E?style=flat-square&logo=git&logoColor=CFCECD)
+![Netlify](https://img.shields.io/badge/-Netlify-211E1E?style=flat-square&logo=netlify&logoColor=CFCECD)
+![Vercel](https://img.shields.io/badge/-Vercel-211E1E?style=flat-square&logo=vercel&logoColor=CFCECD)
+![ChatGPT](https://img.shields.io/badge/-ChatGPT-211E1E?style=flat-square&logo=openai&logoColor=CFCECD)
+![Claude](https://img.shields.io/badge/-Claude-211E1E?style=flat-square&logo=anthropic&logoColor=CFCECD)
+
+</details>
+
+---
+
+## Projects
+
+<a href="https://github.com/Marve10s/Better-Fullstack"><img src="https://github-readme-stats-sigma-five.vercel.app/api/pin/?username=Marve10s&repo=Better-Fullstack&bg_color=211E1E&title_color=CFCECD&text_color=656363&icon_color=CFCECD&hide_border=true" /></a>
+
+- [Better-skills](https://github.com/Marve10s/Better-skills) — Skill tracking app
+- [Telegram-bot-monitoring](https://github.com/Marve10s/Telegram-bot-monitoring) — Telegram bot for server monitoring
+
+---
+
+## GitHub Stats
+
+<table width="100%">
+<tr>
+<td width="50%" align="center">
+<img src="https://streak-stats.demolab.com/?user=Marve10s&background=211E1E&ring=CFCECD&fire=ffffff&currStreakNum=CFCECD&sideNums=CFCECD&currStreakLabel=656363&sideLabels=656363&dates=4B4646&hide_border=true" width="100%" />
+</td>
+<td width="50%" align="center">
+<img src="https://github-readme-stats-sigma-five.vercel.app/api?username=Marve10s&show_icons=true&bg_color=211E1E&title_color=CFCECD&text_color=656363&icon_color=CFCECD&hide_border=true&include_all_commits=true" width="100%" />
+</td>
+</tr>
+</table>
+
+### This snake eats my commits
 
 <picture>
   <source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/marve10s/marve10s/output/github-snake-dark.svg" />
