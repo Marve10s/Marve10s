@@ -1,7 +1,7 @@
 <h1 align="center"><b>Full-Stack TypeScript Web Developer</b></h1>
 
 <p align="center">
-Odesa, Ukraine 🇺🇦 | Age: 20 | 4+ years coding | 2+ years professional experience
+Odesa, Ukraine 🇺🇦 | Age: 20 | 5+ years coding | 3+ years professional experience
 </p>
 
 <p align="center">
