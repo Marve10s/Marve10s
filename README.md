@@ -5,8 +5,8 @@ Odesa, Ukraine 🇺🇦 | Age: 20 | 5+ years coding | 3+ years professional expe
 </p>
 
 <p align="center">
-<a href="https://elkamali.dev/"><img src="https://img.shields.io/badge/Portfolio-CFCECD?style=flat-square&labelColor=211E1E&logo=vercel&logoColor=CFCECD" /></a>
-<a href="https://github.com/user-attachments/files/23328212/Ibrahim.Elkamali.Resume.pdf"><img src="https://img.shields.io/badge/Resume-CFCECD?style=flat-square&labelColor=211E1E&logo=adobeacrobatreader&logoColor=EC1C24" /></a>
+<a href="https://elkamali.dev/"><img src="https://img.shields.io/badge/Portfolio-CFCECD?style=for-the-badge&labelColor=211E1E&logo=vercel&logoColor=CFCECD" /></a>
+<a href="https://github.com/user-attachments/files/23328212/Ibrahim.Elkamali.Resume.pdf"><img src="https://img.shields.io/badge/Resume-CFCECD?style=for-the-badge&labelColor=211E1E&logo=readme&logoColor=CFCECD" /></a>
 </p>
 
 <p align="center">
