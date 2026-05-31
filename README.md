@@ -94,11 +94,16 @@ Odesa, Ukraine 🇺🇦 | Age: 20 | 5+ years coding | 3+ years professional expe
 
 </details>
 
+
+
 ---
 
 ## Projects
 
-<a href="https://github.com/Marve10s/Better-Fullstack"><img src="https://github-readme-stats-sigma-five.vercel.app/api/pin/?username=Marve10s&repo=Better-Fullstack&bg_color=211E1E&title_color=CFCECD&text_color=656363&icon_color=CFCECD&hide_border=true" /></a>
+<a href="https://github.com/Marve10s/Better-Fullstack"><img src="https://github-readme-stats-sigma-five.vercel.app/api/pin/?username=Marve10s&repo=Better-Fullstack&bg_color=211E1E&title_color=CFCECD&text_color=656363&icon_color=CFCECD&hide_border=true" /></a> <a href="https://github.com/Emanuele-web04/dpcode"><img src="https://github-readme-stats-sigma-five.vercel.app/api/pin/?username=Emanuele-web04&repo=dpcode&bg_color=211E1E&title_color=CFCECD&text_color=656363&icon_color=CFCECD&hide_border=true" /></a>
+
+---
+
 
 - [Better-skills](https://github.com/Marve10s/Better-skills) — Bidirectional converter between .agents/skills/ and .claude/skills/ formats
 - [Telegram-bot-monitoring](https://github.com/Marve10s/Telegram-bot-monitoring) — Effect-ts powered Telegram bot that monitors wishlist products on eBay & InstockTrades and sends hourly crons on new finds
