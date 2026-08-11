@@ -100,7 +100,7 @@ Odesa, Ukraine 🇺🇦 | Age: 20 | 5+ years coding | 3+ years professional expe
 
 ## Projects
 
-<a href="https://github.com/Marve10s/Better-Fullstack"><img src="https://github-readme-stats-sigma-five.vercel.app/api/pin/?username=Marve10s&repo=Better-Fullstack&bg_color=211E1E&title_color=CFCECD&text_color=656363&icon_color=CFCECD&hide_border=true" /></a> <a href="https://github.com/Emanuele-web04/dpcode"><img src="https://github-readme-stats-sigma-five.vercel.app/api/pin/?username=Emanuele-web04&repo=dpcode&bg_color=211E1E&title_color=CFCECD&text_color=656363&icon_color=CFCECD&hide_border=true" /></a>
+<a href="https://github.com/Marve10s/Better-Fullstack"><img src="https://github-stats-extended.vercel.app/api/pin/?username=Marve10s&repo=Better-Fullstack&bg_color=211E1E&title_color=CFCECD&text_color=656363&icon_color=CFCECD&hide_border=true" /></a> <a href="https://github.com/Emanuele-web04/dpcode"><img src="https://github-stats-extended.vercel.app/api/pin/?username=Emanuele-web04&repo=dpcode&bg_color=211E1E&title_color=CFCECD&text_color=656363&icon_color=CFCECD&hide_border=true" /></a>
 
 ---
 
@@ -115,10 +115,10 @@ Odesa, Ukraine 🇺🇦 | Age: 20 | 5+ years coding | 3+ years professional expe
 <table width="100%">
 <tr>
 <td width="50%" align="center">
-<img src="https://streak-stats.demolab.com/?user=Marve10s&background=211E1E&ring=CFCECD&fire=ffffff&currStreakNum=CFCECD&sideNums=CFCECD&currStreakLabel=656363&sideLabels=656363&dates=4B4646&hide_border=true" width="100%" />
+<img src="./profile/streak.svg" alt="GitHub streak statistics" width="100%" />
 </td>
 <td width="50%" align="center">
-<img src="https://github-readme-stats-sigma-five.vercel.app/api?username=Marve10s&show_icons=true&bg_color=211E1E&title_color=CFCECD&text_color=656363&icon_color=CFCECD&hide_border=true&include_all_commits=true" width="100%" />
+<img src="https://github-stats-extended.vercel.app/api?username=Marve10s&show_icons=true&bg_color=211E1E&title_color=CFCECD&text_color=656363&icon_color=CFCECD&hide_border=true&include_all_commits=true" width="100%" />
 </td>
 </tr>
 </table>
