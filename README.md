@@ -24,16 +24,20 @@ Odesa, Ukraine 🇺🇦 | Age: 20 | 5+ years coding | 3+ years professional expe
 
 ## Tech Stack
 
-![TypeScript](https://img.shields.io/badge/TypeScript-CFCECD?style=for-the-badge&labelColor=211E1E&logo=typescript&logoColor=CFCECD)
-![React](https://img.shields.io/badge/React-CFCECD?style=for-the-badge&labelColor=211E1E&logo=react&logoColor=CFCECD)
-![Astro](https://img.shields.io/badge/Astro-CFCECD?style=for-the-badge&labelColor=211E1E&logo=astro&logoColor=CFCECD)
-![TanStack](https://img.shields.io/badge/TanStack-CFCECD?style=for-the-badge&labelColor=211E1E&logo=tanstack&logoColor=CFCECD)
-![TailwindCSS](https://img.shields.io/badge/TailwindCSS-CFCECD?style=for-the-badge&labelColor=211E1E&logo=tailwindcss&logoColor=CFCECD)
-![Convex](https://img.shields.io/badge/Convex-CFCECD?style=for-the-badge&labelColor=211E1E&logoColor=CFCECD)
+<p>
+<a href="https://tanstack.com/"><img src="https://img.shields.io/badge/TanStack-CFCECD?style=for-the-badge&labelColor=211E1E&logo=tanstack&logoColor=CFCECD" /></a>
+<a href="https://astro.build/"><img src="https://img.shields.io/badge/Astro-CFCECD?style=for-the-badge&labelColor=211E1E&logo=astro&logoColor=CFCECD" /></a>
+<a href="https://nextjs.org/"><img src="https://img.shields.io/badge/Next.js-CFCECD?style=for-the-badge&labelColor=211E1E&logo=nextdotjs&logoColor=CFCECD" /></a>
+<a href="https://expo.dev/"><img src="https://img.shields.io/badge/Expo-CFCECD?style=for-the-badge&labelColor=211E1E&logo=expo&logoColor=CFCECD" /></a>
+<a href="https://hono.dev/"><img src="https://img.shields.io/badge/Hono-CFCECD?style=for-the-badge&labelColor=211E1E&logo=hono&logoColor=CFCECD" /></a>
+<a href="https://effect.website/"><img src="https://img.shields.io/badge/Effect--TS-CFCECD?style=for-the-badge&labelColor=211E1E&logo=effect&logoColor=CFCECD" /></a>
+</p>
 
 <details>
-<summary>Frameworks</summary>
+<summary><b>Full tech stack</b></summary>
 <br>
+
+**Frameworks**
 
 ![Astro](https://img.shields.io/badge/-Astro-211E1E?style=flat-square&logo=astro&logoColor=CFCECD)
 ![React](https://img.shields.io/badge/-React-211E1E?style=flat-square&logo=react&logoColor=CFCECD)
@@ -41,11 +45,7 @@ Odesa, Ukraine 🇺🇦 | Age: 20 | 5+ years coding | 3+ years professional expe
 ![WXT](https://img.shields.io/badge/-WXT-211E1E?style=flat-square&logoColor=CFCECD)
 ![Hono](https://img.shields.io/badge/-Hono-211E1E?style=flat-square&logoColor=CFCECD)
 
-</details>
-
-<details>
-<summary>CSS / Styling</summary>
-<br>
+**CSS / Styling**
 
 ![TailwindCSS](https://img.shields.io/badge/-TailwindCSS-211E1E?style=flat-square&logo=tailwind-css&logoColor=CFCECD)
 ![shadcn/ui](https://img.shields.io/badge/-shadcn%2Fui-211E1E?style=flat-square&logo=shadcnui&logoColor=CFCECD)
@@ -53,11 +53,7 @@ Odesa, Ukraine 🇺🇦 | Age: 20 | 5+ years coding | 3+ years professional expe
 ![Sass](https://img.shields.io/badge/-Sass-211E1E?style=flat-square&logo=sass&logoColor=CFCECD)
 ![Less](https://img.shields.io/badge/-Less-211E1E?style=flat-square&logo=less&logoColor=CFCECD)
 
-</details>
-
-<details>
-<summary>Tools & Libraries</summary>
-<br>
+**Tools & Libraries**
 
 ![TanStack Router](https://img.shields.io/badge/-TanStack%20Router-211E1E?style=flat-square&logo=tanstack&logoColor=CFCECD)
 ![TanStack Query](https://img.shields.io/badge/-TanStack%20Query-211E1E?style=flat-square&logo=tanstack&logoColor=CFCECD)
@@ -68,21 +64,13 @@ Odesa, Ukraine 🇺🇦 | Age: 20 | 5+ years coding | 3+ years professional expe
 ![tRPC](https://img.shields.io/badge/-tRPC-211E1E?style=flat-square&logo=trpc&logoColor=CFCECD)
 ![Zod](https://img.shields.io/badge/-Zod-211E1E?style=flat-square&logo=zod&logoColor=CFCECD)
 
-</details>
-
-<details>
-<summary>Backend & Databases</summary>
-<br>
+**Backend & Databases**
 
 ![Supabase](https://img.shields.io/badge/-Supabase-211E1E?style=flat-square&logo=supabase&logoColor=CFCECD)
 ![Convex](https://img.shields.io/badge/-Convex-211E1E?style=flat-square&logoColor=CFCECD)
 ![Drizzle ORM](https://img.shields.io/badge/-Drizzle%20ORM-211E1E?style=flat-square&logoColor=CFCECD)
 
-</details>
-
-<details>
-<summary>Dev Tools</summary>
-<br>
+**Dev Tools**
 
 ![VS Code](https://img.shields.io/badge/-VS%20Code-211E1E?style=flat-square&logo=visualstudiocode&logoColor=CFCECD)
 ![Cursor](https://img.shields.io/badge/-Cursor-211E1E?style=flat-square&logoColor=CFCECD)
@@ -100,7 +88,29 @@ Odesa, Ukraine 🇺🇦 | Age: 20 | 5+ years coding | 3+ years professional expe
 
 ## Projects
 
-<a href="https://github.com/Marve10s/Better-Fullstack"><img src="https://github-stats-extended.vercel.app/api/pin/?username=Marve10s&repo=Better-Fullstack&bg_color=211E1E&title_color=CFCECD&text_color=656363&icon_color=CFCECD&hide_border=true" /></a> <a href="https://github.com/Emanuele-web04/dpcode"><img src="https://github-stats-extended.vercel.app/api/pin/?username=Emanuele-web04&repo=dpcode&bg_color=211E1E&title_color=CFCECD&text_color=656363&icon_color=CFCECD&hide_border=true" /></a>
+<table width="100%">
+<tr>
+<td width="50%" align="center">
+<a href="https://github.com/Marve10s/Better-Fullstack"><img src="./profile/pins/marve10s-better-fullstack.svg" alt="Better-Fullstack" width="496" /></a>
+</td>
+<td width="50%" align="center">
+<a href="https://github.com/Marve10s/awesome-effect"><img src="./profile/pins/marve10s-awesome-effect.svg" alt="awesome-effect" width="496" /></a>
+</td>
+</tr>
+</table>
+
+## Contributed to
+
+<table width="100%">
+<tr>
+<td width="50%" align="center">
+<a href="https://github.com/Emanuele-web04/synara"><img src="./profile/pins/emanuele-web04-synara.svg" alt="synara" width="496" /></a>
+</td>
+<td width="50%" align="center">
+<a href="https://github.com/pingdotgg/t3code"><img src="./profile/pins/pingdotgg-t3code.svg" alt="t3code" width="496" /></a>
+</td>
+</tr>
+</table>
 
 ---
 
@@ -123,10 +133,13 @@ Odesa, Ukraine 🇺🇦 | Age: 20 | 5+ years coding | 3+ years professional expe
 </tr>
 </table>
 
-### This snake eats my commits
+<details>
+<summary><b>More activity</b></summary>
+<br>
 
-<picture>
-  <source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/marve10s/marve10s/output/github-snake-dark.svg" />
-  <source media="(prefers-color-scheme: light)" srcset="https://raw.githubusercontent.com/marve10s/marve10s/output/github-snake.svg" />
-  <img alt="github-snake" src="https://raw.githubusercontent.com/marve10s/marve10s/output/github-snake.svg" />
-</picture>
+<img src="./profile/heatmap.svg" alt="Better-Fullstack commit heatmap" width="496" />
+
+<img src="./profile/quotes.svg" alt="What users say about Better-Fullstack" width="992" />
+
+</details>
+

@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="992" height="168" viewBox="0 0 992 168" role="img" aria-label="Community quotes">
+  <style>text { font-family: -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif; }</style>
+  <rect width="992" height="168" rx="6" fill="#211E1E"/>
+  <text x="16" y="30" font-size="11" font-weight="600" letter-spacing="2" fill="#656363">WHAT USERS SAY</text>
+  <line x1="496" y1="44" x2="496" y2="148" stroke="#313131" stroke-width="1"/>
+  
+  <text x="16" y="66" font-size="24" fill="#E8612D" opacity="0.8">"</text>
+  <text x="44" y="62" font-size="12" font-style="italic" fill="#CFCECD">Its really big project for a one man team, to also cover such wide</text><text x="44" y="80" font-size="12" font-style="italic" fill="#CFCECD">range of technologies.</text>
+  <text x="44" y="112" font-size="11" fill="#656363">— moreorover, Better-Fullstack community</text>
+  
+  <text x="512" y="66" font-size="24" fill="#E8612D" opacity="0.8">"</text>
+  <text x="540" y="62" font-size="12" font-style="italic" fill="#CFCECD">I hope your library will grow and get more attention.</text>
+  <text x="540" y="94" font-size="11" fill="#656363">— m-t-a97, Better-Fullstack community</text>
+</svg>
