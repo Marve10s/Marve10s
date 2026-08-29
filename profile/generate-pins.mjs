@@ -27,7 +27,7 @@ const WIDTH = 496;
 const HEIGHT = 168;
 const RADIUS = 6;
 const PADDING = 16;
-const LINE_CHARS = 66;
+const LINE_CHARS = 56;
 
 const LANG_COLORS = {
   TypeScript: "#3178c6",
@@ -85,31 +85,31 @@ function repoCardSvg({ fullName, description, language, stars, forks }) {
   let footerX = PADDING;
   let footer = "";
   if (language) {
-    footer += `<circle cx="${footerX + 6}" cy="146" r="6" fill="${langColor}"/>`;
-    footer += `<text x="${footerX + 18}" y="150" font-size="12" fill="${THEME.text}">${escapeXml(language)}</text>`;
-    footerX += 18 + language.length * 7 + 16;
+    footer += `<circle cx="${footerX + 7}" cy="145" r="7" fill="${langColor}"/>`;
+    footer += `<text x="${footerX + 21}" y="150" font-size="14" fill="${THEME.text}">${escapeXml(language)}</text>`;
+    footerX += 21 + language.length * 8 + 16;
   }
-  footer += `<g transform="translate(${footerX},140) scale(0.5)" fill="none" stroke="${THEME.text}" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></g>`;
-  footer += `<text x="${footerX + 16}" y="150" font-size="12" fill="${THEME.text}">${formatCount(stars)}</text>`;
-  footerX += 16 + String(formatCount(stars)).length * 7 + 16;
-  footer += `<g transform="translate(${footerX},140) scale(0.5)" fill="none" stroke="${THEME.text}" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><circle cx="6" cy="6" r="3"/><circle cx="18" cy="6" r="3"/><path d="M6 9v2a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2V9"/><path d="M12 12v3"/></g>`;
-  footer += `<text x="${footerX + 16}" y="150" font-size="12" fill="${THEME.text}">${formatCount(forks)}</text>`;
+  footer += `<g transform="translate(${footerX},139) scale(0.6)" fill="none" stroke="${THEME.text}" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></g>`;
+  footer += `<text x="${footerX + 19}" y="150" font-size="14" fill="${THEME.text}">${formatCount(stars)}</text>`;
+  footerX += 19 + String(formatCount(stars)).length * 8 + 16;
+  footer += `<g transform="translate(${footerX},139) scale(0.6)" fill="none" stroke="${THEME.text}" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><circle cx="6" cy="6" r="3"/><circle cx="18" cy="6" r="3"/><path d="M6 9v2a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2V9"/><path d="M12 12v3"/></g>`;
+  footer += `<text x="${footerX + 19}" y="150" font-size="14" fill="${THEME.text}">${formatCount(forks)}</text>`;
 
   const descSvg = descLines
     .map(
       (line, i) =>
-        `<text x="${PADDING + 32}" y="${72 + i * 20}" font-size="12" fill="${THEME.text}">${escapeXml(line)}</text>`
+        `<text x="${PADDING + 32}" y="${74 + i * 22}" font-size="14" fill="${THEME.text}">${escapeXml(line)}</text>`
     )
     .join("");
 
   const featured = FEATURED[fullName];
   const featuredSvg = featured
-    ? `<text x="${PADDING + 32}" y="122" font-size="11" fill="${THEME.title}">📰 ${escapeXml(featured)}</text>`
+    ? `<text x="${PADDING + 32}" y="126" font-size="13" fill="${THEME.title}">📰 ${escapeXml(featured)}</text>`
     : "";
 
   return `<svg xmlns="http://www.w3.org/2000/svg" width="${WIDTH}" height="${HEIGHT}" viewBox="0 0 ${WIDTH} ${HEIGHT}" role="img" aria-label="${escapeXml(fullName)} repository card">
   <style>
-    .title { font: 600 16px -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif; fill: ${THEME.title}; }
+    .title { font: 600 18px -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif; fill: ${THEME.title}; }
     text { font-family: -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif; }
   </style>
   <rect width="${WIDTH}" height="${HEIGHT}" rx="${RADIUS}" fill="${THEME.bg}"/>

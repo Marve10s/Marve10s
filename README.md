@@ -102,12 +102,6 @@ Odesa, Ukraine 🇺🇦 | Age: 20 | 5+ years coding | 3+ years professional expe
 
 ---
 
-
-- [Better-skills](https://github.com/Marve10s/Better-skills) — Bidirectional converter between .agents/skills/ and .claude/skills/ formats
-- [Telegram-bot-monitoring](https://github.com/Marve10s/Telegram-bot-monitoring) — Effect-ts powered Telegram bot that monitors wishlist products on eBay & InstockTrades and sends hourly crons on new finds
-
----
-
 ## GitHub Stats
 
 <p>

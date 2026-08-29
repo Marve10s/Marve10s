@@ -29,6 +29,10 @@ jobs:
           path: profile/streak.svg
           token: ${{ secrets.GITHUB_TOKEN }}
 
+      - name: Normalize streak card size to match stats card
+        run: |
+          sed -i "s|viewBox='0 0 495 195' width='495px' height='195px'|viewBox='14 0 467 195' width='467px' height='195px'|" profile/streak.svg
+
       - name: Commit streak stats
         run: |
           git config user.name "github-actions[bot]"
