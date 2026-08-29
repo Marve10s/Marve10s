@@ -88,29 +88,17 @@ Odesa, Ukraine 🇺🇦 | Age: 20 | 5+ years coding | 3+ years professional expe
 
 ## Projects
 
-<table width="100%">
-<tr>
-<td width="50%" align="center">
-<a href="https://github.com/Marve10s/Better-Fullstack"><img src="./profile/pins/marve10s-better-fullstack.svg" alt="Better-Fullstack" width="496" /></a>
-</td>
-<td width="50%" align="center">
-<a href="https://github.com/Marve10s/awesome-effect"><img src="./profile/pins/marve10s-awesome-effect.svg" alt="awesome-effect" width="496" /></a>
-</td>
-</tr>
-</table>
+<p>
+<a href="https://github.com/Marve10s/Better-Fullstack"><img src="./profile/pins/marve10s-better-fullstack.svg" alt="Better-Fullstack" width="49.5%" /></a>
+<a href="https://github.com/Marve10s/awesome-effect"><img src="./profile/pins/marve10s-awesome-effect.svg" alt="awesome-effect" width="49.5%" /></a>
+</p>
 
 ## Contributed to
 
-<table width="100%">
-<tr>
-<td width="50%" align="center">
-<a href="https://github.com/Emanuele-web04/synara"><img src="./profile/pins/emanuele-web04-synara.svg" alt="synara" width="496" /></a>
-</td>
-<td width="50%" align="center">
-<a href="https://github.com/pingdotgg/t3code"><img src="./profile/pins/pingdotgg-t3code.svg" alt="t3code" width="496" /></a>
-</td>
-</tr>
-</table>
+<p>
+<a href="https://github.com/Emanuele-web04/synara"><img src="./profile/pins/emanuele-web04-synara.svg" alt="synara" width="49.5%" /></a>
+<a href="https://github.com/pingdotgg/t3code"><img src="./profile/pins/pingdotgg-t3code.svg" alt="t3code" width="49.5%" /></a>
+</p>
 
 ---
 
@@ -122,24 +110,18 @@ Odesa, Ukraine 🇺🇦 | Age: 20 | 5+ years coding | 3+ years professional expe
 
 ## GitHub Stats
 
-<table width="100%">
-<tr>
-<td width="50%" align="center">
-<img src="./profile/streak.svg" alt="GitHub streak statistics" width="100%" />
-</td>
-<td width="50%" align="center">
-<img src="https://github-stats-extended.vercel.app/api?username=Marve10s&show_icons=true&bg_color=211E1E&title_color=CFCECD&text_color=656363&icon_color=CFCECD&hide_border=true&include_all_commits=true" width="100%" />
-</td>
-</tr>
-</table>
+<p>
+<img src="./profile/streak.svg" alt="GitHub streak statistics" width="49.5%" />
+<img src="https://github-stats-extended.vercel.app/api?username=Marve10s&show_icons=true&bg_color=211E1E&title_color=CFCECD&text_color=656363&icon_color=CFCECD&hide_border=true&include_all_commits=true" width="49.5%" />
+</p>
 
 <details>
 <summary><b>More activity</b></summary>
 <br>
 
-<img src="./profile/heatmap.svg" alt="Better-Fullstack commit heatmap" width="496" />
+<img src="./profile/heatmap.svg" alt="Better-Fullstack commit heatmap" width="100%" />
 
-<img src="./profile/quotes.svg" alt="What users say about Better-Fullstack" width="992" />
+<img src="./profile/quotes.svg" alt="What users say about Better-Fullstack" width="100%" />
 
 </details>
 
