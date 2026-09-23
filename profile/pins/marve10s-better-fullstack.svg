@@ -1,15 +1,25 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="496" height="168" viewBox="0 0 496 168" role="img" aria-label="Marve10s/Better-Fullstack repository card">
-  <style>
-    .title { font: 600 18px -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif; fill: #CFCECD; }
-    text { font-family: -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif; }
-  </style>
-  <rect width="496" height="168" rx="6" fill="#211E1E"/>
-  <g transform="translate(16,26) scale(0.667)" fill="none" stroke="#CFCECD" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-    <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/>
-    <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/>
-  </g>
-  <text class="title" x="48" y="40">Better-Fullstack</text>
-  <text x="48" y="74" font-size="14" fill="#656363">Scaffold production-ready full-stack apps in TypeScript,</text><text x="48" y="96" font-size="14" fill="#656363">Rust, Python, Go, and Java with a visual builder and…</text>
+<svg xmlns="http://www.w3.org/2000/svg" width="496" height="168" viewBox="0 0 496 168" role="img" aria-label="Marve10s/Better-Fullstack: Scaffold production-ready full-stack apps in TypeScript, Rust, Python, Go, and Java with a visual builder and CLI. Choose your frontend, backend, database, auth, AI, payments, and DevOps integrations, all wired together.">
+  <style>text { font-family: -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif; }</style>
+  <defs>
+    <radialGradient id="glow" cx="1" cy="0" r="0.75">
+      <stop offset="0" stop-color="#C6E853" stop-opacity="0.16"/>
+      <stop offset="1" stop-color="#C6E853" stop-opacity="0"/>
+    </radialGradient>
+    <clipPath id="logo"><rect x="20" y="20" width="48" height="48" rx="12"/></clipPath>
+  </defs>
+  <rect x="0.5" y="0.5" width="495" height="167" rx="12" fill="#211E1E" stroke="#3A3535"/>
+  <rect x="0.5" y="0.5" width="495" height="167" rx="12" fill="url(#glow)"/>
+  <image href="data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiPz4KPHN2ZyB3aWR0aD0iNTEyIiBoZWlnaHQ9IjUxMiIgdmlld0JveD0iMCAwIDUxMiA1MTIiIGZpbGw9Im5vbmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+CiAgPHRpdGxlPkJldHRlciBGdWxsc3RhY2s8L3RpdGxlPgogIDxyZWN0IHdpZHRoPSI1MTIiIGhlaWdodD0iNTEyIiByeD0iODQiIGZpbGw9IiMwRTBFMTAiLz4KICA8cGF0aAogICAgZmlsbC1ydWxlPSJldmVub2RkIgogICAgY2xpcC1ydWxlPSJldmVub2RkIgogICAgZD0iTTg4IDg4SDIyMEwyODggMTU2VjIyMEwyNTIgMjU2TDI4OCAyOTJWMzU2TDIyMCA0MjRIODhWODhaTTE2MCAxNjBWMjI0SDIyMFYxNjBIMTYwWk0xNjAgMjg4VjM1MkgyMjBWMjg4SDE2MFoiCiAgICBmaWxsPSIjRjJFRUVFIgogIC8+CiAgPHBhdGgKICAgIGQ9Ik0yODAgMTQ4SDQyNFYyMjBIMzM2VjI2MEg0MDhWMzMySDMzNlY0MjRIMjY0VjMwNEwyMTYgMjU2TDI2NCAyMDhWMTQ4SDI4MFoiCiAgICBmaWxsPSIjQzZFODUzIgogICAgc3Ryb2tlPSIjMEUwRTEwIgogICAgc3Ryb2tlLXdpZHRoPSI4IgogICAgc3Ryb2tlLWxpbmVqb2luPSJtaXRlciIKICAvPgo8L3N2Zz4K" x="20" y="20" width="48" height="48" clip-path="url(#logo)"/>
+  <text x="82" y="41" font-size="20" font-weight="600" fill="#CFCECD">Better-Fullstack</text>
+  <circle cx="86" cy="58" r="4" fill="#3178c6"/>
+  <text x="96" y="62" font-size="12" fill="#656363">TypeScript</text>
+  <text x="20" y="98" font-size="13.5" fill="#8F8B8A">Scaffold production-ready full-stack apps in TypeScript, Rust,</text>
+  <text x="20" y="118" font-size="13.5" fill="#8F8B8A">Python, Go, and Java with a visual builder and CLI. Choose…</text>
+  <rect x="20" y="132" width="56.9" height="24" rx="12" fill="#2C2828" stroke="none"/>
+  <g transform="translate(30,137) scale(0.58)" fill="none" stroke="#CFCECD" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" fill="#C6E853"/></g>
+  <text x="48" y="148" font-size="12" font-weight="600" fill="#CFCECD" textLength="18.9" lengthAdjust="spacing">748</text>
+  <rect x="84.9" y="132" width="50.6" height="24" rx="12" fill="#2C2828" stroke="none"/>
+  <g transform="translate(94.9,137) scale(0.58)" fill="none" stroke="#CFCECD" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="18" r="3"/><circle cx="6" cy="6" r="3"/><circle cx="18" cy="6" r="3"/><path d="M18 9v2c0 .6-.4 1-1 1H7c-.6 0-1-.4-1-1V9"/><path d="M12 12v3"/></g>
+  <text x="112.9" y="148" font-size="12" font-weight="600" fill="#CFCECD" textLength="12.6" lengthAdjust="spacing">53</text>
   
-  <circle cx="23" cy="145" r="7" fill="#3178c6"/><text x="37" y="150" font-size="14" fill="#656363">TypeScript</text><g transform="translate(133,139) scale(0.6)" fill="none" stroke="#656363" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></g><text x="152" y="150" font-size="14" fill="#656363">725</text><g transform="translate(192,139) scale(0.6)" fill="none" stroke="#656363" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><circle cx="6" cy="6" r="3"/><circle cx="18" cy="6" r="3"/><path d="M6 9v2a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2V9"/><path d="M12 12v3"/></g><text x="211" y="150" font-size="14" fill="#656363">51</text>
 </svg>

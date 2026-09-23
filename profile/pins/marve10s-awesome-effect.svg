@@ -1,15 +1,27 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="496" height="168" viewBox="0 0 496 168" role="img" aria-label="Marve10s/awesome-effect repository card">
-  <style>
-    .title { font: 600 18px -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif; fill: #CFCECD; }
-    text { font-family: -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif; }
-  </style>
-  <rect width="496" height="168" rx="6" fill="#211E1E"/>
-  <g transform="translate(16,26) scale(0.667)" fill="none" stroke="#CFCECD" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-    <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/>
-    <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/>
-  </g>
-  <text class="title" x="48" y="40">awesome-effect</text>
-  <text x="48" y="74" font-size="14" fill="#656363">Libraries, tools, apps, and learning material for</text><text x="48" y="96" font-size="14" fill="#656363">Effect, the TypeScript library</text>
-  <text x="48" y="126" font-size="13" fill="#CFCECD">📰 Featured in This Week in Effect #133 — the official Effect blog</text>
-  <circle cx="23" cy="145" r="7" fill="#3178c6"/><text x="37" y="150" font-size="14" fill="#656363">TypeScript</text><g transform="translate(133,139) scale(0.6)" fill="none" stroke="#656363" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></g><text x="152" y="150" font-size="14" fill="#656363">76</text><g transform="translate(184,139) scale(0.6)" fill="none" stroke="#656363" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><circle cx="6" cy="6" r="3"/><circle cx="18" cy="6" r="3"/><path d="M6 9v2a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2V9"/><path d="M12 12v3"/></g><text x="203" y="150" font-size="14" fill="#656363">0</text>
+<svg xmlns="http://www.w3.org/2000/svg" width="496" height="168" viewBox="0 0 496 168" role="img" aria-label="Marve10s/awesome-effect: Libraries, tools, apps, and learning material for Effect, the TypeScript library">
+  <style>text { font-family: -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif; }</style>
+  <defs>
+    <radialGradient id="glow" cx="1" cy="0" r="0.75">
+      <stop offset="0" stop-color="#E8612D" stop-opacity="0.16"/>
+      <stop offset="1" stop-color="#E8612D" stop-opacity="0"/>
+    </radialGradient>
+    <clipPath id="logo"><rect x="20" y="20" width="48" height="48" rx="12"/></clipPath>
+  </defs>
+  <rect x="0.5" y="0.5" width="495" height="167" rx="12" fill="#211E1E" stroke="#3A3535"/>
+  <rect x="0.5" y="0.5" width="495" height="167" rx="12" fill="url(#glow)"/>
+  <image href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAIAAAACACAAAAADmVT4XAAAEbklEQVR42u2Zb2gURxTA37qEpIcml0pQj2iJwZCGKtR4/SCRQlNBJVFiQCT9E61BRRqkWmhKDdiQqjSGkFZU/IMEgv8SUdsQlWCFUo4GKQlBq0c+SA8RD4qbtGeXsAnPDztvM5u7826zsxco8/ty3Lu9/c3NvJl5OwcgkUgkEolEIpFIJBKJROIGX3Mk1l4wZ3plZwQRUft0jvyFd5DRt3IO9BXdE2gxeWvjvMzqy+/hDEY2ZVBfeHEK4+kvzpBeOaBjQrQv1Ez437+PSRmt8Vxfeg1fS2iNp/qCExOYiovepULW11pKPSLqB7xJhTd2hNPRIyI+2p8nXK/ufpauHhFxrMkn1r9hxIkeEfHJJwIHYuWAUz0i4uC7gvTZ303Nxo+otwoZh+q0cy+eaIPi3j97PSJim+sGdLtrwFiq+6fcxiPu2j/hugfm33bVAdWuGwBQ9dds9cbJxQL8AP4zxqz8v70jRA8AUNrnXK81ZgnzA8D6+870ertfpB4A1DYn/uG3BOshcNbZenyjRKh+9fmXTlNgsvcDYfplP1l5vf77VDXZSN1lqxfEPDUqDX+zG0a3KQDFl1+nj+xSAGqj7N0/TdkCGtBCN+9ZYgaCD5PptWZz/13YQQvHL+53Q3hq3mponRXJaY0l9Pcusi4poYWjXFgDrvATK3Ahfm38s5Yft3rWxnVOdfF0MEGsJYeLlt+166P7+BKw4g8WHhNQHmcdoUfBIVuRV/V4Wh877Oc+WdRD8WEBIwAAb3exJkz+/CGXVPN2sCY8+5Kfb0sOv6BJu1FACpoEumjMB9/jwmr9U0S9cwEXyjtG/RXZLkwPABC8R93aXciFffuai7i3yu7nNCOFLAE2tozSgO9JdknlMLvEOOHF0Zl6lMZhIOGhlO80ddLNUg/0ANzJkHEy7hcqH0eo9+s80gNwTynaQfujX8Ug+0DvzPfQD6Dup50mzBW8yy5RtdCzwgNp/ip+DVywh6rkW2vNSGkX26P/PbWK/17AL8YfHMfoXr7DfUdoM7pdBpDbSiVC70L+ayXX0fhGSAPuICI+2MCHiuiBzfhxLx1chPnNCPI7dUScEtIHIVPQZ5tbwdCMUqCRX3iyGzUzXOTQlZA6lmDGIVvibxud1usdtp9aQ3MlJMIPsJ0Sf6iSD2cft1LfdjKXd4mFJ9rmi2kAFBynNfCGbZaZ4xDdamsW9T6OBAXpAQCKaYs32m2pXhsKf+vnAzWPaDPcJXQzBCg7Nc7S7Yelya7x7Rxi+t/rc5zcPD0KaGzHkpyKb6YZOVzp8NbpUk1VWDjBuYP1J4LeJLjzOdTPaULcnXEImNvCKqGpq97+b5F77D+Wjee5HVmxDnJ/XeupHgCgmJbh2GcUqqSDXPty7BlVNA79ZQAAuefY2/FG4XVgEnwtMasymu79geUZ0gMAvPnVEzYO7PXlBZHrXjqoDTQQiGicDmRYDwDgO0v+fnHncc4wj860j+ZIDwBq/WPN4ypYIpFIJBKJRCKRSCQSyf+fV50TnvSFTLPrAAAAAElFTkSuQmCC" x="20" y="20" width="48" height="48" clip-path="url(#logo)"/>
+  <text x="82" y="41" font-size="20" font-weight="600" fill="#CFCECD">awesome-effect</text>
+  <circle cx="86" cy="58" r="4" fill="#3178c6"/>
+  <text x="96" y="62" font-size="12" fill="#656363">TypeScript</text>
+  <text x="20" y="98" font-size="13.5" fill="#8F8B8A">Libraries, tools, apps, and learning material for Effect, the</text>
+  <text x="20" y="118" font-size="13.5" fill="#8F8B8A">TypeScript library</text>
+  <rect x="20" y="132" width="50.6" height="24" rx="12" fill="#2C2828" stroke="none"/>
+  <g transform="translate(30,137) scale(0.58)" fill="none" stroke="#CFCECD" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" fill="#E8612D"/></g>
+  <text x="48" y="148" font-size="12" font-weight="600" fill="#CFCECD" textLength="12.6" lengthAdjust="spacing">86</text>
+  <rect x="78.6" y="132" width="44.3" height="24" rx="12" fill="#2C2828" stroke="none"/>
+  <g transform="translate(88.6,137) scale(0.58)" fill="none" stroke="#CFCECD" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="18" r="3"/><circle cx="6" cy="6" r="3"/><circle cx="18" cy="6" r="3"/><path d="M18 9v2c0 .6-.4 1-1 1H7c-.6 0-1-.4-1-1V9"/><path d="M12 12v3"/></g>
+  <text x="106.6" y="148" font-size="12" font-weight="600" fill="#CFCECD" textLength="6.3" lengthAdjust="spacing">0</text>
+  <rect x="225.20000000000002" y="132" width="250.79999999999998" height="24" rx="12" fill="none" stroke="#E8612D"/>
+  
+  <text x="237.20000000000002" y="148" font-size="12" font-weight="600" fill="#E8612D" textLength="226.79999999999998" lengthAdjust="spacing">Featured in This Week in Effect #133</text>
 </svg>

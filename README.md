@@ -96,8 +96,9 @@ Odesa, Ukraine 🇺🇦 | Age: 20 | 5+ years coding | 3+ years professional expe
 ## Contributed to
 
 <p>
-<a href="https://github.com/Emanuele-web04/synara"><img src="./profile/pins/emanuele-web04-synara.svg" alt="synara" width="49.5%" /></a>
-<a href="https://github.com/pingdotgg/t3code"><img src="./profile/pins/pingdotgg-t3code.svg" alt="t3code" width="49.5%" /></a>
+<a href="https://github.com/pingdotgg/t3code/pulls?q=is%3Apr+author%3AMarve10s+is%3Amerged"><img src="./profile/contrib/pingdotgg-t3code.svg" alt="pingdotgg/t3code" width="32.6%" /></a>
+<a href="https://github.com/Effect-TS/effect/pulls?q=is%3Apr+author%3AMarve10s+is%3Amerged"><img src="./profile/contrib/effect-ts-effect.svg" alt="Effect-TS/effect" width="32.6%" /></a>
+<a href="https://github.com/Emanuele-web04/synara/pulls?q=is%3Apr+author%3AMarve10s+is%3Amerged"><img src="./profile/contrib/emanuele-web04-synara.svg" alt="Emanuele-web04/synara" width="32.6%" /></a>
 </p>
 
 ---
