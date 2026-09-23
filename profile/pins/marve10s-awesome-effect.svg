@@ -15,13 +15,9 @@
   <text x="96" y="62" font-size="12" fill="#656363">TypeScript</text>
   <text x="20" y="98" font-size="13.5" fill="#8F8B8A">Libraries, tools, apps, and learning material for Effect, the</text>
   <text x="20" y="118" font-size="13.5" fill="#8F8B8A">TypeScript library</text>
-  <rect x="20" y="132" width="50.6" height="24" rx="12" fill="#2C2828" stroke="none"/>
-  <g transform="translate(30,137) scale(0.58)" fill="none" stroke="#CFCECD" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" fill="#E8612D"/></g>
-  <text x="48" y="148" font-size="12" font-weight="600" fill="#CFCECD" textLength="12.6" lengthAdjust="spacing">86</text>
-  <rect x="78.6" y="132" width="44.3" height="24" rx="12" fill="#2C2828" stroke="none"/>
-  <g transform="translate(88.6,137) scale(0.58)" fill="none" stroke="#CFCECD" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="18" r="3"/><circle cx="6" cy="6" r="3"/><circle cx="18" cy="6" r="3"/><path d="M18 9v2c0 .6-.4 1-1 1H7c-.6 0-1-.4-1-1V9"/><path d="M12 12v3"/></g>
-  <text x="106.6" y="148" font-size="12" font-weight="600" fill="#CFCECD" textLength="6.3" lengthAdjust="spacing">0</text>
-  <rect x="225.20000000000002" y="132" width="250.79999999999998" height="24" rx="12" fill="none" stroke="#E8612D"/>
+  <rect x="20" y="132" width="53.2" height="24" rx="12" fill="#2C2828"/>
+  <g transform="translate(30,137) scale(0.58)" fill="none" stroke="#CFCECD" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" fill="#E8612D" stroke="#E8612D"/></g>
+  <text x="49" y="148" font-size="12" font-weight="600" fill="#CFCECD">86</text>
   
-  <text x="237.20000000000002" y="148" font-size="12" font-weight="600" fill="#E8612D" textLength="226.79999999999998" lengthAdjust="spacing">Featured in This Week in Effect #133</text>
+  <text x="476" y="148" text-anchor="end" font-size="12" font-weight="600" fill="#E8612D">Featured in This Week in Effect #133</text>
 </svg>

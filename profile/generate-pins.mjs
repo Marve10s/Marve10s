@@ -12,6 +12,7 @@ const REPOS = [
     logo: "effect.png",
     accent: "#E8612D",
     featured: "Featured in This Week in Effect #133",
+    hideForks: true,
   },
 ];
 
@@ -128,18 +129,16 @@ function assetDataUri(file) {
 
 const logoDataUri = (file) => assetDataUri(`logos/${file}`);
 
-// Pill with an icon and a fixed-width label; textLength keeps the label inside the pill in any font.
-function pill({ x, y, label, icon, color, fill = THEME.pill, stroke = "none" }) {
-  const textWidth = label.length * 6.3;
-  const width = textWidth + (icon ? 38 : 24);
-  const textX = x + (icon ? 28 : 12);
-  const svg = `<rect x="${x}" y="${y}" width="${width}" height="24" rx="12" fill="${fill}" stroke="${stroke}"/>
-  ${icon ? `<g transform="translate(${x + 10},${y + 5}) scale(0.58)" fill="none" stroke="${color}" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">${icon}</g>` : ""}
-  <text x="${textX}" y="${y + 16}" font-size="12" font-weight="600" fill="${color}" textLength="${textWidth}" lengthAdjust="spacing">${escapeXml(label)}</text>`;
+// Stat pill; sized from a generous per-character width so bold digits never overlap.
+function pill({ x, y, label, icon }) {
+  const width = 38 + label.length * 7.6;
+  const svg = `<rect x="${x}" y="${y}" width="${width}" height="24" rx="12" fill="${THEME.pill}"/>
+  <g transform="translate(${x + 10},${y + 5}) scale(0.58)" fill="none" stroke="${THEME.title}" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">${icon}</g>
+  <text x="${x + 29}" y="${y + 16}" font-size="12" font-weight="600" fill="${THEME.title}">${escapeXml(label)}</text>`;
   return { svg, width };
 }
 
-function repoCardSvg({ fullName, description, language, stars, forks, logo, accent, featured }) {
+function repoCardSvg({ fullName, description, language, stars, forks, logo, accent, featured, hideForks }) {
   const [, name] = fullName.split("/");
   const width = 496;
   const height = 168;
@@ -147,13 +146,11 @@ function repoCardSvg({ fullName, description, language, stars, forks, logo, acce
     .map((line, i) => `<text x="20" y="${98 + i * 20}" font-size="13.5" fill="${THEME.body}">${escapeXml(line)}</text>`)
     .join("\n  ");
 
-  const starPill = pill({ x: 20, y: 132, label: formatCount(stars), icon: `<path d="${STAR_PATH}" fill="${accent}"/>`, color: THEME.title });
-  const forkPill = pill({ x: 28 + starPill.width, y: 132, label: formatCount(forks), icon: FORK_PATHS, color: THEME.title });
-  let featuredSvg = "";
-  if (featured) {
-    const probe = pill({ x: 0, y: 0, label: featured, color: accent });
-    featuredSvg = pill({ x: width - 20 - probe.width, y: 132, label: featured, color: accent, fill: "none", stroke: accent }).svg;
-  }
+  const starPill = pill({ x: 20, y: 132, label: formatCount(stars), icon: `<path d="${STAR_PATH}" fill="${accent}" stroke="${accent}"/>` });
+  const forkSvg = hideForks ? "" : pill({ x: 28 + starPill.width, y: 132, label: formatCount(forks), icon: FORK_PATHS }).svg;
+  const featuredSvg = featured
+    ? `<text x="${width - 20}" y="148" text-anchor="end" font-size="12" font-weight="600" fill="${accent}">${escapeXml(featured)}</text>`
+    : "";
 
   return `<svg xmlns="http://www.w3.org/2000/svg" width="${width}" height="${height}" viewBox="0 0 ${width} ${height}" role="img" aria-label="${escapeXml(fullName)}: ${escapeXml(description)}">
   <style>text { font-family: ${FONT}; }</style>
@@ -172,7 +169,7 @@ function repoCardSvg({ fullName, description, language, stars, forks, logo, acce
   <text x="96" y="62" font-size="12" fill="${THEME.text}">${escapeXml(language)}</text>` : ""}
   ${descSvg}
   ${starPill.svg}
-  ${forkPill.svg}
+  ${forkSvg}
   ${featuredSvg}
 </svg>
 `;
