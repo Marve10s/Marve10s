@@ -36,10 +36,11 @@ const EXPERIENCE = [
   {
     slug: "upwork",
     company: "Upwork",
-    role: "Front End Web Developer",
+    role: "Full Stack TypeScript Developer",
     dates: "Jun 2024 – Now",
     logo: "upwork.png",
-    description: "Freelance web projects for clients around the world.",
+    description:
+      "Delivered 10+ full-stack projects for international clients, from React and Astro frontends to TypeScript backends.",
   },
 ];
 

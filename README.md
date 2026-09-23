@@ -5,7 +5,7 @@
 </p>
 
 <p align="center">
-<a href="mailto:ibrahimelkamali@gmail.com"><img src="./assets/buttons/contact.svg" alt="Contact me" /></a>
+<a href="https://mail.google.com/mail/?view=cm&fs=1&to=ibrahimelkamali@gmail.com"><img src="./assets/buttons/contact.svg" alt="Contact me" /></a>
 <a href="https://elkamali.dev/"><img src="./assets/buttons/portfolio.svg" alt="Portfolio" /></a>
 <a href="https://github.com/Marve10s/Marve10s/raw/main/assets/Ibrahim%20Elkamali%20Resume.pdf"><img src="./assets/buttons/resume.svg" alt="Resume" /></a>
 <img src="./assets/buttons/divider.svg" alt="" />
@@ -20,7 +20,7 @@
 
 <p>
 <a href="https://listening.com"><img src="./profile/experience/listening.svg" alt="Listening.com: Full Stack TypeScript Developer, Jan 2025 to now" width="49.5%" /></a>
-<a href="https://www.upwork.com/freelancers/~010112495fc6870d30"><img src="./profile/experience/upwork.svg" alt="Upwork: Front End Web Developer, Jun 2024 to now" width="49.5%" /></a>
+<a href="https://www.upwork.com/freelancers/~010112495fc6870d30"><img src="./profile/experience/upwork.svg" alt="Upwork: Full Stack TypeScript Developer, Jun 2024 to now" width="49.5%" /></a>
 </p>
 
 ## Tech Stack
