@@ -22,6 +22,39 @@ const CONTRIBUTIONS = [
   { owner: "Emanuele-web04", repo: "synara", logo: "synara.png" },
 ];
 
+const EXPERIENCE = [
+  {
+    slug: "listening",
+    company: "Listening.com",
+    role: "Full Stack TypeScript Developer",
+    dates: "Jan 2025 – Now",
+    logo: "listening.svg",
+    description:
+      "Building Listening across its web app, Chromium extension, React Native mobile app, and Electron desktop app.",
+  },
+  {
+    slug: "upwork",
+    company: "Upwork",
+    role: "Front End Web Developer",
+    dates: "Jun 2024 – Now",
+    logo: "upwork.png",
+    description: "Freelance web projects for clients around the world.",
+  },
+];
+
+const SKILLS = {
+  react: { name: "React", icon: "react.svg" },
+  tanstack: { name: "TanStack", icon: "tanstack.png" },
+  astro: { name: "Astro", icon: "astro.svg" },
+  next: { name: "Next.js", icon: "nextjs.svg" },
+  expo: { name: "Expo", icon: "expo.png" },
+  hono: { name: "Hono", icon: "hono.svg" },
+  effect: { name: "Effect-TS", icon: "effect.svg" },
+};
+
+// Mirrors the portfolio hero row.
+const FEATURED_STACK = ["tanstack", "astro", "next", "expo", "hono", "react", "effect"];
+
 const THEME = {
   bg: "#211E1E",
   title: "#CFCECD",
@@ -88,10 +121,12 @@ function formatCount(n) {
 
 const MIME = { ".svg": "image/svg+xml", ".png": "image/png" };
 
-function logoDataUri(file) {
-  const path = fileURLToPath(new URL(`../assets/logos/${file}`, import.meta.url));
+function assetDataUri(file) {
+  const path = fileURLToPath(new URL(`../assets/${file}`, import.meta.url));
   return `data:${MIME[extname(file)]};base64,${readFileSync(path).toString("base64")}`;
 }
+
+const logoDataUri = (file) => assetDataUri(`logos/${file}`);
 
 // Pill with an icon and a fixed-width label; textLength keeps the label inside the pill in any font.
 function pill({ x, y, label, icon, color, fill = THEME.pill, stroke = "none" }) {
@@ -143,12 +178,73 @@ function repoCardSvg({ fullName, description, language, stars, forks, logo, acce
 `;
 }
 
+function experienceCardSvg({ company, role, dates, logo, description }) {
+  const width = 496;
+  const height = 124;
+  const descSvg = wrapDescription(description)
+    .map((line, i) => `<text x="20" y="${92 + i * 19}" font-size="13" fill="${THEME.body}">${escapeXml(line)}</text>`)
+    .join("\n  ");
+  return `<svg xmlns="http://www.w3.org/2000/svg" width="${width}" height="${height}" viewBox="0 0 ${width} ${height}" role="img" aria-label="${escapeXml(`${role} at ${company}, ${dates}`)}">
+  <style>text { font-family: ${FONT}; }</style>
+  <defs><clipPath id="logo"><rect x="20" y="20" width="40" height="40" rx="10"/></clipPath></defs>
+  <rect x="0.5" y="0.5" width="${width - 1}" height="${height - 1}" rx="12" fill="${THEME.bg}" stroke="${THEME.border}"/>
+  <image href="${logoDataUri(logo)}" x="20" y="20" width="40" height="40" clip-path="url(#logo)"/>
+  <text x="74" y="36" font-size="16" font-weight="600" fill="${THEME.title}">${escapeXml(company)}</text>
+  <text x="476" y="36" text-anchor="end" font-size="12" fill="${THEME.text}">${escapeXml(dates)}</text>
+  <text x="74" y="56" font-size="13" fill="${THEME.body}">${escapeXml(role)}</text>
+  ${descSvg}
+</svg>
+`;
+}
+
+// Rough glyph widths for the UI font at 1px; textLength then pins the label to this width.
+function textWidth(text, size) {
+  let units = 0;
+  for (const c of text) {
+    if ("iljtf.,/' ".includes(c)) units += 0.3;
+    else if ("rI".includes(c)) units += 0.38;
+    else if (c >= "A" && c <= "Z") units += 0.66;
+    else units += 0.56;
+  }
+  return Math.round(units * size);
+}
+
+function stackChip(x, y, key, { height, iconSize, fontSize }) {
+  const { name, icon } = SKILLS[key];
+  const pad = (height - iconSize) / 2 + 2;
+  const labelWidth = textWidth(name, fontSize);
+  const width = pad + iconSize + 8 + labelWidth + pad + 2;
+  const svg = `<rect x="${x + 0.5}" y="${y + 0.5}" width="${width - 1}" height="${height - 1}" rx="8" fill="${THEME.bg}" stroke="${THEME.border}"/>
+  <image href="${assetDataUri(`stack/${icon}`)}" x="${x + pad}" y="${y + (height - iconSize) / 2}" width="${iconSize}" height="${iconSize}"/>
+  <text x="${x + pad + iconSize + 8}" y="${y + height / 2 + fontSize * 0.35}" font-size="${fontSize}" font-weight="500" fill="${THEME.title}" textLength="${labelWidth}" lengthAdjust="spacing">${escapeXml(name)}</text>`;
+  return { svg, width };
+}
+
+function stackSvg(label, width, height, body) {
+  return `<svg xmlns="http://www.w3.org/2000/svg" width="${width}" height="${height}" viewBox="0 0 ${width} ${height}" role="img" aria-label="${escapeXml(label)}">
+  <style>text { font-family: ${FONT}; }</style>
+  ${body}
+</svg>
+`;
+}
+
+function featuredStackSvg() {
+  const size = { height: 40, iconSize: 20, fontSize: 14 };
+  let x = 0;
+  const chips = FEATURED_STACK.map((key) => {
+    const chip = stackChip(x, 0, key, size);
+    x += chip.width + 8;
+    return chip.svg;
+  });
+  return stackSvg(`Main stack: ${FEATURED_STACK.map((key) => SKILLS[key].name).join(", ")}`, x - 8, size.height, chips.join("\n  "));
+}
+
 async function gh(path) {
   const headers = { Accept: "application/vnd.github+json", "User-Agent": "pin-card-generator" };
   if (process.env.GITHUB_TOKEN) headers.Authorization = `Bearer ${process.env.GITHUB_TOKEN}`;
   const res = await fetch(`https://api.github.com/${path}`, { headers });
   if (!res.ok) throw new Error(`${path}: ${res.status}`);
-  return res.status === 202 ? null : res.json();
+  return res.json();
 }
 
 async function fetchRepo({ owner, repo, ...card }) {
@@ -202,6 +298,16 @@ function contributionCardSvg({ fullName, stars, merged, image }) {
 `;
 }
 
+const stackDir = fileURLToPath(new URL("./stack/", import.meta.url));
+mkdirSync(stackDir, { recursive: true });
+writeFileSync(`${stackDir}featured.svg`, featuredStackSvg());
+console.log("Generated stack row");
+
+const experienceDir = fileURLToPath(new URL("./experience/", import.meta.url));
+mkdirSync(experienceDir, { recursive: true });
+for (const job of EXPERIENCE) writeFileSync(`${experienceDir}${job.slug}.svg`, experienceCardSvg(job));
+console.log(`Generated ${EXPERIENCE.length} experience cards`);
+
 const results = await Promise.all(REPOS.map(fetchRepo));
 const pinsDir = fileURLToPath(new URL("./pins/", import.meta.url));
 mkdirSync(pinsDir, { recursive: true });
@@ -220,78 +326,3 @@ for (const data of contributions) {
   writeFileSync(contribDir + data.fullName.toLowerCase().replace("/", "-") + ".svg", contributionCardSvg(data));
 }
 console.log(`Generated ${contributions.length} contribution cards`);
-
-/* ---------- Better-Fullstack commit heatmap ---------- */
-const theme = { bg: "#211E1E", title: "#CFCECD", text: "#656363", accent: "#E8612D" };
-const font = "-apple-system, 'Segoe UI', Helvetica, Arial, sans-serif";
-
-// GitHub answers 202 while it computes repo stats; retry briefly, then keep the last heatmap.
-let weeks = null;
-for (let attempt = 0; attempt < 5 && !weeks; attempt++) {
-  if (attempt) await new Promise((resolve) => setTimeout(resolve, 3000));
-  weeks = await gh(`repos/${OWNER}/Better-Fullstack/stats/commit_activity`);
-}
-if (weeks) {
-  const totals = weeks.map((w) => w.total);
-  const total = totals.reduce((a, b) => a + b, 0);
-  const scale = ["#2b2828", "#5a3a22", "#a04e24", "#d3652c", theme.accent];
-  const cell = 7, gap = 2;
-  const heat = totals
-    .map((t, w) => {
-      const level = t === 0 ? 0 : t < 10 ? 1 : t < 25 ? 2 : t < 60 ? 3 : 4;
-      return Array.from({ length: 7 }, (_, d) =>
-        `<rect x="${16 + w * (cell + gap)}" y="${44 + d * (cell + gap)}" width="${cell}" height="${cell}" rx="1.5" fill="${scale[level]}"/>`
-      ).join("");
-    })
-    .join("");
-
-  writeFileSync(
-    fileURLToPath(new URL("./heatmap.svg", import.meta.url)),
-    `<svg xmlns="http://www.w3.org/2000/svg" width="496" height="168" viewBox="0 0 496 168" role="img" aria-label="Better-Fullstack commit heatmap">
-    <style>text { font-family: ${font}; }</style>
-    <rect width="496" height="168" rx="6" fill="${theme.bg}"/>
-    <text x="16" y="26" font-size="11" font-weight="600" letter-spacing="2" fill="${theme.text}">BETTER-FULLSTACK · LAST 52 WEEKS</text>
-    <text x="480" y="26" text-anchor="end" font-size="12" font-weight="700" fill="${theme.title}">${total.toLocaleString()} commits</text>
-    ${heat}
-    <text x="16" y="152" font-size="10" fill="${theme.text}">Less</text>
-    ${scale.map((c, i) => `<rect x="${44 + i * 14}" y="${144}" width="9" height="9" rx="1.5" fill="${c}"/>`).join("")}
-    <text x="122" y="152" font-size="10" fill="${theme.text}">More</text>
-  </svg>
-  `
-  );
-  console.log("Generated heatmap");
-} else {
-  console.log("Commit stats still computing; kept the previous heatmap");
-}
-
-/* ---------- Community quotes ---------- */
-function quote(x, text, author) {
-  const words = text.split(" ");
-  const lines = [];
-  let line = "";
-  for (const word of words) {
-    if ((line + " " + word).trim().length > 66) {
-      lines.push(line.trim());
-      line = word;
-    } else line = (line + " " + word).trim();
-  }
-  lines.push(line.trim());
-  return `
-  <text x="${x + 16}" y="66" font-size="24" fill="${theme.accent}" opacity="0.8">"</text>
-  ${lines.map((l, i) => `<text x="${x + 44}" y="${62 + i * 18}" font-size="12" font-style="italic" fill="${theme.title}">${escapeXml(l)}</text>`).join("")}
-  <text x="${x + 44}" y="${62 + lines.length * 18 + 14}" font-size="11" fill="${theme.text}">— ${escapeXml(author)}, Better-Fullstack community</text>`;
-}
-
-writeFileSync(
-  fileURLToPath(new URL("./quotes.svg", import.meta.url)),
-  `<svg xmlns="http://www.w3.org/2000/svg" width="992" height="168" viewBox="0 0 992 168" role="img" aria-label="Community quotes">
-  <style>text { font-family: ${font}; }</style>
-  <rect width="992" height="168" rx="6" fill="${theme.bg}"/>
-  <text x="16" y="30" font-size="11" font-weight="600" letter-spacing="2" fill="${theme.text}">WHAT USERS SAY</text>
-  <line x1="496" y1="44" x2="496" y2="148" stroke="#313131" stroke-width="1"/>
-  ${quote(0, "Its really big project for a one man team, to also cover such wide range of technologies.", "moreorover")}
-  ${quote(496, "I hope your library will grow and get more attention.", "m-t-a97")}
-</svg>
-`
-);
-console.log("Generated quotes");

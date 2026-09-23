@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="496" height="124" viewBox="0 0 496 124" role="img" aria-label="Full Stack TypeScript Developer at Listening.com, Jan 2025 – Now">
+  <style>text { font-family: -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif; }</style>
+  <defs><clipPath id="logo"><rect x="20" y="20" width="40" height="40" rx="10"/></clipPath></defs>
+  <rect x="0.5" y="0.5" width="495" height="123" rx="12" fill="#211E1E" stroke="#3A3535"/>
+  <image href="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxMjgiIGhlaWdodD0iMTI4IiB2aWV3Qm94PSIwIDAgMTI4IDEyOCI+CiAgPHJlY3Qgd2lkdGg9IjEyOCIgaGVpZ2h0PSIxMjgiIGZpbGw9IiNGRkZGRkYiLz4KICA8ZyB0cmFuc2Zvcm09InRyYW5zbGF0ZSg0MC41LDM1KSBzY2FsZSgyLjYpIj4gPHBhdGggZD0iTTAuMzI2MTcyIDIuNzA5NzlDMC4zMjYxNzIgMS4yNjkzMiAxLjQ5MzkzIDAuMTAxNTYyIDIuOTM0NCAwLjEwMTU2MkM0LjM3NDggMC4xMDE1NjIgNS41NDI1NiAxLjI2OTMyIDUuNTQyNTYgMi43MDk3OVYyMS40NDkyQzUuNTQyNTYgMjEuNTAyNiA1LjQ5OTMxIDIxLjU0NTggNS40NDU5NyAyMS41NDU4SDIuOTM0MzNDMS40OTM5MyAyMS41NDU4IDAuMzI2MTcyIDIwLjM3ODEgMC4zMjYxNzIgMTguOTM3N1YyLjcwOTc5WiIgZmlsbD0iIzA1ODdGQiIvPiA8cGF0aCBkPSJNMTMuNjA5MyAyMS41NDY0QzE2LjU3MDMgMjEuNTQ2NCAxOC45NzA2IDE5LjE0NjEgMTguOTcwNiAxNi4xODUzQzE4Ljk3MDYgMTMuMjI0NSAxNi41NzAzIDEwLjgyNDIgMTMuNjA5MyAxMC44MjQyQzEwLjY0ODQgMTAuODI0MiA4LjI0ODA1IDEzLjIyNDUgOC4yNDgwNSAxNi4xODUzQzguMjQ4MDUgMTkuMTQ2MSAxMC42NDg0IDIxLjU0NjQgMTMuNjA5MyAyMS41NDY0WiIgZmlsbD0iIzA1ODdGQiIvPiA8L2c+Cjwvc3ZnPgo=" x="20" y="20" width="40" height="40" clip-path="url(#logo)"/>
+  <text x="74" y="36" font-size="16" font-weight="600" fill="#CFCECD">Listening.com</text>
+  <text x="476" y="36" text-anchor="end" font-size="12" fill="#656363">Jan 2025 – Now</text>
+  <text x="74" y="56" font-size="13" fill="#8F8B8A">Full Stack TypeScript Developer</text>
+  <text x="20" y="92" font-size="13" fill="#8F8B8A">Building Listening across its web app, Chromium extension,</text>
+  <text x="20" y="111" font-size="13" fill="#8F8B8A">React Native mobile app, and Electron desktop app.</text>
+</svg>
