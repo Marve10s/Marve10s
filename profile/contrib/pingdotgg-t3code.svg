@@ -7,5 +7,5 @@
   <text x="68" y="33" font-size="15"><tspan fill="#656363">pingdotgg/</tspan><tspan font-weight="600" fill="#CFCECD">t3code</tspan></text>
   <g transform="translate(68,43) scale(0.5)" fill="none" stroke="#E8612D" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><circle cx="18" cy="18" r="3"/><circle cx="6" cy="6" r="3"/><path d="M6 21V9a9 9 0 0 0 9 9"/></g>
   <text x="84" y="53" font-size="12" fill="#CFCECD">6 merged PRs</text>
-  <text x="177.2" y="53" font-size="12" fill="#656363">★ 23k</text>
+  <text x="177.2" y="53" font-size="12" fill="#656363">★ 24k</text>
 </svg>
