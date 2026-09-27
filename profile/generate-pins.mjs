@@ -21,6 +21,9 @@ const CONTRIBUTIONS = [
   { owner: "pingdotgg", repo: "t3code", logo: "t3code.svg" },
   { owner: "Effect-TS", repo: "effect", logo: "effect.png" },
   { owner: "Emanuele-web04", repo: "synara", logo: "synara.png" },
+  // Wide cards fill a two-card README row at the same height as the three-card row.
+  { owner: "voidzero-dev", repo: "vite-plus", logo: "vite-plus.svg", wide: true },
+  { owner: "Effect-TS", repo: "tsgo", logo: "effect.png", wide: true },
 ];
 
 const EXPERIENCE = [
@@ -267,18 +270,18 @@ async function avatarDataUri(owner) {
   return `data:${res.headers.get("content-type")};base64,${buf.toString("base64")}`;
 }
 
-async function fetchContribution({ owner, repo, logo }) {
+async function fetchContribution({ owner, repo, logo, wide = false }) {
   const [data, prs, image] = await Promise.all([
     gh(`repos/${owner}/${repo}`),
     gh(`search/issues?q=${encodeURIComponent(`repo:${owner}/${repo} author:${OWNER} is:pr is:merged`)}`),
     logo ? logoDataUri(logo) : avatarDataUri(owner),
   ]);
-  return { fullName: data.full_name, stars: data.stargazers_count, merged: prs.total_count, image };
+  return { fullName: data.full_name, stars: data.stargazers_count, merged: prs.total_count, image, wide };
 }
 
-function contributionCardSvg({ fullName, stars, merged, image }) {
+function contributionCardSvg({ fullName, stars, merged, image, wide }) {
   const [owner, repo] = fullName.split("/");
-  const width = 320;
+  const width = wide ? 482 : 320;
   const height = 72;
   const prLabel = `${merged} merged PR${merged === 1 ? "" : "s"}`;
   const starsX = 84 + prLabel.length * 6.6 + 14;

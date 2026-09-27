@@ -84,6 +84,11 @@
 <a href="https://github.com/Emanuele-web04/synara/pulls?q=is%3Apr+author%3AMarve10s+is%3Amerged"><img src="./profile/contrib/emanuele-web04-synara.svg" alt="Emanuele-web04/synara" width="32.6%" /></a>
 </p>
 
+<p>
+<a href="https://github.com/voidzero-dev/vite-plus/pulls?q=is%3Apr+author%3AMarve10s+is%3Amerged"><img src="./profile/contrib/voidzero-dev-vite-plus.svg" alt="voidzero-dev/vite-plus" width="49.1%" /></a>
+<a href="https://github.com/Effect-TS/tsgo/pulls?q=is%3Apr+author%3AMarve10s+is%3Amerged"><img src="./profile/contrib/effect-ts-tsgo.svg" alt="Effect-TS/tsgo" width="49.1%" /></a>
+</p>
+
 ---
 
 ## GitHub Stats
