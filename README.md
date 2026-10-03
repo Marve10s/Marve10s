@@ -85,9 +85,13 @@
 </p>
 
 <p>
-<a href="https://github.com/react/react-native/commits?author=Marve10s"><img src="./profile/contrib/react-react-native.svg" alt="react/react-native" width="32.6%" /></a>
-<a href="https://github.com/voidzero-dev/vite-plus/pulls?q=is%3Apr+author%3AMarve10s+is%3Amerged"><img src="./profile/contrib/voidzero-dev-vite-plus.svg" alt="voidzero-dev/vite-plus" width="32.6%" /></a>
-<a href="https://github.com/Effect-TS/tsgo/pulls?q=is%3Apr+author%3AMarve10s+is%3Amerged"><img src="./profile/contrib/effect-ts-tsgo.svg" alt="Effect-TS/tsgo" width="32.6%" /></a>
+<a href="https://github.com/react/react-native/commits?author=Marve10s"><img src="./profile/contrib/react-react-native.svg" alt="react/react-native" width="49.1%" /></a>
+<a href="https://github.com/tester-army/e2e/pulls?q=is%3Apr+author%3AMarve10s+is%3Amerged"><img src="./profile/contrib/tester-army-e2e.svg" alt="tester-army/e2e" width="49.1%" /></a>
+</p>
+
+<p>
+<a href="https://github.com/voidzero-dev/vite-plus/pulls?q=is%3Apr+author%3AMarve10s+is%3Amerged"><img src="./profile/contrib/voidzero-dev-vite-plus.svg" alt="voidzero-dev/vite-plus" width="49.1%" /></a>
+<a href="https://github.com/Effect-TS/tsgo/pulls?q=is%3Apr+author%3AMarve10s+is%3Amerged"><img src="./profile/contrib/effect-ts-tsgo.svg" alt="Effect-TS/tsgo" width="49.1%" /></a>
 </p>
 
 ---
