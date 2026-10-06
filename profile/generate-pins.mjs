@@ -22,9 +22,10 @@ const CONTRIBUTIONS = [
   { owner: "Effect-TS", repo: "effect", logo: "effect.png" },
   { owner: "Emanuele-web04", repo: "synara", logo: "synara.png" },
   // React Native lands PRs through Meta's tooling, which closes them instead of merging, so count landed commits.
+  { owner: "react", repo: "react-native", logo: "react-native.svg", countCommits: true },
+  { owner: "tester-army", repo: "e2e" },
+  { owner: "ryansolid", repo: "dom-expressions", logo: "solid.svg" },
   // Wide cards fill a two-card README row at the same height as the three-card row.
-  { owner: "react", repo: "react-native", logo: "react-native.svg", countCommits: true, wide: true },
-  { owner: "tester-army", repo: "e2e", wide: true },
   { owner: "voidzero-dev", repo: "vite-plus", logo: "vite-plus.svg", wide: true },
   { owner: "Effect-TS", repo: "tsgo", logo: "effect.png", wide: true },
 ];

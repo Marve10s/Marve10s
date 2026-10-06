@@ -85,8 +85,9 @@
 </p>
 
 <p>
-<a href="https://github.com/react/react-native/commits?author=Marve10s"><img src="./profile/contrib/react-react-native.svg" alt="react/react-native" width="49.1%" /></a>
-<a href="https://github.com/tester-army/e2e/pulls?q=is%3Apr+author%3AMarve10s+is%3Amerged"><img src="./profile/contrib/tester-army-e2e.svg" alt="tester-army/e2e" width="49.1%" /></a>
+<a href="https://github.com/react/react-native/commits?author=Marve10s"><img src="./profile/contrib/react-react-native.svg" alt="react/react-native" width="32.6%" /></a>
+<a href="https://github.com/tester-army/e2e/pulls?q=is%3Apr+author%3AMarve10s+is%3Amerged"><img src="./profile/contrib/tester-army-e2e.svg" alt="tester-army/e2e" width="32.6%" /></a>
+<a href="https://github.com/ryansolid/dom-expressions/pulls?q=is%3Apr+author%3AMarve10s+is%3Amerged"><img src="./profile/contrib/ryansolid-dom-expressions.svg" alt="ryansolid/dom-expressions" width="32.6%" /></a>
 </p>
 
 <p>
