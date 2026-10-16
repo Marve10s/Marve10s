@@ -350,7 +350,6 @@ function compactContributionCardSvg({ fullName, stars, merged, takenOver, image 
     return measured > maxTextWidth ? ` textLength="${maxTextWidth}" lengthAdjust="spacingAndGlyphs"` : "";
   };
   const prLabel = contributionLabel(merged, takenOver);
-  const starsX = textX + 15 + prLabel.length * 6 + 10;
   return `<svg xmlns="http://www.w3.org/2000/svg" width="${width}" height="${height}" viewBox="0 0 ${width} ${height}" role="img" aria-label="${escapeXml(fullName)}: ${prLabel}">
   <style>text { font-family: ${FONT}; }</style>
   <defs><clipPath id="logo"><rect x="12" y="24" width="28" height="28" rx="7"/></clipPath></defs>
@@ -361,7 +360,7 @@ function compactContributionCardSvg({ fullName, stars, merged, takenOver, image 
   <text x="${textX}" y="45" font-size="14" font-weight="600" fill="${THEME.title}"${fit(repo, 14)}>${escapeXml(repo)}</text>
   <g transform="translate(${textX},53) scale(0.42)" fill="none" stroke="${CONTRIB_ACCENT}" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round">${MERGE_PATHS}</g>
   <text x="${textX + 15}" y="62" font-size="11" fill="${THEME.title}">${prLabel}</text>
-  <text x="${starsX}" y="62" font-size="11" fill="${THEME.text}">★ ${formatCount(stars)}</text>
+  <text x="${width - 12}" y="62" text-anchor="end" font-size="11" fill="${THEME.text}">★ ${formatCount(stars)}</text>
 </svg>
 `;
 }
@@ -372,7 +371,6 @@ function contributionCardSvg({ fullName, stars, merged, takenOver, image, wide, 
   const width = wide ? 482 : 320;
   const height = 72;
   const prLabel = contributionLabel(merged, takenOver);
-  const starsX = 84 + prLabel.length * 6.6 + 14;
   return `<svg xmlns="http://www.w3.org/2000/svg" width="${width}" height="${height}" viewBox="0 0 ${width} ${height}" role="img" aria-label="${escapeXml(fullName)}: ${prLabel}">
   <style>text { font-family: ${FONT}; }</style>
   <defs><clipPath id="logo"><rect x="16" y="16" width="40" height="40" rx="8"/></clipPath></defs>
@@ -382,7 +380,7 @@ function contributionCardSvg({ fullName, stars, merged, takenOver, image, wide, 
   <text x="68" y="33" font-size="15"><tspan fill="${THEME.text}">${escapeXml(owner)}/</tspan><tspan font-weight="600" fill="${THEME.title}">${escapeXml(repo)}</tspan></text>
   <g transform="translate(68,43) scale(0.5)" fill="none" stroke="${CONTRIB_ACCENT}" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round">${MERGE_PATHS}</g>
   <text x="84" y="53" font-size="12" fill="${THEME.title}">${prLabel}</text>
-  <text x="${starsX}" y="53" font-size="12" fill="${THEME.text}">★ ${formatCount(stars)}</text>
+  <text x="${width - 16}" y="53" text-anchor="end" font-size="12" fill="${THEME.text}">★ ${formatCount(stars)}</text>
 </svg>
 `;
 }
