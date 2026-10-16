@@ -18,16 +18,24 @@ const REPOS = [
 
 // Without a logo, a contribution card shows the owner's GitHub avatar.
 const CONTRIBUTIONS = [
-  { owner: "pingdotgg", repo: "t3code", logo: "t3code.svg" },
-  { owner: "Effect-TS", repo: "effect", logo: "effect.png" },
+  { owner: "pingdotgg", repo: "t3code", logo: "t3code.svg", takenOver: [13257] },
+  { owner: "Effect-TS", repo: "effect", logo: "effect.png", takenOver: [8470] },
   { owner: "Emanuele-web04", repo: "synara", logo: "synara.png" },
   // React Native lands PRs through Meta's tooling, which closes them instead of merging, so count landed commits.
   { owner: "react", repo: "react-native", logo: "react-native.svg", countCommits: true },
-  { owner: "tester-army", repo: "e2e" },
+  { owner: "tester-army", repo: "e2e", takenOver: [873] },
   { owner: "ryansolid", repo: "dom-expressions", logo: "solid.svg" },
+  { owner: "voidzero-dev", repo: "vite-plus", logo: "vite-plus.svg" },
+  { owner: "oxc-project", repo: "oxc", takenOver: [26926] },
+  { owner: "Effect-TS", repo: "tsgo", logo: "effect.png" },
+  { owner: "nicklockwood", repo: "SwiftFormat", logo: "swift.svg" },
+  { owner: "modevol-com", repo: "gqloom" },
+  { owner: "nounder", repo: "effect-start", logo: "effect.png" },
   // Wide cards fill a two-card README row at the same height as the three-card row.
-  { owner: "voidzero-dev", repo: "vite-plus", logo: "vite-plus.svg", wide: true },
-  { owner: "Effect-TS", repo: "tsgo", logo: "effect.png", wide: true },
+  { owner: "lloydrichards", repo: "effect-boxes", logo: "effect.png", wide: true },
+  { owner: "rjdellecese", repo: "effect-units", logo: "effect.png", wide: true },
+  { owner: "jarrednorrisdev", repo: "effect-atom-svelte", logo: "effect-svelte.svg", wide: true },
+  { owner: "leonitousconforti", repo: "eftar", logo: "effect.png", wide: true },
 ];
 
 const EXPERIENCE = [
@@ -274,7 +282,7 @@ async function avatarDataUri(owner) {
   return `data:${res.headers.get("content-type")};base64,${buf.toString("base64")}`;
 }
 
-async function fetchContribution({ owner, repo, logo, countCommits = false, wide = false }) {
+async function fetchContribution({ owner, repo, logo, countCommits = false, wide = false, takenOver = [] }) {
   const [data, merged, image] = await Promise.all([
     gh(`repos/${owner}/${repo}`),
     countCommits
@@ -284,14 +292,21 @@ async function fetchContribution({ owner, repo, logo, countCommits = false, wide
         ),
     logo ? logoDataUri(logo) : avatarDataUri(owner),
   ]);
-  return { fullName: data.full_name, stars: data.stargazers_count, merged, image, wide };
+  return { fullName: data.full_name, stars: data.stargazers_count, merged, takenOver: takenOver.length, image, wide };
 }
 
-function contributionCardSvg({ fullName, stars, merged, image, wide }) {
+function contributionLabel(merged, takenOver) {
+  const mergedLabel = `${merged} merged PR${merged === 1 ? "" : "s"}`;
+  if (!takenOver) return mergedLabel;
+  if (!merged) return `${takenOver} PR${takenOver === 1 ? "" : "s"} taken over`;
+  return `${mergedLabel} + ${takenOver} taken over`;
+}
+
+function contributionCardSvg({ fullName, stars, merged, takenOver, image, wide }) {
   const [owner, repo] = fullName.split("/");
   const width = wide ? 482 : 320;
   const height = 72;
-  const prLabel = `${merged} merged PR${merged === 1 ? "" : "s"}`;
+  const prLabel = contributionLabel(merged, takenOver);
   const starsX = 84 + prLabel.length * 6.6 + 14;
   return `<svg xmlns="http://www.w3.org/2000/svg" width="${width}" height="${height}" viewBox="0 0 ${width} ${height}" role="img" aria-label="${escapeXml(fullName)}: ${prLabel}">
   <style>text { font-family: ${FONT}; }</style>
