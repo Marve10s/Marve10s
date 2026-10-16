@@ -97,19 +97,16 @@
 </p>
 
 <p>
-<a href="https://github.com/nicklockwood/SwiftFormat/pulls?q=is%3Apr+author%3AMarve10s+is%3Amerged"><img src="./profile/contrib/nicklockwood-swiftformat.svg" alt="nicklockwood/SwiftFormat" width="32.6%" /></a>
-<a href="https://github.com/modevol-com/gqloom/pulls?q=is%3Apr+author%3AMarve10s+is%3Amerged"><img src="./profile/contrib/modevol-com-gqloom.svg" alt="modevol-com/gqloom" width="32.6%" /></a>
-<a href="https://github.com/nounder/effect-start/pulls?q=is%3Apr+author%3AMarve10s+is%3Amerged"><img src="./profile/contrib/nounder-effect-start.svg" alt="nounder/effect-start" width="32.6%" /></a>
+<a href="https://github.com/nicklockwood/SwiftFormat/pulls?q=is%3Apr+author%3AMarve10s+is%3Amerged"><img src="./profile/contrib/nicklockwood-swiftformat.svg" alt="nicklockwood/SwiftFormat" width="49.1%" /></a>
+<a href="https://github.com/modevol-com/gqloom/pulls?q=is%3Apr+author%3AMarve10s+is%3Amerged"><img src="./profile/contrib/modevol-com-gqloom.svg" alt="modevol-com/gqloom" width="49.1%" /></a>
 </p>
 
 <p>
-<a href="https://github.com/lloydrichards/effect-boxes/pulls?q=is%3Apr+author%3AMarve10s+is%3Amerged"><img src="./profile/contrib/lloydrichards-effect-boxes.svg" alt="lloydrichards/effect-boxes" width="49.1%" /></a>
-<a href="https://github.com/rjdellecese/effect-units/pulls?q=is%3Apr+author%3AMarve10s+is%3Amerged"><img src="./profile/contrib/rjdellecese-effect-units.svg" alt="rjdellecese/effect-units" width="49.1%" /></a>
-</p>
-
-<p>
-<a href="https://github.com/jarrednorrisdev/effect-atom-svelte/pulls?q=is%3Apr+author%3AMarve10s+is%3Amerged"><img src="./profile/contrib/jarrednorrisdev-effect-atom-svelte.svg" alt="jarrednorrisdev/effect-atom-svelte" width="49.1%" /></a>
-<a href="https://github.com/leonitousconforti/eftar/pulls?q=is%3Apr+author%3AMarve10s+is%3Amerged"><img src="./profile/contrib/leonitousconforti-eftar.svg" alt="leonitousconforti/eftar" width="49.1%" /></a>
+<a href="https://github.com/nounder/effect-start/pulls?q=is%3Apr+author%3AMarve10s+is%3Amerged"><img src="./profile/contrib/nounder-effect-start.svg" alt="nounder/effect-start" width="19.4%" /></a>
+<a href="https://github.com/lloydrichards/effect-boxes/pulls?q=is%3Apr+author%3AMarve10s+is%3Amerged"><img src="./profile/contrib/lloydrichards-effect-boxes.svg" alt="lloydrichards/effect-boxes" width="19.4%" /></a>
+<a href="https://github.com/rjdellecese/effect-units/pulls?q=is%3Apr+author%3AMarve10s+is%3Amerged"><img src="./profile/contrib/rjdellecese-effect-units.svg" alt="rjdellecese/effect-units" width="19.4%" /></a>
+<a href="https://github.com/jarrednorrisdev/effect-atom-svelte/pulls?q=is%3Apr+author%3AMarve10s+is%3Amerged"><img src="./profile/contrib/jarrednorrisdev-effect-atom-svelte.svg" alt="jarrednorrisdev/effect-atom-svelte" width="19.4%" /></a>
+<a href="https://github.com/leonitousconforti/eftar/pulls?q=is%3Apr+author%3AMarve10s+is%3Amerged"><img src="./profile/contrib/leonitousconforti-eftar.svg" alt="leonitousconforti/eftar" width="19.4%" /></a>
 </p>
 
 ---

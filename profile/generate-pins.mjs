@@ -28,14 +28,14 @@ const CONTRIBUTIONS = [
   { owner: "voidzero-dev", repo: "vite-plus", logo: "vite-plus.svg" },
   { owner: "oxc-project", repo: "oxc", takenOver: [26926] },
   { owner: "Effect-TS", repo: "tsgo", logo: "effect.png" },
-  { owner: "nicklockwood", repo: "SwiftFormat", logo: "swift.svg" },
-  { owner: "modevol-com", repo: "gqloom" },
-  { owner: "nounder", repo: "effect-start", logo: "effect.png" },
   // Wide cards fill a two-card README row at the same height as the three-card row.
-  { owner: "lloydrichards", repo: "effect-boxes", logo: "effect.png", wide: true },
-  { owner: "rjdellecese", repo: "effect-units", logo: "effect.png", wide: true },
-  { owner: "jarrednorrisdev", repo: "effect-atom-svelte", logo: "effect-svelte.svg", wide: true },
-  { owner: "leonitousconforti", repo: "eftar", logo: "effect.png", wide: true },
+  { owner: "nicklockwood", repo: "SwiftFormat", logo: "swift.svg", wide: true },
+  { owner: "modevol-com", repo: "gqloom", wide: true },
+  { owner: "nounder", repo: "effect-start", logo: "effect.png", compact: true },
+  { owner: "lloydrichards", repo: "effect-boxes", logo: "effect.png", compact: true },
+  { owner: "rjdellecese", repo: "effect-units", logo: "effect.png", compact: true },
+  { owner: "jarrednorrisdev", repo: "effect-atom-svelte", logo: "effect-svelte.svg", compact: true },
+  { owner: "leonitousconforti", repo: "eftar", logo: "effect.png", compact: true },
 ];
 
 const EXPERIENCE = [
@@ -260,6 +260,41 @@ async function gh(path) {
   return res.json();
 }
 
+async function graphql(query, variables) {
+  if (!process.env.GITHUB_TOKEN) throw new Error("GITHUB_TOKEN is required for the GraphQL API");
+  const res = await fetch("https://api.github.com/graphql", {
+    method: "POST",
+    headers: { Authorization: `Bearer ${process.env.GITHUB_TOKEN}`, "User-Agent": "pin-card-generator" },
+    body: JSON.stringify({ query, variables }),
+  });
+  const body = await res.json();
+  if (!res.ok || body.errors) throw new Error(`graphql: ${res.status} ${JSON.stringify(body.errors ?? body)}`);
+  return body.data;
+}
+
+const MERGED_PRS_QUERY = `query($login: String!, $cursor: String) {
+  user(login: $login) {
+    pullRequests(first: 100, states: MERGED, after: $cursor) {
+      pageInfo { hasNextPage endCursor }
+      nodes { repository { nameWithOwner } }
+    }
+  }
+}`;
+
+async function mergedPrCountsByRepo() {
+  const counts = new Map();
+  let cursor = null;
+  do {
+    const { pullRequests } = (await graphql(MERGED_PRS_QUERY, { login: OWNER, cursor })).user;
+    for (const { repository } of pullRequests.nodes) {
+      const key = repository.nameWithOwner.toLowerCase();
+      counts.set(key, (counts.get(key) ?? 0) + 1);
+    }
+    cursor = pullRequests.pageInfo.hasNextPage ? pullRequests.pageInfo.endCursor : null;
+  } while (cursor);
+  return counts;
+}
+
 async function fetchRepo({ owner, repo, ...card }) {
   const data = await gh(`repos/${owner}/${repo}`);
   return {
@@ -282,17 +317,19 @@ async function avatarDataUri(owner) {
   return `data:${res.headers.get("content-type")};base64,${buf.toString("base64")}`;
 }
 
-async function fetchContribution({ owner, repo, logo, countCommits = false, wide = false, takenOver = [] }) {
+async function fetchContribution(
+  { owner, repo, logo, countCommits = false, wide = false, compact = false, takenOver = [] },
+  mergedCounts
+) {
   const [data, merged, image] = await Promise.all([
     gh(`repos/${owner}/${repo}`),
     countCommits
       ? gh(`repos/${owner}/${repo}/commits?author=${OWNER}&per_page=100`).then((commits) => commits.length)
-      : gh(`search/issues?q=${encodeURIComponent(`repo:${owner}/${repo} author:${OWNER} is:pr is:merged`)}`).then(
-          (prs) => prs.total_count
-        ),
+      : (mergedCounts.get(`${owner}/${repo}`.toLowerCase()) ?? 0),
     logo ? logoDataUri(logo) : avatarDataUri(owner),
   ]);
-  return { fullName: data.full_name, stars: data.stargazers_count, merged, takenOver: takenOver.length, image, wide };
+  const card = { fullName: data.full_name, stars: data.stargazers_count, merged, takenOver: takenOver.length, image };
+  return { ...card, wide, compact };
 }
 
 function contributionLabel(merged, takenOver) {
@@ -302,7 +339,35 @@ function contributionLabel(merged, takenOver) {
   return `${mergedLabel} + ${takenOver} taken over`;
 }
 
-function contributionCardSvg({ fullName, stars, merged, takenOver, image, wide }) {
+function compactContributionCardSvg({ fullName, stars, merged, takenOver, image }) {
+  const [owner, repo] = fullName.split("/");
+  const width = 190;
+  const height = 76;
+  const textX = 50;
+  const maxTextWidth = width - textX - 12;
+  const fit = (text, size) => {
+    const measured = textWidth(text, size);
+    return measured > maxTextWidth ? ` textLength="${maxTextWidth}" lengthAdjust="spacingAndGlyphs"` : "";
+  };
+  const prLabel = contributionLabel(merged, takenOver);
+  const starsX = textX + 15 + prLabel.length * 6 + 10;
+  return `<svg xmlns="http://www.w3.org/2000/svg" width="${width}" height="${height}" viewBox="0 0 ${width} ${height}" role="img" aria-label="${escapeXml(fullName)}: ${prLabel}">
+  <style>text { font-family: ${FONT}; }</style>
+  <defs><clipPath id="logo"><rect x="12" y="24" width="28" height="28" rx="7"/></clipPath></defs>
+  <rect x="0.5" y="0.5" width="${width - 1}" height="${height - 1}" rx="10" fill="${THEME.bg}" stroke="${THEME.border}"/>
+  <rect x="0.5" y="20" width="3" height="${height - 40}" rx="1.5" fill="${CONTRIB_ACCENT}"/>
+  <image href="${image}" x="12" y="24" width="28" height="28" clip-path="url(#logo)"/>
+  <text x="${textX}" y="27" font-size="11" fill="${THEME.text}"${fit(`${owner}/`, 11)}>${escapeXml(owner)}/</text>
+  <text x="${textX}" y="45" font-size="14" font-weight="600" fill="${THEME.title}"${fit(repo, 14)}>${escapeXml(repo)}</text>
+  <g transform="translate(${textX},53) scale(0.42)" fill="none" stroke="${CONTRIB_ACCENT}" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round">${MERGE_PATHS}</g>
+  <text x="${textX + 15}" y="62" font-size="11" fill="${THEME.title}">${prLabel}</text>
+  <text x="${starsX}" y="62" font-size="11" fill="${THEME.text}">★ ${formatCount(stars)}</text>
+</svg>
+`;
+}
+
+function contributionCardSvg({ fullName, stars, merged, takenOver, image, wide, compact }) {
+  if (compact) return compactContributionCardSvg({ fullName, stars, merged, takenOver, image });
   const [owner, repo] = fullName.split("/");
   const width = wide ? 482 : 320;
   const height = 72;
@@ -342,7 +407,8 @@ for (const data of results) {
 }
 console.log(`Generated ${results.length} pin cards`);
 
-const contributions = await Promise.all(CONTRIBUTIONS.map(fetchContribution));
+const mergedCounts = await mergedPrCountsByRepo();
+const contributions = await Promise.all(CONTRIBUTIONS.map((contribution) => fetchContribution(contribution, mergedCounts)));
 const contribDir = fileURLToPath(new URL("./contrib/", import.meta.url));
 rmSync(contribDir, { recursive: true, force: true });
 mkdirSync(contribDir, { recursive: true });
