@@ -1,11 +1,11 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="482" height="72" viewBox="0 0 482 72" role="img" aria-label="nicklockwood/SwiftFormat: 1 merged PR">
+<svg xmlns="http://www.w3.org/2000/svg" width="320" height="72" viewBox="0 0 320 72" role="img" aria-label="nicklockwood/SwiftFormat: 2 merged PRs">
   <style>text { font-family: -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif; }</style>
   <defs><clipPath id="logo"><rect x="16" y="16" width="40" height="40" rx="8"/></clipPath></defs>
-  <rect x="0.5" y="0.5" width="481" height="71" rx="10" fill="#211E1E" stroke="#3A3535"/>
+  <rect x="0.5" y="0.5" width="319" height="71" rx="10" fill="#211E1E" stroke="#3A3535"/>
   <rect x="0.5" y="18" width="3" height="36" rx="1.5" fill="#E8612D"/>
   <image href="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxMjgiIGhlaWdodD0iMTI4IiB2aWV3Qm94PSIwIDAgMTI4IDEyOCI+CiAgPGRlZnM+PGxpbmVhckdyYWRpZW50IGlkPSJzd2lmdCIgeDE9IjAiIHkxPSIwIiB4Mj0iMCIgeTI9IjEiPjxzdG9wIG9mZnNldD0iMCIgc3RvcC1jb2xvcj0iI0Y4OEEzNiIvPjxzdG9wIG9mZnNldD0iMSIgc3RvcC1jb2xvcj0iI0ZEMjAyMCIvPjwvbGluZWFyR3JhZGllbnQ+PC9kZWZzPgogIDxyZWN0IHdpZHRoPSIxMjgiIGhlaWdodD0iMTI4IiBmaWxsPSJ1cmwoI3N3aWZ0KSIvPgogIDxzdmcgeD0iMTgiIHk9IjIwIiB3aWR0aD0iOTIiIGhlaWdodD0iOTIiIHZpZXdCb3g9IjAgMCAyNCAyNCI+PHBhdGggZmlsbD0iI0ZGRkZGRiIgZD0iTTEzLjU0MyAzLjQxYzQuMTE0IDIuNDcgNi41NDUgNy4xNjIgNS41NDkgMTEuMTMxLS4wMjQuMDkzLS4wNS4xODEtLjA3Ni4yNzJsLjAwMi4wMDFjMi4wNjIgMi41MzggMS41IDUuMjU4IDEuMjM2IDQuNzQ1LTEuMDcyLTIuMDg2LTMuMDY2LTEuNTY4LTQuMDg4LTEuMDQzYTYuODAzIDYuODAzIDAgMCAxLS4yODEuMTU4bC0uMDIuMDEyLS4wMDIuMDAyYy0yLjExNSAxLjEyMy00Ljk1NyAxLjIwNS03LjgxMi0uMDIyYTEyLjU2OCAxMi41NjggMCAwIDEtNS42NC00LjgzOGMuNjQ5LjQ4IDEuMzUuOTAyIDIuMDk3IDEuMjUyIDMuMDE5IDEuNDE0IDYuMDUxIDEuMzExIDguMTk3LS4wMDJDOS42NTEgMTIuNzMgNy4xMDEgOS42NyA1LjE0NiA3LjE5MWExMC42MjggMTAuNjI4IDAgMCAxLTEuMDA1LTEuMzg0YzIuMzQgMi4xNDIgNi4wMzggNC44MyA3LjM2NSA1LjU3NkM4LjY5IDguNDA4IDYuMjA4IDQuNzQzIDYuMzI0IDQuODZjNC40MzYgNC40NyA4LjUyOCA2Ljk5NiA4LjUyOCA2Ljk5Ni4xNTQuMDg1LjI3LjE1NC4zNi4yMTMuMDg1LS4yMTUuMTYtLjQzNy4yMjQtLjY2OC43MDgtMi41ODgtLjA5LTUuNTQ4LTEuODkzLTcuOTkyeiIvPjwvc3ZnPgo8L3N2Zz4K" x="16" y="16" width="40" height="40" clip-path="url(#logo)"/>
   <text x="68" y="33" font-size="15"><tspan fill="#656363">nicklockwood/</tspan><tspan font-weight="600" fill="#CFCECD">SwiftFormat</tspan></text>
   <g transform="translate(68,43) scale(0.5)" fill="none" stroke="#E8612D" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><circle cx="18" cy="18" r="3"/><circle cx="6" cy="6" r="3"/><path d="M6 21V9a9 9 0 0 0 9 9"/></g>
-  <text x="84" y="53" font-size="12" fill="#CFCECD">1 merged PR</text>
-  <text x="466" y="53" text-anchor="end" font-size="12" fill="#656363">★ 8.9k</text>
+  <text x="84" y="53" font-size="12" fill="#CFCECD">2 merged PRs</text>
+  <text x="304" y="53" text-anchor="end" font-size="12" fill="#656363">★ 8.9k</text>
 </svg>

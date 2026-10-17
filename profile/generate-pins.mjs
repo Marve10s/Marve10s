@@ -28,9 +28,9 @@ const CONTRIBUTIONS = [
   { owner: "voidzero-dev", repo: "vite-plus", logo: "vite-plus.svg" },
   { owner: "oxc-project", repo: "oxc", takenOver: [26926] },
   { owner: "Effect-TS", repo: "tsgo", logo: "effect.png" },
-  // Wide cards fill a two-card README row at the same height as the three-card row.
-  { owner: "nicklockwood", repo: "SwiftFormat", logo: "swift.svg", wide: true },
-  { owner: "modevol-com", repo: "gqloom", wide: true },
+  { owner: "nicklockwood", repo: "SwiftFormat", logo: "swift.svg" },
+  { owner: "modevol-com", repo: "gqloom" },
+  { owner: "lucas-barake", repo: "effect-form", logo: "effect.png" },
   { owner: "nounder", repo: "effect-start", logo: "effect.png", compact: true },
   { owner: "lloydrichards", repo: "effect-boxes", logo: "effect.png", compact: true },
   { owner: "rjdellecese", repo: "effect-units", logo: "effect.png", compact: true },
@@ -318,7 +318,7 @@ async function avatarDataUri(owner) {
 }
 
 async function fetchContribution(
-  { owner, repo, logo, countCommits = false, wide = false, compact = false, takenOver = [] },
+  { owner, repo, logo, countCommits = false, compact = false, takenOver = [] },
   mergedCounts
 ) {
   const [data, merged, image] = await Promise.all([
@@ -328,8 +328,7 @@ async function fetchContribution(
       : (mergedCounts.get(`${owner}/${repo}`.toLowerCase()) ?? 0),
     logo ? logoDataUri(logo) : avatarDataUri(owner),
   ]);
-  const card = { fullName: data.full_name, stars: data.stargazers_count, merged, takenOver: takenOver.length, image };
-  return { ...card, wide, compact };
+  return { fullName: data.full_name, stars: data.stargazers_count, merged, takenOver: takenOver.length, image, compact };
 }
 
 function contributionLabel(merged, takenOver) {
@@ -365,10 +364,10 @@ function compactContributionCardSvg({ fullName, stars, merged, takenOver, image 
 `;
 }
 
-function contributionCardSvg({ fullName, stars, merged, takenOver, image, wide, compact }) {
+function contributionCardSvg({ fullName, stars, merged, takenOver, image, compact }) {
   if (compact) return compactContributionCardSvg({ fullName, stars, merged, takenOver, image });
   const [owner, repo] = fullName.split("/");
-  const width = wide ? 482 : 320;
+  const width = 320;
   const height = 72;
   const prLabel = contributionLabel(merged, takenOver);
   return `<svg xmlns="http://www.w3.org/2000/svg" width="${width}" height="${height}" viewBox="0 0 ${width} ${height}" role="img" aria-label="${escapeXml(fullName)}: ${prLabel}">

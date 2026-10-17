@@ -97,8 +97,9 @@
 </p>
 
 <p>
-<a href="https://github.com/nicklockwood/SwiftFormat/pulls?q=is%3Apr+author%3AMarve10s+is%3Amerged"><img src="./profile/contrib/nicklockwood-swiftformat.svg" alt="nicklockwood/SwiftFormat" width="49.1%" /></a>
-<a href="https://github.com/modevol-com/gqloom/pulls?q=is%3Apr+author%3AMarve10s+is%3Amerged"><img src="./profile/contrib/modevol-com-gqloom.svg" alt="modevol-com/gqloom" width="49.1%" /></a>
+<a href="https://github.com/nicklockwood/SwiftFormat/pulls?q=is%3Apr+author%3AMarve10s+is%3Amerged"><img src="./profile/contrib/nicklockwood-swiftformat.svg" alt="nicklockwood/SwiftFormat" width="32.6%" /></a>
+<a href="https://github.com/modevol-com/gqloom/pulls?q=is%3Apr+author%3AMarve10s+is%3Amerged"><img src="./profile/contrib/modevol-com-gqloom.svg" alt="modevol-com/gqloom" width="32.6%" /></a>
+<a href="https://github.com/lucas-barake/effect-form/pulls?q=is%3Apr+author%3AMarve10s+is%3Amerged"><img src="./profile/contrib/lucas-barake-effect-form.svg" alt="lucas-barake/effect-form" width="32.6%" /></a>
 </p>
 
 <p>
