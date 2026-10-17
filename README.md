@@ -87,27 +87,29 @@
 <p>
 <a href="https://github.com/react/react-native/commits?author=Marve10s"><img src="./profile/contrib/react-react-native.svg" alt="react/react-native" width="32.6%" /></a>
 <a href="https://github.com/tester-army/e2e/pulls?q=is%3Apr+author%3AMarve10s+is%3Amerged"><img src="./profile/contrib/tester-army-e2e.svg" alt="tester-army/e2e" width="32.6%" /></a>
-<a href="https://github.com/ryansolid/dom-expressions/pulls?q=is%3Apr+author%3AMarve10s+is%3Amerged"><img src="./profile/contrib/ryansolid-dom-expressions.svg" alt="ryansolid/dom-expressions" width="32.6%" /></a>
-</p>
-
-<p>
 <a href="https://github.com/voidzero-dev/vite-plus/pulls?q=is%3Apr+author%3AMarve10s+is%3Amerged"><img src="./profile/contrib/voidzero-dev-vite-plus.svg" alt="voidzero-dev/vite-plus" width="32.6%" /></a>
+</p>
+
+<p>
 <a href="https://github.com/oxc-project/oxc/pull/26926"><img src="./profile/contrib/oxc-project-oxc.svg" alt="oxc-project/oxc" width="32.6%" /></a>
-<a href="https://github.com/Effect-TS/tsgo/pulls?q=is%3Apr+author%3AMarve10s+is%3Amerged"><img src="./profile/contrib/effect-ts-tsgo.svg" alt="Effect-TS/tsgo" width="32.6%" /></a>
-</p>
-
-<p>
 <a href="https://github.com/nicklockwood/SwiftFormat/pulls?q=is%3Apr+author%3AMarve10s+is%3Amerged"><img src="./profile/contrib/nicklockwood-swiftformat.svg" alt="nicklockwood/SwiftFormat" width="32.6%" /></a>
-<a href="https://github.com/modevol-com/gqloom/pulls?q=is%3Apr+author%3AMarve10s+is%3Amerged"><img src="./profile/contrib/modevol-com-gqloom.svg" alt="modevol-com/gqloom" width="32.6%" /></a>
-<a href="https://github.com/lucas-barake/effect-form/pulls?q=is%3Apr+author%3AMarve10s+is%3Amerged"><img src="./profile/contrib/lucas-barake-effect-form.svg" alt="lucas-barake/effect-form" width="32.6%" /></a>
+<a href="https://github.com/react-hook-form/resolvers/pulls?q=is%3Apr+author%3AMarve10s+is%3Amerged"><img src="./profile/contrib/react-hook-form-resolvers.svg" alt="react-hook-form/resolvers" width="32.6%" /></a>
 </p>
 
 <p>
+<a href="https://github.com/ryansolid/dom-expressions/pulls?q=is%3Apr+author%3AMarve10s+is%3Amerged"><img src="./profile/contrib/ryansolid-dom-expressions.svg" alt="ryansolid/dom-expressions" width="19.4%" /></a>
+<a href="https://github.com/modevol-com/gqloom/pulls?q=is%3Apr+author%3AMarve10s+is%3Amerged"><img src="./profile/contrib/modevol-com-gqloom.svg" alt="modevol-com/gqloom" width="19.4%" /></a>
+<a href="https://github.com/Effect-TS/tsgo/pulls?q=is%3Apr+author%3AMarve10s+is%3Amerged"><img src="./profile/contrib/effect-ts-tsgo.svg" alt="Effect-TS/tsgo" width="19.4%" /></a>
+<a href="https://github.com/lucas-barake/effect-form/pulls?q=is%3Apr+author%3AMarve10s+is%3Amerged"><img src="./profile/contrib/lucas-barake-effect-form.svg" alt="lucas-barake/effect-form" width="19.4%" /></a>
 <a href="https://github.com/nounder/effect-start/pulls?q=is%3Apr+author%3AMarve10s+is%3Amerged"><img src="./profile/contrib/nounder-effect-start.svg" alt="nounder/effect-start" width="19.4%" /></a>
+</p>
+
+<p>
 <a href="https://github.com/lloydrichards/effect-boxes/pulls?q=is%3Apr+author%3AMarve10s+is%3Amerged"><img src="./profile/contrib/lloydrichards-effect-boxes.svg" alt="lloydrichards/effect-boxes" width="19.4%" /></a>
 <a href="https://github.com/rjdellecese/effect-units/pulls?q=is%3Apr+author%3AMarve10s+is%3Amerged"><img src="./profile/contrib/rjdellecese-effect-units.svg" alt="rjdellecese/effect-units" width="19.4%" /></a>
 <a href="https://github.com/jarrednorrisdev/effect-atom-svelte/pulls?q=is%3Apr+author%3AMarve10s+is%3Amerged"><img src="./profile/contrib/jarrednorrisdev-effect-atom-svelte.svg" alt="jarrednorrisdev/effect-atom-svelte" width="19.4%" /></a>
 <a href="https://github.com/leonitousconforti/eftar/pulls?q=is%3Apr+author%3AMarve10s+is%3Amerged"><img src="./profile/contrib/leonitousconforti-eftar.svg" alt="leonitousconforti/eftar" width="19.4%" /></a>
+<a href="https://github.com/tobimori/effect-attio/pulls?q=is%3Apr+author%3AMarve10s+is%3Amerged"><img src="./profile/contrib/tobimori-effect-attio.svg" alt="tobimori/effect-attio" width="19.4%" /></a>
 </p>
 
 ---

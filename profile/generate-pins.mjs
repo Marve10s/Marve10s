@@ -24,18 +24,20 @@ const CONTRIBUTIONS = [
   // React Native lands PRs through Meta's tooling, which closes them instead of merging, so count landed commits.
   { owner: "react", repo: "react-native", logo: "react-native.svg", countCommits: true },
   { owner: "tester-army", repo: "e2e", takenOver: [873] },
-  { owner: "ryansolid", repo: "dom-expressions", logo: "solid.svg" },
   { owner: "voidzero-dev", repo: "vite-plus", logo: "vite-plus.svg" },
   { owner: "oxc-project", repo: "oxc", takenOver: [26926] },
-  { owner: "Effect-TS", repo: "tsgo", logo: "effect.png" },
   { owner: "nicklockwood", repo: "SwiftFormat", logo: "swift.svg" },
-  { owner: "modevol-com", repo: "gqloom" },
-  { owner: "lucas-barake", repo: "effect-form", logo: "effect.png" },
+  { owner: "react-hook-form", repo: "resolvers" },
+  { owner: "ryansolid", repo: "dom-expressions", logo: "solid.svg", compact: true },
+  { owner: "modevol-com", repo: "gqloom", compact: true },
+  { owner: "Effect-TS", repo: "tsgo", logo: "effect.png", compact: true },
+  { owner: "lucas-barake", repo: "effect-form", logo: "effect.png", compact: true },
   { owner: "nounder", repo: "effect-start", logo: "effect.png", compact: true },
   { owner: "lloydrichards", repo: "effect-boxes", logo: "effect.png", compact: true },
   { owner: "rjdellecese", repo: "effect-units", logo: "effect.png", compact: true },
   { owner: "jarrednorrisdev", repo: "effect-atom-svelte", logo: "effect-svelte.svg", compact: true },
   { owner: "leonitousconforti", repo: "eftar", logo: "effect.png", compact: true },
+  { owner: "tobimori", repo: "effect-attio", logo: "effect.png", compact: true },
 ];
 
 const EXPERIENCE = [

@@ -8,5 +8,5 @@
   <text x="50" y="45" font-size="14" font-weight="600" fill="#CFCECD">effect-atom-svelte</text>
   <g transform="translate(50,53) scale(0.42)" fill="none" stroke="#E8612D" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="18" cy="18" r="3"/><circle cx="6" cy="6" r="3"/><path d="M6 21V9a9 9 0 0 0 9 9"/></g>
   <text x="65" y="62" font-size="11" fill="#CFCECD">1 merged PR</text>
-  <text x="178" y="62" text-anchor="end" font-size="11" fill="#656363">★ 7</text>
+  <text x="178" y="62" text-anchor="end" font-size="11" fill="#656363">★ 8</text>
 </svg>
