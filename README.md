@@ -1,7 +1,7 @@
 <h1 align="center"><b>Full Stack TypeScript Web Developer</b></h1>
 
 <p align="center">
-21 y.o. · Istanbul, Turkey · from Ukraine 🇺🇦 · 3+ years professional experience
+Istanbul, Turkey · from Ukraine 🇺🇦 · 3+ years professional experience
 </p>
 
 <p align="center">
