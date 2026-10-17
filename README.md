@@ -97,10 +97,10 @@
 </p>
 
 <p>
-<a href="https://github.com/ryansolid/dom-expressions/pulls?q=is%3Apr+author%3AMarve10s+is%3Amerged"><img src="./profile/contrib/ryansolid-dom-expressions.svg" alt="ryansolid/dom-expressions" width="19.4%" /></a>
-<a href="https://github.com/modevol-com/gqloom/pulls?q=is%3Apr+author%3AMarve10s+is%3Amerged"><img src="./profile/contrib/modevol-com-gqloom.svg" alt="modevol-com/gqloom" width="19.4%" /></a>
-<a href="https://github.com/Effect-TS/tsgo/pulls?q=is%3Apr+author%3AMarve10s+is%3Amerged"><img src="./profile/contrib/effect-ts-tsgo.svg" alt="Effect-TS/tsgo" width="19.4%" /></a>
-<a href="https://github.com/lucas-barake/effect-form/pulls?q=is%3Apr+author%3AMarve10s+is%3Amerged"><img src="./profile/contrib/lucas-barake-effect-form.svg" alt="lucas-barake/effect-form" width="19.4%" /></a>
+<a href="https://github.com/ryansolid/dom-expressions/pulls?q=is%3Apr+author%3AMarve10s+is%3Amerged"><img src="./profile/contrib/ryansolid-dom-expressions.svg?v=compact" alt="ryansolid/dom-expressions" width="19.4%" /></a>
+<a href="https://github.com/modevol-com/gqloom/pulls?q=is%3Apr+author%3AMarve10s+is%3Amerged"><img src="./profile/contrib/modevol-com-gqloom.svg?v=compact" alt="modevol-com/gqloom" width="19.4%" /></a>
+<a href="https://github.com/Effect-TS/tsgo/pulls?q=is%3Apr+author%3AMarve10s+is%3Amerged"><img src="./profile/contrib/effect-ts-tsgo.svg?v=compact" alt="Effect-TS/tsgo" width="19.4%" /></a>
+<a href="https://github.com/lucas-barake/effect-form/pulls?q=is%3Apr+author%3AMarve10s+is%3Amerged"><img src="./profile/contrib/lucas-barake-effect-form.svg?v=compact" alt="lucas-barake/effect-form" width="19.4%" /></a>
 <a href="https://github.com/nounder/effect-start/pulls?q=is%3Apr+author%3AMarve10s+is%3Amerged"><img src="./profile/contrib/nounder-effect-start.svg" alt="nounder/effect-start" width="19.4%" /></a>
 </p>
 
