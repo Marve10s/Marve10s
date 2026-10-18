@@ -23,11 +23,13 @@ const CONTRIBUTIONS = [
   { owner: "Emanuele-web04", repo: "synara", logo: "synara.png" },
   // React Native lands PRs through Meta's tooling, which closes them instead of merging, so count landed commits.
   { owner: "react", repo: "react-native", logo: "react-native.svg", countCommits: true },
-  { owner: "tester-army", repo: "e2e", takenOver: [873] },
-  { owner: "voidzero-dev", repo: "vite-plus", logo: "vite-plus.svg" },
+  { owner: "react-hook-form", repo: "react-hook-form" },
+  { owner: "ianstormtaylor", repo: "slate", logo: "slate.png" },
   { owner: "oxc-project", repo: "oxc", takenOver: [26926] },
+  { owner: "tester-army", repo: "e2e", takenOver: [873] },
   { owner: "nicklockwood", repo: "SwiftFormat", logo: "swift.svg" },
-  { owner: "react-hook-form", repo: "resolvers" },
+  { owner: "voidzero-dev", repo: "vite-plus", logo: "vite-plus.svg", compact: true },
+  { owner: "react-hook-form", repo: "resolvers", compact: true },
   { owner: "ryansolid", repo: "dom-expressions", logo: "solid.svg", compact: true },
   { owner: "modevol-com", repo: "gqloom", compact: true },
   { owner: "Effect-TS", repo: "tsgo", logo: "effect.png", compact: true },
@@ -35,9 +37,9 @@ const CONTRIBUTIONS = [
   { owner: "nounder", repo: "effect-start", logo: "effect.png", compact: true },
   { owner: "lloydrichards", repo: "effect-boxes", logo: "effect.png", compact: true },
   { owner: "rjdellecese", repo: "effect-units", logo: "effect.png", compact: true },
+  { owner: "tobimori", repo: "effect-attio", logo: "effect.png", compact: true },
   { owner: "jarrednorrisdev", repo: "effect-atom-svelte", logo: "effect-svelte.svg", compact: true },
   { owner: "leonitousconforti", repo: "eftar", logo: "effect.png", compact: true },
-  { owner: "tobimori", repo: "effect-attio", logo: "effect.png", compact: true },
 ];
 
 const EXPERIENCE = [
@@ -342,9 +344,9 @@ function contributionLabel(merged, takenOver) {
 
 function compactContributionCardSvg({ fullName, stars, merged, takenOver, image }) {
   const [owner, repo] = fullName.split("/");
-  const width = 190;
+  const width = 250;
   const height = 76;
-  const textX = 50;
+  const textX = 56;
   const maxTextWidth = width - textX - 12;
   const fit = (text, size) => {
     const measured = textWidth(text, size);
@@ -353,15 +355,15 @@ function compactContributionCardSvg({ fullName, stars, merged, takenOver, image 
   const prLabel = contributionLabel(merged, takenOver);
   return `<svg xmlns="http://www.w3.org/2000/svg" width="${width}" height="${height}" viewBox="0 0 ${width} ${height}" role="img" aria-label="${escapeXml(fullName)}: ${prLabel}">
   <style>text { font-family: ${FONT}; }</style>
-  <defs><clipPath id="logo"><rect x="12" y="24" width="28" height="28" rx="7"/></clipPath></defs>
+  <defs><clipPath id="logo"><rect x="12" y="20" width="34" height="34" rx="8"/></clipPath></defs>
   <rect x="0.5" y="0.5" width="${width - 1}" height="${height - 1}" rx="10" fill="${THEME.bg}" stroke="${THEME.border}"/>
   <rect x="0.5" y="20" width="3" height="${height - 40}" rx="1.5" fill="${CONTRIB_ACCENT}"/>
-  <image href="${image}" x="12" y="24" width="28" height="28" clip-path="url(#logo)"/>
-  <text x="${textX}" y="27" font-size="11" fill="${THEME.text}"${fit(`${owner}/`, 11)}>${escapeXml(owner)}/</text>
-  <text x="${textX}" y="45" font-size="14" font-weight="600" fill="${THEME.title}"${fit(repo, 14)}>${escapeXml(repo)}</text>
-  <g transform="translate(${textX},53) scale(0.42)" fill="none" stroke="${CONTRIB_ACCENT}" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round">${MERGE_PATHS}</g>
-  <text x="${textX + 15}" y="62" font-size="11" fill="${THEME.title}">${prLabel}</text>
-  <text x="${width - 12}" y="62" text-anchor="end" font-size="11" fill="${THEME.text}">★ ${formatCount(stars)}</text>
+  <image href="${image}" x="12" y="20" width="34" height="34" clip-path="url(#logo)"/>
+  <text x="${textX}" y="26" font-size="12" fill="${THEME.text}"${fit(`${owner}/`, 12)}>${escapeXml(owner)}/</text>
+  <text x="${textX}" y="45" font-size="16" font-weight="600" fill="${THEME.title}"${fit(repo, 16)}>${escapeXml(repo)}</text>
+  <g transform="translate(${textX},52) scale(0.48)" fill="none" stroke="${CONTRIB_ACCENT}" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round">${MERGE_PATHS}</g>
+  <text x="${textX + 17}" y="63" font-size="12" fill="${THEME.title}">${prLabel}</text>
+  <text x="${width - 12}" y="63" text-anchor="end" font-size="12" fill="${THEME.text}">★ ${formatCount(stars)}</text>
 </svg>
 `;
 }
