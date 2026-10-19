@@ -16,7 +16,7 @@ const REPOS = [
   },
 ];
 
-// Without a logo, a contribution card shows the owner's GitHub avatar.
+// Without a logo, a contribution shows the owner's GitHub avatar.
 const CONTRIBUTIONS = [
   { owner: "pingdotgg", repo: "t3code", logo: "t3code.svg", takenOver: [13257] },
   { owner: "Effect-TS", repo: "effect", logo: "effect.png", takenOver: [8470] },
@@ -24,22 +24,23 @@ const CONTRIBUTIONS = [
   // React Native lands PRs through Meta's tooling, which closes them instead of merging, so count landed commits.
   { owner: "react", repo: "react-native", logo: "react-native.svg", countCommits: true },
   { owner: "react-hook-form", repo: "react-hook-form" },
+  { owner: "trpc", repo: "trpc" },
   { owner: "ianstormtaylor", repo: "slate", logo: "slate.png" },
   { owner: "oxc-project", repo: "oxc", takenOver: [26926] },
   { owner: "tester-army", repo: "e2e", takenOver: [873] },
   { owner: "nicklockwood", repo: "SwiftFormat", logo: "swift.svg" },
-  { owner: "voidzero-dev", repo: "vite-plus", logo: "vite-plus.svg", compact: true },
-  { owner: "react-hook-form", repo: "resolvers", compact: true },
-  { owner: "ryansolid", repo: "dom-expressions", logo: "solid.svg", compact: true },
-  { owner: "modevol-com", repo: "gqloom", compact: true },
-  { owner: "Effect-TS", repo: "tsgo", logo: "effect.png", compact: true },
-  { owner: "lucas-barake", repo: "effect-form", logo: "effect.png", compact: true },
-  { owner: "nounder", repo: "effect-start", logo: "effect.png", compact: true },
-  { owner: "lloydrichards", repo: "effect-boxes", logo: "effect.png", compact: true },
-  { owner: "rjdellecese", repo: "effect-units", logo: "effect.png", compact: true },
-  { owner: "tobimori", repo: "effect-attio", logo: "effect.png", compact: true },
-  { owner: "jarrednorrisdev", repo: "effect-atom-svelte", logo: "effect-svelte.svg", compact: true },
-  { owner: "leonitousconforti", repo: "eftar", logo: "effect.png", compact: true },
+  { owner: "voidzero-dev", repo: "vite-plus", logo: "vite-plus.svg" },
+  { owner: "react-hook-form", repo: "resolvers" },
+  { owner: "ryansolid", repo: "dom-expressions", logo: "solid.svg" },
+  { owner: "modevol-com", repo: "gqloom" },
+  { owner: "Effect-TS", repo: "tsgo", logo: "effect.png" },
+  { owner: "lucas-barake", repo: "effect-form", logo: "effect.png" },
+  { owner: "nounder", repo: "effect-start", logo: "effect.png" },
+  { owner: "lloydrichards", repo: "effect-boxes", logo: "effect.png" },
+  { owner: "rjdellecese", repo: "effect-units", logo: "effect.png" },
+  { owner: "tobimori", repo: "effect-attio", logo: "effect.png" },
+  { owner: "jarrednorrisdev", repo: "effect-atom-svelte", logo: "effect-svelte.svg" },
+  { owner: "leonitousconforti", repo: "eftar", logo: "effect.png" },
 ];
 
 const EXPERIENCE = [
@@ -102,8 +103,6 @@ const LANG_COLORS = {
 
 const STAR_PATH = "M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z";
 const FORK_PATHS = `<circle cx="12" cy="18" r="3"/><circle cx="6" cy="6" r="3"/><circle cx="18" cy="6" r="3"/><path d="M18 9v2c0 .6-.4 1-1 1H7c-.6 0-1-.4-1-1V9"/><path d="M12 12v3"/>`;
-const MERGE_PATHS = `<circle cx="18" cy="18" r="3"/><circle cx="6" cy="6" r="3"/><path d="M6 21V9a9 9 0 0 0 9 9"/>`;
-
 const escapeXml = (s) =>
   s.replace(/[<>&'"]/g, (c) =>
     ({ "<": "&lt;", ">": "&gt;", "&": "&amp;", "'": "&apos;", '"': "&quot;" })[c]
@@ -311,9 +310,6 @@ async function fetchRepo({ owner, repo, ...card }) {
   };
 }
 
-/* ---------- Compact contribution cards ---------- */
-const CONTRIB_ACCENT = "#E8612D";
-
 async function avatarDataUri(owner) {
   const res = await fetch(`https://github.com/${owner}.png?size=80`);
   if (!res.ok) throw new Error(`${owner} avatar: ${res.status}`);
@@ -321,69 +317,45 @@ async function avatarDataUri(owner) {
   return `data:${res.headers.get("content-type")};base64,${buf.toString("base64")}`;
 }
 
-async function fetchContribution(
-  { owner, repo, logo, countCommits = false, compact = false, takenOver = [] },
-  mergedCounts
-) {
-  const [data, merged, image] = await Promise.all([
+async function fetchContribution({ owner, repo, logo, countCommits = false, takenOver = [] }, mergedCounts) {
+  const [data, landed, image] = await Promise.all([
     gh(`repos/${owner}/${repo}`),
     countCommits
       ? gh(`repos/${owner}/${repo}/commits?author=${OWNER}&per_page=100`).then((commits) => commits.length)
       : (mergedCounts.get(`${owner}/${repo}`.toLowerCase()) ?? 0),
     logo ? logoDataUri(logo) : avatarDataUri(owner),
   ]);
-  return { fullName: data.full_name, stars: data.stargazers_count, merged, takenOver: takenOver.length, image, compact };
+  return { fullName: data.full_name, stars: data.stargazers_count, prs: landed + takenOver.length, image };
 }
 
-function contributionLabel(merged, takenOver) {
-  const mergedLabel = `${merged} merged PR${merged === 1 ? "" : "s"}`;
-  if (!takenOver) return mergedLabel;
-  if (!merged) return `${takenOver} PR${takenOver === 1 ? "" : "s"} taken over`;
-  return `${mergedLabel} + ${takenOver} taken over`;
-}
-
-function compactContributionCardSvg({ fullName, stars, merged, takenOver, image }) {
-  const [owner, repo] = fullName.split("/");
-  const width = 250;
-  const height = 76;
-  const textX = 56;
-  const maxTextWidth = width - textX - 12;
-  const fit = (text, size) => {
-    const measured = textWidth(text, size);
-    return measured > maxTextWidth ? ` textLength="${maxTextWidth}" lengthAdjust="spacingAndGlyphs"` : "";
-  };
-  const prLabel = contributionLabel(merged, takenOver);
-  return `<svg xmlns="http://www.w3.org/2000/svg" width="${width}" height="${height}" viewBox="0 0 ${width} ${height}" role="img" aria-label="${escapeXml(fullName)}: ${prLabel}">
+function contributionsPanelSvg(contributions) {
+  const columns = 3;
+  const columnWidth = 300;
+  const rowHeight = 34;
+  const padX = 18;
+  const padY = 18;
+  const rows = Math.ceil(contributions.length / columns);
+  const width = columns * columnWidth + padX * 2 - 20;
+  const height = padY * 2 + rows * rowHeight - 8;
+  const label = contributions.map(({ fullName, prs }) => `${fullName} (${prs} PR${prs === 1 ? "" : "s"})`).join(", ");
+  const dividers = Array.from({ length: columns - 1 }, (_, i) => {
+    const x = padX + (i + 1) * columnWidth - 17;
+    return `<line x1="${x}" y1="${padY}" x2="${x}" y2="${height - padY}" stroke="${THEME.border}"/>`;
+  });
+  const cells = contributions.map(({ fullName, stars, prs, image }, i) => {
+    const x = padX + Math.floor(i / rows) * columnWidth;
+    const y = padY + (i % rows) * rowHeight;
+    const repo = fullName.split("/")[1];
+    return `<clipPath id="logo${i}"><rect x="${x}" y="${y}" width="20" height="20" rx="5"/></clipPath>
+  <image href="${image}" x="${x}" y="${y}" width="20" height="20" clip-path="url(#logo${i})"/>
+  <text x="${x + 30}" y="${y + 15}" font-size="14" font-weight="600" fill="${THEME.title}">${escapeXml(repo)}</text>
+  <text x="${x + columnWidth - 34}" y="${y + 15}" text-anchor="end" font-size="12" fill="${THEME.body}">${prs} PR${prs === 1 ? "" : "s"} <tspan fill="${THEME.text}">· ★ ${formatCount(stars)}</tspan></text>`;
+  });
+  return `<svg xmlns="http://www.w3.org/2000/svg" width="${width}" height="${height}" viewBox="0 0 ${width} ${height}" role="img" aria-label="Contributed to ${escapeXml(label)}">
   <style>text { font-family: ${FONT}; }</style>
-  <defs><clipPath id="logo"><rect x="12" y="20" width="34" height="34" rx="8"/></clipPath></defs>
-  <rect x="0.5" y="0.5" width="${width - 1}" height="${height - 1}" rx="10" fill="${THEME.bg}" stroke="${THEME.border}"/>
-  <rect x="0.5" y="20" width="3" height="${height - 40}" rx="1.5" fill="${CONTRIB_ACCENT}"/>
-  <image href="${image}" x="12" y="20" width="34" height="34" clip-path="url(#logo)"/>
-  <text x="${textX}" y="26" font-size="12" fill="${THEME.text}"${fit(`${owner}/`, 12)}>${escapeXml(owner)}/</text>
-  <text x="${textX}" y="45" font-size="16" font-weight="600" fill="${THEME.title}"${fit(repo, 16)}>${escapeXml(repo)}</text>
-  <g transform="translate(${textX},52) scale(0.48)" fill="none" stroke="${CONTRIB_ACCENT}" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round">${MERGE_PATHS}</g>
-  <text x="${textX + 17}" y="63" font-size="12" fill="${THEME.title}">${prLabel}</text>
-  <text x="${width - 12}" y="63" text-anchor="end" font-size="12" fill="${THEME.text}">★ ${formatCount(stars)}</text>
-</svg>
-`;
-}
-
-function contributionCardSvg({ fullName, stars, merged, takenOver, image, compact }) {
-  if (compact) return compactContributionCardSvg({ fullName, stars, merged, takenOver, image });
-  const [owner, repo] = fullName.split("/");
-  const width = 320;
-  const height = 72;
-  const prLabel = contributionLabel(merged, takenOver);
-  return `<svg xmlns="http://www.w3.org/2000/svg" width="${width}" height="${height}" viewBox="0 0 ${width} ${height}" role="img" aria-label="${escapeXml(fullName)}: ${prLabel}">
-  <style>text { font-family: ${FONT}; }</style>
-  <defs><clipPath id="logo"><rect x="16" y="16" width="40" height="40" rx="8"/></clipPath></defs>
-  <rect x="0.5" y="0.5" width="${width - 1}" height="${height - 1}" rx="10" fill="${THEME.bg}" stroke="${THEME.border}"/>
-  <rect x="0.5" y="18" width="3" height="${height - 36}" rx="1.5" fill="${CONTRIB_ACCENT}"/>
-  <image href="${image}" x="16" y="16" width="40" height="40" clip-path="url(#logo)"/>
-  <text x="68" y="33" font-size="15"><tspan fill="${THEME.text}">${escapeXml(owner)}/</tspan><tspan font-weight="600" fill="${THEME.title}">${escapeXml(repo)}</tspan></text>
-  <g transform="translate(68,43) scale(0.5)" fill="none" stroke="${CONTRIB_ACCENT}" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round">${MERGE_PATHS}</g>
-  <text x="84" y="53" font-size="12" fill="${THEME.title}">${prLabel}</text>
-  <text x="${width - 16}" y="53" text-anchor="end" font-size="12" fill="${THEME.text}">★ ${formatCount(stars)}</text>
+  <rect x="0.5" y="0.5" width="${width - 1}" height="${height - 1}" rx="12" fill="${THEME.bg}" stroke="${THEME.border}"/>
+  ${dividers.join("\n  ")}
+  ${cells.join("\n  ")}
 </svg>
 `;
 }
@@ -410,10 +382,9 @@ console.log(`Generated ${results.length} pin cards`);
 
 const mergedCounts = await mergedPrCountsByRepo();
 const contributions = await Promise.all(CONTRIBUTIONS.map((contribution) => fetchContribution(contribution, mergedCounts)));
+contributions.sort((a, b) => b.stars - a.stars);
 const contribDir = fileURLToPath(new URL("./contrib/", import.meta.url));
 rmSync(contribDir, { recursive: true, force: true });
 mkdirSync(contribDir, { recursive: true });
-for (const data of contributions) {
-  writeFileSync(contribDir + data.fullName.toLowerCase().replace("/", "-") + ".svg", contributionCardSvg(data));
-}
-console.log(`Generated ${contributions.length} contribution cards`);
+writeFileSync(`${contribDir}panel.svg`, contributionsPanelSvg(contributions));
+console.log(`Generated contributions panel with ${contributions.length} repos`);

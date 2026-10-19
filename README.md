@@ -78,44 +78,7 @@ Istanbul, Turkey · from Ukraine 🇺🇦 · 3+ years professional experience
 
 ## Contributed to
 
-<p>
-<a href="https://github.com/pingdotgg/t3code/pulls?q=is%3Apr+author%3AMarve10s+is%3Amerged"><img src="./profile/contrib/pingdotgg-t3code.svg" alt="pingdotgg/t3code" width="32.6%" /></a>
-<a href="https://github.com/Effect-TS/effect/pulls?q=is%3Apr+author%3AMarve10s+is%3Amerged"><img src="./profile/contrib/effect-ts-effect.svg" alt="Effect-TS/effect" width="32.6%" /></a>
-<a href="https://github.com/Emanuele-web04/synara/pulls?q=is%3Apr+author%3AMarve10s+is%3Amerged"><img src="./profile/contrib/emanuele-web04-synara.svg" alt="Emanuele-web04/synara" width="32.6%" /></a>
-</p>
-
-<p>
-<a href="https://github.com/react/react-native/commits?author=Marve10s"><img src="./profile/contrib/react-react-native.svg" alt="react/react-native" width="32.6%" /></a>
-<a href="https://github.com/react-hook-form/react-hook-form/pulls?q=is%3Apr+author%3AMarve10s+is%3Amerged"><img src="./profile/contrib/react-hook-form-react-hook-form.svg" alt="react-hook-form/react-hook-form" width="32.6%" /></a>
-<a href="https://github.com/ianstormtaylor/slate/pulls?q=is%3Apr+author%3AMarve10s+is%3Amerged"><img src="./profile/contrib/ianstormtaylor-slate.svg" alt="ianstormtaylor/slate" width="32.6%" /></a>
-</p>
-
-<p>
-<a href="https://github.com/oxc-project/oxc/pull/26926"><img src="./profile/contrib/oxc-project-oxc.svg" alt="oxc-project/oxc" width="32.6%" /></a>
-<a href="https://github.com/tester-army/e2e/pulls?q=is%3Apr+author%3AMarve10s+is%3Amerged"><img src="./profile/contrib/tester-army-e2e.svg" alt="tester-army/e2e" width="32.6%" /></a>
-<a href="https://github.com/nicklockwood/SwiftFormat/pulls?q=is%3Apr+author%3AMarve10s+is%3Amerged"><img src="./profile/contrib/nicklockwood-swiftformat.svg" alt="nicklockwood/SwiftFormat" width="32.6%" /></a>
-</p>
-
-<p>
-<a href="https://github.com/voidzero-dev/vite-plus/pulls?q=is%3Apr+author%3AMarve10s+is%3Amerged"><img src="./profile/contrib/voidzero-dev-vite-plus.svg?v=compact2" alt="voidzero-dev/vite-plus" width="24.4%" /></a>
-<a href="https://github.com/react-hook-form/resolvers/pulls?q=is%3Apr+author%3AMarve10s+is%3Amerged"><img src="./profile/contrib/react-hook-form-resolvers.svg?v=compact2" alt="react-hook-form/resolvers" width="24.4%" /></a>
-<a href="https://github.com/ryansolid/dom-expressions/pulls?q=is%3Apr+author%3AMarve10s+is%3Amerged"><img src="./profile/contrib/ryansolid-dom-expressions.svg?v=compact2" alt="ryansolid/dom-expressions" width="24.4%" /></a>
-<a href="https://github.com/modevol-com/gqloom/pulls?q=is%3Apr+author%3AMarve10s+is%3Amerged"><img src="./profile/contrib/modevol-com-gqloom.svg?v=compact2" alt="modevol-com/gqloom" width="24.4%" /></a>
-</p>
-
-<p>
-<a href="https://github.com/Effect-TS/tsgo/pulls?q=is%3Apr+author%3AMarve10s+is%3Amerged"><img src="./profile/contrib/effect-ts-tsgo.svg?v=compact2" alt="Effect-TS/tsgo" width="24.4%" /></a>
-<a href="https://github.com/lucas-barake/effect-form/pulls?q=is%3Apr+author%3AMarve10s+is%3Amerged"><img src="./profile/contrib/lucas-barake-effect-form.svg?v=compact2" alt="lucas-barake/effect-form" width="24.4%" /></a>
-<a href="https://github.com/nounder/effect-start/pulls?q=is%3Apr+author%3AMarve10s+is%3Amerged"><img src="./profile/contrib/nounder-effect-start.svg?v=compact2" alt="nounder/effect-start" width="24.4%" /></a>
-<a href="https://github.com/lloydrichards/effect-boxes/pulls?q=is%3Apr+author%3AMarve10s+is%3Amerged"><img src="./profile/contrib/lloydrichards-effect-boxes.svg?v=compact2" alt="lloydrichards/effect-boxes" width="24.4%" /></a>
-</p>
-
-<p>
-<a href="https://github.com/rjdellecese/effect-units/pulls?q=is%3Apr+author%3AMarve10s+is%3Amerged"><img src="./profile/contrib/rjdellecese-effect-units.svg?v=compact2" alt="rjdellecese/effect-units" width="24.4%" /></a>
-<a href="https://github.com/tobimori/effect-attio/pulls?q=is%3Apr+author%3AMarve10s+is%3Amerged"><img src="./profile/contrib/tobimori-effect-attio.svg?v=compact2" alt="tobimori/effect-attio" width="24.4%" /></a>
-<a href="https://github.com/jarrednorrisdev/effect-atom-svelte/pulls?q=is%3Apr+author%3AMarve10s+is%3Amerged"><img src="./profile/contrib/jarrednorrisdev-effect-atom-svelte.svg?v=compact2" alt="jarrednorrisdev/effect-atom-svelte" width="24.4%" /></a>
-<a href="https://github.com/leonitousconforti/eftar/pulls?q=is%3Apr+author%3AMarve10s+is%3Amerged"><img src="./profile/contrib/leonitousconforti-eftar.svg?v=compact2" alt="leonitousconforti/eftar" width="24.4%" /></a>
-</p>
+<a href="https://github.com/pulls?q=is%3Apr+author%3AMarve10s+is%3Amerged+-user%3AMarve10s"><img src="./profile/contrib/panel.svg" alt="Open-source repositories I have contributed to" width="100%" /></a>
 
 ---
 
