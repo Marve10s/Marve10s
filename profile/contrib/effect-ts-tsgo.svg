@@ -8,5 +8,5 @@
   <text x="56" y="45" font-size="16" font-weight="600" fill="#CFCECD">tsgo</text>
   <g transform="translate(56,52) scale(0.48)" fill="none" stroke="#E8612D" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="18" cy="18" r="3"/><circle cx="6" cy="6" r="3"/><path d="M6 21V9a9 9 0 0 0 9 9"/></g>
   <text x="73" y="63" font-size="12" fill="#CFCECD">1 merged PR</text>
-  <text x="238" y="63" text-anchor="end" font-size="12" fill="#656363">★ 300</text>
+  <text x="238" y="63" text-anchor="end" font-size="12" fill="#656363">★ 302</text>
 </svg>
