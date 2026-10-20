@@ -26,6 +26,7 @@ const CONTRIBUTIONS = [
   { owner: "react-hook-form", repo: "react-hook-form" },
   { owner: "trpc", repo: "trpc" },
   { owner: "ianstormtaylor", repo: "slate", logo: "slate.png" },
+  { owner: "immerjs", repo: "immer" },
   { owner: "oxc-project", repo: "oxc", takenOver: [26926] },
   { owner: "tester-army", repo: "e2e", takenOver: [873] },
   { owner: "nicklockwood", repo: "SwiftFormat", logo: "swift.svg" },
