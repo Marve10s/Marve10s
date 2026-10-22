@@ -27,6 +27,8 @@ const CONTRIBUTIONS = [
   { owner: "trpc", repo: "trpc" },
   { owner: "ianstormtaylor", repo: "slate", logo: "slate.png" },
   { owner: "immerjs", repo: "immer" },
+  { owner: "floating-ui", repo: "floating-ui" },
+  { owner: "alchemy-run", repo: "distilled" },
   { owner: "oxc-project", repo: "oxc", takenOver: [26926] },
   { owner: "tester-army", repo: "e2e", takenOver: [873] },
   { owner: "nicklockwood", repo: "SwiftFormat", logo: "swift.svg" },
