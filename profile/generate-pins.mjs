@@ -383,7 +383,7 @@ console.log(`Generated ${results.length} pin cards`);
 
 const mergedCounts = await mergedPrCountsByRepo();
 const contributions = await Promise.all(CONTRIBUTIONS.map((contribution) => fetchContribution(contribution, mergedCounts)));
-contributions.sort((a, b) => b.stars - a.stars);
+contributions.sort((a, b) => b.prs - a.prs || b.stars - a.stars);
 const contribDir = fileURLToPath(new URL("./contrib/", import.meta.url));
 rmSync(contribDir, { recursive: true, force: true });
 mkdirSync(contribDir, { recursive: true });
