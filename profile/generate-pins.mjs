@@ -29,6 +29,7 @@ const CONTRIBUTIONS = [
   { owner: "immerjs", repo: "immer" },
   { owner: "floating-ui", repo: "floating-ui" },
   { owner: "alchemy-run", repo: "distilled" },
+  { owner: "mui", repo: "material-ui" },
   { owner: "oxc-project", repo: "oxc", takenOver: [26926] },
   { owner: "tester-army", repo: "e2e", takenOver: [873] },
   { owner: "nicklockwood", repo: "SwiftFormat", logo: "swift.svg" },
@@ -42,6 +43,7 @@ const CONTRIBUTIONS = [
   { owner: "lloydrichards", repo: "effect-boxes", logo: "effect.png" },
   { owner: "rjdellecese", repo: "effect-units", logo: "effect.png" },
   { owner: "tobimori", repo: "effect-attio", logo: "effect.png" },
+  { owner: "tatemz", repo: "effect-bdd", logo: "effect.png" },
   { owner: "jarrednorrisdev", repo: "effect-atom-svelte", logo: "effect-svelte.svg" },
   { owner: "leonitousconforti", repo: "eftar", logo: "effect.png" },
 ];
