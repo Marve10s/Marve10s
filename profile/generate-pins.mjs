@@ -30,6 +30,7 @@ const CONTRIBUTIONS = [
   { owner: "floating-ui", repo: "floating-ui" },
   { owner: "alchemy-run", repo: "distilled" },
   { owner: "mui", repo: "material-ui" },
+  { owner: "TanStack", repo: "virtual" },
   { owner: "oxc-project", repo: "oxc", takenOver: [26926] },
   { owner: "tester-army", repo: "e2e", takenOver: [873] },
   { owner: "nicklockwood", repo: "SwiftFormat", logo: "swift.svg" },
