@@ -18,14 +18,11 @@ Istanbul, Turkey · from Ukraine 🇺🇦 · 3+ years professional experience
 
 ## Experience
 
-<p>
-<a href="https://listening.com"><img src="./profile/experience/listening.svg" alt="Listening.com: Full Stack TypeScript Developer, Jan 2025 to now" width="49.5%" /></a>
-<a href="https://www.upwork.com/freelancers/~010112495fc6870d30"><img src="./profile/experience/upwork.svg" alt="Upwork: Full Stack TypeScript Developer, Jun 2024 to now" width="49.5%" /></a>
-</p>
+<p><a href="https://listening.com"><img src="./assets/profile/tile-listening.svg" width="423" alt="Listening.com: Full Stack TypeScript Developer, Jan 2025 to now. Web app, Chromium extension, React Native mobile app and Electron desktop app." /></a><a href="https://www.upwork.com/freelancers/~010112495fc6870d30"><img src="./assets/profile/tile-upwork.svg" width="423" alt="Upwork: Full Stack TypeScript Developer, Jun 2024 to now. 10+ full-stack projects for international clients." /></a></p>
 
 ## Tech Stack
 
-<img src="./profile/stack/featured.svg" alt="Main stack: TanStack, Astro, Next.js, Expo, Hono, React, Effect-TS" />
+<img src="./assets/profile/stack.svg" alt="Main stack: TanStack, Astro, Next.js, Expo, Hono, React, Effect-TS" />
 
 <details>
 <summary><b>All skills</b></summary>
@@ -71,14 +68,13 @@ Istanbul, Turkey · from Ukraine 🇺🇦 · 3+ years professional experience
 
 ## Projects
 
-<p>
-<a href="https://github.com/Marve10s/Better-Fullstack"><img src="./profile/pins/marve10s-better-fullstack.svg" alt="Better-Fullstack" width="49.5%" /></a>
-<a href="https://github.com/Marve10s/awesome-effect"><img src="./profile/pins/marve10s-awesome-effect.svg" alt="awesome-effect" width="49.5%" /></a>
-</p>
+<p><a href="https://github.com/Marve10s/Better-Fullstack"><img src="./assets/profile/tile-better-fullstack.svg" width="423" alt="Better Fullstack: scaffold full-stack apps in one command. better-fullstack.dev" /></a><a href="https://github.com/Marve10s/awesome-effect"><img src="./assets/profile/tile-awesome-effect.svg" width="423" alt="awesome-effect: the Effect ecosystem, curated. Featured in This Week in Effect #133." /></a></p>
 
 ## Contributed to
 
-<a href="https://github.com/pulls?q=is%3Apr+author%3AMarve10s+is%3Amerged+-user%3AMarve10s"><img src="./profile/contrib/panel.svg" alt="Open-source repositories I have contributed to" width="100%" /></a>
+<p><a href="https://github.com/pulls?q=is%3Apr+author%3AMarve10s+is%3Amerged+repo%3AEffect-TS%2Feffect"><img src="./assets/profile/contrib-effect.svg" width="211" alt="Effect-TS/effect: merged pull requests" /></a><a href="https://github.com/pulls?q=is%3Apr+author%3AMarve10s+is%3Amerged+repo%3Apingdotgg%2Ft3code"><img src="./assets/profile/contrib-t3code.svg" width="211" alt="pingdotgg/t3code: merged pull requests" /></a><a href="https://github.com/react/react-native/commits?author=Marve10s"><img src="./assets/profile/contrib-react-native.svg" width="211" alt="react/react-native: pull requests landed" /></a><a href="https://github.com/pulls?q=is%3Apr+author%3AMarve10s+is%3Amerged+repo%3Amui%2Fmaterial-ui"><img src="./assets/profile/contrib-material-ui.svg" width="211" alt="mui/material-ui: merged pull requests" /></a></p>
+
+<a href="https://github.com/pulls?q=is%3Apr+author%3AMarve10s+is%3Amerged+-user%3AMarve10s"><img src="./profile/contrib/panel.svg" alt="More open-source repositories I have contributed to" width="100%" /></a>
 
 ---
 
