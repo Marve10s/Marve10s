@@ -30,37 +30,37 @@ Istanbul, Turkey · from Ukraine 🇺🇦 · 3+ years professional experience
 
 **Language**
 
-![TypeScript](https://img.shields.io/badge/-TypeScript-211E1E?style=flat-square&logo=typescript&logoColor=CFCECD)
-![JavaScript](https://img.shields.io/badge/-JavaScript-211E1E?style=flat-square&logo=javascript&logoColor=CFCECD)
+![TypeScript](https://img.shields.io/badge/-TypeScript-0C0C0C?style=flat-square&logo=typescript&logoColor=EDEDED)
+![JavaScript](https://img.shields.io/badge/-JavaScript-0C0C0C?style=flat-square&logo=javascript&logoColor=EDEDED)
 
 **Frontend**
 
-![React](https://img.shields.io/badge/-React-211E1E?style=flat-square&logo=react&logoColor=CFCECD)
-![React Native](https://img.shields.io/badge/-React%20Native-211E1E?style=flat-square&logo=react&logoColor=CFCECD)
-![TanStack](https://img.shields.io/badge/-TanStack-211E1E?style=flat-square&logo=tanstack&logoColor=CFCECD)
-![Astro](https://img.shields.io/badge/-Astro-211E1E?style=flat-square&logo=astro&logoColor=CFCECD)
-![Next.js](https://img.shields.io/badge/-Next.js-211E1E?style=flat-square&logo=nextdotjs&logoColor=CFCECD)
-![Tailwind CSS](https://img.shields.io/badge/-Tailwind%20CSS-211E1E?style=flat-square&logo=tailwindcss&logoColor=CFCECD)
-![shadcn/ui](https://img.shields.io/badge/-shadcn%2Fui-211E1E?style=flat-square&logo=shadcnui&logoColor=CFCECD)
-![Motion](https://img.shields.io/badge/-Motion-211E1E?style=flat-square&logo=framer&logoColor=CFCECD)
-![WXT](https://img.shields.io/badge/-WXT-211E1E?style=flat-square&logo=wxt&logoColor=CFCECD)
+![React](https://img.shields.io/badge/-React-0C0C0C?style=flat-square&logo=react&logoColor=EDEDED)
+![React Native](https://img.shields.io/badge/-React%20Native-0C0C0C?style=flat-square&logo=react&logoColor=EDEDED)
+![TanStack](https://img.shields.io/badge/-TanStack-0C0C0C?style=flat-square&logo=tanstack&logoColor=EDEDED)
+![Astro](https://img.shields.io/badge/-Astro-0C0C0C?style=flat-square&logo=astro&logoColor=EDEDED)
+![Next.js](https://img.shields.io/badge/-Next.js-0C0C0C?style=flat-square&logo=nextdotjs&logoColor=EDEDED)
+![Tailwind CSS](https://img.shields.io/badge/-Tailwind%20CSS-0C0C0C?style=flat-square&logo=tailwindcss&logoColor=EDEDED)
+![shadcn/ui](https://img.shields.io/badge/-shadcn%2Fui-0C0C0C?style=flat-square&logo=shadcnui&logoColor=EDEDED)
+![Motion](https://img.shields.io/badge/-Motion-0C0C0C?style=flat-square&logo=framer&logoColor=EDEDED)
+![WXT](https://img.shields.io/badge/-WXT-0C0C0C?style=flat-square&logo=wxt&logoColor=EDEDED)
 
 **Backend**
 
-![TanStack Start](https://img.shields.io/badge/-TanStack%20Start-211E1E?style=flat-square&logo=tanstack&logoColor=CFCECD)
-![Hono](https://img.shields.io/badge/-Hono-211E1E?style=flat-square&logo=hono&logoColor=CFCECD)
-![Supabase](https://img.shields.io/badge/-Supabase-211E1E?style=flat-square&logo=supabase&logoColor=CFCECD)
-![PostgreSQL](https://img.shields.io/badge/-PostgreSQL-211E1E?style=flat-square&logo=postgresql&logoColor=CFCECD)
-![Drizzle ORM](https://img.shields.io/badge/-Drizzle%20ORM-211E1E?style=flat-square&logo=drizzle&logoColor=CFCECD)
-![Convex](https://img.shields.io/badge/-Convex-211E1E?style=flat-square&logo=convex&logoColor=CFCECD)
-![Effect-TS](https://img.shields.io/badge/-Effect--TS-211E1E?style=flat-square&logo=effect&logoColor=CFCECD)
+![TanStack Start](https://img.shields.io/badge/-TanStack%20Start-0C0C0C?style=flat-square&logo=tanstack&logoColor=EDEDED)
+![Hono](https://img.shields.io/badge/-Hono-0C0C0C?style=flat-square&logo=hono&logoColor=EDEDED)
+![Supabase](https://img.shields.io/badge/-Supabase-0C0C0C?style=flat-square&logo=supabase&logoColor=EDEDED)
+![PostgreSQL](https://img.shields.io/badge/-PostgreSQL-0C0C0C?style=flat-square&logo=postgresql&logoColor=EDEDED)
+![Drizzle ORM](https://img.shields.io/badge/-Drizzle%20ORM-0C0C0C?style=flat-square&logo=drizzle&logoColor=EDEDED)
+![Convex](https://img.shields.io/badge/-Convex-0C0C0C?style=flat-square&logo=convex&logoColor=EDEDED)
+![Effect-TS](https://img.shields.io/badge/-Effect--TS-0C0C0C?style=flat-square&logo=effect&logoColor=EDEDED)
 
 **Infrastructure**
 
-![Vercel](https://img.shields.io/badge/-Vercel-211E1E?style=flat-square&logo=vercel&logoColor=CFCECD)
-![Railway](https://img.shields.io/badge/-Railway-211E1E?style=flat-square&logo=railway&logoColor=CFCECD)
-![Render](https://img.shields.io/badge/-Render-211E1E?style=flat-square&logo=render&logoColor=CFCECD)
-![Netlify](https://img.shields.io/badge/-Netlify-211E1E?style=flat-square&logo=netlify&logoColor=CFCECD)
+![Vercel](https://img.shields.io/badge/-Vercel-0C0C0C?style=flat-square&logo=vercel&logoColor=EDEDED)
+![Railway](https://img.shields.io/badge/-Railway-0C0C0C?style=flat-square&logo=railway&logoColor=EDEDED)
+![Render](https://img.shields.io/badge/-Render-0C0C0C?style=flat-square&logo=render&logoColor=EDEDED)
+![Netlify](https://img.shields.io/badge/-Netlify-0C0C0C?style=flat-square&logo=netlify&logoColor=EDEDED)
 
 </details>
 
@@ -78,6 +78,8 @@ Istanbul, Turkey · from Ukraine 🇺🇦 · 3+ years professional experience
 
 <p><a href="https://github.com/pulls?q=is%3Apr+author%3AMarve10s+is%3Amerged+repo%3AEffect-TS%2Feffect"><img src="./assets/profile/contrib-effect.svg" width="211" alt="Effect-TS/effect: merged pull requests" /></a><a href="https://github.com/pulls?q=is%3Apr+author%3AMarve10s+is%3Amerged+repo%3Apingdotgg%2Ft3code"><img src="./assets/profile/contrib-t3code.svg" width="211" alt="pingdotgg/t3code: merged pull requests" /></a><a href="https://github.com/react/react-native/commits?author=Marve10s"><img src="./assets/profile/contrib-react-native.svg" width="211" alt="react/react-native: pull requests landed" /></a><a href="https://github.com/pulls?q=is%3Apr+author%3AMarve10s+is%3Amerged+repo%3Amui%2Fmaterial-ui"><img src="./assets/profile/contrib-material-ui.svg" width="211" alt="mui/material-ui: merged pull requests" /></a></p>
 
+<img src="./assets/profile/used-by.svg" width="100%" alt="Libraries I have fixed are used by Netflix, Microsoft, Amazon, Meta, Google, Cloudflare, Spotify, NASA, Shopify, Walmart, J.P. Morgan, Palantir, Grafana Labs, Supabase, OpenRouter, MasterClass, OpenCode and T3 Code." />
+
 <a href="https://github.com/pulls?q=is%3Apr+author%3AMarve10s+is%3Amerged+-user%3AMarve10s"><img src="./profile/contrib/panel.svg" alt="More open-source repositories I have contributed to" width="100%" /></a>
 
 ---
@@ -86,5 +88,5 @@ Istanbul, Turkey · from Ukraine 🇺🇦 · 3+ years professional experience
 
 <p>
 <img src="./profile/streak.svg" alt="GitHub streak statistics" width="49.5%" />
-<img src="https://github-stats-extended.vercel.app/api?username=Marve10s&show_icons=true&bg_color=211E1E&title_color=CFCECD&text_color=656363&icon_color=CFCECD&hide_border=true&include_all_commits=true" width="49.5%" />
+<img src="https://github-stats-extended.vercel.app/api?username=Marve10s&show_icons=true&bg_color=0C0C0C&title_color=EDEDED&text_color=6B6B6B&icon_color=EDEDED&hide_border=true&include_all_commits=true" width="49.5%" />
 </p>

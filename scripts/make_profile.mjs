@@ -13,7 +13,7 @@ fs.mkdirSync(CACHE, { recursive: true });
 
 const OWNER = 'Marve10s';
 const RAW = 'https://raw.githubusercontent.com';
-const THEME = { bg: '#211E1E', border: '#3A3535', title: '#CFCECD', soft: '#8F8B8A', dim: '#656363', chip: '#2C2828' };
+const THEME = { bg: '#0C0C0C', border: '#262626', title: '#EDEDED', soft: '#A1A1A1', dim: '#6B6B6B', chip: '#161616' };
 
 const fontPath = (pkg, file) => path.join(HERE, 'node_modules', '@fontsource', pkg, 'files', file);
 const font = (pkg, file) => {
@@ -117,7 +117,7 @@ function scrollingList(names, w, h, { size = 11, lead = 17, speed = 10 } = {}) {
   const block = perCol * lead;
   const defs = columns.map((list, c) => `<g id="col${c}">${list.map((n, i) => `<text x="${16 + c * colW}" y="${16 + i * lead}" class="${(i + c) % 5 === 2 ? 'hi' : 'lo'}">${esc(n)}</text>`).join('')}</g>`).join('');
   const body = columns.map((_, c) => `<g class="sc${c}"><use href="#col${c}"/><use href="#col${c}" y="${block}"/></g>`).join('');
-  const css = `@font-face{font-family:GM;src:url(data:font/woff2;base64,${monoWoff2}) format('woff2')}text{font-family:GM,ui-monospace,Menlo,monospace;font-size:${size}px;white-space:pre}.lo{fill:#5a5656}.hi{fill:${THEME.title}}`
+  const css = `@font-face{font-family:GM;src:url(data:font/woff2;base64,${monoWoff2}) format('woff2')}text{font-family:GM,ui-monospace,Menlo,monospace;font-size:${size}px;white-space:pre}.lo{fill:#5A5A5A}.hi{fill:${THEME.title}}`
     + [0, 1, 2].map((c) => `@keyframes sc${c}{from{transform:translateY(${-block * (c / 3)}px)}to{transform:translateY(${-block * (1 + c / 3)}px)}}.sc${c}{animation:sc${c} ${block / (speed + c * 2)}s linear infinite}`).join('');
   const fade = `<linearGradient id="fd" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="${THEME.bg}"/><stop offset=".22" stop-color="${THEME.bg}" stop-opacity="0"/><stop offset=".72" stop-color="${THEME.bg}" stop-opacity="0"/><stop offset="1" stop-color="${THEME.bg}"/></linearGradient>`;
   return { css, art: () => `<defs>${fade}${defs}</defs>${body}<rect width="${w}" height="${h}" fill="url(#fd)"/>` };
@@ -250,6 +250,73 @@ const [bfs, awesome] = await Promise.all([github(`repos/${OWNER}/Better-Fullstac
 <g transform="translate(${gx} 0)"><rect width="${tw}" height="${th}" rx="12" fill="${THEME.bg}" stroke="${THEME.border}"/>
 <g class="in"><rect x="${pad}" y="${(th - logo) / 2}" width="${logo}" height="${logo}" rx="10" fill="#0c0c0c"/><g transform="translate(${pad + 8} ${(th - logo) / 2 + 8}) scale(${(logo - 16) / 220})">${paths}</g>
 ${text(BOLD, '3 vulnerabilities reported to Effect', nameX, th / 2 - 3, 15.5, THEME.title, { track: -0.2 })}${text(SANS, 'High, moderate and low · confirmed by maintainers', nameX, th / 2 + 16, 12, THEME.soft)}</g></g>
+</svg>`);
+}
+
+{
+  const scenes = [
+    ['Effect', 'effect.svg', '#FFFFFF', [['Cloudflare', 'cloudflare.svg'], ['OpenRouter', 'openrouter.svg'], ['OpenCode', 'opencode.svg'], ['T3 Code', 't3code.svg']]],
+    ['Material UI', 'material-ui.svg', '#007FFF', [['Netflix', 'netflix.svg'], ['NASA', 'nasa.svg'], ['Spotify', 'spotify.svg'], ['Amazon', 'amazon.svg']]],
+    ['React Native', 'react.svg', '#61DAFB', [['Meta', 'meta.svg'], ['Microsoft', 'microsoft.svg'], ['Amazon', 'amazon.svg'], ['Shopify', 'shopify.svg']]],
+    ['React Hook Form', 'react-hook-form.svg', '#EC5990', [['Grafana', 'grafana.svg'], ['Supabase', 'supabase.svg']]],
+    ['tRPC', 'trpc.svg', '#398CCB', [['Netflix', 'netflix.svg']]],
+    ['Cheerio', 'cheeriojs.png', '#E88C1F', [['Google', 'google.svg']]],
+    ['Floating UI', 'floating-ui.png', '#FF5C8A', [['Palantir', 'palantir.svg']]],
+  ];
+  const logo = (file) => asset(`logos/used-by/${file}`);
+  const title = "Libraries I've improved constantly and who uses them";
+  const w = 916, h = 404, pad = 32;
+  const hold = 3.2, swap = 0.9, cycle = scenes.length * hold;
+  const p = (t) => `${(t / cycle * 100).toFixed(3)}%`;
+  const expo = 'cubic-bezier(.16,1,.3,1)', inOut = 'cubic-bezier(.65,0,.35,1)';
+  const gridX = 430, colW = 240, rowY = [118, 206], tabY = 362, charW = 7.5, tabGap = 28;
+  const tabs = [];
+  let tx = pad;
+  for (const [lib] of scenes) { tabs.push(tx); tx += lib.length * charW + tabGap; }
+  let css = `.sc{opacity:0;animation:sc ${cycle}s linear infinite}.s0{opacity:1}
+@keyframes sc{0%{opacity:0;transform:translateX(40px) scale(1.03);animation-timing-function:${expo}}${p(swap)}{opacity:1;transform:none}${p(hold)}{opacity:1;transform:none;animation-timing-function:${inOut}}${p(hold + swap)}{opacity:0;transform:translateX(-28px) scale(.96)}100%{opacity:0;transform:translateX(-28px) scale(.96)}}
+.rise{animation:rise ${cycle}s linear infinite;transform-box:fill-box;transform-origin:0 100%}
+@keyframes rise{0%,${p(0.12)}{transform:translateY(64px) rotate(7deg);animation-timing-function:${expo}}${p(1.07)},100%{transform:none}}
+.co{animation:co ${cycle}s linear infinite}
+@keyframes co{0%,${p(0.3)}{opacity:0;transform:translateY(20px);animation-timing-function:${expo}}${p(1.15)},100%{opacity:1;transform:none}}
+.gl{opacity:0;animation:gl ${cycle}s linear infinite}.g0{opacity:1}
+@keyframes gl{0%{opacity:0;animation-timing-function:${inOut}}${p(swap)},${p(hold)}{opacity:1;animation-timing-function:${inOut}}${p(hold + swap)},100%{opacity:0}}
+.drift{animation:drift 18s ease-in-out infinite alternate;transform-box:fill-box;transform-origin:center}
+@keyframes drift{to{transform:translate(70px,-18px) scale(1.15)}}
+.tb{fill:${THEME.dim};animation:tb ${cycle}s linear infinite}.t0{fill:${THEME.title}}
+@keyframes tb{0%{fill:${THEME.dim}}${p(swap)},${p(hold)}{fill:${THEME.title}}${p(hold + swap)},100%{fill:${THEME.dim}}}`;
+  const delay = (i, extra = 0) => `animation-delay:${(i * hold - swap + extra).toFixed(3)}s`;
+  let slide = '';
+  scenes.forEach((_, i) => {
+    const prev = tabs[(i - 1 + scenes.length) % scenes.length];
+    slide += `${p(Math.max(i * hold - swap, 0))}{transform:translateX(${(i === 0 ? tabs[0] : prev).toFixed(1)}px);animation-timing-function:${inOut}}${p(i * hold)}{transform:translateX(${tabs[i].toFixed(1)}px)}`;
+  });
+  css += `.ind{animation:ind ${cycle}s linear infinite}@keyframes ind{${slide}${p(cycle - swap)}{transform:translateX(${tabs.at(-1).toFixed(1)}px);animation-timing-function:${inOut}}100%{transform:translateX(${tabs[0].toFixed(1)}px)}}`;
+  css += scenes.map((_, i) => `.s${i},.g${i},.t${i},.s${i} .rise,.s${i} .co{${delay(i)}}${[0, 1, 2, 3].map((j) => `.s${i} .c${j}{${delay(i, j * 0.07)}}`).join('')}.s${i} .r1{${delay(i, 0.06)}}`).join('');
+  css += '@media (prefers-reduced-motion:reduce){*{animation:none!important}}';
+  const glows = scenes.map(([, , tint], i) => `<ellipse class="gl g${i}" cx="230" cy="190" rx="250" ry="120" fill="${tint}" opacity="0"/>`).join('');
+  const stage = scenes.map(([lib, libLogo, , users], i) => {
+    const people = users.map(([company, file], j) => {
+      const x = gridX + (j % 2) * colW, y = rowY[Math.floor(j / 2)];
+      return `<g class="co c${j}"><image href="${logo(file)}" x="${x}" y="${y}" width="40" height="40"/>${text(SANS, company, x + 56, y + 27, 19, THEME.title, { track: -0.2 })}</g>`;
+    }).join('');
+    return `<g class="sc s${i}"><g clip-path="url(#mk)"><g class="rise"><image href="${logo(libLogo)}" x="${pad}" y="100" width="56" height="56"/></g><g class="rise r1">${text(BOLD, lib, pad, 232, 46, THEME.title, { track: -1.4 })}</g></g>${people}</g>`;
+  }).join('');
+  const tabRow = scenes.map(([lib], i) => `<text class="tb t${i}" x="${tabs[i].toFixed(1)}" y="${tabY}">${esc(lib)}</text>`).join('');
+  const label = `${title}: ${scenes.map(([lib, , , users]) => `${lib} (${users.map(([c]) => c).join(', ')})`).join('; ')}.`;
+  write('used-by.svg', `<svg xmlns="http://www.w3.org/2000/svg" width="${w}" height="${h}" viewBox="0 0 ${w} ${h}" role="img" aria-label="${esc(label)}">
+<title>${esc(label)}</title>
+<defs><clipPath id="card"><rect width="${w}" height="${h}" rx="14"/></clipPath><clipPath id="mk"><rect x="0" y="88" width="${gridX - 40}" height="166"/></clipPath><filter id="bl" x="-50%" y="-50%" width="200%" height="200%"><feGaussianBlur stdDeviation="70"/></filter></defs>
+<style>@font-face{font-family:GM;src:url(data:font/woff2;base64,${monoWoff2}) format('woff2')}text{font-family:GM,ui-monospace,Menlo,monospace}.ti{font-size:15px;fill:${THEME.soft}}.tb{font-size:12.5px}.sc,.co,.ind{transform-box:view-box}${css}</style>
+<g clip-path="url(#card)"><rect width="${w}" height="${h}" fill="${THEME.bg}"/>
+<g filter="url(#bl)" opacity=".2"><g class="drift">${glows}</g></g>
+<text class="ti" x="${pad}" y="50">${esc(title)}</text>
+${stage}
+<path d="M${pad} ${tabY - 28}H${w - pad}" stroke="${THEME.border}"/>
+${tabRow}
+<rect class="ind" x="0" y="${tabY + 12}" width="22" height="2" rx="1" fill="${THEME.title}"/>
+</g>
+<rect x=".5" y=".5" width="${w - 1}" height="${h - 1}" rx="14" fill="none" stroke="${THEME.border}"/>
 </svg>`);
 }
 

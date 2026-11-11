@@ -32,6 +32,7 @@ const CONTRIBUTIONS = [
   { owner: "mui", repo: "material-ui" },
   { owner: "TanStack", repo: "virtual" },
   { owner: "sharkdp", repo: "bat" },
+  { owner: "cheeriojs", repo: "cheerio" },
   { owner: "oxc-project", repo: "oxc", takenOver: [26926] },
   { owner: "tester-army", repo: "e2e", takenOver: [873] },
   { owner: "nicklockwood", repo: "SwiftFormat", logo: "swift.svg" },
@@ -48,6 +49,7 @@ const CONTRIBUTIONS = [
   { owner: "tatemz", repo: "effect-bdd", logo: "effect.png" },
   { owner: "jarrednorrisdev", repo: "effect-atom-svelte", logo: "effect-svelte.svg" },
   { owner: "carloitaben", repo: "conform-to-effect", logo: "effect.png" },
+  { owner: "joepjoosten", repo: "effect-avro", logo: "effect.png" },
   { owner: "leonitousconforti", repo: "eftar", logo: "effect.png" },
 ];
 
@@ -88,12 +90,12 @@ const SKILLS = {
 const FEATURED_STACK = ["tanstack", "astro", "next", "expo", "hono", "react", "effect"];
 
 const THEME = {
-  bg: "#211E1E",
-  title: "#CFCECD",
-  body: "#8F8B8A",
-  text: "#656363",
-  border: "#3A3535",
-  pill: "#2C2828",
+  bg: "#0C0C0C",
+  title: "#EDEDED",
+  body: "#A1A1A1",
+  text: "#6B6B6B",
+  border: "#262626",
+  pill: "#161616",
 };
 
 const FONT = "-apple-system, 'Segoe UI', Helvetica, Arial, sans-serif";
