@@ -347,7 +347,7 @@ function contributionsPanelSvg(contributions) {
   const rows = Math.ceil(contributions.length / columns);
   const width = columns * columnWidth + padX * 2 - 20;
   const height = padY * 2 + rows * rowHeight - 8;
-  const label = contributions.map(({ fullName, prs }) => `${fullName} (${prs} PR${prs === 1 ? "" : "s"})`).join(", ");
+  const label = contributions.map(({ fullName }) => fullName).join(", ");
   const dividers = Array.from({ length: columns - 1 }, (_, i) => {
     const x = padX + (i + 1) * columnWidth - 17;
     return `<line x1="${x}" y1="${padY}" x2="${x}" y2="${height - padY}" stroke="${THEME.border}"/>`;
@@ -360,7 +360,7 @@ function contributionsPanelSvg(contributions) {
     return `<g class="cell" style="animation-delay:${delay}s"><clipPath id="logo${i}"><rect x="${x}" y="${y}" width="20" height="20" rx="5"/></clipPath>
   <image href="${image}" x="${x}" y="${y}" width="20" height="20" clip-path="url(#logo${i})"/>
   <text x="${x + 30}" y="${y + 15}" font-size="14" font-weight="600" fill="${THEME.title}">${escapeXml(repo)}</text>
-  <text x="${x + columnWidth - 34}" y="${y + 15}" text-anchor="end" font-size="12" fill="${THEME.body}">${prs} PR${prs === 1 ? "" : "s"} <tspan fill="${THEME.text}">· ★ ${formatCount(stars)}</tspan></text></g>`;
+  <text x="${x + columnWidth - 34}" y="${y + 15}" text-anchor="end" font-size="12" fill="${THEME.text}">★ ${formatCount(stars)}</text></g>`;
   });
   return `<svg xmlns="http://www.w3.org/2000/svg" width="${width}" height="${height}" viewBox="0 0 ${width} ${height}" role="img" aria-label="Contributed to ${escapeXml(label)}">
   <style>text { font-family: ${FONT}; } .cell { animation: cell .45s cubic-bezier(.2,.8,.2,1) both; } @keyframes cell { from { opacity: 0; transform: translateY(6px); } to { opacity: 1; transform: none; } } @media (prefers-reduced-motion: reduce) { .cell { animation: none; } }</style>

@@ -144,18 +144,18 @@ function counter(logo, w, h) {
     css += last
       ? `.n${i}{animation:on .01s linear ${a.toFixed(3)}s both}`
       : `.n${i}{opacity:0;animation:fl ${(b - a).toFixed(3)}s step-end ${a.toFixed(3)}s}`;
-    digits += text(BOLD, last ? '10+' : String(i), numX, base, 44, THEME.title, { track: -1, cls: `n${i}` });
+    digits += text(BOLD, last ? '650k+' : String(i), numX, base, 38, THEME.title, { track: -1, cls: `n${i}` });
   }
   css += '@keyframes fl{0%,100%{opacity:1}}@keyframes on{from{opacity:0}to{opacity:1}}';
-  const tagX = numX + width(BOLD, '10+', 44, -1) + 16;
+  const tagX = numX + width(BOLD, '650k+', 38, -1) + 14;
   let cx = tagX;
-  const chipRow = ['React', 'Astro', 'TypeScript'].map((c, i) => {
+  const chipRow = ['148k users', '38k+ hours'].map((c, i) => {
     const cw = width(SANS, c, 12) + 18;
     const out = `<g class="in" style="animation-delay:${(0.35 + i * 0.08).toFixed(2)}s"><rect x="${cx}" y="${h / 2 + 4}" width="${cw}" height="22" rx="11" fill="${THEME.chip}" stroke="${THEME.border}"/>${text(SANS, c, cx + 9, h / 2 + 19, 12, THEME.soft)}</g>`;
     cx += cw + 6;
     return out;
   }).join('');
-  const art = () => `<clipPath id="ul"><rect x="${x}" y="${y}" width="${s}" height="${s}" rx="12"/></clipPath><image href="${logo}" x="${x}" y="${y}" width="${s}" height="${s}" clip-path="url(#ul)"/>${digits}${text(SANS, 'client projects delivered', tagX, h / 2 - 8, 13.5, THEME.soft)}${chipRow}`;
+  const art = () => `<clipPath id="ul"><rect x="${x}" y="${y}" width="${s}" height="${s}" rx="12"/></clipPath><image href="${logo}" x="${x}" y="${y}" width="${s}" height="${s}" clip-path="url(#ul)"/>${digits}${text(SANS, 'songs on GiftSong.ai', tagX, h / 2 - 8, 13.5, THEME.soft)}${chipRow}`;
   return { css, art };
 }
 
@@ -165,8 +165,8 @@ function contributionTile({ fullName, prs, stars, image }, { verb, art }, delay)
   const pad = 12, logo = 18, nameX = pad + logo + 8;
   const starText = compact(stars);
   const sw = width(BOLD, starText, 12.5);
-  const count = `${prs} PR${prs === 1 ? '' : 's'} ${verb}`;
-  const title = `${fullName}: ${count}. ${starText} stars.`;
+  const count = 'Contributor';
+  const title = `${fullName}: contributor. ${starText} stars.`;
   return `<svg xmlns="http://www.w3.org/2000/svg" width="${w}" height="${h}" viewBox="0 0 ${w} ${h}" role="img" aria-label="${esc(title)}">
 <title>${esc(title)}</title><defs><clipPath id="c"><rect width="${tw}" height="${th}" rx="12"/></clipPath><clipPath id="ia"><rect width="${tw}" height="${ih}"/></clipPath><clipPath id="lg"><rect x="${pad}" y="${ih + 11}" width="${logo}" height="${logo}" rx="5"/></clipPath></defs>
 <style>${ENTER}.d{animation-delay:${delay}s}@media (prefers-reduced-motion:reduce){*{animation:none!important}}</style>
@@ -236,12 +236,12 @@ const [bfs, awesome] = await Promise.all([github(`repos/${OWNER}/Better-Fullstac
     await still({ url: 'https://www.listening.com/social-og-image.png', crop: [0, 110, 1200, 400] }, ...IMG, 74),
   ];
   const s = slideshow(frames, ...IMG, { hold: 2.8 });
-  write('tile-listening.svg', tile({ name: 'Listening.com', desc: 'Full Stack TypeScript Developer', right: { label: 'Jan 2025 – now' }, sub: 'listening.com', title: 'Listening.com: Full Stack TypeScript Developer, January 2025 to now. Web app, Chromium extension, React Native mobile app and Electron desktop app.' })(s));
+  write('tile-listening.svg', tile({ name: 'Listening.com', desc: 'Senior Full Stack Engineer', right: { label: 'Dec 2024 – now' }, sub: 'listening.com', title: 'Listening.com: Senior Full Stack Engineer, December 2024 to now. Runs the platform for 11k+ monthly users, from Kubernetes and GPU workers to the web, mobile, desktop and extension apps.' })(s));
 }
 
 {
   const logo = `data:image/png;base64,${(await sharp(path.join(ROOT, 'assets/logos/upwork.png')).resize(96, 96).png().toBuffer()).toString('base64')}`;
-  write('tile-upwork.svg', tile({ name: 'Upwork', desc: 'Full Stack TypeScript Developer', right: { label: 'Jun 2024 – now' }, sub: 'freelance', title: 'Upwork: Full Stack TypeScript Developer, June 2024 to now. Delivered 10+ full-stack projects for international clients, from React and Astro frontends to TypeScript backends.', delay: 0.08 })(counter(logo, ...IMG)));
+  write('tile-upwork.svg', tile({ name: 'Upwork', desc: 'Full Stack TypeScript Developer', right: { label: 'Jun 2024 – now' }, sub: 'freelance', title: 'Upwork: Full Stack TypeScript Developer, June 2024 to now. Built client apps and worked on GiftSong.ai, an AI song gift app with 148k users and 650k+ songs (38k+ hours of audio).', delay: 0.08 })(counter(logo, ...IMG)));
 }
 
 {
@@ -258,6 +258,23 @@ const [bfs, awesome] = await Promise.all([github(`repos/${OWNER}/Better-Fullstac
   const picks = names.filter((_, i) => i % 2 === 0).slice(0, 36);
   const stars = compact(awesome.stargazers_count);
   write('tile-awesome-effect.svg', tile({ name: 'awesome-effect', desc: 'The Effect ecosystem, curated', right: { star: stars }, sub: 'This Week in Effect #133', title: `awesome-effect: libraries, tools and learning material for Effect. ${stars} stars. Featured in This Week in Effect #133.`, delay: 0.08 })(scrollingList(picks, ...IMG)));
+}
+
+{
+  const w = 423, h = 76, gx = 5, tw = w - gx * 2, th = h - 4, pad = 16, logo = 40;
+  const mark = fs.readFileSync(path.join(ROOT, 'assets', 'stack', 'effect.svg'), 'utf8');
+  const paths = [...mark.matchAll(/<path[^>]*\/>/g)].map((m) => m[0]).join('');
+  const sev = 'High severity';
+  const sw = width(BOLD, sev, 11.5) + 18;
+  const nameX = pad + logo + 14;
+  const title = 'Security: found a high-severity vulnerability in Effect, the TypeScript library with 66M npm downloads a week. Reported privately and accepted by the maintainers.';
+  write('tile-security.svg', `<svg xmlns="http://www.w3.org/2000/svg" width="${w}" height="${h}" viewBox="0 0 ${w} ${h}" role="img" aria-label="${esc(title)}">
+<title>${esc(title)}</title><style>${ENTER}@media (prefers-reduced-motion:reduce){*{animation:none!important}}</style>
+<g transform="translate(${gx} 0)"><rect width="${tw}" height="${th}" rx="12" fill="${THEME.bg}" stroke="${THEME.border}"/>
+<g class="in"><rect x="${pad}" y="${(th - logo) / 2}" width="${logo}" height="${logo}" rx="10" fill="#0c0c0c"/><g transform="translate(${pad + 8} ${(th - logo) / 2 + 8}) scale(${(logo - 16) / 220})">${paths}</g>
+${text(BOLD, 'Vulnerability found in Effect', nameX, th / 2 - 3, 15.5, THEME.title, { track: -0.2 })}${text(SANS, 'Accepted by maintainers · 66M npm downloads a week', nameX, th / 2 + 16, 12, THEME.soft)}
+<rect x="${tw - pad - sw}" y="${th / 2 - 24}" width="${sw}" height="20" rx="10" fill="#3B1515" stroke="#7F1D1D"/>${text(BOLD, sev, tw - pad - sw / 2, th / 2 - 10, 11.5, '#F87171', { anchor: 'middle' })}</g></g>
+</svg>`);
 }
 
 write('stack.svg', stackStrip([

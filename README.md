@@ -1,4 +1,4 @@
-<h1 align="center"><b>Full Stack TypeScript Web Developer</b></h1>
+<h1 align="center"><b>Senior Full Stack Engineer</b></h1>
 
 <p align="center">
 Istanbul, Turkey · from Ukraine 🇺🇦 · 3+ years professional experience
@@ -18,7 +18,7 @@ Istanbul, Turkey · from Ukraine 🇺🇦 · 3+ years professional experience
 
 ## Experience
 
-<p><a href="https://listening.com"><img src="./assets/profile/tile-listening.svg" width="423" alt="Listening.com: Full Stack TypeScript Developer, Jan 2025 to now. Web app, Chromium extension, React Native mobile app and Electron desktop app." /></a><a href="https://www.upwork.com/freelancers/~010112495fc6870d30"><img src="./assets/profile/tile-upwork.svg" width="423" alt="Upwork: Full Stack TypeScript Developer, Jun 2024 to now. 10+ full-stack projects for international clients." /></a></p>
+<p><a href="https://listening.com"><img src="./assets/profile/tile-listening.svg" width="423" alt="Listening.com: Senior Full Stack Engineer, Dec 2024 to now. Runs the platform for 11k+ monthly users, from Kubernetes and GPU workers to the web, mobile, desktop and extension apps." /></a><a href="https://www.upwork.com/freelancers/~010112495fc6870d30"><img src="./assets/profile/tile-upwork.svg" width="423" alt="Upwork: Full Stack TypeScript Developer, Jun 2024 to now. Built client apps and worked on GiftSong.ai, an AI song gift app with 148k users and 650k+ songs (38k+ hours of audio)." /></a></p>
 
 ## Tech Stack
 
@@ -70,6 +70,10 @@ Istanbul, Turkey · from Ukraine 🇺🇦 · 3+ years professional experience
 
 <p><a href="https://github.com/Marve10s/Better-Fullstack"><img src="./assets/profile/tile-better-fullstack.svg" width="423" alt="Better Fullstack: scaffold full-stack apps in one command. better-fullstack.dev" /></a><a href="https://github.com/Marve10s/awesome-effect"><img src="./assets/profile/tile-awesome-effect.svg" width="423" alt="awesome-effect: the Effect ecosystem, curated. Featured in This Week in Effect #133." /></a></p>
 
+## Security
+
+<p><a href="https://github.com/Effect-TS/effect"><img src="./assets/profile/tile-security.svg" width="423" alt="Found a high-severity vulnerability in Effect, the TypeScript library with 66M npm downloads a week. Reported privately and accepted by the maintainers." /></a></p>
+
 ## Contributed to
 
 <p><a href="https://github.com/pulls?q=is%3Apr+author%3AMarve10s+is%3Amerged+repo%3AEffect-TS%2Feffect"><img src="./assets/profile/contrib-effect.svg" width="211" alt="Effect-TS/effect: merged pull requests" /></a><a href="https://github.com/pulls?q=is%3Apr+author%3AMarve10s+is%3Amerged+repo%3Apingdotgg%2Ft3code"><img src="./assets/profile/contrib-t3code.svg" width="211" alt="pingdotgg/t3code: merged pull requests" /></a><a href="https://github.com/react/react-native/commits?author=Marve10s"><img src="./assets/profile/contrib-react-native.svg" width="211" alt="react/react-native: pull requests landed" /></a><a href="https://github.com/pulls?q=is%3Apr+author%3AMarve10s+is%3Amerged+repo%3Amui%2Fmaterial-ui"><img src="./assets/profile/contrib-material-ui.svg" width="211" alt="mui/material-ui: merged pull requests" /></a></p>
@@ -82,5 +86,5 @@ Istanbul, Turkey · from Ukraine 🇺🇦 · 3+ years professional experience
 
 <p>
 <img src="./profile/streak.svg" alt="GitHub streak statistics" width="49.5%" />
-<img src="https://github-stats-extended.vercel.app/api?username=Marve10s&show_icons=true&bg_color=211E1E&title_color=CFCECD&text_color=656363&icon_color=CFCECD&hide_border=true&include_all_commits=true" width="49.5%" />
+<img src="https://github-stats-extended.vercel.app/api?username=Marve10s&show_icons=true&bg_color=211E1E&title_color=CFCECD&text_color=656363&icon_color=CFCECD&hide_border=true&include_all_commits=true&hide=prs" width="49.5%" />
 </p>
