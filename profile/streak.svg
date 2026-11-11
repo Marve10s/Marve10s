@@ -13,7 +13,7 @@
         </defs>
         <g clip-path='url(#outer_rectangle)'>
             <g style='isolation: isolate'>
-                <rect stroke='#000000' stroke-opacity='0' fill='#0C0C0C' rx='4.5' x='0.5' y='0.5' width='494' height='194'/>
+                <rect stroke='#000000' stroke-opacity='0' fill='#0c0c0c' rx='4.5' x='0.5' y='0.5' width='494' height='194'/>
             </g>
             <g style='isolation: isolate'>
                 <line x1='165' y1='28' x2='165' y2='170' vector-effect='non-scaling-stroke' stroke-width='1' stroke='#E4E2E2' stroke-linejoin='miter' stroke-linecap='square' stroke-miterlimit='3'/>
@@ -22,21 +22,21 @@
             <g style='isolation: isolate'>
                 <!-- Total Contributions big number -->
                 <g transform='translate(82.5, 48)'>
-                    <text x='0' y='32' stroke-width='0' text-anchor='middle' fill='#EDEDED' stroke='none' font-family='"Segoe UI", Ubuntu, sans-serif' font-weight='700' font-size='28px' font-style='normal' style='opacity: 1; opacity: 1;'>
-                        8,673
+                    <text x='0' y='32' stroke-width='0' text-anchor='middle' fill='#ededed' stroke='none' font-family='"Segoe UI", Ubuntu, sans-serif' font-weight='700' font-size='28px' font-style='normal' style='opacity: 1; opacity: 1;'>
+                        8,711
                     </text>
                 </g>
 
                 <!-- Total Contributions label -->
                 <g transform='translate(82.5, 84)'>
-                    <text x='0' y='32' stroke-width='0' text-anchor='middle' fill='#6B6B6B' stroke='none' font-family='"Segoe UI", Ubuntu, sans-serif' font-weight='400' font-size='14px' font-style='normal' style='opacity: 1; opacity: 1;'>
+                    <text x='0' y='32' stroke-width='0' text-anchor='middle' fill='#6b6b6b' stroke='none' font-family='"Segoe UI", Ubuntu, sans-serif' font-weight='400' font-size='14px' font-style='normal' style='opacity: 1; opacity: 1;'>
                         Total Contributions
                     </text>
                 </g>
 
                 <!-- Total Contributions range -->
                 <g transform='translate(82.5, 114)'>
-                    <text x='0' y='32' stroke-width='0' text-anchor='middle' fill='#3A3A3A' stroke='none' font-family='"Segoe UI", Ubuntu, sans-serif' font-weight='400' font-size='12px' font-style='normal' style='opacity: 1; opacity: 1;'>
+                    <text x='0' y='32' stroke-width='0' text-anchor='middle' fill='#3a3a3a' stroke='none' font-family='"Segoe UI", Ubuntu, sans-serif' font-weight='400' font-size='12px' font-style='normal' style='opacity: 1; opacity: 1;'>
                         Feb 26, 2023 - Present
                     </text>
                 </g>
@@ -44,21 +44,21 @@
             <g style='isolation: isolate'>
                 <!-- Current Streak label -->
                 <g transform='translate(247.5, 108)'>
-                    <text x='0' y='32' stroke-width='0' text-anchor='middle' fill='#6B6B6B' stroke='none' font-family='"Segoe UI", Ubuntu, sans-serif' font-weight='700' font-size='14px' font-style='normal' style='opacity: 1; opacity: 1;'>
+                    <text x='0' y='32' stroke-width='0' text-anchor='middle' fill='#6b6b6b' stroke='none' font-family='"Segoe UI", Ubuntu, sans-serif' font-weight='700' font-size='14px' font-style='normal' style='opacity: 1; opacity: 1;'>
                         Current Streak
                     </text>
                 </g>
 
                 <!-- Current Streak range -->
                 <g transform='translate(247.5, 145)'>
-                    <text x='0' y='21' stroke-width='0' text-anchor='middle' fill='#3A3A3A' stroke='none' font-family='"Segoe UI", Ubuntu, sans-serif' font-weight='400' font-size='12px' font-style='normal' style='opacity: 1; opacity: 1;'>
-                        Aug 3 - Nov 11
+                    <text x='0' y='21' stroke-width='0' text-anchor='middle' fill='#3a3a3a' stroke='none' font-family='"Segoe UI", Ubuntu, sans-serif' font-weight='400' font-size='12px' font-style='normal' style='opacity: 1; opacity: 1;'>
+                        Aug 3 - Nov 12
                     </text>
                 </g>
 
                 <!-- Ring around number -->
                 <g mask='url(#mask_out_ring_behind_fire)'>
-                    <circle cx='247.5' cy='71' r='40' fill='none' stroke='#EDEDED' stroke-width='5' style='opacity: 1; opacity: 1;'></circle>
+                    <circle cx='247.5' cy='71' r='40' fill='none' stroke='#ededed' stroke-width='5' style='opacity: 1; opacity: 1;'></circle>
                 </g>
                 <!-- Fire icon -->
                 <g transform='translate(247.5, 19.5)' stroke-opacity='0' style='opacity: 1; opacity: 1;'>
@@ -68,8 +68,8 @@
 
                 <!-- Current Streak big number -->
                 <g transform='translate(247.5, 48)'>
-                    <text x='0' y='32' stroke-width='0' text-anchor='middle' fill='#EDEDED' stroke='none' font-family='"Segoe UI", Ubuntu, sans-serif' font-weight='700' font-size='28px' font-style='normal' style='font-size: 28px;'>
-                        101
+                    <text x='0' y='32' stroke-width='0' text-anchor='middle' fill='#ededed' stroke='none' font-family='"Segoe UI", Ubuntu, sans-serif' font-weight='700' font-size='28px' font-style='normal' style='font-size: 28px;'>
+                        102
                     </text>
                 </g>
 
@@ -77,22 +77,22 @@
             <g style='isolation: isolate'>
                 <!-- Longest Streak big number -->
                 <g transform='translate(412.5, 48)'>
-                    <text x='0' y='32' stroke-width='0' text-anchor='middle' fill='#EDEDED' stroke='none' font-family='"Segoe UI", Ubuntu, sans-serif' font-weight='700' font-size='28px' font-style='normal' style='opacity: 1; opacity: 1;'>
-                        101
+                    <text x='0' y='32' stroke-width='0' text-anchor='middle' fill='#ededed' stroke='none' font-family='"Segoe UI", Ubuntu, sans-serif' font-weight='700' font-size='28px' font-style='normal' style='opacity: 1; opacity: 1;'>
+                        102
                     </text>
                 </g>
 
                 <!-- Longest Streak label -->
                 <g transform='translate(412.5, 84)'>
-                    <text x='0' y='32' stroke-width='0' text-anchor='middle' fill='#6B6B6B' stroke='none' font-family='"Segoe UI", Ubuntu, sans-serif' font-weight='400' font-size='14px' font-style='normal' style='opacity: 1; opacity: 1;'>
+                    <text x='0' y='32' stroke-width='0' text-anchor='middle' fill='#6b6b6b' stroke='none' font-family='"Segoe UI", Ubuntu, sans-serif' font-weight='400' font-size='14px' font-style='normal' style='opacity: 1; opacity: 1;'>
                         Longest Streak
                     </text>
                 </g>
 
                 <!-- Longest Streak range -->
                 <g transform='translate(412.5, 114)'>
-                    <text x='0' y='32' stroke-width='0' text-anchor='middle' fill='#3A3A3A' stroke='none' font-family='"Segoe UI", Ubuntu, sans-serif' font-weight='400' font-size='12px' font-style='normal' style='opacity: 1; opacity: 1;'>
-                        Aug 3 - Nov 11
+                    <text x='0' y='32' stroke-width='0' text-anchor='middle' fill='#3a3a3a' stroke='none' font-family='"Segoe UI", Ubuntu, sans-serif' font-weight='400' font-size='12px' font-style='normal' style='opacity: 1; opacity: 1;'>
+                        Aug 3 - Nov 12
                     </text>
                 </g>
             </g>
