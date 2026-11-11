@@ -165,8 +165,8 @@ function contributionTile({ fullName, prs, stars, image }, { verb, art }, delay)
   const pad = 12, logo = 18, nameX = pad + logo + 8;
   const starText = compact(stars);
   const sw = width(BOLD, starText, 12.5);
-  const count = 'Contributor';
-  const title = `${fullName}: contributor. ${starText} stars.`;
+  const count = `${prs} PR${prs === 1 ? '' : 's'} ${verb}`;
+  const title = `${fullName}: ${count}. ${starText} stars.`;
   return `<svg xmlns="http://www.w3.org/2000/svg" width="${w}" height="${h}" viewBox="0 0 ${w} ${h}" role="img" aria-label="${esc(title)}">
 <title>${esc(title)}</title><defs><clipPath id="c"><rect width="${tw}" height="${th}" rx="12"/></clipPath><clipPath id="ia"><rect width="${tw}" height="${ih}"/></clipPath><clipPath id="lg"><rect x="${pad}" y="${ih + 11}" width="${logo}" height="${logo}" rx="5"/></clipPath></defs>
 <style>${ENTER}.d{animation-delay:${delay}s}@media (prefers-reduced-motion:reduce){*{animation:none!important}}</style>

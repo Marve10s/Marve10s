@@ -86,5 +86,5 @@ Istanbul, Turkey · from Ukraine 🇺🇦 · 3+ years professional experience
 
 <p>
 <img src="./profile/streak.svg" alt="GitHub streak statistics" width="49.5%" />
-<img src="https://github-stats-extended.vercel.app/api?username=Marve10s&show_icons=true&bg_color=211E1E&title_color=CFCECD&text_color=656363&icon_color=CFCECD&hide_border=true&include_all_commits=true&hide=prs" width="49.5%" />
+<img src="https://github-stats-extended.vercel.app/api?username=Marve10s&show_icons=true&bg_color=211E1E&title_color=CFCECD&text_color=656363&icon_color=CFCECD&hide_border=true&include_all_commits=true" width="49.5%" />
 </p>
