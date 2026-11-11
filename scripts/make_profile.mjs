@@ -60,16 +60,6 @@ async function still(src, w, h, quality = 70) {
   return webp(img.resize(w * 2, h * 2, { fit: 'cover', position: src.pos ?? 'centre' }), quality);
 }
 
-async function phoneRow(urls, w, h, background) {
-  const W = w * 2, H = h * 2, phoneW = 150, gap = 34;
-  const phones = await Promise.all(urls.map(async (url) => sharp(await raw(url)).resize(phoneW).png().toBuffer()));
-  const total = phones.length * phoneW + (phones.length - 1) * gap;
-  const left = Math.round((W - total) / 2);
-  const layers = phones.map((input, i) => ({ input, left: left + i * (phoneW + gap), top: 34 + (i % 2) * 26 }));
-  const tall = await sharp({ create: { width: W, height: H + 400, channels: 4, background } }).composite(layers).png().toBuffer();
-  return webp(sharp(tall).extract({ left: 0, top: 0, width: W, height: H }), 74);
-}
-
 function slideshow(images, w, h, { hold = 3, fade = 0.8 } = {}) {
   const n = images.length;
   const cycle = (hold + fade) * n;
@@ -133,30 +123,20 @@ function scrollingList(names, w, h, { size = 11, lead = 17, speed = 10 } = {}) {
   return { css, art: () => `<defs>${fade}${defs}</defs>${body}<rect width="${w}" height="${h}" fill="url(#fd)"/>` };
 }
 
-function counter(logo, w, h) {
-  const s = 48, x = 28, y = (h - s) / 2;
-  const numX = x + s + 22, base = h / 2 + 15;
-  const total = 0.7, start = 0.15;
-  let css = '', digits = '';
-  for (let i = 0; i <= 10; i++) {
-    const a = start + (i / 11) * total, b = start + ((i + 1) / 11) * total;
-    const last = i === 10;
-    css += last
-      ? `.n${i}{animation:on .01s linear ${a.toFixed(3)}s both}`
-      : `.n${i}{opacity:0;animation:fl ${(b - a).toFixed(3)}s step-end ${a.toFixed(3)}s}`;
-    digits += text(BOLD, last ? '650k+' : String(i), numX, base, 38, THEME.title, { track: -1, cls: `n${i}` });
-  }
-  css += '@keyframes fl{0%,100%{opacity:1}}@keyframes on{from{opacity:0}to{opacity:1}}';
-  const tagX = numX + width(BOLD, '650k+', 38, -1) + 14;
-  let cx = tagX;
-  const chipRow = ['148k users', '38k+ hours'].map((c, i) => {
-    const cw = width(SANS, c, 12) + 18;
-    const out = `<g class="in" style="animation-delay:${(0.35 + i * 0.08).toFixed(2)}s"><rect x="${cx}" y="${h / 2 + 4}" width="${cw}" height="22" rx="11" fill="${THEME.chip}" stroke="${THEME.border}"/>${text(SANS, c, cx + 9, h / 2 + 19, 12, THEME.soft)}</g>`;
-    cx += cw + 6;
+function statsArt({ logo, headline, caption, header, columns }, w, h) {
+  const size = 36, x = 20, cy = h / 2;
+  const numX = x + size + 12;
+  const leftEnd = numX + Math.max(width(BOLD, headline, 26, -0.6), width(SANS, caption, 12));
+  const sepX = leftEnd + 16;
+  const startX = sepX + 18, gap = 16;
+  let cx = startX;
+  const stats = columns.map(([value, label]) => {
+    const out = `${text(BOLD, value, cx, cy + 8, 19, THEME.title, { track: -0.4 })}${text(SANS, label, cx, cy + 26, 11.5, THEME.soft)}`;
+    cx += Math.max(width(BOLD, value, 19, -0.4), width(SANS, label, 11.5)) + gap;
     return out;
   }).join('');
-  const art = () => `<clipPath id="ul"><rect x="${x}" y="${y}" width="${s}" height="${s}" rx="12"/></clipPath><image href="${logo}" x="${x}" y="${y}" width="${s}" height="${s}" clip-path="url(#ul)"/>${digits}${text(SANS, 'songs on GiftSong.ai', tagX, h / 2 - 8, 13.5, THEME.soft)}${chipRow}`;
-  return { css, art };
+  const art = () => `<clipPath id="sl"><rect x="${x}" y="${cy - size / 2}" width="${size}" height="${size}" rx="9"/></clipPath><image href="${logo}" x="${x}" y="${cy - size / 2}" width="${size}" height="${size}" clip-path="url(#sl)"/>${text(BOLD, headline, numX, cy + 5, 26, THEME.title, { track: -0.6 })}${text(SANS, caption, numX, cy + 23, 12, THEME.soft)}<path d="M${sepX + 0.5} 28V${h - 28}" stroke="${THEME.border}"/>${header(startX, cy - 20)}${stats}`;
+  return { art };
 }
 
 function contributionTile({ fullName, prs, stars, image }, { verb, art }, delay) {
@@ -229,19 +209,18 @@ const IMG = [423 - 10, 196 - 4 - 62];
 const [bfs, awesome] = await Promise.all([github(`repos/${OWNER}/Better-Fullstack`), github(`repos/${OWNER}/awesome-effect`)]);
 
 {
-  const L = 'https://www.listening.com/assets';
-  const frames = [
-    await phoneRow([`${L}/slider-folder-BmmXqBF3.webp`, `${L}/slider-mobile-overview-BfzR1a76.webp`, `${L}/slider-reading-B3BCVw9H.webp`, `${L}/slider-upload-Bl794ZUs.webp`], ...IMG, '#2f6bff'),
-    await still({ url: `${L}/try-listening-banner-dashboard-CZg8JcoW.webp`, crop: [0, 0, 2147, 900], pos: 'top' }, ...IMG, 74),
-    await still({ url: 'https://www.listening.com/social-og-image.png', crop: [0, 110, 1200, 400] }, ...IMG, 74),
-  ];
-  const s = slideshow(frames, ...IMG, { hold: 2.8 });
-  write('tile-listening.svg', tile({ name: 'Listening.com', desc: 'Senior Full Stack Engineer', right: { label: 'Dec 2024 – now' }, sub: 'listening.com', title: 'Listening.com: Senior Full Stack Engineer, December 2024 to now. Runs the platform for 11k+ monthly users, from Kubernetes and GPU workers to the web, mobile, desktop and extension apps.' })(s));
+  const platforms = ['web', 'apple', 'android', 'electron', 'googlechrome'].map((name) => asset(`icons/platforms/${name}.svg`));
+  const header = (x, y) => platforms.map((icon, i) => `<image href="${icon}" x="${x + i * 22}" y="${y - 12}" width="15" height="15"/>`).join('');
+  const art = statsArt({ logo: asset('logos/listening.svg'), headline: '20k+', caption: 'audio hours a month', header, columns: [['11k+', 'monthly users'], ['600k+', 'lines of code']] }, ...IMG);
+  write('tile-listening.svg', tile({ name: 'Listening.com', desc: 'Senior Full Stack Engineer', right: { label: 'Dec 2024 – now' }, sub: 'listening.com', title: 'Listening.com: Senior Full Stack Engineer, December 2024 to now. 20k+ hours of audio a month and 11k+ monthly users across the web, iOS, Android, desktop and Chrome extension apps, on a 600k+ line codebase.' })(art));
 }
 
 {
-  const logo = `data:image/png;base64,${(await sharp(path.join(ROOT, 'assets/logos/upwork.png')).resize(96, 96).png().toBuffer()).toString('base64')}`;
-  write('tile-upwork.svg', tile({ name: 'Upwork', desc: 'Full Stack TypeScript Developer', right: { label: 'Jun 2024 – now' }, sub: 'freelance', title: 'Upwork: Full Stack TypeScript Developer, June 2024 to now. Built client apps and worked on GiftSong.ai, an AI song gift app with 148k users and 650k+ songs (38k+ hours of audio).', delay: 0.08 })(counter(logo, ...IMG)));
+  const png = async (file) => `data:image/png;base64,${(await sharp(path.join(ROOT, 'assets', file)).resize(96, 96).png().toBuffer()).toString('base64')}`;
+  const giftsong = await png('logos/giftsong.png');
+  const header = (x, y) => `<image href="${giftsong}" x="${x}" y="${y - 13}" width="17" height="17"/>${text(SANS, 'GiftSong.ai', x + 22, y, 12, THEME.soft)}`;
+  const art = statsArt({ logo: await png('logos/upwork.png'), headline: '10+', caption: 'client projects', header, columns: [['650k+', 'songs'], ['148k', 'users'], ['38k+', 'audio hours']] }, ...IMG);
+  write('tile-upwork.svg', tile({ name: 'Upwork', desc: 'Full Stack TypeScript Developer', right: { label: 'Jun 2024 – now' }, title: 'Upwork: Full Stack TypeScript Developer, June 2024 to now. 10+ client projects, including GiftSong.ai, an AI song gift app with 650k+ songs, 148k users and 38k+ hours of audio.', delay: 0.08 })(art));
 }
 
 {
@@ -264,16 +243,13 @@ const [bfs, awesome] = await Promise.all([github(`repos/${OWNER}/Better-Fullstac
   const w = 423, h = 76, gx = 5, tw = w - gx * 2, th = h - 4, pad = 16, logo = 40;
   const mark = fs.readFileSync(path.join(ROOT, 'assets', 'stack', 'effect.svg'), 'utf8');
   const paths = [...mark.matchAll(/<path[^>]*\/>/g)].map((m) => m[0]).join('');
-  const sev = 'High severity';
-  const sw = width(BOLD, sev, 11.5) + 18;
   const nameX = pad + logo + 14;
-  const title = 'Security: found a high-severity vulnerability in Effect, the TypeScript library with 66M npm downloads a week. Reported privately and accepted by the maintainers.';
+  const title = 'Security: reported 3 vulnerabilities in Effect, the TypeScript library with 66M npm downloads a week: one high, one moderate and one low severity, all confirmed by the maintainers.';
   write('tile-security.svg', `<svg xmlns="http://www.w3.org/2000/svg" width="${w}" height="${h}" viewBox="0 0 ${w} ${h}" role="img" aria-label="${esc(title)}">
 <title>${esc(title)}</title><style>${ENTER}@media (prefers-reduced-motion:reduce){*{animation:none!important}}</style>
 <g transform="translate(${gx} 0)"><rect width="${tw}" height="${th}" rx="12" fill="${THEME.bg}" stroke="${THEME.border}"/>
 <g class="in"><rect x="${pad}" y="${(th - logo) / 2}" width="${logo}" height="${logo}" rx="10" fill="#0c0c0c"/><g transform="translate(${pad + 8} ${(th - logo) / 2 + 8}) scale(${(logo - 16) / 220})">${paths}</g>
-${text(BOLD, 'Vulnerability found in Effect', nameX, th / 2 - 3, 15.5, THEME.title, { track: -0.2 })}${text(SANS, 'Accepted by maintainers · 66M npm downloads a week', nameX, th / 2 + 16, 12, THEME.soft)}
-<rect x="${tw - pad - sw}" y="${th / 2 - 24}" width="${sw}" height="20" rx="10" fill="#3B1515" stroke="#7F1D1D"/>${text(BOLD, sev, tw - pad - sw / 2, th / 2 - 10, 11.5, '#F87171', { anchor: 'middle' })}</g></g>
+${text(BOLD, '3 vulnerabilities reported to Effect', nameX, th / 2 - 3, 15.5, THEME.title, { track: -0.2 })}${text(SANS, 'High, moderate and low · confirmed by maintainers', nameX, th / 2 + 16, 12, THEME.soft)}</g></g>
 </svg>`);
 }
 

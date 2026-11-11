@@ -72,7 +72,7 @@ Istanbul, Turkey · from Ukraine 🇺🇦 · 3+ years professional experience
 
 ## Security
 
-<p><a href="https://github.com/Effect-TS/effect"><img src="./assets/profile/tile-security.svg" width="423" alt="Found a high-severity vulnerability in Effect, the TypeScript library with 66M npm downloads a week. Reported privately and accepted by the maintainers." /></a></p>
+<p><a href="https://github.com/Effect-TS/effect/security"><img src="./assets/profile/tile-security.svg" width="423" alt="Reported 3 vulnerabilities in Effect, the TypeScript library with 66M npm downloads a week: one high, one moderate and one low severity, all confirmed by the maintainers." /></a></p>
 
 ## Contributed to
 
