@@ -211,7 +211,7 @@ function eclipse({ cx, cy, r, hues: [outerHue, innerHue] }) {
 <radialGradient id="${bead}"><stop offset="0" stop-color="#fff"/><stop offset=".25" stop-color="#fff" stop-opacity=".85"/><stop offset=".6" stop-color="${innerHue}" stop-opacity=".35"/><stop offset="1" stop-color="${innerHue}" stop-opacity="0"/></radialGradient></defs>
 <g transform="translate(${cx} ${cy})">${streamers(5, false)}${streamers(-5, true)}</g>
 <circle cx="${cx}" cy="${cy}" r="${outer}" fill="url(#${corona})"/><circle cx="${cx}" cy="${cy}" r="${(r * 0.985).toFixed(1)}" fill="#000"/>
-<g><animateTransform attributeName="transform" type="rotate" values="-160 ${cx} ${cy};-110 ${cx} ${cy};-160 ${cx} ${cy}" dur="38s" ${SWAY} repeatCount="indefinite"/><g transform="translate(${cx} ${cy - r})"><ellipse rx="${(r * 0.9).toFixed(1)}" ry="1.6" fill="#fff" opacity=".7"/><circle r="${(r * 0.42).toFixed(1)}" fill="url(#${bead})"><animate attributeName="r" values="${(r * 0.36).toFixed(1)};${(r * 0.5).toFixed(1)};${(r * 0.36).toFixed(1)}" dur="6.5s" ${SWAY} repeatCount="indefinite"/></circle></g></g>`;
+<g><animateTransform attributeName="transform" type="rotate" values="-160 ${cx} ${cy};-110 ${cx} ${cy};-160 ${cx} ${cy}" dur="38s" ${SWAY} repeatCount="indefinite"/><g transform="translate(${cx} ${cy - r})"><circle r="${(r * 0.42).toFixed(1)}" fill="url(#${bead})"><animate attributeName="r" values="${(r * 0.36).toFixed(1)};${(r * 0.5).toFixed(1)};${(r * 0.36).toFixed(1)}" dur="6.5s" ${SWAY} repeatCount="indefinite"/></circle></g></g>`;
 }
 
 function tile({ w = 423, h = 196, plate = 62, theme, name, desc, right, sub, title, delay = 0, backdrop }) {
@@ -557,7 +557,7 @@ const [bfs, awesome, downloads] = await Promise.all([
     [totalContributions.toLocaleString('en-US'), 'Total contributions', `since ${since}`],
     [plural(current.length, 'day'), 'Current streak', range(current)],
     [plural(longest.length, 'day'), 'Longest streak', range(longest)],
-    [user.pullRequests.totalCount.toLocaleString('en-US'), 'Pull requests merged', 'across all repositories'],
+    [user.pullRequests.totalCount.toLocaleString('en-US'), 'Pull requests merged', 'in public repositories'],
     [stars.toLocaleString('en-US'), 'Stars earned', 'on my repositories'],
   ];
 
