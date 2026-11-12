@@ -303,7 +303,7 @@ const COMPANIES = [
 ];
 
 const SKILLS = [
-  ['Languages & frameworks', [['TypeScript', 'typescript'], ['JavaScript', 'javascript'], ['React', 'react'], ['TanStack', 'tanstack'], ['Astro', 'astro'], ['Next.js', 'nextdotjs'], ['Effect-TS', 'effect'], ['Python', 'python'], ['Rust', 'rust']]],
+  ['Languages & frameworks', [['TypeScript', 'typescript'], ['JavaScript', 'javascript'], ['React', 'react'], ['TanStack', 'tanstack'], ['Astro', 'astro'], ['Next.js', 'nextdotjs'], ['Effect-TS', 'effect']]],
   ['Apps & interfaces', [['React Native', 'react'], ['Expo', 'expo'], ['Electron', 'electron'], ['WXT', 'wxt'], ['Tailwind CSS', 'tailwindcss'], ['shadcn/ui', 'shadcnui'], ['Motion', 'motion']]],
   ['Backend & data', [['TanStack Start', 'tanstack'], ['HonoJS', 'hono'], ['Supabase', 'supabase'], ['PostgreSQL', 'postgresql'], ['Drizzle ORM', 'drizzle'], ['Convex', 'convex'], ['Bun', 'bun']]],
   ['Infrastructure & tools', [['Kubernetes', 'kubernetes'], ['GitHub Actions', 'githubactions'], ['RunPod', 'runpod'], ['Modal', 'modal'], ['AWS', 'amazonwebservices'], ['GitHub', 'github'], ['Codex', 'openai'], ['Claude Code', 'claude'], ['Vercel', 'vercel'], ['Railway', 'railway'], ['Render', 'render'], ['Netlify', 'netlify']]],

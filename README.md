@@ -1,4 +1,4 @@
-<h1 align="center"><b>Senior Full Stack Engineer</b></h1>
+<h1 align="center"><b>Full Stack TypeScript Developer</b></h1>
 
 <p align="center">
 Istanbul, Turkey · from Ukraine 🇺🇦 · 3+ years professional experience
@@ -22,7 +22,7 @@ Istanbul, Turkey · from Ukraine 🇺🇦 · 3+ years professional experience
 
 ## Tech Stack
 
-<img src="./assets/profile/skills.svg" width="100%" alt="Languages and frameworks: TypeScript, JavaScript, React, TanStack, Astro, Next.js, Effect-TS, Python, Rust. Apps and interfaces: React Native, Expo, Electron, WXT, Tailwind CSS, shadcn/ui, Motion. Backend and data: TanStack Start, HonoJS, Supabase, PostgreSQL, Drizzle ORM, Convex, Bun. Infrastructure and tools: Kubernetes, GitHub Actions, RunPod, Modal, AWS, GitHub, Codex, Claude Code, Vercel, Railway, Render, Netlify." />
+<img src="./assets/profile/skills.svg" width="100%" alt="Languages and frameworks: TypeScript, JavaScript, React, TanStack, Astro, Next.js, Effect-TS. Apps and interfaces: React Native, Expo, Electron, WXT, Tailwind CSS, shadcn/ui, Motion. Backend and data: TanStack Start, HonoJS, Supabase, PostgreSQL, Drizzle ORM, Convex, Bun. Infrastructure and tools: Kubernetes, GitHub Actions, RunPod, Modal, AWS, GitHub, Codex, Claude Code, Vercel, Railway, Render, Netlify." />
 
 ---
 
