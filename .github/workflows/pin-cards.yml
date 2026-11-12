@@ -9,6 +9,7 @@ on:
       - ".github/workflows/pin-cards.yml"
       - "profile/generate-pins.mjs"
       - "scripts/make_profile.mjs"
+      - "scripts/icons.json"
 
 concurrency:
   group: pin-cards-${{ github.ref }}

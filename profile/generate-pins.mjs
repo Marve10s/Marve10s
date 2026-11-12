@@ -340,39 +340,6 @@ async function fetchContribution({ owner, repo, logo, countCommits = false, take
   return { fullName: data.full_name, stars: data.stargazers_count, prs: landed + takenOver.length, image };
 }
 
-function contributionsPanelSvg(contributions) {
-  const columns = 3;
-  const columnWidth = 300;
-  const rowHeight = 34;
-  const padX = 18;
-  const padY = 18;
-  const rows = Math.ceil(contributions.length / columns);
-  const width = columns * columnWidth + padX * 2 - 20;
-  const height = padY * 2 + rows * rowHeight - 8;
-  const label = contributions.map(({ fullName, prs }) => `${fullName} (${prs} PR${prs === 1 ? "" : "s"})`).join(", ");
-  const dividers = Array.from({ length: columns - 1 }, (_, i) => {
-    const x = padX + (i + 1) * columnWidth - 17;
-    return `<line x1="${x}" y1="${padY}" x2="${x}" y2="${height - padY}" stroke="${THEME.border}"/>`;
-  });
-  const cells = contributions.map(({ fullName, stars, prs, image }, i) => {
-    const x = padX + Math.floor(i / rows) * columnWidth;
-    const y = padY + (i % rows) * rowHeight;
-    const repo = fullName.split("/")[1];
-    const delay = (Math.floor(i / rows) * 0.08 + (i % rows) * 0.035).toFixed(3);
-    return `<g class="cell" style="animation-delay:${delay}s"><clipPath id="logo${i}"><rect x="${x}" y="${y}" width="20" height="20" rx="5"/></clipPath>
-  <image href="${image}" x="${x}" y="${y}" width="20" height="20" clip-path="url(#logo${i})"/>
-  <text x="${x + 30}" y="${y + 15}" font-size="14" font-weight="600" fill="${THEME.title}">${escapeXml(repo)}</text>
-  <text x="${x + columnWidth - 34}" y="${y + 15}" text-anchor="end" font-size="12" fill="${THEME.body}">${prs} PR${prs === 1 ? "" : "s"} <tspan fill="${THEME.text}">· ★ ${formatCount(stars)}</tspan></text></g>`;
-  });
-  return `<svg xmlns="http://www.w3.org/2000/svg" width="${width}" height="${height}" viewBox="0 0 ${width} ${height}" role="img" aria-label="Contributed to ${escapeXml(label)}">
-  <style>text { font-family: ${FONT}; } .cell { animation: cell .45s cubic-bezier(.2,.8,.2,1) both; } @keyframes cell { from { opacity: 0; transform: translateY(6px); } to { opacity: 1; transform: none; } } @media (prefers-reduced-motion: reduce) { .cell { animation: none; } }</style>
-  <rect x="0.5" y="0.5" width="${width - 1}" height="${height - 1}" rx="12" fill="${THEME.bg}" stroke="${THEME.border}"/>
-  ${dividers.join("\n  ")}
-  ${cells.join("\n  ")}
-</svg>
-`;
-}
-
 const stackDir = fileURLToPath(new URL("./stack/", import.meta.url));
 mkdirSync(stackDir, { recursive: true });
 writeFileSync(`${stackDir}featured.svg`, featuredStackSvg());
@@ -401,5 +368,5 @@ rmSync(contribDir, { recursive: true, force: true });
 mkdirSync(contribDir, { recursive: true });
 const featured = FEATURED_CONTRIBUTIONS.map((name) => contributions.find(({ fullName }) => fullName === name));
 writeFileSync(`${contribDir}featured.json`, `${JSON.stringify(featured, null, 2)}\n`);
-writeFileSync(`${contribDir}panel.svg`, contributionsPanelSvg(contributions));
-console.log(`Generated ${featured.length} featured contributions and a panel with ${contributions.length} repos`);
+writeFileSync(`${contribDir}contributions.json`, `${JSON.stringify(contributions, null, 2)}\n`);
+console.log(`Generated ${featured.length} featured contributions and data for ${contributions.length} repos`);
