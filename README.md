@@ -30,17 +30,11 @@ Istanbul, Turkey · from Ukraine 🇺🇦 · 3+ years professional experience
 
 <p><a href="https://github.com/Marve10s/Better-Fullstack"><img src="./assets/profile/tile-better-fullstack.svg" width="423" alt="Better Fullstack: scaffold full-stack apps in one command. better-fullstack.dev" /></a><a href="https://github.com/Marve10s/awesome-effect"><img src="./assets/profile/tile-awesome-effect.svg" width="423" alt="awesome-effect: the Effect ecosystem, curated. Featured in This Week in Effect #133." /></a></p>
 
-## Security
-
-<a href="https://github.com/Effect-TS/effect/security"><img src="./assets/profile/security.svg" width="100%" alt="Reported 3 vulnerabilities in Effect: one high, one moderate and one low severity, all confirmed by the maintainers." /></a>
-
 ## Contributed to
-
-<p><a href="https://github.com/pulls?q=is%3Apr+author%3AMarve10s+is%3Amerged+repo%3AEffect-TS%2Feffect"><img src="./assets/profile/contrib-effect.svg" width="211" alt="Effect-TS/effect: merged pull requests" /></a><a href="https://github.com/pulls?q=is%3Apr+author%3AMarve10s+is%3Amerged+repo%3Apingdotgg%2Ft3code"><img src="./assets/profile/contrib-t3code.svg" width="211" alt="pingdotgg/t3code: merged pull requests" /></a><a href="https://github.com/react/react-native/commits?author=Marve10s"><img src="./assets/profile/contrib-react-native.svg" width="211" alt="react/react-native: pull requests landed" /></a><a href="https://github.com/pulls?q=is%3Apr+author%3AMarve10s+is%3Amerged+repo%3Amui%2Fmaterial-ui"><img src="./assets/profile/contrib-material-ui.svg" width="211" alt="mui/material-ui: merged pull requests" /></a></p>
 
 <img src="./assets/profile/used-by.svg" width="100%" alt="Libraries I contribute to and who uses them. Effect: Cloudflare, OpenRouter, OpenCode, T3 Code. Material UI: Netflix, NASA, Spotify, Amazon. React Native: Meta, Microsoft, Amazon, Shopify. React Hook Form: Grafana, Supabase. tRPC: Netflix. Cheerio: Google. Floating UI: Palantir." />
 
-<a href="https://github.com/pulls?q=is%3Apr+author%3AMarve10s+is%3Amerged+-user%3AMarve10s"><img src="./assets/profile/contrib-panel.svg" width="100%" alt="Merged pull requests in every open-source repository I have contributed to" /></a>
+<a href="https://github.com/pulls?q=is%3Apr+author%3AMarve10s+is%3Amerged+-user%3AMarve10s"><img src="./assets/profile/contrib-panel.svg" width="100%" alt="Every open-source repository that merged my pull requests, led by Effect and React Native, with 3 vulnerabilities reported to Effect: one high, one moderate and one low severity, all confirmed by the maintainers" /></a>
 
 ---
 

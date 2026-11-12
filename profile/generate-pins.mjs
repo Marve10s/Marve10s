@@ -53,8 +53,6 @@ const CONTRIBUTIONS = [
   { owner: "leonitousconforti", repo: "eftar", logo: "effect.png" },
 ];
 
-const FEATURED_CONTRIBUTIONS = ["Effect-TS/effect", "pingdotgg/t3code", "react/react-native", "mui/material-ui"];
-
 const EXPERIENCE = [
   {
     slug: "listening",
@@ -366,7 +364,5 @@ contributions.sort((a, b) => b.prs - a.prs || b.stars - a.stars);
 const contribDir = fileURLToPath(new URL("./contrib/", import.meta.url));
 rmSync(contribDir, { recursive: true, force: true });
 mkdirSync(contribDir, { recursive: true });
-const featured = FEATURED_CONTRIBUTIONS.map((name) => contributions.find(({ fullName }) => fullName === name));
-writeFileSync(`${contribDir}featured.json`, `${JSON.stringify(featured, null, 2)}\n`);
 writeFileSync(`${contribDir}contributions.json`, `${JSON.stringify(contributions, null, 2)}\n`);
-console.log(`Generated ${featured.length} featured contributions and data for ${contributions.length} repos`);
+console.log(`Generated data for ${contributions.length} repos`);
