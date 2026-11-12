@@ -509,8 +509,8 @@ let libraries;
   const cloudDefs = [...clouds.values()].map(({ name, color, opacity }) => `<radialGradient id="${name}"><stop offset="0" stop-color="${color}" stop-opacity="${opacity}"/><stop offset="1" stop-color="${color}" stop-opacity="0"/></radialGradient>`).join('');
   const body = `<defs>${cloudDefs}<clipPath id="grid"><rect x="${PAD}" y="${top}" width="${INNER - PAD * 2}" height="${height - top - 26}"/></clipPath></defs>${rise(0, `${text(REG, 'Merged pull requests', PAD, 39, 15, theme.soft)}${text(SANS, summary, INNER - PAD, 39, 15, theme.title, { anchor: 'end' })}`)}${backs}<g clip-path="url(#grid)">${grain(PAD, top, INNER - PAD * 2, height - top - 26)}</g>${fronts}`;
   const title = `${summary}: ${contributions.map(({ fullName, prs }) => `${fullName} (${plural(prs, 'PR')})`).join(', ')}. Security: ${headline} to Effect, one high, one moderate and one low severity, all confirmed by the maintainers.`;
-  const offset = libraries.bottom + 6;
-  card('contributed.svg', { height: offset + height, theme, title: `${libraries.title} ${title}`, css: libraries.css, body: `${libraries.body}<g transform="translate(0 ${offset})">${body}</g>`, grainy: true });
+  const rule = libraries.bottom + 18, offset = rule - 5;
+  card('contributed.svg', { height: offset + height, theme, title: `${libraries.title} ${title}`, css: libraries.css, body: `${libraries.body}<path d="M${PAD} ${rule + 0.5}H${INNER - PAD}" stroke="${theme.border}"/><g transform="translate(0 ${offset})">${body}</g>`, grainy: true });
 }
 
 {
