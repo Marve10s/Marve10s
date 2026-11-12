@@ -368,6 +368,7 @@ const [bfs, awesome, downloads] = await Promise.all([
   write('tile-awesome-effect.svg', tile({ theme: THEME, name: 'awesome-effect', desc: 'The Effect ecosystem, curated', right: { star: stars }, sub: 'This Week in Effect #133', title: `awesome-effect: libraries, tools and learning material for Effect. ${stars} stars. Featured in This Week in Effect #133.`, delay: 0.08 })(scrollingList(picks, ...IMG, THEME)));
 }
 
+let libraries;
 {
   const theme = THEME;
   const slots = LIBRARIES.length, hold = 2.2, fade = 0.5, total = +(slots * hold).toFixed(2);
@@ -416,7 +417,7 @@ const [bfs, awesome, downloads] = await Promise.all([
   const glowDefs = [...glows].map(([color, name]) => `<radialGradient id="${name}"><stop offset="0" stop-color="${color}"/><stop offset=".12" stop-color="${color}"/><stop offset=".72" stop-color="${color}" stop-opacity="0"/></radialGradient>`).join('');
   const body = `<defs>${glowDefs}</defs>${rise(0, `${text(REG, heading, PAD, 39, 15, theme.soft)}${text(SANS, totalDownloads, INNER - PAD, 39, 15, theme.title, { anchor: 'end' })}`)}${list}${wall}`;
   const title = `${heading}. ${totalDownloads} combined. ${LIBRARIES.map((lib, i) => `${lib.name}, ${millions(downloads[i])} a week, used by ${lib.users.join(', ')}`).join('. ')}.`;
-  card('used-by.svg', { height: top + slots * rowHeight + PAD, theme, title, css: [...keyframes.values()].join(''), body, grainy: true });
+  libraries = { bottom: top + slots * rowHeight, title, css: [...keyframes.values()].join(''), body };
 }
 
 {
@@ -465,7 +466,7 @@ const [bfs, awesome, downloads] = await Promise.all([
   };
 
   const frame = (tile) => `x="${tile.x}" y="${tile.y}" width="${tile.w}" height="${tile.h}" rx="9"`;
-  const backs = tiles.map((tile) => `<clipPath id="tile${tile.i}"><rect ${frame(tile)}/></clipPath><rect ${frame(tile)} fill="#0C0C0F"/><g clip-path="url(#tile${tile.i})">${nebula(tile)}</g><rect x="${tile.x + 0.5}" y="${tile.y + 0.5}" width="${tile.w - 1}" height="${tile.h - 1}" rx="8.5" fill="none" stroke="#19191C"/>`).join('');
+  const backs = tiles.map((tile) => `<clipPath id="cell${tile.i}"><rect ${frame(tile)}/></clipPath><rect ${frame(tile)} fill="#0C0C0F"/><g clip-path="url(#cell${tile.i})">${nebula(tile)}</g><rect x="${tile.x + 0.5}" y="${tile.y + 0.5}" width="${tile.w - 1}" height="${tile.h - 1}" rx="8.5" fill="none" stroke="#19191C"/>`).join('');
 
   const mark = (tile, x, y, size) => `<clipPath id="logo${tile.i}"><rect x="${x}" y="${y}" width="${size}" height="${size}" rx="5"/></clipPath><image href="${tile.repo.image}" x="${x}" y="${y}" width="${size}" height="${size}" clip-path="url(#logo${tile.i})"/>`;
   const starred = (x, baseline, size, stars) => {
@@ -508,7 +509,8 @@ const [bfs, awesome, downloads] = await Promise.all([
   const cloudDefs = [...clouds.values()].map(({ name, color, opacity }) => `<radialGradient id="${name}"><stop offset="0" stop-color="${color}" stop-opacity="${opacity}"/><stop offset="1" stop-color="${color}" stop-opacity="0"/></radialGradient>`).join('');
   const body = `<defs>${cloudDefs}<clipPath id="grid"><rect x="${PAD}" y="${top}" width="${INNER - PAD * 2}" height="${height - top - 26}"/></clipPath></defs>${rise(0, `${text(REG, 'Merged pull requests', PAD, 39, 15, theme.soft)}${text(SANS, summary, INNER - PAD, 39, 15, theme.title, { anchor: 'end' })}`)}${backs}<g clip-path="url(#grid)">${grain(PAD, top, INNER - PAD * 2, height - top - 26)}</g>${fronts}`;
   const title = `${summary}: ${contributions.map(({ fullName, prs }) => `${fullName} (${plural(prs, 'PR')})`).join(', ')}. Security: ${headline} to Effect, one high, one moderate and one low severity, all confirmed by the maintainers.`;
-  card('contrib-panel.svg', { height, theme, title, body, grainy: true });
+  const offset = libraries.bottom + 6;
+  card('contributed.svg', { height: offset + height, theme, title: `${libraries.title} ${title}`, css: libraries.css, body: `${libraries.body}<g transform="translate(0 ${offset})">${body}</g>`, grainy: true });
 }
 
 {
