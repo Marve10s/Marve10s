@@ -9,7 +9,6 @@ on:
       - ".github/workflows/pin-cards.yml"
       - "profile/generate-pins.mjs"
       - "scripts/make_profile.mjs"
-      - "scripts/poster/**"
       - "scripts/icons.json"
 
 concurrency:
