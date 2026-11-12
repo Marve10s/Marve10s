@@ -138,13 +138,13 @@ const SWAY = 'calcMode="spline" keySplines=".45 0 .55 1;.45 0 .55 1"';
 
 const GRAIN_SIZE = 128;
 const grainNoise = seeded(23);
-const grainPixels = Buffer.from(Array.from({ length: GRAIN_SIZE * GRAIN_SIZE }, () => Math.max(0, Math.min(255, Math.round(128 + (grainNoise() + grainNoise() + grainNoise() - 1.5) * 150)))));
-const GRAIN_IMAGE = `data:image/png;base64,${(await sharp(grainPixels, { raw: { width: GRAIN_SIZE, height: GRAIN_SIZE, channels: 1 } }).png().toBuffer()).toString('base64')}`;
+const grainPixels = Buffer.from(Array.from({ length: GRAIN_SIZE * GRAIN_SIZE }, () => [0, Math.max(0, Math.min(255, Math.round((0.2 + (grainNoise() + grainNoise() + grainNoise() - 1.5) * 0.5) * 255)))]).flat());
+const GRAIN_IMAGE = `data:image/png;base64,${(await sharp(grainPixels, { raw: { width: GRAIN_SIZE, height: GRAIN_SIZE, channels: 2 } }).png().toBuffer()).toString('base64')}`;
 const GRAIN_DEFS = `<pattern id="grain" width="${GRAIN_SIZE}" height="${GRAIN_SIZE}" patternUnits="userSpaceOnUse"><image href="${GRAIN_IMAGE}" width="${GRAIN_SIZE}" height="${GRAIN_SIZE}"/></pattern>`;
 const GRAIN_FRAMES = 12;
 const grainJump = seeded(41);
 const GRAIN_CSS = `@keyframes gr{${Array.from({ length: GRAIN_FRAMES }, (_, i) => `${(i / GRAIN_FRAMES * 100).toFixed(2)}%{transform:translate(${-Math.floor(grainJump() * GRAIN_SIZE)}px,${-Math.floor(grainJump() * GRAIN_SIZE)}px)}`).join('')}}.gr{animation:gr .75s steps(1) infinite}`;
-const grain = (x, y, w, h, strength = 0.42) => `<g style="mix-blend-mode:overlay" opacity="${strength}"><rect class="gr" x="${x.toFixed(1)}" y="${y.toFixed(1)}" width="${(w + GRAIN_SIZE).toFixed(1)}" height="${(h + GRAIN_SIZE).toFixed(1)}" fill="url(#grain)"/></g>`;
+const grain = (x, y, w, h, strength = 0.9) => `<g opacity="${strength}"><rect class="gr" x="${x.toFixed(1)}" y="${y.toFixed(1)}" width="${(w + GRAIN_SIZE).toFixed(1)}" height="${(h + GRAIN_SIZE).toFixed(1)}" fill="url(#grain)"/></g>`;
 
 const light = (hex) => {
   const channels = [0, 1, 2].map((i) => parseInt(hex.slice(1 + i * 2, 3 + i * 2), 16));
@@ -188,7 +188,6 @@ function horizon({ W, H, crest, sag, startAt = 0.143, reach = 66 }) {
   return `<defs><radialGradient id="${ring}" gradientUnits="userSpaceOnUse" cx="${cx}" cy="${cy.toFixed(1)}" r="${outer.toFixed(1)}">${BAND.map(([offset, color]) => `<stop offset="${((R - offset) / outer).toFixed(5)}" stop-color="${color}"/>`).join('')}</radialGradient>
 <linearGradient id="${follow}" gradientUnits="userSpaceOnUse" x1="${-1.5 * W}" x2="${1.5 * W}">${dim.map(([at, alpha]) => `<stop offset="${at}" stop-color="#000" stop-opacity="${alpha}"/>`).join('')}</linearGradient>
 <linearGradient id="${reveal}" gradientUnits="userSpaceOnUse" x1="${-1.5 * W}" x2="${1.5 * W}"><stop offset="0" stop-color="#000" stop-opacity=".86"/><stop offset=".2" stop-color="#000" stop-opacity="0"/><stop offset=".8" stop-color="#000" stop-opacity="0"/><stop offset="1" stop-color="#000" stop-opacity=".86"/></linearGradient>${flare.defs}</defs>
-<rect width="${W}" height="${H}" fill="#000"/>
 <g opacity="0"><animate attributeName="opacity" values="0;1" begin="0.15s" dur="1.15s" calcMode="spline" keySplines=".4 0 .6 1" fill="freeze"/><circle cx="${cx}" cy="${cy.toFixed(1)}" r="${outer.toFixed(1)}" fill="url(#${ring})"/></g>
 <g><animateTransform attributeName="transform" type="translate" values="${xAt(0).toFixed(1)} 0;${xAt(1).toFixed(1)} 0;${xAt(1).toFixed(1)} 0" ${travel}/><rect x="${-3 * W}" y="0" width="${6 * W}" height="${H}" fill="url(#${follow})"/></g>
 <g transform="translate(${xAt(startFraction).toFixed(1)} 0)"><set attributeName="display" to="none" begin="3.4s"/><g transform="scale(0.02 1)"><animateTransform attributeName="transform" type="scale" values="0.02 1;1 1" begin="0.45s" dur="2.1s" calcMode="spline" keySplines=".2 .65 .35 1" fill="freeze"/><rect x="${-40 * W}" y="0" width="${80 * W}" height="${H}" fill="url(#${reveal})"/></g></g>
@@ -460,7 +459,7 @@ const [bfs, awesome, downloads] = await Promise.all([
     const y = top + Math.floor(i / columns) * (tileHeight + gap);
     const active = LIBRARIES.flatMap((lib, slot) => (lib.users.includes(company) ? [slot] : []));
     const frame = `x="${x.toFixed(1)}" y="${y.toFixed(1)}" width="${tileWidth.toFixed(1)}" height="${tileHeight.toFixed(1)}" rx="10"`;
-    const spot = `<clipPath id="tile${i}"><rect ${frame}/></clipPath><g clip-path="url(#tile${i})"><rect ${frame} fill="${theme.chip}"/><ellipse class="${cycle('g', active, 1, 0)}" opacity="0" cx="${(x + tileWidth / 2).toFixed(1)}" cy="${(y + tileHeight * 1.25).toFixed(1)}" rx="${(tileWidth * 1.5).toFixed(1)}" ry="${(tileHeight * 1.2).toFixed(1)}" fill="url(#${glow(brand)})"/><g class="${cycle('n', active, 0.6, 0)}" opacity="0" style="mix-blend-mode:overlay"><rect class="gr" x="${x.toFixed(1)}" y="${y.toFixed(1)}" width="${(tileWidth + GRAIN_SIZE).toFixed(1)}" height="${(tileHeight + GRAIN_SIZE).toFixed(1)}" fill="url(#grain)"/></g></g>`;
+    const spot = `<clipPath id="tile${i}"><rect ${frame}/></clipPath><g clip-path="url(#tile${i})"><rect ${frame} fill="${theme.chip}"/><ellipse class="${cycle('g', active, 1, 0)}" opacity="0" cx="${(x + tileWidth / 2).toFixed(1)}" cy="${(y + tileHeight * 1.25).toFixed(1)}" rx="${(tileWidth * 1.5).toFixed(1)}" ry="${(tileHeight * 1.2).toFixed(1)}" fill="url(#${glow(brand)})"/><g class="${cycle('n', active, 0.9, 0)}" opacity="0"><rect class="gr" x="${x.toFixed(1)}" y="${y.toFixed(1)}" width="${(tileWidth + GRAIN_SIZE).toFixed(1)}" height="${(tileHeight + GRAIN_SIZE).toFixed(1)}" fill="url(#grain)"/></g></g>`;
     const inner = `${spot}<rect class="${cycle('r', active, 1, 0)}" opacity="0" x="${(x + 0.75).toFixed(2)}" y="${(y + 0.75).toFixed(2)}" width="${(tileWidth - 1.5).toFixed(1)}" height="${(tileHeight - 1.5).toFixed(1)}" rx="9.25" fill="none" stroke="${theme.title}" stroke-width="1.5"/>${icon(glyph, x + tileWidth / 2 - 12, y + 20, 24, brand ?? theme.title)}${text(REG, company, x + tileWidth / 2, y + 65, 13, theme.title, { anchor: 'middle' })}`;
     return rise(i + 2, `<g class="${cycle('t', active, 1, 0.5)}">${inner}</g>`);
   }).join('');
