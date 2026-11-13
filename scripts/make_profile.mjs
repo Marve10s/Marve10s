@@ -235,9 +235,16 @@ function eclipse({ cx, cy, r, hues: [outerHue, innerHue] }) {
 <g><animateTransform attributeName="transform" type="rotate" values="-160 ${cx} ${cy};-110 ${cx} ${cy};-160 ${cx} ${cy}" dur="38s" ${SWAY} repeatCount="indefinite"/><g transform="translate(${cx} ${cy - r})"><circle r="${(r * 0.42).toFixed(1)}" fill="url(#${bead})"><animate attributeName="r" values="${(r * 0.36).toFixed(1)};${(r * 0.5).toFixed(1)};${(r * 0.36).toFixed(1)}" dur="6.5s" ${SWAY} repeatCount="indefinite"/></circle></g></g>`;
 }
 
-function tile({ w = 423, h = 196, plate = 62, theme, name, desc, right, sub, title, delay = 0, backdrop }) {
+function tile({ w = 423, h = 196, plate = 62, theme, name, desc, right, sub, title, delay = 0, backdrop, bridge }) {
   return ({ css = '', art }) => {
     const gx = 5, tw = w - gx * 2, th = h - 4, ih = th - plate;
+    const frame = (inset) => {
+      const x0 = inset, y0 = inset, x1 = tw - inset, y1 = th - inset, r = 12 - inset, span = 10;
+      const topLeft = bridge === 'left' ? `M${-gx} ${y0}` : `M${x0} ${y0 + r}Q${x0} ${y0} ${x0 + r} ${y0}`;
+      const topRight = bridge === 'right' ? `H${tw + gx}V${span}A${gx + inset} ${gx + inset} 0 0 0 ${x1} ${span + gx + inset}` : `H${x1 - r}Q${x1} ${y0} ${x1} ${y0 + r}`;
+      const closing = bridge === 'left' ? `V${span + gx + inset}A${gx + inset} ${gx + inset} 0 0 0 ${-gx} ${span}Z` : 'Z';
+      return `${topLeft}${topRight}V${y1 - r}Q${x1} ${y1} ${x1 - r} ${y1}H${x0 + r}Q${x0} ${y1} ${x0} ${y1 - r}${closing}`;
+    };
     const nameSize = 20, descSize = 13.5, pad = 16;
     const y1 = ih + 26, y2 = ih + 46;
     const rx = tw - pad;
@@ -250,11 +257,11 @@ function tile({ w = 423, h = 196, plate = 62, theme, name, desc, right, sub, tit
     }
     if (sub) side += text(SANS, sub, rx, y2, descSize, theme.dim, { anchor: 'end' });
     return `<svg xmlns="http://www.w3.org/2000/svg" width="${w}" height="${h}" viewBox="0 0 ${w} ${h}" role="img" aria-label="${esc(title)}">
-<title>${esc(title)}</title><defs><clipPath id="c"><rect width="${tw}" height="${th}" rx="12"/></clipPath><clipPath id="ia"><rect width="${tw}" height="${ih}"/></clipPath>${backdrop ? GRAIN_DEFS : ''}</defs>
+<title>${esc(title)}</title><defs><clipPath id="c"><path d="${frame(0)}"/></clipPath><clipPath id="ia"><rect width="${tw}" height="${ih}"/></clipPath>${backdrop ? GRAIN_DEFS : ''}</defs>
 <style>${ENTER}${backdrop ? GRAIN_CSS : ''}${css}.d{animation-delay:${delay}s}${STILL}</style>
-<g transform="translate(${gx} 0)"><g clip-path="url(#c)"><rect width="${tw}" height="${th}" fill="${theme.bg}"/>${backdrop ?? ''}<g clip-path="url(#ia)"><g class="in d">${art(tw, ih)}</g></g>${backdrop ? '' : `<path d="M0 ${ih + 0.5}H${tw}" stroke="${theme.border}"/>`}
+<g transform="translate(${gx} 0)"><g clip-path="url(#c)"><rect x="${-gx}" width="${w}" height="${th}" fill="${theme.bg}"/>${backdrop ?? ''}<g clip-path="url(#ia)"><g class="in d">${art(tw, ih)}</g></g>${backdrop ? '' : `<path d="M0 ${ih + 0.5}H${tw}" stroke="${theme.border}"/>`}
 <g class="in d">${text(BOLD, name, pad, y1, nameSize, theme.title, { track: -0.2 })}${text(SANS, desc, pad, y2, descSize, theme.soft)}${side}</g></g>
-<rect x=".5" y=".5" width="${tw - 1}" height="${th - 1}" rx="12" fill="none" stroke="${theme.border}"/></g>
+<path d="${frame(0.5)}" fill="none" stroke="${theme.border}"/></g>
 </svg>`;
   };
 }
@@ -354,13 +361,13 @@ const [bfs, awesome, downloads] = await Promise.all([
   const platforms = ['web', 'apple', 'android', 'electron', 'googlechrome'].map((name) => tinted(`icons/platforms/${name}.svg`, theme.dim));
   const header = (x, y) => platforms.map((image, i) => `<image href="${image}" x="${x + i * 22}" y="${y - 12}" width="15" height="15"/>`).join('');
   const art = statsArt({ logo: asset('logos/listening.svg'), headline: '20k+', caption: 'audio hours a month', header, columns: [['11k+', 'monthly users'], ['600k+', 'lines of code']] }, ...IMG, theme);
-  write('tile-listening.svg', tile({ theme, backdrop: sky(0), name: 'Listening.com', desc: 'Senior Full Stack Engineer', right: { label: 'Dec 2024 – now' }, sub: 'listening.com', title: 'Listening.com: Senior Full Stack Engineer, December 2024 to now. 20k+ hours of audio a month and 11k+ monthly users across the web, iOS, Android, desktop and Chrome extension apps, on a 600k+ line codebase.' })(art));
+  write('tile-listening.svg', tile({ theme, bridge: 'right', backdrop: sky(0), name: 'Listening.com', desc: 'Senior Full Stack Engineer', right: { label: 'Dec 2024 – now' }, sub: 'listening.com', title: 'Listening.com: Senior Full Stack Engineer, December 2024 to now. 20k+ hours of audio a month and 11k+ monthly users across the web, iOS, Android, desktop and Chrome extension apps, on a 600k+ line codebase.' })(art));
 
   const png = async (file) => `data:image/png;base64,${(await sharp(path.join(ROOT, 'assets', file)).resize(96, 96).png().toBuffer()).toString('base64')}`;
   const giftsong = await png('logos/giftsong.png');
   const giftsongHeader = (x, y) => `<image href="${giftsong}" x="${x}" y="${y - 13}" width="17" height="17"/>${text(SANS, 'GiftSong.ai', x + 22, y, 12, theme.soft)}`;
   const upwork = statsArt({ logo: await png('logos/upwork.png'), headline: '10+', caption: 'client projects', header: giftsongHeader, columns: [['650k+', 'songs'], ['148k', 'users'], ['38k+', 'audio hours']] }, ...IMG, theme);
-  write('tile-upwork.svg', tile({ theme, backdrop: sky(423), name: 'Upwork', desc: 'Full Stack TypeScript Developer', right: { label: 'Jun 2024 – now' }, title: 'Upwork: Full Stack TypeScript Developer, June 2024 to now. 10+ client projects, including GiftSong.ai, an AI song gift app with 650k+ songs, 148k users and 38k+ hours of audio.', delay: 0.08 })(upwork));
+  write('tile-upwork.svg', tile({ theme, bridge: 'left', backdrop: sky(423), name: 'Upwork', desc: 'Full Stack TypeScript Developer', right: { label: 'Jun 2024 – now' }, title: 'Upwork: Full Stack TypeScript Developer, June 2024 to now. 10+ client projects, including GiftSong.ai, an AI song gift app with 650k+ songs, 148k users and 38k+ hours of audio.', delay: 0.08 })(upwork));
 }
 
 {
@@ -399,7 +406,7 @@ const [bfs, awesome, downloads] = await Promise.all([
   const frames = await Promise.all(['typescript', 'react-native', 'rust', 'python', 'go'].map((s) => still({ url: og(s), crop: [60, 150, 1080, 340] }, ...IMG, 72)));
   const s = slideshow(frames, ...IMG, { hold: 2.2, fade: 0.6 });
   const stars = compact(bfs.stargazers_count);
-  write('tile-better-fullstack.svg', tile({ theme: THEME, name: 'Better Fullstack', desc: 'Full-stack apps in one command', right: { star: stars }, sub: 'better-fullstack.dev', title: `Better Fullstack: scaffold full-stack apps in TypeScript, React Native, Rust, Python, Go and more. ${stars} stars. better-fullstack.dev` })(s));
+  write('tile-better-fullstack.svg', tile({ theme: THEME, bridge: 'right', name: 'Better Fullstack', desc: 'Full-stack apps in one command', right: { star: stars }, sub: 'better-fullstack.dev', title: `Better Fullstack: scaffold full-stack apps in TypeScript, React Native, Rust, Python, Go and more. ${stars} stars. better-fullstack.dev` })(s));
 }
 
 {
@@ -407,7 +414,7 @@ const [bfs, awesome, downloads] = await Promise.all([
   const names = [...readme.matchAll(/^- <img[^>]*> \[([^\]]+)\]\(/gm)].map((m) => m[1]).filter((n) => n.length <= 17 && /^[@a-z][\w./-]*$/.test(n));
   const picks = names.filter((_, i) => i % 2 === 0).slice(0, 36);
   const stars = compact(awesome.stargazers_count);
-  write('tile-awesome-effect.svg', tile({ theme: THEME, name: 'awesome-effect', desc: 'The Effect ecosystem, curated', right: { star: stars }, sub: 'This Week in Effect #133', title: `awesome-effect: libraries, tools and learning material for Effect. ${stars} stars. Featured in This Week in Effect #133.`, delay: 0.08 })(scrollingList(picks, ...IMG, THEME)));
+  write('tile-awesome-effect.svg', tile({ theme: THEME, bridge: 'left', name: 'awesome-effect', desc: 'The Effect ecosystem, curated', right: { star: stars }, sub: 'This Week in Effect #133', title: `awesome-effect: libraries, tools and learning material for Effect. ${stars} stars. Featured in This Week in Effect #133.`, delay: 0.08 })(scrollingList(picks, ...IMG, THEME)));
 }
 
 {
