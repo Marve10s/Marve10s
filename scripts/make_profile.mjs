@@ -302,24 +302,13 @@ function card(name, { height, theme, title, css = '', body, grainy = false }) {
 </svg>`);
 }
 
-const JOIN_LINE = '#8A8792', JOIN_PULSE = '#8B5CF6';
-function join(name, { label, from = 1, to = 1 }) {
-  const centres = (count) => (count === 2 ? [FULL / 4, FULL * 3 / 4] : count === 1 ? [FULL / 2] : []);
-  const middle = FULL / 2, lead = 26, pill = 30;
-  const top = from ? lead : 0, bottom = top + pill, height = bottom + lead;
-  const bend = (x1, y1, x2, y2) => `M${x1} ${y1}C${x1} ${(y1 + (y2 - y1) * 0.62).toFixed(1)} ${x2} ${(y1 + (y2 - y1) * 0.38).toFixed(1)} ${x2} ${y2}`;
-  const arriving = centres(from).map((x) => bend(x, 0, middle, top));
-  const leaving = centres(to).map((x) => bend(middle, bottom, x, height));
-  const travel = 1.5;
-  const pulse = (d, begin) => `<circle r="2.2" fill="${JOIN_PULSE}" opacity="0"><animateMotion path="${d}" dur="${travel}s" begin="${begin}s;j.end+${begin}s" fill="freeze"/><animate attributeName="opacity" values="0;1;1;0" keyTimes="0;.2;.8;1" dur="${travel}s" begin="${begin}s;j.end+${begin}s"/></circle>`;
-  const labelWidth = width(PIXEL, label, 15) + 34;
+function tab(name, label, lead = 26) {
+  const middle = FULL / 2, rise = 31, flare = 12, corner = 10;
+  const half = (width(PIXEL, label, 15) + 44) / 2, height = lead + rise, top = lead + 0.5;
+  const left = middle - half, right = middle + half;
+  const outline = `M${(left - flare).toFixed(1)} ${height}Q${left.toFixed(1)} ${height} ${left.toFixed(1)} ${height - flare}V${top + corner}Q${left.toFixed(1)} ${top} ${(left + corner).toFixed(1)} ${top}H${(right - corner).toFixed(1)}Q${right.toFixed(1)} ${top} ${right.toFixed(1)} ${top + corner}V${height - flare}Q${right.toFixed(1)} ${height} ${(right + flare).toFixed(1)} ${height}`;
   write(name, `<svg xmlns="http://www.w3.org/2000/svg" width="${FULL}" height="${height}" viewBox="0 0 ${FULL} ${height}" role="img" aria-label="${esc(label)}">
-<title>${esc(label)}</title><style>${STILL}</style>
-<rect width="0" height="0"><animate id="j" attributeName="width" values="0;0" dur="${(travel * 2 + 2.4).toFixed(1)}s" begin="0s;j.end"/></rect>
-${[...arriving, ...leaving].map((d) => `<path d="${d}" fill="none" stroke="${JOIN_LINE}" stroke-opacity=".55" stroke-width="1.5"/>`).join('')}
-${centres(from).map((x) => `<circle cx="${x}" cy="1.5" r="2.2" fill="${JOIN_LINE}"/>`).join('')}${centres(to).map((x) => `<circle cx="${x}" cy="${height - 1.5}" r="2.2" fill="${JOIN_LINE}"/>`).join('')}
-${arriving.map((d) => pulse(d, 0.4)).join('')}${leaving.map((d) => pulse(d, 0.4 + travel)).join('')}
-<rect x="${(middle - labelWidth / 2).toFixed(1)}" y="${top + 0.5}" width="${labelWidth.toFixed(1)}" height="${pill - 1}" rx="${(pill - 1) / 2}" fill="${THEME.bg}" stroke="${THEME.border}"/>${pixelText(label, middle, top + 20, 15, THEME.title, { anchor: 'middle' })}
+<title>${esc(label)}</title><path d="${outline}Z" fill="${THEME.bg}"/><path d="${outline}" fill="none" stroke="${THEME.border}"/>${pixelText(label, middle, lead + 21, 15, THEME.title, { anchor: 'middle' })}
 </svg>`);
 }
 
@@ -552,11 +541,11 @@ const [bfs, awesome, downloads] = await Promise.all([
   card('contributed.svg', { height: seam + tallyTop + 76 + 26, theme, title: `${libraries.title} ${title}`, css: `${libraries.css}${css}`, body: `${libraries.body}<path d="M${PAD} ${seam + 0.5}H${right}" stroke="${theme.border}"/><g transform="translate(0 ${seam})">${reel}</g>`, grainy: true });
 }
 
-join('join-experience.svg', { label: 'Experience', from: 0, to: 2 });
-join('join-stack.svg', { label: 'Tech stack', from: 2, to: 1 });
-join('join-projects.svg', { label: 'Projects', from: 1, to: 2 });
-join('join-contributed.svg', { label: 'Contributed to', from: 2, to: 1 });
-join('join-stats.svg', { label: 'GitHub stats', from: 1, to: 1 });
+tab('tab-experience.svg', 'Experience', 8);
+tab('tab-stack.svg', 'Tech stack');
+tab('tab-projects.svg', 'Projects');
+tab('tab-contributed.svg', 'Contributed to');
+tab('tab-stats.svg', 'GitHub stats');
 
 {
   const theme = THEME;
