@@ -289,23 +289,26 @@ const MERGED_PRS_QUERY = `query($login: String!, $cursor: String) {
   user(login: $login) {
     pullRequests(first: 100, states: MERGED, after: $cursor) {
       pageInfo { hasNextPage endCursor }
-      nodes { repository { nameWithOwner } }
+      nodes { title number mergedAt repository { nameWithOwner } }
     }
   }
 }`;
 
-async function mergedPrCountsByRepo() {
-  const counts = new Map();
+const RECENT_PULLS = 3;
+const newestFirst = (pulls) => pulls.sort((a, b) => b.mergedAt.localeCompare(a.mergedAt)).slice(0, RECENT_PULLS);
+
+async function mergedPullsByRepo() {
+  const pulls = new Map();
   let cursor = null;
   do {
     const { pullRequests } = (await graphql(MERGED_PRS_QUERY, { login: OWNER, cursor })).user;
-    for (const { repository } of pullRequests.nodes) {
+    for (const { repository, title, number, mergedAt } of pullRequests.nodes) {
       const key = repository.nameWithOwner.toLowerCase();
-      counts.set(key, (counts.get(key) ?? 0) + 1);
+      pulls.set(key, [...(pulls.get(key) ?? []), { title, number, mergedAt }]);
     }
     cursor = pullRequests.pageInfo.hasNextPage ? pullRequests.pageInfo.endCursor : null;
   } while (cursor);
-  return counts;
+  return pulls;
 }
 
 async function fetchRepo({ owner, repo, ...card }) {
@@ -327,15 +330,28 @@ async function avatarDataUri(owner) {
   return `data:${res.headers.get("content-type")};base64,${buf.toString("base64")}`;
 }
 
-async function fetchContribution({ owner, repo, logo, countCommits = false, takenOver = [] }, mergedCounts) {
+async function landedCommits(owner, repo) {
+  const commits = await gh(`repos/${owner}/${repo}/commits?author=${OWNER}&per_page=100`);
+  return commits.map(({ commit }) => {
+    const subject = commit.message.split("\n")[0];
+    const landed = subject.match(/^(.*) \(#(\d+)\)$/);
+    return { title: landed?.[1] ?? subject, ...(landed ? { number: Number(landed[2]) } : {}), mergedAt: commit.author.date };
+  });
+}
+
+async function fetchContribution({ owner, repo, logo, countCommits = false, takenOver = [] }, mergedPulls) {
   const [data, landed, image] = await Promise.all([
     gh(`repos/${owner}/${repo}`),
-    countCommits
-      ? gh(`repos/${owner}/${repo}/commits?author=${OWNER}&per_page=100`).then((commits) => commits.length)
-      : (mergedCounts.get(`${owner}/${repo}`.toLowerCase()) ?? 0),
+    countCommits ? landedCommits(owner, repo) : (mergedPulls.get(`${owner}/${repo}`.toLowerCase()) ?? []),
     logo ? logoDataUri(logo) : avatarDataUri(owner),
   ]);
-  return { fullName: data.full_name, stars: data.stargazers_count, prs: landed + takenOver.length, image };
+  return {
+    fullName: data.full_name,
+    stars: data.stargazers_count,
+    prs: landed.length + takenOver.length,
+    pulls: newestFirst([...landed]),
+    image,
+  };
 }
 
 const stackDir = fileURLToPath(new URL("./stack/", import.meta.url));
@@ -358,8 +374,8 @@ for (const data of results) {
 }
 console.log(`Generated ${results.length} pin cards`);
 
-const mergedCounts = await mergedPrCountsByRepo();
-const contributions = await Promise.all(CONTRIBUTIONS.map((contribution) => fetchContribution(contribution, mergedCounts)));
+const mergedPulls = await mergedPullsByRepo();
+const contributions = await Promise.all(CONTRIBUTIONS.map((contribution) => fetchContribution(contribution, mergedPulls)));
 contributions.sort((a, b) => b.prs - a.prs || b.stars - a.stars);
 const contribDir = fileURLToPath(new URL("./contrib/", import.meta.url));
 rmSync(contribDir, { recursive: true, force: true });

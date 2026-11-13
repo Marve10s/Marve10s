@@ -22,14 +22,17 @@ const THEME = { bg: '#000000', title: '#F4F2EC', soft: '#A8A59D', dim: '#6D6A64'
 const NEUTRAL_GLOW = '#CFCBC2';
 
 const fontPath = (pkg, file) => path.join(HERE, 'node_modules', '@fontsource', pkg, 'files', file);
-const font = (pkg, file) => {
-  const b = fs.readFileSync(fontPath(pkg, file));
+const parseFont = (file) => {
+  const b = fs.readFileSync(file);
   return opentype.parse(b.buffer.slice(b.byteOffset, b.byteOffset + b.byteLength));
 };
+const font = (pkg, file) => parseFont(fontPath(pkg, file));
+const PIXEL = parseFont(path.join(HERE, 'fonts', 'GeistPixel-Grid.ttf'));
 const REG = font('geist-sans', 'geist-sans-latin-400-normal.woff');
 const SANS = font('geist-sans', 'geist-sans-latin-500-normal.woff');
 const BOLD = font('geist-sans', 'geist-sans-latin-600-normal.woff');
 const monoWoff2 = fs.readFileSync(fontPath('geist-mono', 'geist-mono-latin-500-normal.woff2')).toString('base64');
+const boldWoff2 = fs.readFileSync(fontPath('geist-sans', 'geist-sans-latin-600-normal.woff2')).toString('base64');
 const ICONS = JSON.parse(fs.readFileSync(path.join(HERE, 'icons.json'), 'utf8'));
 
 const width = (f, s, size, track = 0) => f.getAdvanceWidth(s, size) + track * (s.length - 1);
@@ -39,6 +42,11 @@ function outline(f, s, x, y, size, { anchor = 'start', track = 0 } = {}) {
   return f.getPath(s, x0, y, size, { letterSpacing: track / size }).toPathData(size > 30 ? 1 : 2);
 }
 const text = (f, s, x, y, size, fill, o = {}) => `<path fill="${fill}" d="${outline(f, s, x, y, size, o)}"/>`;
+const pixelText = (s, x, y, size, fill, { anchor = 'start' } = {}) => {
+  const w = width(PIXEL, s, size);
+  const x0 = anchor === 'end' ? x - w : anchor === 'middle' ? x - w / 2 : x;
+  return `<path fill="${fill}" transform="translate(${x0.toFixed(2)} ${y}) scale(${size / PIXEL.unitsPerEm})" d="${PIXEL.getPath(s, 0, 0, PIXEL.unitsPerEm).toPathData(0)}"/>`;
+};
 const esc = (s) => s.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
 const compact = (n) => (n >= 1000 ? `${(n / 1000).toFixed(n >= 10000 ? 0 : 1).replace(/\.0$/, '')}k` : String(n));
 const millions = (n) => `${(n / 1e6).toFixed(1)}M`;
@@ -137,9 +145,22 @@ const uid = (prefix) => `${prefix}${serial++}`;
 const SWAY = 'calcMode="spline" keySplines=".45 0 .55 1;.45 0 .55 1"';
 
 const GRAIN_SIZE = 128;
-const grainNoise = seeded(23);
-const grainPixels = Buffer.from(Array.from({ length: GRAIN_SIZE * GRAIN_SIZE }, () => [0, Math.max(0, Math.min(255, Math.round((0.2 + (grainNoise() + grainNoise() + grainNoise() - 1.5) * 0.5) * 255)))]).flat());
-const GRAIN_IMAGE = `data:image/png;base64,${(await sharp(grainPixels, { raw: { width: GRAIN_SIZE, height: GRAIN_SIZE, channels: 2 } }).png().toBuffer()).toString('base64')}`;
+const GRAIN_DENSITY = 2;
+const grainPixels = (() => {
+  const size = GRAIN_SIZE * GRAIN_DENSITY, random = seeded(23), radius = 1.1, reach = Math.ceil(radius * 3);
+  const white = Float32Array.from({ length: size * size }, () => random() + random() + random() - 1.5);
+  const kernel = Array.from({ length: reach * 2 + 1 }, (_, i) => Math.exp(-((i - reach) ** 2) / (2 * radius * radius)));
+  const kernelSum = kernel.reduce((sum, weight) => sum + weight, 0);
+  const blurAlong = (source, stepX, stepY) => Float32Array.from({ length: size * size }, (_, index) => {
+    const x = index % size, y = (index - x) / size;
+    return kernel.reduce((sum, weight, k) => sum + weight * source[((y + (k - reach) * stepY + size) % size) * size + ((x + (k - reach) * stepX + size) % size)], 0) / kernelSum;
+  });
+  const soft = blurAlong(blurAlong(white, 1, 0), 0, 1);
+  const fine = white.map((value, index) => value - soft[index]);
+  const deviation = Math.sqrt(fine.reduce((sum, value) => sum + value * value, 0) / fine.length);
+  return Buffer.from(Array.from(fine, (value) => [0, Math.max(0, Math.min(255, Math.round((0.24 + (value / deviation) * 0.34) * 255)))]).flat());
+})();
+const GRAIN_IMAGE = `data:image/png;base64,${(await sharp(grainPixels, { raw: { width: GRAIN_SIZE * GRAIN_DENSITY, height: GRAIN_SIZE * GRAIN_DENSITY, channels: 2 } }).png({ palette: true, colours: 16, compressionLevel: 9, effort: 10 }).toBuffer()).toString('base64')}`;
 const GRAIN_DEFS = `<pattern id="grain" width="${GRAIN_SIZE}" height="${GRAIN_SIZE}" patternUnits="userSpaceOnUse"><image href="${GRAIN_IMAGE}" width="${GRAIN_SIZE}" height="${GRAIN_SIZE}"/></pattern>`;
 const GRAIN_FRAMES = 12;
 const grainJump = seeded(41);
@@ -281,6 +302,27 @@ function card(name, { height, theme, title, css = '', body, grainy = false }) {
 </svg>`);
 }
 
+const JOIN_LINE = '#8A8792', JOIN_PULSE = '#8B5CF6';
+function join(name, { label, from = 1, to = 1 }) {
+  const centres = (count) => (count === 2 ? [FULL / 4, FULL * 3 / 4] : count === 1 ? [FULL / 2] : []);
+  const middle = FULL / 2, lead = 26, pill = 30;
+  const top = from ? lead : 0, bottom = top + pill, height = bottom + lead;
+  const bend = (x1, y1, x2, y2) => `M${x1} ${y1}C${x1} ${(y1 + (y2 - y1) * 0.62).toFixed(1)} ${x2} ${(y1 + (y2 - y1) * 0.38).toFixed(1)} ${x2} ${y2}`;
+  const arriving = centres(from).map((x) => bend(x, 0, middle, top));
+  const leaving = centres(to).map((x) => bend(middle, bottom, x, height));
+  const travel = 1.5;
+  const pulse = (d, begin) => `<circle r="2.2" fill="${JOIN_PULSE}" opacity="0"><animateMotion path="${d}" dur="${travel}s" begin="${begin}s;j.end+${begin}s" fill="freeze"/><animate attributeName="opacity" values="0;1;1;0" keyTimes="0;.2;.8;1" dur="${travel}s" begin="${begin}s;j.end+${begin}s"/></circle>`;
+  const labelWidth = width(PIXEL, label, 15) + 34;
+  write(name, `<svg xmlns="http://www.w3.org/2000/svg" width="${FULL}" height="${height}" viewBox="0 0 ${FULL} ${height}" role="img" aria-label="${esc(label)}">
+<title>${esc(label)}</title><style>${STILL}</style>
+<rect width="0" height="0"><animate id="j" attributeName="width" values="0;0" dur="${(travel * 2 + 2.4).toFixed(1)}s" begin="0s;j.end"/></rect>
+${[...arriving, ...leaving].map((d) => `<path d="${d}" fill="none" stroke="${JOIN_LINE}" stroke-opacity=".55" stroke-width="1.5"/>`).join('')}
+${centres(from).map((x) => `<circle cx="${x}" cy="1.5" r="2.2" fill="${JOIN_LINE}"/>`).join('')}${centres(to).map((x) => `<circle cx="${x}" cy="${height - 1.5}" r="2.2" fill="${JOIN_LINE}"/>`).join('')}
+${arriving.map((d) => pulse(d, 0.4)).join('')}${leaving.map((d) => pulse(d, 0.4 + travel)).join('')}
+<rect x="${(middle - labelWidth / 2).toFixed(1)}" y="${top + 0.5}" width="${labelWidth.toFixed(1)}" height="${pill - 1}" rx="${(pill - 1) / 2}" fill="${THEME.bg}" stroke="${THEME.border}"/>${pixelText(label, middle, top + 20, 15, THEME.title, { anchor: 'middle' })}
+</svg>`);
+}
+
 const dataUri = (file, bytes) => `data:${file.endsWith('.png') ? 'image/png' : 'image/svg+xml'};base64,${Buffer.from(bytes).toString('base64')}`;
 const asset = (file) => dataUri(file, fs.readFileSync(path.join(ROOT, 'assets', file)));
 const tinted = (file, fill) => dataUri(file, fs.readFileSync(path.join(ROOT, 'assets', file), 'utf8').replaceAll('#8F8B8A', fill));
@@ -309,6 +351,7 @@ const SKILLS = [
   ['Infrastructure & tools', [['Kubernetes', 'kubernetes'], ['GitHub Actions', 'githubactions'], ['RunPod', 'runpod'], ['Modal', 'modal'], ['AWS', 'amazonwebservices'], ['GitHub', 'github'], ['Codex', 'openai'], ['Claude Code', 'claude'], ['Vercel', 'vercel'], ['Railway', 'railway'], ['Render', 'render'], ['Netlify', 'netlify']]],
 ];
 
+let libraries;
 const [bfs, awesome, downloads] = await Promise.all([
   github(`repos/${OWNER}/Better-Fullstack`),
   github(`repos/${OWNER}/awesome-effect`),
@@ -333,23 +376,33 @@ const [bfs, awesome, downloads] = await Promise.all([
 
 {
   const theme = THEME;
-  const labelWidth = 186, chipHeight = 31, chipGap = 7, rowPad = 15;
-  const left = PAD + labelWidth, right = INNER - PAD;
-  let y = 6, body = '';
-  SKILLS.forEach(([label, skills], row) => {
-    if (row > 0) body += `<path d="M${PAD} ${y + 0.5}H${right}" stroke="${theme.border}"/>`;
-    let x = left, top = y + rowPad, chips = '';
-    for (const [name, glyph] of skills) {
-      const chipWidth = 9 + 15 + 7 + width(REG, name, 13.5) + 11;
-      if (x + chipWidth > right) { x = left; top += chipHeight + chipGap; }
-      chips += `<rect x="${x.toFixed(1)}" y="${top}" width="${chipWidth.toFixed(1)}" height="${chipHeight}" rx="8" fill="${theme.chip}"/>${icon(glyph, x + 9, top + 8, 15, theme.title)}${text(REG, name, x + 31, top + 20.5, 13.5, theme.title)}`;
-      x += chipWidth + chipGap;
+  const essentials = ['TypeScript', 'React', 'React Native', 'Effect-TS', 'Next.js', 'TanStack', 'Astro', 'HonoJS', 'PostgreSQL', 'Kubernetes', 'Expo', 'Electron', 'Tailwind CSS', 'Supabase', 'Bun', 'AWS', 'Drizzle ORM', 'GitHub Actions'];
+  const all = SKILLS.flatMap(([, skills]) => skills);
+  const edge = 18, chipHeight = 31, chipGap = 7, rows = 2, inset = 16;
+  const height = inset * 2 + rows * chipHeight + (rows - 1) * chipGap;
+  const cta = `View all ${all.length}`;
+  const ctaWidth = 14 + width(BOLD, cta, 13.5) + 9 + 10 + 13;
+  const ctaX = INNER - edge - ctaWidth;
+  const rowTop = (row) => inset + row * (chipHeight + chipGap);
+  const rowEnd = (row) => (row === rows - 1 ? ctaX - chipGap : INNER - edge);
+  let x = edge, row = 0, chips = '';
+  for (const name of essentials) {
+    const glyph = all.find(([skill]) => skill === name)?.[1];
+    const chipWidth = 9 + 15 + 7 + width(REG, name, 13.5) + 11;
+    if (!glyph || row >= rows) continue;
+    if (x + chipWidth > rowEnd(row)) {
+      row += 1;
+      x = edge;
+      if (row >= rows || x + chipWidth > rowEnd(row)) continue;
     }
-    body += rise(row * 2, `${text(REG, label, PAD, y + rowPad + 20.5, 13.5, theme.soft)}${chips}`);
-    y = top + chipHeight + rowPad;
-  });
-  const title = `Skills and tools. ${SKILLS.map(([label, skills]) => `${label}: ${skills.map(([name]) => name).join(', ')}`).join('. ')}.`;
-  card('skills.svg', { height: y + 6, theme, title, body });
+    chips += `<rect x="${x.toFixed(1)}" y="${rowTop(row)}" width="${chipWidth.toFixed(1)}" height="${chipHeight}" rx="8" fill="${theme.chip}"/>${icon(glyph, x + 9, rowTop(row) + 8, 15, theme.title)}${text(REG, name, x + 31, rowTop(row) + 20.5, 13.5, theme.title)}`;
+    x += chipWidth + chipGap;
+  }
+  const top = rowTop(rows - 1);
+  const arrowX = ctaX + ctaWidth - 13 - 10, arrowY = top + chipHeight / 2;
+  const button = `<rect x="${ctaX.toFixed(1)}" y="${top}" width="${ctaWidth.toFixed(1)}" height="${chipHeight}" rx="8" fill="${theme.title}"/>${text(BOLD, cta, ctaX + 14, top + 20.5, 13.5, '#0B0B0B')}<path d="M${arrowX.toFixed(1)} ${arrowY}h10m-4 -4l4 4l-4 4" fill="none" stroke="#0B0B0B" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>`;
+  const title = `Tech stack. ${SKILLS.map(([label, skills]) => `${label}: ${skills.map(([name]) => name).join(', ')}`).join('. ')}. The full list is on elkamali.dev.`;
+  card('skills.svg', { height, theme, title, body: `${rise(0, chips)}${rise(3, button)}` });
 }
 
 {
@@ -368,7 +421,6 @@ const [bfs, awesome, downloads] = await Promise.all([
   write('tile-awesome-effect.svg', tile({ theme: THEME, name: 'awesome-effect', desc: 'The Effect ecosystem, curated', right: { star: stars }, sub: 'This Week in Effect #133', title: `awesome-effect: libraries, tools and learning material for Effect. ${stars} stars. Featured in This Week in Effect #133.`, delay: 0.08 })(scrollingList(picks, ...IMG, THEME)));
 }
 
-let libraries;
 {
   const theme = THEME;
   const slots = LIBRARIES.length, hold = 2.2, fade = 0.5, total = +(slots * hold).toFixed(2);
@@ -422,96 +474,89 @@ let libraries;
 
 {
   const theme = THEME;
-  const contributions = JSON.parse(fs.readFileSync(path.join(ROOT, 'profile', 'contrib', 'contributions.json'), 'utf8')).map((repo) => ({ ...repo, name: repo.fullName.split('/')[1] }));
-  const byName = new Map(contributions.map((repo) => [repo.name, repo]));
-  const COLUMNS = 16, cell = 45, rowHeight = 38, gap = 4, top = 62;
-  const PLACED = [
-    ['effect', 1, 5, 1, 3, 'hero'], ['react-native', 6, 4, 1, 3, 'hero'],
-    ['material-ui', 10, 2, 1, 2, 'named'], ['bat', 12, 2, 1, 2, 'named'], ['t3code', 14, 2, 1, 2, 'named'],
-    ['e2e', 10, 2, 3, 1, 'strip'], ['SwiftFormat', 12, 3, 3, 1, 'strip'], ['virtual', 15, 2, 3, 1, 'strip'],
-    ['react-hook-form', 1, 3, 4, 2, 'named'], ['trpc', 4, 2, 4, 2, 'named'], ['floating-ui', 6, 2, 4, 2, 'named'], ['slate', 8, 2, 4, 2, 'named'], ['cheerio', 10, 2, 4, 2, 'named'], ['immer', 12, 2, 4, 2, 'named'], ['oxc', 14, 2, 4, 2, 'named'],
-    ['synara', 1, 3, 6, 1, 'strip'], ['vite-plus', 4, 2, 6, 1, 'strip'],
-  ].filter(([name]) => byName.has(name));
-  const placedNames = new Set(PLACED.map(([name]) => name));
-  const rest = contributions.filter((repo) => !placedNames.has(repo.name)).sort((a, b) => b.stars - a.stars);
-  const slots = [[16, 1], [16, 2], [16, 4], [16, 5], ...Array.from({ length: 11 }, (_, i) => [6 + i, 6])];
-  const slotFor = (i) => slots[i] ?? [((i - slots.length) % COLUMNS) + 1, 7 + Math.floor((i - slots.length) / COLUMNS)];
-  const span = (count, unit) => count * unit + (count - 1) * gap;
-  const tiles = [
-    ...PLACED.map(([name, col, cols, row, rows, kind]) => ({ repo: byName.get(name), col, cols, row, rows, kind })),
-    ...rest.map((repo, i) => ({ repo, col: slotFor(i)[0], cols: 1, row: slotFor(i)[1], rows: 1, kind: 'logo' })),
-  ].map((tile, i) => ({ ...tile, i, x: PAD + (tile.col - 1) * (cell + gap), y: top + (tile.row - 1) * (rowHeight + gap), w: span(tile.cols, cell), h: span(tile.rows, rowHeight) }));
-  const lastRow = Math.max(...tiles.map((tile) => tile.row + tile.rows - 1));
-  const height = top + span(lastRow, rowHeight) + 26;
-  const maxPrs = Math.max(...contributions.map((repo) => repo.prs));
-  const heat = (repo) => Math.log(1 + repo.prs) / Math.log(1 + maxPrs);
-
-  const clouds = new Map();
-  const cloud = (color, opacity) => {
-    const key = `${color}${opacity.toFixed(2)}`;
-    if (!clouds.has(key)) clouds.set(key, { name: `cloud${clouds.size}`, color, opacity: opacity.toFixed(2) });
-    return clouds.get(key).name;
+  const DISPLAY = {
+    'Effect-TS/effect': 'Effect', 'pingdotgg/t3code': 'T3 Code', 'mui/material-ui': 'Material UI', 'react/react-native': 'React Native', 'sharkdp/bat': 'bat',
+    'Emanuele-web04/synara': 'Synara', 'ianstormtaylor/slate': 'Slate', 'react-hook-form/react-hook-form': 'React Hook Form', 'trpc/trpc': 'tRPC',
+    'floating-ui/floating-ui': 'Floating UI', 'cheeriojs/cheerio': 'Cheerio', 'immerjs/immer': 'Immer', 'TanStack/virtual': 'TanStack Virtual',
+    'voidzero-dev/vite-plus': 'Vite+', 'react-hook-form/resolvers': 'RHF Resolvers',
   };
-  const twinkle = (tile, count) => {
-    const next = seeded(11 + tile.i * 7);
-    return Array.from({ length: count }, () => `<circle cx="${(tile.x + next() * tile.w).toFixed(1)}" cy="${(tile.y + next() * tile.h).toFixed(1)}" r="${(0.45 + next() * 0.6).toFixed(2)}" fill="#fff" opacity=".35"><animate attributeName="opacity" values=".1;.7;.1" dur="${(2.5 + next() * 4).toFixed(1)}s" begin="-${(next() * 4).toFixed(1)}s" repeatCount="indefinite"/></circle>`).join('');
-  };
-  const nebula = (tile) => {
-    if (tile.kind === 'logo') return twinkle(tile, 1);
-    const level = 0.3 + 0.7 * heat(tile.repo);
-    const reach = tile.kind === 'hero' ? 1 : tile.kind === 'named' ? 0.6 : 0.42;
-    const violetX = tile.x + tile.w * 0.78, amberY = tile.y + tile.h * 0.45;
-    return `<ellipse cx="${violetX.toFixed(1)}" cy="${(tile.y + tile.h * 0.12).toFixed(1)}" rx="${110 * reach}" ry="${70 * reach}" fill="url(#${cloud('#7B5CFF', level * 0.85)})"><animate attributeName="cx" values="${violetX.toFixed(1)};${(violetX - 14 * reach).toFixed(1)};${violetX.toFixed(1)}" dur="${14 + (tile.i % 6)}s" ${SWAY} repeatCount="indefinite"/></ellipse>
-<ellipse cx="${tile.x + tile.w}" cy="${amberY.toFixed(1)}" rx="${80 * reach}" ry="${52 * reach}" fill="url(#${cloud('#FF8A3C', level * 0.7)})"><animate attributeName="cy" values="${amberY.toFixed(1)};${(amberY - 12 * reach).toFixed(1)};${amberY.toFixed(1)}" dur="${17 + (tile.i % 5)}s" ${SWAY} repeatCount="indefinite"/></ellipse>${twinkle(tile, tile.kind === 'hero' ? 7 : 3)}`;
-  };
+  const contributions = JSON.parse(fs.readFileSync(path.join(ROOT, 'profile', 'contrib', 'contributions.json'), 'utf8')).map((repo) => ({ ...repo, name: DISPLAY[repo.fullName] ?? repo.fullName.split('/')[1] }));
+  const reach = (repo) => Math.sqrt(repo.prs * repo.stars);
+  const ranked = [...contributions].sort((a, b) => reach(b) - reach(a));
+  const lead = ranked.slice(0, 5), rest = ranked.slice(5);
+  const tones = ['#8B5CF6', '#FF8A3C', '#3D9BFF', '#FF6FB5', '#FFB86B'];
+  const mergedIn = (repos) => repos.reduce((sum, { prs }) => sum + prs, 0);
+  const merged = mergedIn(contributions);
+  const starTotal = contributions.reduce((sum, { stars }) => sum + stars, 0);
+  const room = INNER - PAD * 2, right = INNER - PAD;
 
-  const frame = (tile) => `x="${tile.x}" y="${tile.y}" width="${tile.w}" height="${tile.h}" rx="9"`;
-  const backs = tiles.map((tile) => `<clipPath id="cell${tile.i}"><rect ${frame(tile)}/></clipPath><rect ${frame(tile)} fill="#0C0C0F"/><g clip-path="url(#cell${tile.i})">${nebula(tile)}</g><rect x="${tile.x + 0.5}" y="${tile.y + 0.5}" width="${tile.w - 1}" height="${tile.h - 1}" rx="8.5" fill="none" stroke="#19191C"/>`).join('');
-
-  const mark = (tile, x, y, size) => `<clipPath id="logo${tile.i}"><rect x="${x}" y="${y}" width="${size}" height="${size}" rx="5"/></clipPath><image href="${tile.repo.image}" x="${x}" y="${y}" width="${size}" height="${size}" clip-path="url(#logo${tile.i})"/>`;
-  const starred = (x, baseline, size, stars) => {
-    const label = compact(stars), radius = size * 0.37;
-    return { svg: `${star(x + radius, baseline - size * 0.33, radius, theme.soft)}${text(REG, label, x + radius * 2 + 4, baseline, size, theme.soft)}`, end: x + radius * 2 + 4 + width(REG, label, size) };
+  const headRoom = room - 12, headSize = 36, headTrack = -1.1, lineHeight = 41, lastBaseline = 148;
+  const headWidth = (line) => width(BOLD, line, headSize, headTrack);
+  const wrap = (title) => {
+    if (headWidth(title) <= headRoom) return [title];
+    const words = title.split(' ');
+    const splits = words.slice(1).map((_, cut) => [words.slice(0, cut + 1).join(' '), words.slice(cut + 1).join(' ')]).filter((lines) => lines.every((line) => headWidth(line) <= headRoom));
+    return splits.sort((a, b) => Math.abs(headWidth(a[0]) - headWidth(a[1])) - Math.abs(headWidth(b[0]) - headWidth(b[1])))[0];
   };
-  const fitted = (name, room, size) => Math.min(size, size * room / width(BOLD, name, size, -0.15));
-  const severities = [['High', '#FF9E9E'], ['Moderate', '#F2C879'], ['Low', '#9CC7F0']];
-  const headline = '3 vulnerabilities reported';
-
-  const fronts = tiles.map((tile) => {
-    const { repo, x, y, w, h, kind } = tile;
-    const bottom = y + h;
-    if (kind === 'logo') return rise(8 + tile.i, mark(tile, x + (w - 15) / 2, y + (h - 15) / 2, 15));
-    if (kind === 'strip') {
-      const size = fitted(repo.name, w - 38, 12);
-      const count = repo.prs > 2 ? text(REG, plural(repo.prs, 'PR'), x + 30 + width(BOLD, repo.name, size, -0.15) + 7, y + 23.5, 11, theme.soft) : '';
-      return rise(4 + tile.i, `${mark(tile, x + 8, y + 11, 16)}${text(BOLD, repo.name, x + 30, y + 23.5, size, theme.title, { track: -0.15 })}${count}`);
-    }
-    if (kind === 'named') {
-      const stars = starred(x + 9, bottom - 10, 11, repo.stars);
-      return rise(2 + tile.i, `${mark(tile, x + 9, y + 8, 20)}${text(BOLD, repo.name, x + 9, bottom - 26, fitted(repo.name, w - 18, 12.5), theme.title, { track: -0.15 })}${stars.svg}${text(REG, plural(repo.prs, 'PR'), x + w - 9, bottom - 10, 11, theme.soft, { anchor: 'end' })}`);
-    }
-    const reports = repo.name === 'effect';
-    const statsLine = bottom - (reports ? 57 : 14), titleLine = statsLine - 22;
-    const stars = starred(x + 14, statsLine, 13, repo.stars);
-    const stats = `${stars.svg}<circle cx="${(stars.end + 8.5).toFixed(1)}" cy="${statsLine - 4.5}" r="1.5" fill="${theme.soft}" opacity=".6"/>${text(REG, `${plural(repo.prs, 'PR')} merged`, stars.end + 17, statsLine, 13, theme.soft)}`;
-    let cursor = x + 14;
-    const marks = severities.map(([label, color]) => {
-      const out = `<circle cx="${(cursor + 3).toFixed(1)}" cy="${bottom - 17}" r="3" fill="${color}"/>${text(REG, label, cursor + 11, bottom - 13, 11.5, theme.soft)}`;
-      cursor += 11 + width(REG, label, 11.5) + 11;
-      return out;
-    }).join('');
-    const security = reports ? `<path d="M${x + 14} ${bottom - 46.5}H${x + w - 14}" stroke="#2A2A2E"/>${text(SANS, headline, x + 14, bottom - 30, 12.5, theme.title)}${marks}` : '';
-    return rise(tile.i, `${mark(tile, x + 14, titleLine - 18, 24)}${text(BOLD, repo.name, x + 47, titleLine, 17, theme.title, { track: -0.25 })}${stats}${security}`);
+  const slides = ranked.flatMap((repo) => {
+    const pull = (repo.pulls ?? []).find(({ title }) => title.length <= 72 && wrap(title));
+    return pull ? [{ repo, pull, lines: wrap(pull.title) }] : [];
+  }).slice(0, 8);
+  const hold = 3.6, cycle = slides.length * hold, share = 100 / slides.length;
+  const css = `@font-face{font-family:GS;src:url(data:font/woff2;base64,${boldWoff2}) format('woff2');font-weight:600}.hl{font:600 ${headSize}px GS,system-ui,sans-serif;letter-spacing:${headTrack}px;fill:${theme.title}}@keyframes reel{0%{opacity:0;transform:translateY(8px)}${(share * 0.13).toFixed(2)}%,${(share * 0.88).toFixed(2)}%{opacity:1;transform:none}${share.toFixed(2)}%,100%{opacity:0;transform:translateY(-6px)}}.reel{animation:reel ${cycle.toFixed(1)}s linear both infinite}`;
+  const mergedOn = new Intl.DateTimeFormat('en', { month: 'short', day: 'numeric', timeZone: 'UTC' });
+  const mergeGlyph = 'M5.45 5.154A4.25 4.25 0 0 0 9.25 7.5h1.378a2.251 2.251 0 1 1 0 1.5H9.25A5.734 5.734 0 0 1 5 7.123v3.505a2.25 2.25 0 1 1-1.5 0V5.372a2.25 2.25 0 1 1 1.95-.218ZM4.25 13.5a.75.75 0 1 0 0-1.5.75.75 0 0 0 0 1.5Zm8.5-4.5a.75.75 0 1 0 0-1.5.75.75 0 0 0 0 1.5ZM5 3.25a.75.75 0 1 0 0 .005V3.25Z';
+  const mark = (id, image, x, y, size) => `<clipPath id="${id}"><rect x="${x.toFixed(1)}" y="${y}" width="${size}" height="${size}" rx="5"/></clipPath><image href="${image}" x="${x.toFixed(1)}" y="${y}" width="${size}" height="${size}" clip-path="url(#${id})"/>`;
+  const stage = slides.map(({ repo, pull, lines }, i) => {
+    const first = lastBaseline - (lines.length - 1) * lineHeight;
+    const row = first - headSize - 18;
+    const nameEnd = PAD + 31 + width(BOLD, repo.name, 15, -0.15);
+    const stamp = `merged ${mergedOn.format(new Date(pull.mergedAt))}`;
+    const pillX = nameEnd + 10, pillWidth = 8 + 12 + 5 + width(SANS, stamp, 12) + 10;
+    const number = pull.number ? text(REG, `#${pull.number}`, pillX + pillWidth + 9, row + 15, 12, theme.dim) : '';
+    const meta = `${mark(`reel${i}`, repo.image, PAD, row, 22)}${text(BOLD, repo.name, PAD + 31, row + 16.5, 15, theme.title, { track: -0.15 })}<rect x="${pillX.toFixed(1)}" y="${row + 0.5}" width="${pillWidth.toFixed(1)}" height="21" rx="10.5" fill="#8B5CF6"/><g transform="translate(${(pillX + 8).toFixed(1)} ${row + 5}) scale(.75)"><path d="${mergeGlyph}" fill="#fff"/></g>${text(SANS, stamp, pillX + 25, row + 15, 12, '#FFFFFF')}${number}`;
+    const headline = lines.map((line, at) => `<text class="hl" x="${PAD}" y="${first + at * lineHeight}">${esc(line)}</text>`).join('');
+    return `<g class="reel" opacity="${i ? 0 : 1}" style="animation-delay:${(i * hold).toFixed(1)}s">${meta}${headline}</g>`;
   }).join('');
 
-  const merged = contributions.reduce((sum, { prs }) => sum + prs, 0);
-  const summary = `${plural(merged, 'PR')} merged across ${contributions.length} repositories`;
-  const cloudDefs = [...clouds.values()].map(({ name, color, opacity }) => `<radialGradient id="${name}"><stop offset="0" stop-color="${color}" stop-opacity="${opacity}"/><stop offset="1" stop-color="${color}" stop-opacity="0"/></radialGradient>`).join('');
-  const body = `<defs>${cloudDefs}<clipPath id="grid"><rect x="${PAD}" y="${top}" width="${INNER - PAD * 2}" height="${height - top - 26}"/></clipPath></defs>${rise(0, `${text(REG, 'Merged pull requests', PAD, 39, 15, theme.soft)}${text(SANS, summary, INNER - PAD, 39, 15, theme.title, { anchor: 'end' })}`)}${backs}<g clip-path="url(#grid)">${grain(PAD, top, INNER - PAD * 2, height - top - 26)}</g>${fronts}`;
-  const title = `${summary}: ${contributions.map(({ fullName, prs }) => `${fullName} (${plural(prs, 'PR')})`).join(', ')}. Security: ${headline} to Effect, one high, one moderate and one low severity, all confirmed by the maintainers.`;
-  const rule = libraries.bottom + 18, offset = rule - 5;
-  card('contributed.svg', { height: offset + height, theme, title: `${libraries.title} ${title}`, css: libraries.css, body: `${libraries.body}<path d="M${PAD} ${rule + 0.5}H${INNER - PAD}" stroke="${theme.border}"/><g transform="translate(0 ${offset})">${body}</g>`, grainy: true });
+  const rule = 174, summaryLine = 215;
+  const count = String(merged);
+  const context = `${plural(contributions.length, 'repository').replace('repositorys', 'repositories')}, ${compact(starTotal)} stars between them`;
+  const severities = [['Low', '#9CC7F0'], ['Moderate', '#F2C879'], ['High', '#FF9E9E']];
+  let cursor = right;
+  const marks = severities.map(([label, color]) => {
+    cursor -= width(REG, label, 13);
+    const out = `${text(REG, label, cursor, summaryLine + 1, 13, theme.soft)}<circle cx="${(cursor - 8).toFixed(1)}" cy="${summaryLine - 3.5}" r="3" fill="${color}"/>`;
+    cursor -= 22;
+    return out;
+  }).join('');
+  const summary = `${text(BOLD, count, PAD, summaryLine, 40, theme.title, { track: -1.6 })}${text(SANS, 'merged pull requests', PAD + width(BOLD, count, 40, -1.6) + 11, summaryLine, 19, theme.title, { track: -0.2 })}${text(REG, context, right, summaryLine - 19, 13, theme.soft, { anchor: 'end' })}${marks}${text(REG, '3 vulnerabilities reported in Effect', cursor + 4, summaryLine + 1, 13, theme.soft, { anchor: 'end' })}`;
+
+  const tallyTop = 240, gap = 10, column = (room - gap * 5) / 6.5;
+  const starred = (end, baseline, stars) => {
+    const label = compact(stars), start = end - width(REG, label, 12);
+    return `${text(REG, label, start, baseline, 12, theme.soft)}${star(start - 8.5, baseline - 4, 4.4, theme.soft)}`;
+  };
+  const fitted = (name, space, size) => Math.min(size, size * space / width(BOLD, name, size, -0.15));
+  const cell = (x, tone) => `<path d="M${(x + 0.75).toFixed(2)} ${tallyTop}V${tallyTop + 76}" stroke="${tone}" stroke-opacity=".55" stroke-width="1.5"/>`;
+  const tally = lead.map((repo, i) => {
+    const x = PAD + i * (column + gap);
+    return rise(4 + i, `${cell(x, tones[i])}${mark(`lead${i}`, repo.image, x + 11, tallyTop, 20)}${starred(x + column, tallyTop + 14.5, repo.stars)}${text(BOLD, repo.name, x + 11, tallyTop + 41, fitted(repo.name, column - 11, 13.5), theme.title, { track: -0.15 })}${text(BOLD, String(repo.prs), x + 11, tallyTop + 74, 34, tones[i], { track: -1.2 })}`);
+  }).join('');
+  const moreX = PAD + 5 * (column + gap), restMerged = String(mergedIn(rest));
+  const more = rise(9, `${cell(moreX, theme.soft)}${rest.slice(0, 4).map((repo, at) => mark(`more${at}`, repo.image, moreX + 11 + at * 16, tallyTop, 20)).join('')}${text(BOLD, `${rest.length} more repositories`, moreX + 11, tallyTop + 41, 13.5, theme.title, { track: -0.15 })}${text(BOLD, restMerged, moreX + 11, tallyTop + 74, 34, theme.soft, { track: -1.2 })}${text(REG, 'PRs merged', moreX + 11 + width(BOLD, restMerged, 34, -1.2) + 8, tallyTop + 74, 12.5, theme.soft)}`);
+
+  const title = `${merged} merged pull requests across ${contributions.length} repositories with ${compact(starTotal)} stars between them: ${ranked.map(({ name, prs }) => `${name} (${plural(prs, 'PR')})`).join(', ')}. Recent: ${slides.map(({ repo, pull }) => `${repo.name}, ${pull.title}`).join('; ')}. Security: 3 vulnerabilities reported in Effect, one high, one moderate and one low severity.`;
+  const seam = libraries.bottom + 20;
+  const reel = `${stage}<path d="M${PAD} ${rule + 0.5}H${right}" stroke="${theme.border}"/>${rise(2, summary)}${tally}${more}`;
+  card('contributed.svg', { height: seam + tallyTop + 76 + 26, theme, title: `${libraries.title} ${title}`, css: `${libraries.css}${css}`, body: `${libraries.body}<path d="M${PAD} ${seam + 0.5}H${right}" stroke="${theme.border}"/><g transform="translate(0 ${seam})">${reel}</g>`, grainy: true });
 }
+
+join('join-experience.svg', { label: 'Experience', from: 0, to: 2 });
+join('join-stack.svg', { label: 'Tech stack', from: 2, to: 1 });
+join('join-projects.svg', { label: 'Projects', from: 1, to: 2 });
+join('join-contributed.svg', { label: 'Contributed to', from: 2, to: 1 });
+join('join-stats.svg', { label: 'GitHub stats', from: 1, to: 1 });
 
 {
   const theme = THEME;
