@@ -167,55 +167,56 @@ const grainJump = seeded(41);
 const GRAIN_CSS = `@keyframes gr{${Array.from({ length: GRAIN_FRAMES }, (_, i) => `${(i / GRAIN_FRAMES * 100).toFixed(2)}%{transform:translate(${-Math.floor(grainJump() * GRAIN_SIZE)}px,${-Math.floor(grainJump() * GRAIN_SIZE)}px)}`).join('')}}.gr{animation:gr .75s steps(1) infinite}`;
 const grain = (x, y, w, h, strength = 0.9) => `<g opacity="${strength}"><rect class="gr" x="${x.toFixed(1)}" y="${y.toFixed(1)}" width="${(w + GRAIN_SIZE).toFixed(1)}" height="${(h + GRAIN_SIZE).toFixed(1)}" fill="url(#grain)"/></g>`;
 
-const light = (hex) => {
-  const channels = [0, 1, 2].map((i) => parseInt(hex.slice(1 + i * 2, 3 + i * 2), 16));
-  const peak = Math.max(...channels, 1);
-  return `stop-color="#${channels.map((value) => Math.round(value * 255 / peak).toString(16).padStart(2, '0')).join('')}" stop-opacity="${(peak / 255).toFixed(3)}"`;
+const BAYER = [0, 8, 2, 10, 12, 4, 14, 6, 3, 11, 1, 9, 15, 7, 13, 5];
+const CELL = 3, DOT_PIXELS = 4, CELL_PIXELS = 6;
+const rgb = (hex) => [0, 1, 2].map((i) => parseInt(hex.slice(1 + i * 2, 3 + i * 2), 16));
+const ramp = (stops) => {
+  const points = stops.map(([at, hex, level]) => [at, [...rgb(hex), level]]);
+  return (at) => {
+    const next = points.findIndex(([edge]) => edge >= at);
+    if (next <= 0) return points.at(next)[1];
+    const [from, low] = points[next - 1], [to, high] = points[next];
+    return low.map((value, i) => value + (high[i] - value) * (at - from) / (to - from));
+  };
 };
-const BAND = [[30, '#000000'], [22, '#1E0000'], [16, '#5C1004'], [12, '#96492A'], [8, '#C68E6E'], [4, '#E8C4AE'], [0, '#F6E9E6'], [-5, '#C4BEE2'], [-10, '#9A93D8'], [-16, '#5A4CB8'], [-22, '#2A1A7A'], [-28, '#07072E'], [-34, '#000000']];
-const FLARE = [[0, '#FFFFFF'], [0.06, '#FDF7F8'], [0.12, '#F3E2E0'], [0.2, '#DDBDB4'], [0.28, '#C99F86'], [0.36, '#B4805C'], [0.44, '#9A5332'], [0.52, '#74290C'], [0.62, '#4E0C00'], [0.75, '#2A0000'], [0.88, '#0E0000'], [1, '#000000']];
+async function dither(x, y, w, h, shade, opacity = 0.9) {
+  const left = Math.floor(x / CELL), top = Math.floor(y / CELL);
+  const columns = Math.ceil((x + w) / CELL) - left, rows = Math.ceil((y + h) / CELL) - top;
+  const stride = columns * CELL_PIXELS, inset = (CELL_PIXELS - DOT_PIXELS) / 2;
+  const pixels = Buffer.alloc(stride * rows * CELL_PIXELS * 4);
+  for (let row = 0; row < rows; row++) {
+    for (let column = 0; column < columns; column++) {
+      const cellX = left + column, cellY = top + row;
+      const [red, green, blue, level] = shade((cellX + 0.5) * CELL, (cellY + 0.5) * CELL);
+      if (level * 16 <= BAYER[(cellY & 3) * 4 + (cellX & 3)] + 0.5) continue;
+      for (let dotY = 0; dotY < DOT_PIXELS; dotY++) {
+        for (let dotX = 0; dotX < DOT_PIXELS; dotX++) {
+          pixels.set([red, green, blue, 255], ((row * CELL_PIXELS + inset + dotY) * stride + column * CELL_PIXELS + inset + dotX) * 4);
+        }
+      }
+    }
+  }
+  const png = await sharp(pixels, { raw: { width: stride, height: rows * CELL_PIXELS, channels: 4 } }).png({ palette: true, colours: 32, dither: 0, compressionLevel: 9, effort: 10 }).toBuffer();
+  return `<image href="data:image/png;base64,${png.toString('base64')}" x="${left * CELL}" y="${top * CELL}" width="${columns * CELL}" height="${rows * CELL}" opacity="${opacity}" style="image-rendering:pixelated"/>`;
+}
+
+const HAZE = ramp([[-15, '#4A3CB0', 0], [-10, '#5A4CB8', 0.2], [-6, '#9A93D8', 0.45], [-3, '#C4BEE2', 0.75], [0, '#F6E9E6', 1], [3, '#F0C2A4', 0.75], [6, '#D8905E', 0.45], [10, '#B4562E', 0.2], [16, '#8A2A10', 0]]);
 const SUN_CYCLE = 86, SUN_CROSSING = 0.96;
 
-function sunRays(seed, reach, gradient) {
-  const next = seeded(seed);
-  const spokes = Array.from({ length: 16 }, (_, i) => [((i + 0.15 + 0.7 * next()) / 16) * 360, 0.075 + 0.05 * next(), 0.5 + 0.5 * next()]);
-  spokes.push([90, 0.12, 1], [-90, 0.13, 0.97]);
-  return spokes.map(([angle, spread, power]) => {
-    const length = reach * (0.82 + 0.3 * power);
-    return `<ellipse cx="${(length / 2).toFixed(1)}" cy="0" rx="${(length / 2).toFixed(1)}" ry="${(length * spread * 0.62).toFixed(1)}" fill="url(#${gradient})" opacity="${(0.45 + 0.5 * power).toFixed(2)}" transform="rotate(${angle.toFixed(1)})"/>`;
-  }).join('');
-}
-
-function sun(reach) {
-  const glow = uid('s'), ray = uid('s');
-  const defs = `<radialGradient id="${glow}">${FLARE.map(([at, color]) => `<stop offset="${at}" ${light(color)}/>`).join('')}</radialGradient>
-<radialGradient id="${ray}" cx=".5" cy=".5" r=".5" fx=".03" fy=".5"><stop offset="0" stop-color="#FFF1E2" stop-opacity=".95"/><stop offset=".22" stop-color="#D9A27C" stop-opacity=".6"/><stop offset=".55" stop-color="#8A3A14" stop-opacity=".3"/><stop offset="1" stop-color="#8A3A14" stop-opacity="0"/></radialGradient>`;
-  const layer = (seed, lead, turn) => `<g opacity=".5"><animate attributeName="opacity" values="${lead ? '1;0;1' : '0;1;0'}" dur="7.85s" ${SWAY} repeatCount="indefinite"/><g><animateTransform attributeName="transform" type="rotate" values="${-turn};${turn};${-turn}" dur="29.9s" ${SWAY} repeatCount="indefinite"/>${sunRays(seed, reach, ray)}</g></g>`;
-  const body = `<g><animateTransform attributeName="transform" type="scale" values="1;1.045;0.97;1.02;1" dur="12.1s" calcMode="spline" keySplines=".45 0 .55 1;.45 0 .55 1;.45 0 .55 1;.45 0 .55 1" repeatCount="indefinite"/><ellipse rx="${(reach * 0.92).toFixed(1)}" ry="${(reach * 0.8).toFixed(1)}" fill="url(#${glow})"/><g opacity="0"><animate attributeName="opacity" values="0;1" begin="1.2s" dur="1.6s" calcMode="spline" keySplines=".4 0 .6 1" fill="freeze"/>${layer(71, false, 2.9)}${layer(113, true, -2.9)}</g></g>`;
-  return { defs, body };
-}
-
-function horizon({ W, H, crest, sag, startAt = 0.143, reach = 66 }) {
+async function horizon({ W, H, crest, sag, from, span, startAt = 0.143 }) {
   const half = W / 2, R = (half * half + sag * sag) / (2 * sag), cx = half, cy = crest + R;
-  const outer = R + 34;
-  const ring = uid('h'), follow = uid('h'), reveal = uid('h');
+  const follow = uid('h'), reveal = uid('h');
   const xAt = (fraction) => W * (0.05 + 0.9 * fraction);
-  const angle = (fraction) => (Math.asin((xAt(fraction) - cx) / R) * 180 / Math.PI).toFixed(3);
   const startFraction = (startAt - 0.05) / 0.9;
   const begin = `-${(startFraction * SUN_CROSSING * SUN_CYCLE).toFixed(2)}s`;
-  const flare = sun(reach);
   const travel = `keyTimes="0;${SUN_CROSSING};1" dur="${SUN_CYCLE}s" begin="${begin}" repeatCount="indefinite"`;
-  const dim = [[0, 0.42], [0.2, 0.33], [0.3, 0.21], [0.4, 0.08], [0.5, 0], [0.6, 0.08], [0.7, 0.21], [0.8, 0.33], [1, 0.42]];
-  return `<defs><radialGradient id="${ring}" gradientUnits="userSpaceOnUse" cx="${cx}" cy="${cy.toFixed(1)}" r="${outer.toFixed(1)}">${BAND.map(([offset, color]) => `<stop offset="${((R - offset) / outer).toFixed(5)}" stop-color="${color}"/>`).join('')}</radialGradient>
-<linearGradient id="${follow}" gradientUnits="userSpaceOnUse" x1="${-1.5 * W}" x2="${1.5 * W}">${dim.map(([at, alpha]) => `<stop offset="${at}" stop-color="#000" stop-opacity="${alpha}"/>`).join('')}</linearGradient>
-<linearGradient id="${reveal}" gradientUnits="userSpaceOnUse" x1="${-1.5 * W}" x2="${1.5 * W}"><stop offset="0" stop-color="#000" stop-opacity=".86"/><stop offset=".2" stop-color="#000" stop-opacity="0"/><stop offset=".8" stop-color="#000" stop-opacity="0"/><stop offset="1" stop-color="#000" stop-opacity=".86"/></linearGradient>${flare.defs}</defs>
-<g opacity="0"><animate attributeName="opacity" values="0;1" begin="0.15s" dur="1.15s" calcMode="spline" keySplines=".4 0 .6 1" fill="freeze"/><circle cx="${cx}" cy="${cy.toFixed(1)}" r="${outer.toFixed(1)}" fill="url(#${ring})"/></g>
+  const dim = [[0, 0.5], [0.2, 0.4], [0.3, 0.26], [0.4, 0.1], [0.5, 0], [0.6, 0.1], [0.7, 0.26], [0.8, 0.4], [1, 0.5]];
+  const dots = await dither(from, 0, span, H, (x, y) => HAZE(R - Math.hypot(x - cx, y - cy)));
+  return `<defs><linearGradient id="${follow}" gradientUnits="userSpaceOnUse" x1="${-1.5 * W}" x2="${1.5 * W}">${dim.map(([at, alpha]) => `<stop offset="${at}" stop-color="#000" stop-opacity="${alpha}"/>`).join('')}</linearGradient>
+<linearGradient id="${reveal}" gradientUnits="userSpaceOnUse" x1="${-1.5 * W}" x2="${1.5 * W}"><stop offset="0" stop-color="#000" stop-opacity=".86"/><stop offset=".2" stop-color="#000" stop-opacity="0"/><stop offset=".8" stop-color="#000" stop-opacity="0"/><stop offset="1" stop-color="#000" stop-opacity=".86"/></linearGradient></defs>
+<g opacity="0"><animate attributeName="opacity" values="0;1" begin="0.15s" dur="1.15s" calcMode="spline" keySplines=".4 0 .6 1" fill="freeze"/>${dots}</g>
 <g><animateTransform attributeName="transform" type="translate" values="${xAt(0).toFixed(1)} 0;${xAt(1).toFixed(1)} 0;${xAt(1).toFixed(1)} 0" ${travel}/><rect x="${-3 * W}" y="0" width="${6 * W}" height="${H}" fill="url(#${follow})"/></g>
-<g transform="translate(${xAt(startFraction).toFixed(1)} 0)"><set attributeName="display" to="none" begin="3.4s"/><g transform="scale(0.02 1)"><animateTransform attributeName="transform" type="scale" values="0.02 1;1 1" begin="0.45s" dur="2.1s" calcMode="spline" keySplines=".2 .65 .35 1" fill="freeze"/><rect x="${-40 * W}" y="0" width="${80 * W}" height="${H}" fill="url(#${reveal})"/></g></g>
-<g><animateTransform attributeName="transform" type="rotate" values="${angle(0)} ${cx} ${cy.toFixed(1)};${angle(1)} ${cx} ${cy.toFixed(1)};${angle(1)} ${cx} ${cy.toFixed(1)}" ${travel}/>
-<g transform="translate(${cx} ${crest})"><g><animate attributeName="opacity" values="0;1;1;0;0" keyTimes="0;0.056;0.904;${SUN_CROSSING};1" dur="${SUN_CYCLE}s" begin="${begin}" repeatCount="indefinite"/>
-<g transform="scale(0)"><animateTransform attributeName="transform" type="scale" values="0;1" begin="0.3s" dur="2.7s" calcMode="spline" keySplines=".12 .7 .2 1" fill="freeze"/>${flare.body}</g></g></g></g>
-${grain(0, 0, W, H)}`;
+<g transform="translate(${xAt(startFraction).toFixed(1)} 0)"><set attributeName="display" to="none" begin="3.4s"/><g transform="scale(0.02 1)"><animateTransform attributeName="transform" type="scale" values="0.02 1;1 1" begin="0.45s" dur="2.1s" calcMode="spline" keySplines=".2 .65 .35 1" fill="freeze"/><rect x="${-40 * W}" y="0" width="${80 * W}" height="${H}" fill="url(#${reveal})"/></g></g>`;
 }
 
 function eclipse({ cx, cy, r, hues: [outerHue, innerHue] }) {
@@ -257,8 +258,8 @@ function tile({ w = 423, h = 196, plate = 62, theme, name, desc, right, sub, tit
     }
     if (sub) side += text(SANS, sub, rx, y2, descSize, theme.dim, { anchor: 'end' });
     return `<svg xmlns="http://www.w3.org/2000/svg" width="${w}" height="${h}" viewBox="0 0 ${w} ${h}" role="img" aria-label="${esc(title)}">
-<title>${esc(title)}</title><defs><clipPath id="c"><path d="${frame(0)}"/></clipPath><clipPath id="ia"><rect width="${tw}" height="${ih}"/></clipPath>${backdrop ? GRAIN_DEFS : ''}</defs>
-<style>${ENTER}${backdrop ? GRAIN_CSS : ''}${css}.d{animation-delay:${delay}s}${STILL}</style>
+<title>${esc(title)}</title><defs><clipPath id="c"><path d="${frame(0)}"/></clipPath><clipPath id="ia"><rect width="${tw}" height="${ih}"/></clipPath></defs>
+<style>${ENTER}${css}.d{animation-delay:${delay}s}${STILL}</style>
 <g transform="translate(${gx} 0)"><g clip-path="url(#c)"><rect x="${-gx}" width="${w}" height="${th}" fill="${theme.bg}"/>${backdrop ?? ''}<g clip-path="url(#ia)"><g class="in d">${art(tw, ih)}</g></g>${backdrop ? '' : `<path d="M0 ${ih + 0.5}H${tw}" stroke="${theme.border}"/>`}
 <g class="in d">${text(BOLD, name, pad, y1, nameSize, theme.title, { track: -0.2 })}${text(SANS, desc, pad, y2, descSize, theme.soft)}${side}</g></g>
 <path d="${frame(0.5)}" fill="none" stroke="${theme.border}"/></g>
@@ -356,18 +357,18 @@ const [bfs, awesome, downloads] = await Promise.all([
 
 {
   const theme = THEME;
-  const row = { W: 836, H: 192, crest: 100, sag: 30 };
-  const sky = (offset) => `<g transform="translate(${-offset} 0)">${horizon(row)}</g>`;
+  const row = { W: 836, H: 192, crest: 101, sag: 20 };
+  const sky = async (offset) => `<g transform="translate(${-offset} 0)">${await horizon({ ...row, from: offset - 5, span: 423 })}</g>`;
   const platforms = ['web', 'apple', 'android', 'electron', 'googlechrome'].map((name) => tinted(`icons/platforms/${name}.svg`, theme.dim));
   const header = (x, y) => platforms.map((image, i) => `<image href="${image}" x="${x + i * 22}" y="${y - 12}" width="15" height="15"/>`).join('');
   const art = statsArt({ logo: asset('logos/listening.svg'), headline: '20k+', caption: 'audio hours a month', header, columns: [['11k+', 'monthly users'], ['600k+', 'lines of code']] }, ...IMG, theme);
-  write('tile-listening.svg', tile({ theme, bridge: 'right', backdrop: sky(0), name: 'Listening.com', desc: 'Senior Full Stack Engineer', right: { label: 'Dec 2024 – now' }, sub: 'listening.com', title: 'Listening.com: Senior Full Stack Engineer, December 2024 to now. 20k+ hours of audio a month and 11k+ monthly users across the web, iOS, Android, desktop and Chrome extension apps, on a 600k+ line codebase.' })(art));
+  write('tile-listening.svg', tile({ theme, bridge: 'right', backdrop: await sky(0), name: 'Listening.com', desc: 'Senior Full Stack Engineer', right: { label: 'Dec 2024 – now' }, sub: 'listening.com', title: 'Listening.com: Senior Full Stack Engineer, December 2024 to now. 20k+ hours of audio a month and 11k+ monthly users across the web, iOS, Android, desktop and Chrome extension apps, on a 600k+ line codebase.' })(art));
 
   const png = async (file) => `data:image/png;base64,${(await sharp(path.join(ROOT, 'assets', file)).resize(96, 96).png().toBuffer()).toString('base64')}`;
   const giftsong = await png('logos/giftsong.png');
   const giftsongHeader = (x, y) => `<image href="${giftsong}" x="${x}" y="${y - 13}" width="17" height="17"/>${text(SANS, 'GiftSong.ai', x + 22, y, 12, theme.soft)}`;
   const upwork = statsArt({ logo: await png('logos/upwork.png'), headline: '10+', caption: 'client projects', header: giftsongHeader, columns: [['650k+', 'songs'], ['148k', 'users'], ['38k+', 'audio hours']] }, ...IMG, theme);
-  write('tile-upwork.svg', tile({ theme, bridge: 'left', backdrop: sky(423), name: 'Upwork', desc: 'Full Stack TypeScript Developer', right: { label: 'Jun 2024 – now' }, title: 'Upwork: Full Stack TypeScript Developer, June 2024 to now. 10+ client projects, including GiftSong.ai, an AI song gift app with 650k+ songs, 148k users and 38k+ hours of audio.', delay: 0.08 })(upwork));
+  write('tile-upwork.svg', tile({ theme, bridge: 'left', backdrop: await sky(423), name: 'Upwork', desc: 'Full Stack TypeScript Developer', right: { label: 'Jun 2024 – now' }, title: 'Upwork: Full Stack TypeScript Developer, June 2024 to now. 10+ client projects, including GiftSong.ai, an AI song gift app with 650k+ songs, 148k users and 38k+ hours of audio.', delay: 0.08 })(upwork));
 }
 
 {
