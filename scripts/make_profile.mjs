@@ -96,30 +96,6 @@ async function raw(url) {
   return fs.readFileSync(file);
 }
 
-const webp = async (img, quality = 70) => `data:image/webp;base64,${(await img.webp({ quality }).toBuffer()).toString('base64')}`;
-
-async function still(src, w, h, quality = 70) {
-  let img = sharp(await raw(src.url));
-  if (src.crop) img = img.extract({ left: src.crop[0], top: src.crop[1], width: src.crop[2], height: src.crop[3] });
-  return webp(img.resize(w * 2, h * 2, { fit: 'cover', position: src.pos ?? 'centre' }), quality);
-}
-
-function slideshow(images, w, h, { hold = 3, fade = 0.8 } = {}) {
-  const n = images.length;
-  const cycle = (hold + fade) * n;
-  const pct = (s) => +(s / cycle * 100).toFixed(3);
-  let css = '', out = '';
-  images.forEach((img, i) => {
-    if (i > 0) {
-      const a = i * (hold + fade), start = a - fade, end = a + hold;
-      const tail = i === n - 1 ? '' : `${pct(end + fade)}%,`;
-      css += `@keyframes s${i}{0%,${pct(start)}%{opacity:0}${pct(a)}%,${pct(end)}%{opacity:1}${tail}100%{opacity:${i === n - 1 ? 1 : 0}}}.s${i}{animation:s${i} ${cycle}s linear infinite}`;
-    }
-    out += `<image href="${img}" width="${w}" height="${h}" preserveAspectRatio="xMidYMid slice"${i ? ` class="s${i}"` : ''}/>`;
-  });
-  return { css, art: () => out };
-}
-
 function star(x, y, r, fill) {
   const pts = [];
   for (let i = 0; i < 10; i++) {
@@ -403,11 +379,29 @@ const [bfs, awesome, downloads] = await Promise.all([
 }
 
 {
-  const og = (s) => `${RAW}/${OWNER}/Better-Fullstack/main/apps/web/public/og/stack-${s}-1200x630.png`;
-  const frames = await Promise.all(['typescript', 'react-native', 'rust', 'python', 'go'].map((s) => still({ url: og(s), crop: [60, 150, 1080, 340] }, ...IMG, 72)));
-  const s = slideshow(frames, ...IMG, { hold: 2.2, fade: 0.6 });
+  const theme = THEME, [w] = IMG, lime = '#C6E853', pad = 16;
+  const hero = (await raw(`${RAW}/${OWNER}/Better-Fullstack/readme-assets/hero-dark.svg`)).toString();
+  const names = [...hero.matchAll(/<text class="w[^"]*"[^>]*fill="([^"]+)">([^<]+)\.<\/text>/g)].map(([, tone, name]) => ({ tone, name }));
+  const marks = [...hero.matchAll(/<g class="t"[^>]*><rect[^>]*\/><svg[^>]*(viewBox="[^"]+")>(.*?)<\/svg><\/g>/g)].map(([, viewBox, body]) => ({ viewBox, body }));
+  const [pixelFace] = hero.match(/@font-face\{font-family:GP;[^}]+\}/) ?? [];
+  if (!pixelFace || names.length === 0 || names.length !== marks.length) throw new Error('Better Fullstack hero languages not found');
+  const count = names.length, step = 1.7, total = count * step, slot = 100 / count;
+  const box = 26, pitch = (w - pad * 2 - box) / (count - 1), boxY = 82, markSize = 14;
+  const css = `${pixelFace}.w{font:26px GP;opacity:0;animation:w ${total}s infinite}.w0{opacity:1}.t{opacity:.4;animation:t ${total}s infinite}`
+    + `@keyframes w{0%{opacity:0;transform:translateY(6px)}${(slot * 0.1).toFixed(2)}%,${(slot * 0.86).toFixed(2)}%{opacity:1;transform:none}${slot.toFixed(2)}%{opacity:0;transform:translateY(-6px)}100%{opacity:0}}`
+    + `@keyframes t{0%,${slot.toFixed(2)}%,100%{opacity:.4}${(slot * 0.1).toFixed(2)}%,${(slot * 0.86).toFixed(2)}%{opacity:1}}`
+    + `@keyframes cur{${names.map((_, i) => `${(i * slot).toFixed(3)}%{transform:translateX(${(i * pitch).toFixed(1)}px)}`).join('')}100%{transform:translateX(${((count - 1) * pitch).toFixed(1)}px)}}.cur{animation:cur ${total}s steps(1,end) infinite}`
+    + '@media (prefers-reduced-motion:reduce){.t{opacity:1}}';
+  const words = names.map(({ tone, name }, i) => `<text class="w${i ? '' : ' w0'}" style="animation-delay:${(i * step).toFixed(2)}s" x="${pad}" y="63" fill="${tone}">${esc(name)}.</text>`).join('');
+  const tiles = marks.map(({ viewBox, body }, i) => {
+    const x = pad + i * pitch;
+    return `<g class="t" style="animation-delay:${(i * step).toFixed(2)}s"><rect x="${(x + 0.5).toFixed(1)}" y="${boxY + 0.5}" width="${box - 1}" height="${box - 1}" fill="#141413" stroke="#2D2C29"/><svg x="${(x + (box - markSize) / 2).toFixed(1)}" y="${boxY + (box - markSize) / 2}" width="${markSize}" height="${markSize}" ${viewBox}>${body}</svg></g>`;
+  }).join('');
+  const reach = box + 6;
+  const cursor = `<g class="cur"><path transform="translate(${pad - 3} ${boxY - 3})" d="M1 7V1H7M${reach - 7} 1H${reach - 1}V7M${reach - 1} ${reach - 7}V${reach - 1}H${reach - 7}M7 ${reach - 1}H1V${reach - 7}" fill="none" stroke="${lime}" stroke-width="2"/></g>`;
+  const s = { css, art: () => `<text x="${pad}" y="33" style="font:17px GP" fill="${theme.title}">Start your next app in</text>${words}${tiles}${cursor}` };
   const stars = compact(bfs.stargazers_count);
-  write('tile-better-fullstack.svg', tile({ theme: THEME, bridge: 'right', name: 'Better Fullstack', desc: 'Full-stack apps in one command', right: { star: stars }, sub: 'better-fullstack.dev', title: `Better Fullstack: scaffold full-stack apps in TypeScript, React Native, Rust, Python, Go and more. ${stars} stars. better-fullstack.dev` })(s));
+  write('tile-better-fullstack.svg', tile({ theme: THEME, bridge: 'right', name: 'Better Fullstack', desc: 'Full-stack apps in one command', right: { star: stars }, sub: 'better-fullstack.dev', title: `Better Fullstack: scaffold full-stack apps in ${names.map(({ name }) => name).join(', ')}. ${stars} stars. better-fullstack.dev` })(s));
 }
 
 {
