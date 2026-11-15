@@ -1,7 +1,7 @@
 [
   {
     "fullName": "Effect-TS/effect",
-    "stars": 17563,
+    "stars": 17571,
     "prs": 83,
     "pulls": [
       {
@@ -24,7 +24,7 @@
   },
   {
     "fullName": "Emanuele-web04/synara",
-    "stars": 2205,
+    "stars": 2224,
     "prs": 36,
     "pulls": [
       {
@@ -47,30 +47,30 @@
   },
   {
     "fullName": "pingdotgg/t3code",
-    "stars": 60045,
-    "prs": 16,
+    "stars": 60703,
+    "prs": 18,
     "pulls": [
+      {
+        "title": "fix(cli): t3 connect unlink with T3 stopped also clears the webhook hold setting",
+        "number": 33822,
+        "mergedAt": "2026-11-14T17:47:02Z"
+      },
+      {
+        "title": "fix(acp-registry): a uv-installed agent launches its managed command, not a same-named one on PATH",
+        "number": 33836,
+        "mergedAt": "2026-11-14T16:54:11Z"
+      },
       {
         "title": "fix(acp): a resumed message keeps the text streamed before it",
         "number": 33604,
         "mergedAt": "2026-11-11T23:13:16Z"
-      },
-      {
-        "title": "fix(git): push publishes a branch that tracks a local branch",
-        "number": 33581,
-        "mergedAt": "2026-11-11T23:12:57Z"
-      },
-      {
-        "title": "fix(server): a limited provider's queue stays held after another provider's turn succeeds",
-        "number": 22425,
-        "mergedAt": "2026-11-11T09:53:40Z"
       }
     ],
     "image": "data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTI4IiBoZWlnaHQ9IjEyOCIgdmlld0JveD0iMCAwIDEyOCAxMjgiIGZpbGw9Im5vbmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+CjxwYXRoIGQ9Ik0wIDEwQzAgNC40NzcxNSA0LjQ3NzE1IDAgMTAgMEgxMThDMTIzLjUyMyAwIDEyOCA0LjQ3NzE1IDEyOCAxMFYxMThDMTI4IDEyMy41MjMgMTIzLjUyMyAxMjggMTE4IDEyOEgxMEM0LjQ3NzE1IDEyOCAwIDEyMy41MjMgMCAxMThWMTBaIiBmaWxsPSJibGFjayIvPgo8cGF0aCBkPSJNMzMuNDUwOSA5M1Y0Ny41NkgxNS41MzA5VjM3SDY0LjMzMDlWNDcuNTZINDYuNDEwOVY5M0gzMy40NTA5Wk04Ni43MjUzIDkzLjk2QzgyLjgzMiA5My45NiA3OC45NjUzIDkzLjQ1MzMgNzUuMTI1MyA5Mi40NEM3MS4yODUzIDkxLjM3MzMgNjguMDMyIDg5Ljg4IDY1LjM2NTMgODcuOTZMNzAuNDA1MyA3OC4wNEM3Mi41Mzg2IDc5LjU4NjcgNzUuMDE4NiA4MC44MTMzIDc3Ljg0NTMgODEuNzJDODAuNjcyIDgyLjYyNjcgODMuNTI1MyA4My4wOCA4Ni40MDUzIDgzLjA4Qzg5LjY1ODYgODMuMDggOTIuMjE4NiA4Mi40NCA5NC4wODUzIDgxLjE2Qzk1Ljk1MiA3OS44OCA5Ni44ODUzIDc4LjEyIDk2Ljg4NTMgNzUuODhDOTYuODg1MyA3My43NDY3IDk2LjA1ODYgNzIuMDY2NyA5NC40MDUzIDcwLjg0QzkyLjc1MiA2OS42MTMzIDkwLjA4NTMgNjkgODYuNDA1MyA2OUg4MC40ODUzVjYwLjQ0TDk2LjA4NTMgNDIuNzZMOTcuNTI1MyA0Ny40SDY4LjE2NTNWMzdIMTA3LjM2NVY0NS40TDkxLjg0NTMgNjMuMDhMODUuMjg1MyA1OS4zMkg4OS4wNDUzQzk1LjkyNTMgNTkuMzIgMTAxLjEyNSA2MC44NjY3IDEwNC42NDUgNjMuOTZDMTA4LjE2NSA2Ny4wNTMzIDEwOS45MjUgNzEuMDI2NyAxMDkuOTI1IDc1Ljg4QzEwOS45MjUgNzkuMDI2NyAxMDkuMDk5IDgxLjk4NjcgMTA3LjQ0NSA4NC43NkMxMDUuNzkyIDg3LjQ4IDEwMy4yNTkgODkuNjkzMyA5OS44NDUzIDkxLjRDOTYuNDMyIDkzLjEwNjcgOTIuMDU4NiA5My45NiA4Ni43MjUzIDkzLjk2WiIgZmlsbD0id2hpdGUiLz4KPC9zdmc+Cg=="
   },
   {
     "fullName": "mui/material-ui",
-    "stars": 99342,
+    "stars": 99343,
     "prs": 7,
     "pulls": [
       {
@@ -93,7 +93,7 @@
   },
   {
     "fullName": "sharkdp/bat",
-    "stars": 61250,
+    "stars": 61261,
     "prs": 4,
     "pulls": [
       {
@@ -116,7 +116,7 @@
   },
   {
     "fullName": "react/react-native",
-    "stars": 126919,
+    "stars": 126926,
     "prs": 2,
     "pulls": [
       {
@@ -134,7 +134,7 @@
   },
   {
     "fullName": "ianstormtaylor/slate",
-    "stars": 31746,
+    "stars": 31745,
     "prs": 2,
     "pulls": [
       {
@@ -152,7 +152,7 @@
   },
   {
     "fullName": "nicklockwood/SwiftFormat",
-    "stars": 8958,
+    "stars": 8956,
     "prs": 2,
     "pulls": [
       {
@@ -188,7 +188,7 @@
   },
   {
     "fullName": "react-hook-form/react-hook-form",
-    "stars": 44919,
+    "stars": 44917,
     "prs": 1,
     "pulls": [
       {
@@ -201,7 +201,7 @@
   },
   {
     "fullName": "trpc/trpc",
-    "stars": 40805,
+    "stars": 40808,
     "prs": 1,
     "pulls": [
       {
@@ -214,7 +214,7 @@
   },
   {
     "fullName": "floating-ui/floating-ui",
-    "stars": 32810,
+    "stars": 32811,
     "prs": 1,
     "pulls": [
       {
@@ -227,7 +227,7 @@
   },
   {
     "fullName": "cheeriojs/cheerio",
-    "stars": 30538,
+    "stars": 30540,
     "prs": 1,
     "pulls": [
       {
@@ -240,7 +240,7 @@
   },
   {
     "fullName": "immerjs/immer",
-    "stars": 29001,
+    "stars": 29003,
     "prs": 1,
     "pulls": [
       {
@@ -253,21 +253,21 @@
   },
   {
     "fullName": "oxc-project/oxc",
-    "stars": 23440,
+    "stars": 23452,
     "prs": 1,
     "pulls": [],
     "image": "data:image/jpeg;base64,/9j/2wCEAAgGBgcGBQgHBwcJCQgKDBQNDAsLDBkSEw8UHRofHh0aHBwgJC4nICIsIxwcKDcpLDAxNDQ0Hyc5PTgyPC4zNDIBCQkJDAsMGA0NGDIhHCEyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMv/AABEIAFAAUAMBIgACEQEDEQH/xAGiAAABBQEBAQEBAQAAAAAAAAAAAQIDBAUGBwgJCgsQAAIBAwMCBAMFBQQEAAABfQECAwAEEQUSITFBBhNRYQcicRQygZGhCCNCscEVUtHwJDNicoIJChYXGBkaJSYnKCkqNDU2Nzg5OkNERUZHSElKU1RVVldYWVpjZGVmZ2hpanN0dXZ3eHl6g4SFhoeIiYqSk5SVlpeYmZqio6Slpqeoqaqys7S1tre4ubrCw8TFxsfIycrS09TV1tfY2drh4uPk5ebn6Onq8fLz9PX29/j5+gEAAwEBAQEBAQEBAQAAAAAAAAECAwQFBgcICQoLEQACAQIEBAMEBwUEBAABAncAAQIDEQQFITEGEkFRB2FxEyIygQgUQpGhscEJIzNS8BVictEKFiQ04SXxFxgZGiYnKCkqNTY3ODk6Q0RFRkdISUpTVFVWV1hZWmNkZWZnaGlqc3R1dnd4eXqCg4SFhoeIiYqSk5SVlpeYmZqio6Slpqeoqaqys7S1tre4ubrCw8TFxsfIycrS09TV1tfY2dri4+Tl5ufo6ery8/T19vf4+fr/2gAMAwEAAhEDEQA/APBqKKKsAooooAKKKKACiiigAooooAKs6dp91q2o2+n2MLTXVxII4o16sx/l9arV7b+zt4bS61fUfEU6ZFmot7ckdHYZYj3C4H/AzSA8y8UeDNb8HS28WtwRQS3Clo0WdJCQO5Ck4H19/SufrqPiH4kfxV441PUi5aASmG2GeBEhwuPr976k03TPAms6vYxXdp9maKUZXMwz+PvVwhKekVczqVYU1ebsUNM8L63rFsbjT9OluIQxXeuMZH1NJqfhjWtGthcajp8tvCWCB2xjPpwfY17l4B0C78PeHVtL0x+cZWkIQ5AB7Z/Cm/EHw9eeIvD4tLEx+ckyyASHAIAI6/jXU8KlC/U8P+2X9a9lpyX3Pnmuh8L+Cdc8ZNcJolvFO9uAZEadEYA9DhiMjjtVjVfAGt6Npst/eC1WCIDdiYZPOMD1NSfDTxI/hfx7pl9v228kgt7kZ4MbkA5+hw3/AAGuNpo9ulXp1lenJNeRzV/Y3OmX9xY3kLQ3NvIY5Y26qwOCKr17T+0P4bSy1+w1+BNq36GKfA/5aJjBPuVIH/AK8WpGoV9LfCr/AIlHwH1LUYvlkKXl1keqqVH/AKAK+aa+lvhX/wATf4Dalp0XzSBLy1wPVlLD/wBDFDA+aa3/AAv4pufDl5kFpLRz+9iz/wCPD3/nWCqs7BVBZicAAZJNej6d8J7q40Lz7ydrfUJAGjixlUHo/ufbp71vh1Uc7090cmLq0IQ5a70Z6loerwapZRXNvIJInGVYVZ1bVbXSbGW8vJVigjGWY/yHqfasDwF4bvNA0QWt6YzL5rOfLJIAPT+VO8f+G73xHoa2dk0ayrMsn7wkAgAjsD616VW8o3trbY+NnhacsVyc3uX38jx3xd4uu/FN/lt0VlEf3MGen+03q38q5uvS9W+EtzaaCtxYzvdX8QLTRYwHH+x3yPfr+leakFWKkEEHBBryqlOUHaR9jgamHdPkw+0dP69T6U+Mf/E2+C2malJzIHtbnd3y6EH/ANDr5qr6V+MX/Ep+CumadJxIWtbbb3yiEn/0Cvmqs0dgV7d+zt4kS21XUfDs7gC7UXFuCerqMMB7lcH/AIAa8Rq1puo3ekalb6hYzNDdW8gkikXsR/P6UAdd4lsZfh18ULtVtUkihmM1skg4aJ8lcH1AOM+q16VoHjnS9ajXypgs2Pmhk4cfh3+orx3xT401rxlNbza1LDNLbqVjdIVRtp5wSByPr7+tYAJBBBII6EV04fEOlo1dHBjMupYpqUtGup9VRalAw4YVIb2H1FfMlv4j1m1ULFqVyAOgL7sfnS3HiXW7lCsuqXRU9QshUH8q6ZYqi1onc8qWRSb0ke8+IPG+jeH4WNxcCS4x8tvEcuT9Ow9zXl3hOxl+InxWtnNpHDBJOLm5SMfKsSYJz7nAGe5auDJJJJJJPUmuh8LeNtb8GPcvossMMlwAJHeBXYgdACRwOe1cNSo5no4DLKWDbkneT6/8A9I/aH8SJea7YeH4HDLYoZp8H/lo+MA+4UZ/4HXitWb+/udU1C4v72Zprm4kMksjdWYnJqtWZ6YUUUUwCiiigAooooAKKKKACiiigD//2Q=="
   },
   {
     "fullName": "e2e-inc/e2e",
-    "stars": 13847,
+    "stars": 13892,
     "prs": 1,
     "pulls": [],
     "image": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAFAAAABQCAIAAAABc2X6AAACvUlEQVR4nOyZTUgUYRjH/7Ot+blUZhBiBhWRYocMBJVgO1QH6WIdQg/bNdhj1KWCiAjq0i0i+jgUQRB93LKCjNA+ILNMjb5HyWCXDWNZc7PdcOQ/NJs5xuzUO7PP/5nD89O9/Hj3eefl3WB1JItCSoCNCIuwCIuwCIuwCIuwCIuwCIuwCIuwCIuwb4SDbNxK9i9vkDSNnUeFj+9Gx2aCXW70Inqa4FFhTUNAmeWVGXZhhu/2I/6VYJehEXauRXPpXjrcgDXVBKMeDGJ4lGBNXQ1a6wlG6TF09RE8scLtLdjRQjBq/4U/CjetxeGO3O9FV5/McD5mOPDPXr/ZbH4+rOgMLy5H6UKCUeMppCYJ1pQVY1EZwajJ70gkCYrP8JFObN1AcJabj3H0CkFZ4coQaqoIzrKkgp36M6xs8r/CT98iuIDgLP3v2aksfPY29BhCpbnv1fEUwWcrDODQLqxaTjBqy0FVhAtuhl0Rdu3UoOrBo7YKRdZZGYkjPUXw3wzrcXZAtA3bGgl2uT+AE9cIHhL+tWqXoXE1wS56jJ23ZljluL7C7z7j0SuCXd6MsfPWptWwEiVFBKNe6phIE/y3wqf2zHLwGHT/vkpmeJYZlk0rH5vWgYsoL849ePj2pBVtQ/M6grPcG8CZWwRlV7huBcLrCc4y9oWdzLBCM6zH8PwDwVlG416Y4ZlnaSh330okkfxGsKaiBJXW+7qJNGLz/kXqP6+weemxs9Wk6WffeVzqJljT3oxjEYJRd54hcpLgiRnWNPu/zPGvOT6sqHABbVozz+Vu9A6bNP08ec3ut/QMYe85glGfEuy8smmZ2d6EjfO+AHjxEVd7CN5aYTOb6tEZJtjl+kPXhWWG8zTDZmUymPpBsEsmww6enWHVUnBfaREWYREWYREWYREWYREWYREWYREWYREWYf8J/xwAB5WbUZdw5rQAAAAASUVORK5CYII="
   },
   {
     "fullName": "TanStack/virtual",
-    "stars": 7198,
+    "stars": 7200,
     "prs": 1,
     "pulls": [
       {
@@ -280,7 +280,7 @@
   },
   {
     "fullName": "voidzero-dev/vite-plus",
-    "stars": 6618,
+    "stars": 6620,
     "prs": 1,
     "pulls": [
       {
@@ -293,7 +293,7 @@
   },
   {
     "fullName": "react-hook-form/resolvers",
-    "stars": 2264,
+    "stars": 2265,
     "prs": 1,
     "pulls": [
       {
@@ -306,7 +306,7 @@
   },
   {
     "fullName": "alchemy-run/distilled",
-    "stars": 527,
+    "stars": 529,
     "prs": 1,
     "pulls": [
       {
@@ -319,7 +319,7 @@
   },
   {
     "fullName": "Effect-TS/tsgo",
-    "stars": 335,
+    "stars": 337,
     "prs": 1,
     "pulls": [
       {
