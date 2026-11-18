@@ -305,6 +305,7 @@ const LIBRARIES = [
   { name: 'Effect', icon: 'effect', pkg: 'effect', users: ['Cloudflare', 'OpenRouter', 'OpenCode', 'T3 Code'] },
   { name: 'Material UI', icon: 'mui', brand: '#007FFF', pkg: '@mui/material', users: ['Netflix', 'NASA', 'Spotify', 'Amazon'] },
   { name: 'React Native', icon: 'react', brand: '#149ECA', pkg: 'react-native', users: ['Meta', 'Microsoft', 'Amazon', 'Shopify'] },
+  { name: 'Astro', icon: 'astro', brand: '#BC52EE', pkg: 'astro', users: ['Cloudflare', 'Microsoft', 'OpenCode'] },
   { name: 'React Hook Form', icon: 'reacthookform', brand: '#EC5990', pkg: 'react-hook-form', users: ['Grafana', 'Supabase'] },
   { name: 'tRPC', icon: 'trpc', brand: '#398CCB', pkg: '@trpc/server', users: ['Netflix'] },
   { name: 'Cheerio', icon: 'cheerio', brand: '#E88C1F', pkg: 'cheerio', users: ['Google'] },
@@ -469,7 +470,7 @@ const [bfs, awesome, downloads] = await Promise.all([
     'Effect-TS/effect': 'Effect', 'pingdotgg/t3code': 'T3 Code', 'mui/material-ui': 'Material UI', 'react/react-native': 'React Native', 'sharkdp/bat': 'bat',
     'Emanuele-web04/synara': 'Synara', 'ianstormtaylor/slate': 'Slate', 'react-hook-form/react-hook-form': 'React Hook Form', 'trpc/trpc': 'tRPC',
     'floating-ui/floating-ui': 'Floating UI', 'cheeriojs/cheerio': 'Cheerio', 'immerjs/immer': 'Immer', 'TanStack/virtual': 'TanStack Virtual',
-    'voidzero-dev/vite-plus': 'Vite+', 'react-hook-form/resolvers': 'RHF Resolvers',
+    'voidzero-dev/vite-plus': 'Vite+', 'react-hook-form/resolvers': 'RHF Resolvers', 'withastro/astro': 'Astro', 'rolldown/rolldown': 'Rolldown', 'alchemy-run/alchemy': 'Alchemy',
   };
   const contributions = JSON.parse(fs.readFileSync(path.join(ROOT, 'profile', 'contrib', 'contributions.json'), 'utf8')).map((repo) => ({ ...repo, name: DISPLAY[repo.fullName] ?? repo.fullName.split('/')[1] }));
   const reach = (repo) => Math.sqrt(repo.prs * repo.stars);
