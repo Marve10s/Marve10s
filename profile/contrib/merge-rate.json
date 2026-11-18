@@ -1,0 +1,24 @@
+{
+  "landed": 197,
+  "declined": 17,
+  "rate": 92,
+  "declinedPulls": [
+    "https://github.com/openai/codex/pull/8348",
+    "https://github.com/pingdotgg/t3code/pull/1308",
+    "https://github.com/agarrharr/awesome-cli-apps/pull/961",
+    "https://github.com/vinta/awesome-python/pull/3034",
+    "https://github.com/sorrycc/awesome-javascript/pull/1045",
+    "https://github.com/pingdotgg/t3code/pull/2241",
+    "https://github.com/pingdotgg/t3code/pull/2257",
+    "https://github.com/drizzle-team/drizzle-orm/pull/6340",
+    "https://github.com/Effect-TS/effect/pull/8539",
+    "https://github.com/e2e-inc/e2e/pull/1110",
+    "https://github.com/reduxjs/reselect/pull/824",
+    "https://github.com/Effect-TS/effect/pull/9918",
+    "https://github.com/Effect-TS/effect/pull/9927",
+    "https://github.com/Effect-TS/effect/pull/10118",
+    "https://github.com/Effect-TS/effect/pull/10245",
+    "https://github.com/Effect-TS/effect/pull/10246",
+    "https://github.com/Effect-TS/effect/pull/10352"
+  ]
+}
