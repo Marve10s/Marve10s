@@ -57,6 +57,41 @@ const CONTRIBUTIONS = [
   { owner: "leonitousconforti", repo: "eftar", logo: "effect.png" },
 ];
 
+const NOT_DECLINED = {
+  "pingdotgg/t3code": {
+    21754: "taken over in #22902 with authorship kept",
+    13264: "closed for the orchestration V2 rewrite, landed again as #19636",
+    14933: "closed in a policy cleanup, landed again as #19636",
+    1569: "superseded by the same change on main",
+    2259: "superseded by the same change on main",
+    1888: "superseded by provider icons in V2",
+    2260: "closed for the orchestration V2 rewrite",
+    10932: "closed for the orchestration V2 rewrite",
+    1983: "closed in a provider roadmap review after three months open",
+    1785: "closed in a stale backlog cleanup",
+    2167: "closed in a stale backlog cleanup",
+    8072: "closed in a backlog cleanup",
+    38606: "closed by the open PR limit for new contributors",
+    38668: "closed by the open PR limit for new contributors",
+  },
+  "effect-ts/effect": {
+    9923: "landed through #9943",
+    9464: "taken over in #9786",
+    9926: "folded into #9997",
+    9616: "replaced by #9696",
+    9619: "replaced by #9864",
+    9928: "replaced by #9951",
+    8649: "superseded by #8932",
+  },
+  "babel/babel": { 18337: "duplicate of #18331" },
+  "anomalyco/opencode": { 6155: "closed by the stale bot" },
+  "vitest-dev/vitest": { 11399: "closed because only approved contributors can open PRs" },
+  "withastro/astro": { 18431: "closed until an issue was filed, landed again as #18733" },
+  "zeronsh/zeron": { 493: "closed for the v3 app rewrite" },
+  "alchemy-run/distilled": { 660: "superseded by the #873 rewrite" },
+  "sveltejs/kit": { 17471: "closed while the root cause was fixed upstream in svelte2tsx" },
+};
+
 const EXPERIENCE = [
   {
     slug: "listening",
@@ -298,6 +333,42 @@ const MERGED_PRS_QUERY = `query($login: String!, $cursor: String) {
   }
 }`;
 
+const CLOSED_PRS_QUERY = `query($login: String!, $cursor: String) {
+  user(login: $login) {
+    pullRequests(first: 100, states: CLOSED, after: $cursor) {
+      pageInfo { hasNextPage endCursor }
+      nodes {
+        number
+        repository { nameWithOwner isPrivate owner { login } }
+        timelineItems(itemTypes: CLOSED_EVENT, last: 1) { nodes { ... on ClosedEvent { actor { login } } } }
+      }
+    }
+  }
+}`;
+
+async function declinedPulls(contributions) {
+  const excused = new Map(
+    CONTRIBUTIONS.map(({ takenOver = [] }, at) => [
+      contributions[at].fullName.toLowerCase(),
+      new Set([...takenOver, ...contributions[at].landedNumbers]),
+    ])
+  );
+  const declined = [];
+  let cursor = null;
+  do {
+    const { pullRequests } = (await graphql(CLOSED_PRS_QUERY, { login: OWNER, cursor })).user;
+    for (const { number, repository, timelineItems } of pullRequests.nodes) {
+      const key = repository.nameWithOwner.toLowerCase();
+      const closer = timelineItems.nodes[0]?.actor?.login;
+      if (repository.isPrivate || repository.owner.login === OWNER || closer === OWNER) continue;
+      if (excused.get(key)?.has(number) || NOT_DECLINED[key]?.[number]) continue;
+      declined.push(`https://github.com/${repository.nameWithOwner}/pull/${number}`);
+    }
+    cursor = pullRequests.pageInfo.hasNextPage ? pullRequests.pageInfo.endCursor : null;
+  } while (cursor);
+  return declined;
+}
+
 const RECENT_PULLS = 3;
 const newestFirst = (pulls) => pulls.sort((a, b) => b.mergedAt.localeCompare(a.mergedAt)).slice(0, RECENT_PULLS);
 
@@ -355,6 +426,7 @@ async function fetchContribution({ owner, repo, logo, countCommits = false, take
     prs: landed.length + takenOver.length,
     pulls: newestFirst([...landed]),
     image,
+    landedNumbers: landed.flatMap(({ number }) => (number ? [number] : [])),
   };
 }
 
@@ -380,9 +452,13 @@ console.log(`Generated ${results.length} pin cards`);
 
 const mergedPulls = await mergedPullsByRepo();
 const contributions = await Promise.all(CONTRIBUTIONS.map((contribution) => fetchContribution(contribution, mergedPulls)));
+const declined = await declinedPulls(contributions);
+const landed = contributions.reduce((sum, { prs }) => sum + prs, 0);
+for (const contribution of contributions) delete contribution.landedNumbers;
 contributions.sort((a, b) => b.prs - a.prs || b.stars - a.stars);
 const contribDir = fileURLToPath(new URL("./contrib/", import.meta.url));
 rmSync(contribDir, { recursive: true, force: true });
 mkdirSync(contribDir, { recursive: true });
 writeFileSync(`${contribDir}contributions.json`, `${JSON.stringify(contributions, null, 2)}\n`);
+writeFileSync(`${contribDir}merge-rate.json`, `${JSON.stringify({ landed, declined: declined.length, rate: Math.round((landed / (landed + declined.length)) * 100), declinedPulls: declined }, null, 2)}\n`);
 console.log(`Generated data for ${contributions.length} repos`);

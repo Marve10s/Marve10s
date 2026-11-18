@@ -472,6 +472,7 @@ const [bfs, awesome, downloads] = await Promise.all([
     'floating-ui/floating-ui': 'Floating UI', 'cheeriojs/cheerio': 'Cheerio', 'immerjs/immer': 'Immer', 'TanStack/virtual': 'TanStack Virtual',
     'voidzero-dev/vite-plus': 'Vite+', 'react-hook-form/resolvers': 'RHF Resolvers', 'withastro/astro': 'Astro', 'rolldown/rolldown': 'Rolldown', 'alchemy-run/alchemy': 'Alchemy',
   };
+  const mergeRate = JSON.parse(fs.readFileSync(path.join(ROOT, 'profile', 'contrib', 'merge-rate.json'), 'utf8'));
   const contributions = JSON.parse(fs.readFileSync(path.join(ROOT, 'profile', 'contrib', 'contributions.json'), 'utf8')).map((repo) => ({ ...repo, name: DISPLAY[repo.fullName] ?? repo.fullName.split('/')[1] }));
   const reach = (repo) => Math.sqrt(repo.prs * repo.stars);
   const ranked = [...contributions].sort((a, b) => reach(b) - reach(a));
@@ -522,7 +523,11 @@ const [bfs, awesome, downloads] = await Promise.all([
     cursor -= 22;
     return out;
   }).join('');
-  const summary = `${text(BOLD, count, PAD, summaryLine, 40, theme.title, { track: -1.6 })}${text(SANS, 'merged pull requests', PAD + width(BOLD, count, 40, -1.6) + 11, summaryLine, 19, theme.title, { track: -0.2 })}${text(REG, context, right, summaryLine - 19, 13, theme.soft, { anchor: 'end' })}${marks}${text(REG, '3 vulnerabilities reported in Effect', cursor + 4, summaryLine + 1, 13, theme.soft, { anchor: 'end' })}`;
+  const statSize = 34, labelSize = 16.5;
+  const countEnd = PAD + width(BOLD, count, statSize, -1.3) + 9 + width(SANS, 'merged PRs', labelSize, -0.2);
+  const rate = `${mergeRate.rate}%`, rateX = countEnd + 29;
+  const rateStat = `<path d="M${(countEnd + 14.5).toFixed(1)} ${summaryLine - 25}V${summaryLine + 2}" stroke="${theme.border}"/>${text(BOLD, rate, rateX, summaryLine, statSize, theme.title, { track: -1.3 })}${text(SANS, 'merge rate', rateX + width(BOLD, rate, statSize, -1.3) + 9, summaryLine, labelSize, theme.title, { track: -0.2 })}`;
+  const summary = `${text(BOLD, count, PAD, summaryLine, statSize, theme.title, { track: -1.3 })}${text(SANS, 'merged PRs', PAD + width(BOLD, count, statSize, -1.3) + 9, summaryLine, labelSize, theme.title, { track: -0.2 })}${rateStat}${text(REG, context, right, summaryLine - 19, 13, theme.soft, { anchor: 'end' })}${marks}${text(REG, '3 vulnerabilities reported in Effect', cursor + 4, summaryLine + 1, 13, theme.soft, { anchor: 'end' })}`;
 
   const tallyTop = 240, gap = 10, column = (room - gap * 5) / 6.5;
   const starred = (end, baseline, stars) => {
@@ -538,10 +543,14 @@ const [bfs, awesome, downloads] = await Promise.all([
   const moreX = PAD + 5 * (column + gap), restMerged = String(mergedIn(rest));
   const more = rise(9, `${cell(moreX, theme.soft)}${rest.slice(0, 4).map((repo, at) => mark(`more${at}`, repo.image, moreX + 11 + at * 16, tallyTop, 20)).join('')}${text(BOLD, `${rest.length} more repositories`, moreX + 11, tallyTop + 41, 13.5, theme.title, { track: -0.15 })}${text(BOLD, restMerged, moreX + 11, tallyTop + 74, 34, theme.soft, { track: -1.2 })}${text(REG, 'PRs merged', moreX + 11 + width(BOLD, restMerged, 34, -1.2) + 8, tallyTop + 74, 12.5, theme.soft)}`);
 
-  const title = `${merged} merged pull requests across ${contributions.length} repositories with ${compact(starTotal)} stars between them: ${ranked.map(({ name, prs }) => `${name} (${plural(prs, 'PR')})`).join(', ')}. Recent: ${slides.map(({ repo, pull }) => `${repo.name}, ${pull.title}`).join('; ')}. Security: 3 vulnerabilities reported in Effect, one high, one moderate and one low severity.`;
+  const title = `${merged} merged pull requests across ${contributions.length} repositories with ${compact(starTotal)} stars between them: ${ranked.map(({ name, prs }) => `${name} (${plural(prs, 'PR')})`).join(', ')}. Recent: ${slides.map(({ repo, pull }) => `${repo.name}, ${pull.title}`).join('; ')}. Security: 3 vulnerabilities reported in Effect, one high, one moderate and one low severity. ${mergeRate.rate}% merge rate: ${mergeRate.landed} landed and ${mergeRate.declined} declined by maintainers. PRs I withdrew, PRs maintainers took over, and PRs closed in cleanups or rewrites are not counted as declined.`;
   const seam = libraries.bottom + 20;
-  const reel = `${stage}<path d="M${PAD} ${rule + 0.5}H${right}" stroke="${theme.border}"/>${rise(2, summary)}${tally}${more}`;
-  card('contributed.svg', { height: seam + tallyTop + 76 + 26, theme, title: `${libraries.title} ${title}`, css: `${libraries.css}${css}`, body: `${libraries.body}<path d="M${PAD} ${seam + 0.5}H${right}" stroke="${theme.border}"/><g transform="translate(0 ${seam})">${reel}</g>`, grainy: true });
+  const footnote = [
+    `Merge rate: ${mergeRate.landed} merged ÷ (${mergeRate.landed} merged + ${mergeRate.declined} declined by maintainers) = ${mergeRate.rate}%.`,
+    'Not counted as declined: PRs I withdrew, PRs maintainers took over, and PRs closed in stale cleanups or rewrites.',
+  ].map((line, at) => text(REG, line, PAD, tallyTop + 76 + 34 + at * 18, 11.5, theme.dim)).join('');
+  const reel = `${stage}<path d="M${PAD} ${rule + 0.5}H${right}" stroke="${theme.border}"/>${rise(2, summary)}${tally}${more}${rise(10, `<path d="M${PAD} ${tallyTop + 76 + 14.5}H${right}" stroke="${theme.border}"/>${footnote}`)}`;
+  card('contributed.svg', { height: seam + tallyTop + 76 + 76, theme, title: `${libraries.title} ${title}`, css: `${libraries.css}${css}`, body: `${libraries.body}<path d="M${PAD} ${seam + 0.5}H${right}" stroke="${theme.border}"/><g transform="translate(0 ${seam})">${reel}</g>`, grainy: true });
 }
 
 tab('tab-experience.svg', 'Experience', 8);
