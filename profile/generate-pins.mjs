@@ -34,6 +34,7 @@ const CONTRIBUTIONS = [
   { owner: "rolldown", repo: "rolldown" },
   { owner: "dcastil", repo: "tailwind-merge" },
   { owner: "alchemy-run", repo: "alchemy" },
+  { owner: "solidjs", repo: "solid" },
   { owner: "TanStack", repo: "virtual" },
   { owner: "sharkdp", repo: "bat" },
   { owner: "cheeriojs", repo: "cheerio" },

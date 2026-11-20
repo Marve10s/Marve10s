@@ -302,19 +302,22 @@ const tinted = (file, fill) => dataUri(file, fs.readFileSync(path.join(ROOT, 'as
 const IMG = [423 - 10, 196 - 4 - 62];
 
 const LIBRARIES = [
-  { name: 'Effect', icon: 'effect', pkg: 'effect', users: ['Cloudflare', 'OpenRouter', 'OpenCode', 'T3 Code'] },
-  { name: 'Material UI', icon: 'mui', brand: '#007FFF', pkg: '@mui/material', users: ['Netflix', 'NASA', 'Spotify', 'Amazon'] },
-  { name: 'React Native', icon: 'react', brand: '#149ECA', pkg: 'react-native', users: ['Meta', 'Microsoft', 'Amazon', 'Shopify'] },
-  { name: 'Astro', icon: 'astro', brand: '#BC52EE', pkg: 'astro', users: ['Cloudflare', 'Microsoft', 'OpenCode'] },
-  { name: 'React Hook Form', icon: 'reacthookform', brand: '#EC5990', pkg: 'react-hook-form', users: ['Grafana', 'Supabase'] },
-  { name: 'tRPC', icon: 'trpc', brand: '#398CCB', pkg: '@trpc/server', users: ['Netflix'] },
-  { name: 'Cheerio', icon: 'cheerio', brand: '#E88C1F', pkg: 'cheerio', users: ['Google'] },
-  { name: 'Floating UI', image: 'logos/used-by/floating-ui.png', pkg: '@floating-ui/dom', users: ['Palantir'] },
+  { name: 'Effect', icon: 'effect', pkg: 'effect', users: ['Cloudflare', 'Vercel', 'OpenRouter', 'OpenCode', 'T3 Code'] },
+  { name: 'Material UI', icon: 'mui', brand: '#007FFF', pkg: '@mui/material', users: ['Netflix', 'NASA', 'Spotify', 'Amazon', 'Unity', 'Docker'] },
+  { name: 'React Native', icon: 'react', brand: '#149ECA', pkg: 'react-native', users: ['Meta', 'Microsoft', 'Amazon', 'Shopify', 'Wix'] },
+  { name: 'Astro', icon: 'astro', brand: '#BC52EE', pkg: 'astro', users: ['Cloudflare', 'Microsoft', 'Google', 'IKEA', 'Porsche', 'Visa', 'OpenCode'] },
+  { name: 'Solid', icon: 'solid', brand: '#4F88C6', pkg: 'solid-js', users: ['OpenCode'] },
+  { name: 'React Hook Form', icon: 'reacthookform', brand: '#EC5990', pkg: 'react-hook-form', users: ['Grafana', 'Supabase', 'Cal.com', 'Elastic'] },
+  { name: 'tRPC', icon: 'trpc', brand: '#398CCB', pkg: '@trpc/server', users: ['Netflix', 'Google', 'PayPal', 'Cal.com'] },
+  { name: 'Cheerio', icon: 'cheerio', brand: '#E88C1F', pkg: 'cheerio', users: ['Google', 'Microsoft', 'Elastic'] },
+  { name: 'Floating UI', image: 'logos/used-by/floating-ui.png', pkg: '@floating-ui/dom', users: ['Palantir', 'Microsoft', 'Grafana'] },
 ];
 
 const COMPANIES = [
   ['Netflix', 'netflix', '#E50914'], ['Meta', 'meta', '#0081FB'], ['Google', 'google', '#4285F4'], ['Microsoft', 'microsoft'], ['Amazon', 'amazon', '#FF9900'],
   ['Cloudflare', 'cloudflare', '#F38020'], ['Spotify', 'spotify', '#1DB954'], ['NASA', 'nasa', '#E03C31'], ['Shopify', 'shopify', '#7AB55C'], ['Palantir', 'palantir'],
+  ['PayPal', 'paypal', '#009CDE'], ['Visa', 'visa'], ['IKEA', 'ikea', '#FFDA1A'], ['Porsche', 'porsche'], ['Vercel', 'vercel'],
+  ['Docker', 'docker', '#2496ED'], ['Unity', 'unity'], ['Wix', 'wix'], ['Elastic', 'elastic', '#00BFB3'], ['Cal.com', 'caldotcom'],
   ['Grafana', 'grafana', '#F46800'], ['Supabase', 'supabase', '#3FCF8E'], ['OpenRouter', 'openrouter'], ['OpenCode', 'opencode'], ['T3 Code', 't3'],
 ];
 
@@ -435,7 +438,8 @@ const [bfs, awesome, downloads] = await Promise.all([
   const listWidth = 270, rowHeight = 40, top = 62, gap = 8, columns = 5;
   const wallX = PAD + listWidth + 26;
   const tileWidth = (INNER - PAD - wallX - gap * (columns - 1)) / columns;
-  const tileHeight = (slots * rowHeight - gap * 2) / 3;
+  const rows = Math.ceil(COMPANIES.length / columns);
+  const tileHeight = (slots * rowHeight - gap * (rows - 1)) / rows;
   const totalDownloads = `${Math.floor(downloads.reduce((sum, n) => sum + n, 0) / 1e6)}M npm downloads a week`;
   const heading = 'Libraries I contribute to, and who uses them';
 
@@ -454,7 +458,7 @@ const [bfs, awesome, downloads] = await Promise.all([
     const active = LIBRARIES.flatMap((lib, slot) => (lib.users.includes(company) ? [slot] : []));
     const frame = `x="${x.toFixed(1)}" y="${y.toFixed(1)}" width="${tileWidth.toFixed(1)}" height="${tileHeight.toFixed(1)}" rx="10"`;
     const spot = `<clipPath id="tile${i}"><rect ${frame}/></clipPath><g clip-path="url(#tile${i})"><rect ${frame} fill="${theme.chip}"/><ellipse class="${cycle('g', active, 1, 0)}" opacity="0" cx="${(x + tileWidth / 2).toFixed(1)}" cy="${(y + tileHeight * 1.25).toFixed(1)}" rx="${(tileWidth * 1.5).toFixed(1)}" ry="${(tileHeight * 1.2).toFixed(1)}" fill="url(#${glow(brand)})"/><g class="${cycle('n', active, 0.9, 0)}" opacity="0"><rect class="gr" x="${x.toFixed(1)}" y="${y.toFixed(1)}" width="${(tileWidth + GRAIN_SIZE).toFixed(1)}" height="${(tileHeight + GRAIN_SIZE).toFixed(1)}" fill="url(#grain)"/></g></g>`;
-    const inner = `${spot}<rect class="${cycle('r', active, 1, 0)}" opacity="0" x="${(x + 0.75).toFixed(2)}" y="${(y + 0.75).toFixed(2)}" width="${(tileWidth - 1.5).toFixed(1)}" height="${(tileHeight - 1.5).toFixed(1)}" rx="9.25" fill="none" stroke="${theme.title}" stroke-width="1.5"/>${icon(glyph, x + tileWidth / 2 - 12, y + 20, 24, brand ?? theme.title)}${text(REG, company, x + tileWidth / 2, y + 65, 13, theme.title, { anchor: 'middle' })}`;
+    const inner = `${spot}<rect class="${cycle('r', active, 1, 0)}" opacity="0" x="${(x + 0.75).toFixed(2)}" y="${(y + 0.75).toFixed(2)}" width="${(tileWidth - 1.5).toFixed(1)}" height="${(tileHeight - 1.5).toFixed(1)}" rx="9.25" fill="none" stroke="${theme.title}" stroke-width="1.5"/>${icon(glyph, x + tileWidth / 2 - 10, y + tileHeight / 2 - 18, 20, brand ?? theme.title)}${text(REG, company, x + tileWidth / 2, y + tileHeight / 2 + 19, 12.5, theme.title, { anchor: 'middle' })}`;
     return rise(i + 2, `<g class="${cycle('t', active, 1, 0.5)}">${inner}</g>`);
   }).join('');
 
@@ -470,7 +474,7 @@ const [bfs, awesome, downloads] = await Promise.all([
     'Effect-TS/effect': 'Effect', 'pingdotgg/t3code': 'T3 Code', 'mui/material-ui': 'Material UI', 'react/react-native': 'React Native', 'sharkdp/bat': 'bat',
     'Emanuele-web04/synara': 'Synara', 'ianstormtaylor/slate': 'Slate', 'react-hook-form/react-hook-form': 'React Hook Form', 'trpc/trpc': 'tRPC',
     'floating-ui/floating-ui': 'Floating UI', 'cheeriojs/cheerio': 'Cheerio', 'immerjs/immer': 'Immer', 'TanStack/virtual': 'TanStack Virtual',
-    'voidzero-dev/vite-plus': 'Vite+', 'react-hook-form/resolvers': 'RHF Resolvers', 'withastro/astro': 'Astro', 'rolldown/rolldown': 'Rolldown', 'alchemy-run/alchemy': 'Alchemy',
+    'voidzero-dev/vite-plus': 'Vite+', 'react-hook-form/resolvers': 'RHF Resolvers', 'withastro/astro': 'Astro', 'rolldown/rolldown': 'Rolldown', 'alchemy-run/alchemy': 'Alchemy', 'solidjs/solid': 'Solid',
   };
   const mergeRate = JSON.parse(fs.readFileSync(path.join(ROOT, 'profile', 'contrib', 'merge-rate.json'), 'utf8'));
   const contributions = JSON.parse(fs.readFileSync(path.join(ROOT, 'profile', 'contrib', 'contributions.json'), 'utf8')).map((repo) => ({ ...repo, name: DISPLAY[repo.fullName] ?? repo.fullName.split('/')[1] }));
