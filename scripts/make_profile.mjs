@@ -510,7 +510,34 @@ const [bfs, awesome, downloads] = await Promise.all([
   card('contributed.svg', { height, theme, title: `${libraries.title} ${title}`, css: libraries.css, body: `${libraries.body}<path d="M${PAD} ${seam + 0.5}H${right}" stroke="${theme.border}"/>${stats}${shields}${band}${cells}${more}`, grainy: true });
 }
 
+{
+  const theme = THEME, height = 126, cellWidth = INNER / 4;
+  const LINKS = [
+    { file: 'email', label: 'Email', handle: 'ibrahimelkamali@gmail.com', glyph: `<g fill="none" stroke="${theme.title}" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14.536 21.686a.5.5 0 0 0 .937-.024l6.5-19a.496.496 0 0 0-.635-.635l-19 6.5a.5.5 0 0 0-.024.937l7.93 3.18a2 2 0 0 1 1.112 1.11z"/><path d="m21.854 2.147-10.94 10.939"/></g>` },
+    { file: 'telegram', label: 'Telegram', handle: '@TheCr1nge', glyph: `<path fill="${theme.title}" d="M11.944 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12a12 12 0 0 0 12-12A12 12 0 0 0 12 0zm4.962 7.224c.1-.002.321.023.465.14a.5.5 0 0 1 .171.325c.016.093.036.306.02.472c-.18 1.898-.962 6.502-1.36 8.627c-.168.9-.499 1.201-.82 1.23c-.696.065-1.225-.46-1.9-.902c-1.056-.693-1.653-1.124-2.678-1.8c-1.185-.78-.417-1.21.258-1.91c.177-.184 3.247-2.977 3.307-3.23c.007-.032.014-.15-.056-.212s-.174-.041-.249-.024q-.159.037-5.061 3.345q-.72.495-1.302.48c-.428-.008-1.252-.241-1.865-.44c-.752-.245-1.349-.374-1.297-.789q.04-.324.893-.663q5.247-2.286 6.998-3.014c3.332-1.386 4.025-1.627 4.476-1.635"/>` },
+    { file: 'x', label: 'X', handle: '@IbrahimElkamali', glyph: `<path fill="${theme.title}" d="M18.901 1.153h3.68l-8.04 9.19L24 22.846h-7.406l-5.8-7.584-6.638 7.584H.474l8.6-9.83L0 1.154h7.594l5.243 6.932ZM17.61 20.644h2.039L6.486 3.24H4.298Z"/>` },
+    { file: 'linkedin', label: 'LinkedIn', handle: 'Ibrahim Elkamali', glyph: `<path fill="${theme.title}" d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 0 1-2.063-2.065 2.064 2.064 0 1 1 2.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>` },
+  ];
+  const sag = 20, half = INNER / 2, radius = (half * half + sag * sag) / (2 * sag), dip = 30;
+  const band = await dither(1, 2, INNER - 2, 52, (x, y) => HAZE((Math.hypot(x - half, y - dip + radius) - radius) / 1.2), 1);
+  const cells = LINKS.map(({ label, handle, glyph }, i) => {
+    const x = i * cellWidth;
+    const rule = i ? `<path d="M${(x + 0.5).toFixed(1)} 62V110" stroke="${theme.border}"/>` : '';
+    return `${rule}<g transform="translate(${(x + 24).toFixed(1)} 62) scale(${20 / 24})">${glyph}</g>${text(BOLD, label, x + 54, 78, 15.5, theme.title, { track: -0.15 })}${text(REG, handle, x + 24, 104, 12.5, theme.soft)}<path d="M${(x + cellWidth - 34).toFixed(1)} 76l8 -8m-6 0h6v6" fill="none" stroke="${theme.dim}" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>`;
+  }).join('');
+  const frame = `x=".5" y=".5" width="${INNER - 1}" height="${height - 1}" rx="14"`;
+  const whole = `<defs><clipPath id="contact"><rect ${frame}/></clipPath></defs><g transform="translate(${GUTTER} 0)"><rect ${frame} fill="${theme.bg}"/><g clip-path="url(#contact)">${band}</g>${cells}<rect ${frame} fill="none" stroke="${theme.border}"/></g>`;
+  const widths = [GUTTER + cellWidth, cellWidth, cellWidth, cellWidth + GUTTER];
+  let offset = 0;
+  LINKS.forEach(({ file, label, handle }, i) => {
+    const title = esc(`${label}: ${handle}`);
+    write(`contact-${file}.svg`, `<svg xmlns="http://www.w3.org/2000/svg" width="${widths[i]}" height="${height}" viewBox="${offset} 0 ${widths[i]} ${height}" role="img" aria-label="${title}"><title>${title}</title>${whole}</svg>`);
+    offset += widths[i];
+  });
+}
+
 tab('tab-experience.svg', 'Experience', 8);
 tab('tab-stack.svg', 'Tech stack');
 tab('tab-projects.svg', 'Projects');
 tab('tab-contributed.svg', 'Contributed to');
+tab('tab-contact.svg', 'Contact');
