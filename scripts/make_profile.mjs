@@ -14,10 +14,6 @@ fs.mkdirSync(CACHE, { recursive: true });
 const OWNER = 'Marve10s';
 const RAW = 'https://raw.githubusercontent.com';
 
-const mix = (from, to, amount) => {
-  const channel = (hex, i) => parseInt(hex.slice(1 + i * 2, 3 + i * 2), 16);
-  return `#${[0, 1, 2].map((i) => Math.round(channel(from, i) + (channel(to, i) - channel(from, i)) * amount).toString(16).padStart(2, '0')).join('')}`;
-};
 const THEME = { bg: '#000000', title: '#F4F2EC', soft: '#A8A59D', dim: '#6D6A64', border: '#232323', chip: '#111111' };
 const NEUTRAL_GLOW = '#CFCBC2';
 
@@ -32,7 +28,6 @@ const REG = font('geist-sans', 'geist-sans-latin-400-normal.woff');
 const SANS = font('geist-sans', 'geist-sans-latin-500-normal.woff');
 const BOLD = font('geist-sans', 'geist-sans-latin-600-normal.woff');
 const monoWoff2 = fs.readFileSync(fontPath('geist-mono', 'geist-mono-latin-500-normal.woff2')).toString('base64');
-const boldWoff2 = fs.readFileSync(fontPath('geist-sans', 'geist-sans-latin-600-normal.woff2')).toString('base64');
 const ICONS = JSON.parse(fs.readFileSync(path.join(HERE, 'icons.json'), 'utf8'));
 
 const width = (f, s, size, track = 0) => f.getAdvanceWidth(s, size) + track * (s.length - 1);
@@ -50,7 +45,6 @@ const pixelText = (s, x, y, size, fill, { anchor = 'start' } = {}) => {
 const esc = (s) => s.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
 const compact = (n) => (n >= 1000 ? `${(n / 1000).toFixed(n >= 10000 ? 0 : 1).replace(/\.0$/, '')}k` : String(n));
 const millions = (n) => `${(n / 1e6).toFixed(1)}M`;
-const billions = (n) => `${(n / 1e9).toFixed(1)}B`;
 const plural = (n, word) => `${n.toLocaleString('en-US')} ${word}${n === 1 ? '' : 's'}`;
 
 function icon(name, x, y, size, fill) {
@@ -70,14 +64,6 @@ async function github(endpoint) {
   const res = await fetch(`https://api.github.com/${endpoint}`, { headers: headers() });
   if (!res.ok) throw new Error(`${res.status} ${endpoint}`);
   return res.json();
-}
-
-async function graphql(query, variables) {
-  if (!process.env.GITHUB_TOKEN) throw new Error('GITHUB_TOKEN is required for the GraphQL API');
-  const res = await fetch('https://api.github.com/graphql', { method: 'POST', headers: headers(), body: JSON.stringify({ query, variables }) });
-  const body = await res.json();
-  if (!res.ok || body.errors) throw new Error(`graphql ${res.status} ${JSON.stringify(body.errors ?? body)}`);
-  return body.data;
 }
 
 async function weeklyDownloads(pkg) {
@@ -118,7 +104,6 @@ const seeded = (seed) => {
 };
 let serial = 0;
 const uid = (prefix) => `${prefix}${serial++}`;
-const SWAY = 'calcMode="spline" keySplines=".45 0 .55 1;.45 0 .55 1"';
 
 const GRAIN_SIZE = 128;
 const GRAIN_DENSITY = 2;
@@ -141,7 +126,6 @@ const GRAIN_DEFS = `<pattern id="grain" width="${GRAIN_SIZE}" height="${GRAIN_SI
 const GRAIN_FRAMES = 12;
 const grainJump = seeded(41);
 const GRAIN_CSS = `@keyframes gr{${Array.from({ length: GRAIN_FRAMES }, (_, i) => `${(i / GRAIN_FRAMES * 100).toFixed(2)}%{transform:translate(${-Math.floor(grainJump() * GRAIN_SIZE)}px,${-Math.floor(grainJump() * GRAIN_SIZE)}px)}`).join('')}}.gr{animation:gr .75s steps(1) infinite}`;
-const grain = (x, y, w, h, strength = 0.9) => `<g opacity="${strength}"><rect class="gr" x="${x.toFixed(1)}" y="${y.toFixed(1)}" width="${(w + GRAIN_SIZE).toFixed(1)}" height="${(h + GRAIN_SIZE).toFixed(1)}" fill="url(#grain)"/></g>`;
 
 const BAYER = [0, 8, 2, 10, 12, 4, 14, 6, 3, 11, 1, 9, 15, 7, 13, 5];
 const CELL = 3, DOT_PIXELS = 4, CELL_PIXELS = 6;
@@ -193,23 +177,6 @@ async function horizon({ W, H, crest, sag, from, span, startAt = 0.143 }) {
 <g opacity="0"><animate attributeName="opacity" values="0;1" begin="0.15s" dur="1.15s" calcMode="spline" keySplines=".4 0 .6 1" fill="freeze"/>${dots}</g>
 <g><animateTransform attributeName="transform" type="translate" values="${xAt(0).toFixed(1)} 0;${xAt(1).toFixed(1)} 0;${xAt(1).toFixed(1)} 0" ${travel}/><rect x="${-3 * W}" y="0" width="${6 * W}" height="${H}" fill="url(#${follow})"/></g>
 <g transform="translate(${xAt(startFraction).toFixed(1)} 0)"><set attributeName="display" to="none" begin="3.4s"/><g transform="scale(0.02 1)"><animateTransform attributeName="transform" type="scale" values="0.02 1;1 1" begin="0.45s" dur="2.1s" calcMode="spline" keySplines=".2 .65 .35 1" fill="freeze"/><rect x="${-40 * W}" y="0" width="${80 * W}" height="${H}" fill="url(#${reveal})"/></g></g>`;
-}
-
-function eclipse({ cx, cy, r, hues: [outerHue, innerHue] }) {
-  const corona = uid('e'), streak = uid('e'), bead = uid('e');
-  const outer = r * 2.5;
-  const at = (radius) => (radius / outer).toFixed(4);
-  const next = seeded(Math.round(cx + r));
-  const streamers = (turn, lead) => `<g opacity=".5"><animate attributeName="opacity" values="${lead ? '.85;.25;.85' : '.25;.85;.25'}" dur="11s" ${SWAY} repeatCount="indefinite"/><g><animateTransform attributeName="transform" type="rotate" values="${-turn};${turn};${-turn}" dur="46s" ${SWAY} repeatCount="indefinite"/>${Array.from({ length: 11 }, (_, i) => {
-    const length = r * (1.7 + 1.1 * next());
-    return `<ellipse cx="${(length / 2).toFixed(1)}" cy="0" rx="${(length / 2).toFixed(1)}" ry="${(length * (0.05 + 0.05 * next())).toFixed(1)}" fill="url(#${streak})" transform="rotate(${((i + next() * 0.8) / 11 * 360).toFixed(1)})"/>`;
-  }).join('')}</g></g>`;
-  return `<defs><radialGradient id="${corona}" gradientUnits="userSpaceOnUse" cx="${cx}" cy="${cy}" r="${outer}"><stop offset="${at(r * 0.9)}" stop-color="#fff" stop-opacity="0"/><stop offset="${at(r * 0.99)}" stop-color="#fff"/><stop offset="${at(r * 1.08)}" stop-color="${mix(innerHue, '#FFFFFF', 0.55)}" stop-opacity=".95"/><stop offset="${at(r * 1.3)}" stop-color="${innerHue}" stop-opacity=".5"/><stop offset="${at(r * 1.75)}" stop-color="${outerHue}" stop-opacity=".22"/><stop offset="1" stop-color="${outerHue}" stop-opacity="0"/></radialGradient>
-<radialGradient id="${streak}" cx=".5" cy=".5" r=".5" fx=".05" fy=".5"><stop offset="0" stop-color="${mix(innerHue, '#FFFFFF', 0.7)}" stop-opacity=".9"/><stop offset=".45" stop-color="${innerHue}" stop-opacity=".35"/><stop offset="1" stop-color="${outerHue}" stop-opacity="0"/></radialGradient>
-<radialGradient id="${bead}"><stop offset="0" stop-color="#fff"/><stop offset=".25" stop-color="#fff" stop-opacity=".85"/><stop offset=".6" stop-color="${innerHue}" stop-opacity=".35"/><stop offset="1" stop-color="${innerHue}" stop-opacity="0"/></radialGradient></defs>
-<g transform="translate(${cx} ${cy})">${streamers(5, false)}${streamers(-5, true)}</g>
-<circle cx="${cx}" cy="${cy}" r="${outer}" fill="url(#${corona})"/><circle cx="${cx}" cy="${cy}" r="${(r * 0.985).toFixed(1)}" fill="#000"/>
-<g><animateTransform attributeName="transform" type="rotate" values="-160 ${cx} ${cy};-110 ${cx} ${cy};-160 ${cx} ${cy}" dur="38s" ${SWAY} repeatCount="indefinite"/><g transform="translate(${cx} ${cy - r})"><circle r="${(r * 0.42).toFixed(1)}" fill="url(#${bead})"><animate attributeName="r" values="${(r * 0.36).toFixed(1)};${(r * 0.5).toFixed(1)};${(r * 0.36).toFixed(1)}" dur="6.5s" ${SWAY} repeatCount="indefinite"/></circle></g></g>`;
 }
 
 function tile({ w = 423, h = 196, plate = 62, theme, name, desc, right, sub, title, delay = 0, backdrop, bridge }) {
@@ -476,207 +443,74 @@ const [bfs, awesome, downloads] = await Promise.all([
     'floating-ui/floating-ui': 'Floating UI', 'cheeriojs/cheerio': 'Cheerio', 'immerjs/immer': 'Immer', 'TanStack/virtual': 'TanStack Virtual',
     'voidzero-dev/vite-plus': 'Vite+', 'react-hook-form/resolvers': 'RHF Resolvers', 'withastro/astro': 'Astro', 'rolldown/rolldown': 'Rolldown', 'alchemy-run/alchemy': 'Alchemy', 'solidjs/solid': 'Solid',
   };
+  const UNLISTED = ['Emanuele-web04/synara'], LOOKALIKE_LOGOS = ['ryansolid/dom-expressions'];
   const mergeRate = JSON.parse(fs.readFileSync(path.join(ROOT, 'profile', 'contrib', 'merge-rate.json'), 'utf8'));
   const contributions = JSON.parse(fs.readFileSync(path.join(ROOT, 'profile', 'contrib', 'contributions.json'), 'utf8')).map((repo) => ({ ...repo, name: DISPLAY[repo.fullName] ?? repo.fullName.split('/')[1] }));
-  const reach = (repo) => Math.sqrt(repo.prs * repo.stars);
-  const ranked = [...contributions].sort((a, b) => reach(b) - reach(a));
-  const lead = ranked.slice(0, 5), rest = ranked.slice(5);
-  const tones = ['#8B5CF6', '#FF8A3C', '#3D9BFF', '#FF6FB5', '#FFB86B'];
-  const mergedIn = (repos) => repos.reduce((sum, { prs }) => sum + prs, 0);
-  const merged = mergedIn(contributions);
-  const starTotal = contributions.reduce((sum, { stars }) => sum + stars, 0);
-  const room = INNER - PAD * 2, right = INNER - PAD;
+  const merged = contributions.reduce((sum, { prs }) => sum + prs, 0);
+  const room = INNER - PAD * 2, right = INNER - PAD, seam = libraries.bottom + 20;
 
-  const headRoom = room - 12, headSize = 36, headTrack = -1.1, lineHeight = 41, lastBaseline = 148;
-  const headWidth = (line) => width(BOLD, line, headSize, headTrack);
-  const wrap = (title) => {
-    if (headWidth(title) <= headRoom) return [title];
-    const words = title.split(' ');
-    const splits = words.slice(1).map((_, cut) => [words.slice(0, cut + 1).join(' '), words.slice(cut + 1).join(' ')]).filter((lines) => lines.every((line) => headWidth(line) <= headRoom));
-    return splits.sort((a, b) => Math.abs(headWidth(a[0]) - headWidth(a[1])) - Math.abs(headWidth(b[0]) - headWidth(b[1])))[0];
-  };
-  const slides = ranked.flatMap((repo) => {
-    const pull = (repo.pulls ?? []).find(({ title }) => title.length <= 72 && wrap(title));
-    return pull ? [{ repo, pull, lines: wrap(pull.title) }] : [];
-  }).slice(0, 8);
-  const hold = 3.6, cycle = slides.length * hold, share = 100 / slides.length;
-  const css = `@font-face{font-family:GS;src:url(data:font/woff2;base64,${boldWoff2}) format('woff2');font-weight:600}.hl{font:600 ${headSize}px GS,system-ui,sans-serif;letter-spacing:${headTrack}px;fill:${theme.title}}@keyframes reel{0%{opacity:0;transform:translateY(8px)}${(share * 0.13).toFixed(2)}%,${(share * 0.88).toFixed(2)}%{opacity:1;transform:none}${share.toFixed(2)}%,100%{opacity:0;transform:translateY(-6px)}}.reel{animation:reel ${cycle.toFixed(1)}s linear both infinite}`;
-  const mergedOn = new Intl.DateTimeFormat('en', { month: 'short', day: 'numeric', timeZone: 'UTC' });
+  const listed = contributions.filter(({ fullName }) => !UNLISTED.includes(fullName)).sort((a, b) => b.prs - a.prs || b.stars - a.stars);
+  const shown = listed.filter(({ stars }) => stars >= 2000).slice(0, 20);
+  const shownLogos = new Set(shown.map(({ image }) => image));
+  const teased = listed
+    .filter((repo) => !shown.includes(repo) && !shownLogos.has(repo.image) && !LOOKALIKE_LOGOS.includes(repo.fullName))
+    .filter((repo, at, rest) => rest.findIndex(({ image }) => image === repo.image) === at)
+    .slice(0, 4);
+
+  const statLine = seam + 52, statSize = 34, labelSize = 16.5;
+  let cursor = PAD;
+  const stats = [[String(merged), 'merged PRs'], [`${mergeRate.rate}%`, 'merge rate'], ['3', 'vulnerabilities reported in Effect']].map(([value, label], i) => {
+    const rule = i ? `<path d="M${(cursor + 14.5).toFixed(1)} ${statLine - 25}V${statLine + 2}" stroke="${theme.border}"/>` : '';
+    const x = cursor + (i ? 29 : 0), valueWidth = width(BOLD, value, statSize, -1.3);
+    cursor = x + valueWidth + 9 + width(SANS, label, labelSize, -0.2);
+    return `${rule}${text(BOLD, value, x, statLine, statSize, theme.title, { track: -1.3 })}${text(SANS, label, x + valueWidth + 9, statLine, labelSize, theme.title, { track: -0.2 })}`;
+  }).join('');
+  const shieldGlyph = 'M7.467.133a1.748 1.748 0 0 1 1.066 0l5.25 1.68A1.75 1.75 0 0 1 15 3.48V7c0 1.566-.32 3.182-1.303 4.682-.983 1.498-2.585 2.813-5.032 3.855a1.697 1.697 0 0 1-1.33 0c-2.447-1.042-4.049-2.357-5.032-3.855C1.32 10.182 1 8.566 1 7V3.48a1.75 1.75 0 0 1 1.217-1.667Z';
+  const shieldSize = 24;
+  const shields = [['H', '#FF9E9E'], ['M', '#F2C879'], ['L', '#9CC7F0']].map(([letter, color], i) => {
+    const x = right - shieldSize - (2 - i) * 30, y = statLine - 22;
+    return `<g transform="translate(${x} ${y}) scale(${shieldSize / 16})"><path d="${shieldGlyph}" fill="${color}"/></g>${text(BOLD, letter, x + shieldSize / 2, y + 16, 11, '#0B0B0B', { anchor: 'middle' })}`;
+  }).join('');
+
+  const sag = 20, half = INNER / 2, radius = (half * half + sag * sag) / (2 * sag);
+  const arcs = [[seam + 81, 1], [seam + 93, 0.6], [seam + 105, 0.34]];
+  const ripple = (x, y) => arcs
+    .map(([crest, strength]) => {
+      const [red, green, blue, level] = HAZE((radius - Math.hypot(x - half, y - crest - radius)) / 0.62);
+      return [red, green, blue, level * strength];
+    })
+    .reduce((best, tone) => (tone[3] > best[3] ? tone : best));
+  const band = await dither(1, seam + 69, INNER - 2, 68, ripple, 1);
+
+  const gridTop = seam + 141, rowHeight = 38, rowGap = 6, laneGap = 8, lane = (room - laneGap * 2) / 3;
+  const spot = (i) => [PAD + (i % 3) * (lane + laneGap), gridTop + Math.floor(i / 3) * (rowHeight + rowGap)];
   const mergeGlyph = 'M5.45 5.154A4.25 4.25 0 0 0 9.25 7.5h1.378a2.251 2.251 0 1 1 0 1.5H9.25A5.734 5.734 0 0 1 5 7.123v3.505a2.25 2.25 0 1 1-1.5 0V5.372a2.25 2.25 0 1 1 1.95-.218ZM4.25 13.5a.75.75 0 1 0 0-1.5.75.75 0 0 0 0 1.5Zm8.5-4.5a.75.75 0 1 0 0-1.5.75.75 0 0 0 0 1.5ZM5 3.25a.75.75 0 1 0 0 .005V3.25Z';
-  const mark = (id, image, x, y, size) => `<clipPath id="${id}"><rect x="${x.toFixed(1)}" y="${y}" width="${size}" height="${size}" rx="5"/></clipPath><image href="${image}" x="${x.toFixed(1)}" y="${y}" width="${size}" height="${size}" clip-path="url(#${id})"/>`;
-  const stage = slides.map(({ repo, pull, lines }, i) => {
-    const first = lastBaseline - (lines.length - 1) * lineHeight;
-    const row = first - headSize - 18;
-    const nameEnd = PAD + 31 + width(BOLD, repo.name, 15, -0.15);
-    const stamp = `merged ${mergedOn.format(new Date(pull.mergedAt))}`;
-    const pillX = nameEnd + 10, pillWidth = 8 + 12 + 5 + width(SANS, stamp, 12) + 10;
-    const number = pull.number ? text(REG, `#${pull.number}`, pillX + pillWidth + 9, row + 15, 12, theme.dim) : '';
-    const meta = `${mark(`reel${i}`, repo.image, PAD, row, 22)}${text(BOLD, repo.name, PAD + 31, row + 16.5, 15, theme.title, { track: -0.15 })}<rect x="${pillX.toFixed(1)}" y="${row + 0.5}" width="${pillWidth.toFixed(1)}" height="21" rx="10.5" fill="#8B5CF6"/><g transform="translate(${(pillX + 8).toFixed(1)} ${row + 5}) scale(.75)"><path d="${mergeGlyph}" fill="#fff"/></g>${text(SANS, stamp, pillX + 25, row + 15, 12, '#FFFFFF')}${number}`;
-    const headline = lines.map((line, at) => `<text class="hl" x="${PAD}" y="${first + at * lineHeight}">${esc(line)}</text>`).join('');
-    return `<g class="reel" opacity="${i ? 0 : 1}" style="animation-delay:${(i * hold).toFixed(1)}s">${meta}${headline}</g>`;
-  }).join('');
-
-  const rule = 174, summaryLine = 215;
-  const count = String(merged);
-  const context = `${plural(contributions.length, 'repository').replace('repositorys', 'repositories')}, ${compact(starTotal)} stars between them`;
-  const severities = [['Low', '#9CC7F0'], ['Moderate', '#F2C879'], ['High', '#FF9E9E']];
-  let cursor = right;
-  const marks = severities.map(([label, color]) => {
-    cursor -= width(REG, label, 13);
-    const out = `${text(REG, label, cursor, summaryLine + 1, 13, theme.soft)}<circle cx="${(cursor - 8).toFixed(1)}" cy="${summaryLine - 3.5}" r="3" fill="${color}"/>`;
-    cursor -= 22;
-    return out;
-  }).join('');
-  const statSize = 34, labelSize = 16.5;
-  const countEnd = PAD + width(BOLD, count, statSize, -1.3) + 9 + width(SANS, 'merged PRs', labelSize, -0.2);
-  const rate = `${mergeRate.rate}%`, rateX = countEnd + 29;
-  const rateStat = `<path d="M${(countEnd + 14.5).toFixed(1)} ${summaryLine - 25}V${summaryLine + 2}" stroke="${theme.border}"/>${text(BOLD, rate, rateX, summaryLine, statSize, theme.title, { track: -1.3 })}${text(SANS, 'merge rate', rateX + width(BOLD, rate, statSize, -1.3) + 9, summaryLine, labelSize, theme.title, { track: -0.2 })}`;
-  const summary = `${text(BOLD, count, PAD, summaryLine, statSize, theme.title, { track: -1.3 })}${text(SANS, 'merged PRs', PAD + width(BOLD, count, statSize, -1.3) + 9, summaryLine, labelSize, theme.title, { track: -0.2 })}${rateStat}${text(REG, context, right, summaryLine - 19, 13, theme.soft, { anchor: 'end' })}${marks}${text(REG, '3 vulnerabilities reported in Effect', cursor + 4, summaryLine + 1, 13, theme.soft, { anchor: 'end' })}`;
-
-  const tallyTop = 240, gap = 10, column = (room - gap * 5) / 6.5;
+  const mark = (id, image, x, y) => `<clipPath id="${id}"><rect x="${x.toFixed(1)}" y="${y}" width="20" height="20" rx="5"/></clipPath><image href="${image}" x="${x.toFixed(1)}" y="${y}" width="20" height="20" clip-path="url(#${id})"/>`;
   const starred = (end, baseline, stars) => {
     const label = compact(stars), start = end - width(REG, label, 12);
     return `${text(REG, label, start, baseline, 12, theme.soft)}${star(start - 8.5, baseline - 4, 4.4, theme.soft)}`;
   };
   const fitted = (name, space, size) => Math.min(size, size * space / width(BOLD, name, size, -0.15));
-  const cell = (x, tone) => `<path d="M${(x + 0.75).toFixed(2)} ${tallyTop}V${tallyTop + 76}" stroke="${tone}" stroke-opacity=".55" stroke-width="1.5"/>`;
-  const tally = lead.map((repo, i) => {
-    const x = PAD + i * (column + gap);
-    return rise(4 + i, `${cell(x, tones[i])}${mark(`lead${i}`, repo.image, x + 11, tallyTop, 20)}${starred(x + column, tallyTop + 14.5, repo.stars)}${text(BOLD, repo.name, x + 11, tallyTop + 41, fitted(repo.name, column - 11, 13.5), theme.title, { track: -0.15 })}${text(BOLD, String(repo.prs), x + 11, tallyTop + 74, 34, tones[i], { track: -1.2 })}`);
+  const cells = shown.map((repo, i) => {
+    const [x, y] = spot(i), edge = x + lane - 8;
+    return `<rect x="${x.toFixed(1)}" y="${y}" width="${lane.toFixed(1)}" height="${rowHeight}" rx="9" fill="${theme.chip}"/>${mark(`repo${i}`, repo.image, x + 9, y + 9)}${text(BOLD, repo.name, x + 38, y + 24, fitted(repo.name, lane - 135, 13.5), theme.title, { track: -0.15 })}${starred(edge - 42, y + 23.5, repo.stars)}<g transform="translate(${(edge - 32).toFixed(1)} ${y + 13}) scale(.75)"><path d="${mergeGlyph}" fill="#8B5CF6"/></g>${text(SANS, String(repo.prs), edge - 16, y + 23.5, 12.5, theme.title)}`;
   }).join('');
-  const moreX = PAD + 5 * (column + gap), restMerged = String(mergedIn(rest));
-  const more = rise(9, `${cell(moreX, theme.soft)}${rest.slice(0, 4).map((repo, at) => mark(`more${at}`, repo.image, moreX + 11 + at * 16, tallyTop, 20)).join('')}${text(BOLD, `${rest.length} more repositories`, moreX + 11, tallyTop + 41, 13.5, theme.title, { track: -0.15 })}${text(BOLD, restMerged, moreX + 11, tallyTop + 74, 34, theme.soft, { track: -1.2 })}${text(REG, 'PRs merged', moreX + 11 + width(BOLD, restMerged, 34, -1.2) + 8, tallyTop + 74, 12.5, theme.soft)}`);
 
-  const title = `${merged} merged pull requests across ${contributions.length} repositories with ${compact(starTotal)} stars between them: ${ranked.map(({ name, prs }) => `${name} (${plural(prs, 'PR')})`).join(', ')}. Recent: ${slides.map(({ repo, pull }) => `${repo.name}, ${pull.title}`).join('; ')}. Security: 3 vulnerabilities reported in Effect, one high, one moderate and one low severity. ${mergeRate.rate}% merge rate: ${mergeRate.landed} landed and ${mergeRate.declined} declined by maintainers. PRs I withdrew, PRs maintainers took over, and PRs closed in cleanups or rewrites are not counted as declined.`;
-  const seam = libraries.bottom + 20;
-  const footnote = [
-    `Merge rate: ${mergeRate.landed} merged ÷ (${mergeRate.landed} merged + ${mergeRate.declined} declined by maintainers) = ${mergeRate.rate}%.`,
-    'Not counted as declined: PRs I withdrew, PRs maintainers took over, and PRs closed in stale cleanups or rewrites.',
-  ].map((line, at) => text(REG, line, PAD, tallyTop + 76 + 34 + at * 18, 11.5, theme.dim)).join('');
-  const reel = `${stage}<path d="M${PAD} ${rule + 0.5}H${right}" stroke="${theme.border}"/>${rise(2, summary)}${tally}${more}${rise(10, `<path d="M${PAD} ${tallyTop + 76 + 14.5}H${right}" stroke="${theme.border}"/>${footnote}`)}`;
-  card('contributed.svg', { height: seam + tallyTop + 76 + 76, theme, title: `${libraries.title} ${title}`, css: `${libraries.css}${css}`, body: `${libraries.body}<path d="M${PAD} ${seam + 0.5}H${right}" stroke="${theme.border}"/><g transform="translate(0 ${seam})">${reel}</g>`, grainy: true });
+  const [moreX, moreY] = spot(shown.length);
+  const stack = teased.map((repo, at) => {
+    const x = moreX + 10 + at * 15, y = moreY + 9;
+    return `<rect x="${(x - 1.5).toFixed(1)}" y="${y - 1.5}" width="23" height="23" rx="6.5" fill="${theme.title}"/>${mark(`more${at}`, repo.image, x, y)}`;
+  }).join('');
+  const arrowX = moreX + lane - 26, arrowY = moreY + rowHeight / 2;
+  const more = `<rect x="${moreX.toFixed(1)}" y="${moreY}" width="${lane.toFixed(1)}" height="${rowHeight}" rx="9" fill="${theme.title}"/>${stack}${text(BOLD, `View all ${contributions.length}`, moreX + 10 + Math.max(0, teased.length - 1) * 15 + 32, moreY + 24, 13.5, '#0B0B0B', { track: -0.1 })}<path d="M${arrowX.toFixed(1)} ${arrowY}h10m-4 -4l4 4l-4 4" fill="none" stroke="#0B0B0B" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>`;
+
+  const rows = Math.ceil((shown.length + 1) / 3);
+  const height = gridTop + rows * rowHeight + (rows - 1) * rowGap + PAD;
+  const title = `${merged} merged pull requests across ${contributions.length} repositories. ${mergeRate.rate}% merge rate: ${mergeRate.landed} landed and ${mergeRate.declined} declined by maintainers. PRs I withdrew, PRs maintainers took over, and PRs closed in cleanups or rewrites are not counted as declined. Security: 3 vulnerabilities reported in Effect, one high, one moderate and one low severity. Repositories by merged pull requests: ${shown.map(({ name, prs, stars }) => `${name} (${plural(prs, 'PR')}, ${compact(stars)} stars)`).join(', ')}. The full list is on elkamali.dev.`;
+  card('contributed.svg', { height, theme, title: `${libraries.title} ${title}`, css: libraries.css, body: `${libraries.body}<path d="M${PAD} ${seam + 0.5}H${right}" stroke="${theme.border}"/>${stats}${shields}${band}${cells}${more}`, grainy: true });
 }
 
 tab('tab-experience.svg', 'Experience', 8);
 tab('tab-stack.svg', 'Tech stack');
 tab('tab-projects.svg', 'Projects');
 tab('tab-contributed.svg', 'Contributed to');
-tab('tab-stats.svg', 'GitHub stats');
-
-{
-  const theme = THEME;
-  const calendar = 'contributionCalendar { totalContributions weeks { contributionDays { date contributionCount contributionLevel } } }';
-  const { user } = await graphql(`query($login: String!) { user(login: $login) { createdAt pullRequests(states: MERGED) { totalCount } repositories(first: 100, ownerAffiliations: OWNER, isFork: false) { nodes { stargazerCount } } contributionsCollection { ${calendar} } } }`, { login: OWNER });
-  const now = new Date();
-  const years = Array.from({ length: now.getUTCFullYear() - new Date(user.createdAt).getUTCFullYear() + 1 }, (_, i) => new Date(user.createdAt).getUTCFullYear() + i);
-  const history = await Promise.all(years.map(async (year) => {
-    const from = new Date(Date.UTC(year, 0, 1)).toISOString();
-    const to = year === now.getUTCFullYear() ? now.toISOString() : new Date(Date.UTC(year, 11, 31, 23, 59, 59)).toISOString();
-    const data = await graphql(`query($login: String!, $from: DateTime!, $to: DateTime!) { user(login: $login) { contributionsCollection(from: $from, to: $to) { ${calendar} } } }`, { login: OWNER, from, to });
-    return data.user.contributionsCollection.contributionCalendar;
-  }));
-  const days = history.flatMap(({ weeks }) => weeks.flatMap((week) => week.contributionDays)).sort((a, b) => a.date.localeCompare(b.date));
-  const totalContributions = history.reduce((sum, year) => sum + year.totalContributions, 0);
-  const firstActive = days.find((day) => day.contributionCount > 0);
-
-  const streaks = [];
-  let open = null;
-  for (const day of days) {
-    if (day.contributionCount > 0) {
-      open = open ? { ...open, end: day.date, length: open.length + 1 } : { start: day.date, end: day.date, length: 1 };
-    } else if (open) {
-      streaks.push(open);
-      open = null;
-    }
-  }
-  if (open) streaks.push(open);
-  const empty = { length: 0 };
-  const longest = streaks.reduce((best, streak) => (streak.length > best.length ? streak : best), empty);
-  const last = streaks.at(-1);
-  const recentDays = days.slice(-2).map((day) => day.date);
-  const current = last && recentDays.includes(last.end) ? last : empty;
-
-  const shortDate = (iso) => new Date(`${iso}T00:00:00Z`).toLocaleDateString('en-US', { month: 'short', day: 'numeric', timeZone: 'UTC' });
-  const range = (streak) => (streak.length ? `${shortDate(streak.start)} to ${shortDate(streak.end)}` : 'No streak yet');
-  const since = new Date(`${firstActive.date}T00:00:00Z`).toLocaleDateString('en-US', { month: 'short', year: 'numeric', timeZone: 'UTC' });
-  const stars = user.repositories.nodes.reduce((sum, repo) => sum + repo.stargazerCount, 0);
-  const stats = [
-    [totalContributions.toLocaleString('en-US'), 'Total contributions', `since ${since}`],
-    [plural(current.length, 'day'), 'Current streak', range(current)],
-    [plural(longest.length, 'day'), 'Longest streak', range(longest)],
-    [user.pullRequests.totalCount.toLocaleString('en-US'), 'Pull requests merged', 'in public repositories'],
-    [stars.toLocaleString('en-US'), 'Stars earned', 'on my repositories'],
-  ];
-
-  const ai = JSON.parse(fs.readFileSync(path.join(ROOT, 'profile', 'ai-stats.json'), 'utf8'));
-  const AGENTS = { claude: 'Claude Code', codex: 'Codex', opencode: 'OpenCode' };
-  const monthYear = new Date(`${ai.period.from}T00:00:00Z`).toLocaleDateString('en-US', { month: 'short', year: 'numeric', timeZone: 'UTC' });
-  const dateSpan = ({ from, through }) => `${shortDate(from)} to ${shortDate(through)}`;
-  const aiStats = [
-    [billions(ai.totalTokens), 'Total AI tokens', `since ${monthYear}`],
-    [billions(ai.last30Days.tokens), 'Last 30 days', dateSpan(ai.last30Days)],
-    [billions(ai.last7Days.tokens), 'Last 7 days', dateSpan(ai.last7Days)],
-    [`${ai.activeDays} of ${ai.period.days}`, 'Active days', 'with coding agents'],
-    [String(ai.agentCount), 'Coding agents', ai.topAgents.map((agent) => AGENTS[agent] ?? agent).join(' and ')],
-  ];
-
-  const weeks = user.contributionsCollection.contributionCalendar.weeks;
-  const lastYear = user.contributionsCollection.contributionCalendar.totalContributions;
-  const size = 12, mapTop = 136, span = INNER - PAD * 2;
-  const height = mapTop + 7 * size + 6 * 2.6 + PAD - 2;
-
-  const view = (shade, figures, grid, cellWidth, fill, entrance) => {
-    const pitch = (span - cellWidth) / (grid.length - 1);
-    const figureWidth = span / figures.length;
-    const cells = figures.map(([value, label, note], i) => {
-      const x = PAD + i * figureWidth + (i ? 18 : 0);
-      const rule = i ? `<path d="M${(PAD + i * figureWidth + 0.5).toFixed(1)} 26V84" stroke="${shade.border}"/>` : '';
-      const cell = `${rule}${text(BOLD, value, x, 46, 23, shade.title, { track: -0.5 })}${text(REG, label, x, 66, 12.5, shade.soft)}${text(REG, note, x, 83, 11.5, shade.dim)}`;
-      return entrance ? rise(i, cell) : cell;
-    }).join('');
-    let month = '';
-    const heatmap = grid.map((week, column) => {
-      const x = PAD + column * pitch;
-      const name = new Date(`${week[0].date}T00:00:00Z`).toLocaleDateString('en-US', { month: 'short', timeZone: 'UTC' });
-      const label = name !== month && column < grid.length - 2 ? text(REG, name, x, mapTop - 9, 11, shade.dim) : '';
-      month = name;
-      const squares = week.map((day) => {
-        const row = new Date(`${day.date}T00:00:00Z`).getUTCDay();
-        return `<rect x="${x.toFixed(2)}" y="${(mapTop + row * (size + 2.6)).toFixed(1)}" width="${cellWidth.toFixed(2)}" height="${size}" rx="3" fill="${fill(day)}"/>`;
-      }).join('');
-      return entrance ? `<g class="in" style="animation-delay:${(0.25 + column * 0.012).toFixed(3)}s">${label}${squares}</g>` : `${label}${squares}`;
-    }).join('');
-    return `${cells}<path d="M${PAD} 104.5H${INNER - PAD}" stroke="${shade.border}"/>${heatmap}`;
-  };
-
-  const GITHUB_HUES = ['#3D7BFF', '#FF6FB5'], TOKEN_HUES = ['#8B5CF6', '#FFB86B'];
-  const heat = ([hue], steps) => [theme.chip, ...steps.map((amount) => (amount <= 1 ? mix('#0A0A0F', hue, amount) : mix(hue, '#FFFFFF', amount - 1)))];
-  const [none, first, second, third, fourth] = heat(GITHUB_HUES, [0.38, 0.62, 1.12, 1.55]);
-  const CONTRIBUTION_FILL = { NONE: none, FIRST_QUARTILE: first, SECOND_QUARTILE: second, THIRD_QUARTILE: third, FOURTH_QUARTILE: fourth };
-  const TOKEN_FILL = heat(TOKEN_HUES, [0.3, 0.48, 0.7, 1.1, 1.5]);
-  const tokenWeeks = [];
-  for (const day of ai.days) {
-    if (tokenWeeks.length === 0 || new Date(`${day.date}T00:00:00Z`).getUTCDay() === 0) tokenWeeks.push([]);
-    tokenWeeks.at(-1).push(day);
-  }
-  const weekGap = 2.6;
-  const tokenCellWidth = (span - weekGap * (tokenWeeks.length - 1)) / tokenWeeks.length;
-  const spent = ai.days.map((day) => day.value).filter((value) => value > 0).sort((a, b) => a - b);
-  const thresholds = [0.25, 0.5, 0.75, 0.9].map((ratio) => spent[Math.floor((spent.length - 1) * ratio)] ?? 0);
-  const tokenLevel = (day) => {
-    if (day.value === 0) return day.inferred ? 1 : 0;
-    const index = thresholds.findIndex((threshold) => day.value <= threshold);
-    return index === -1 ? 5 : index + 1;
-  };
-
-  const corner = { cx: INNER - 6, cy: 4, r: 54 };
-  const frame = `x=".5" y=".5" width="${INNER - 1}" height="${height - 1}" rx="14"`;
-  const backdrop = (hues) => `<g clip-path="url(#frame)"><rect ${frame} fill="${theme.bg}"/>${eclipse({ ...corner, hues })}${grain(0, 0, INNER, height)}</g><rect ${frame} fill="none" stroke="${theme.border}"/>`;
-  const github = view(theme, stats, weeks.map((week) => week.contributionDays), size, (day) => CONTRIBUTION_FILL[day.contributionLevel], true);
-  const tokens = view(theme, aiStats, tokenWeeks, tokenCellWidth, (day) => TOKEN_FILL[tokenLevel(day)], false);
-  const body = `<defs><clipPath id="frame"><rect ${frame}/></clipPath></defs>${backdrop(GITHUB_HUES)}${github}<g class="ai" opacity="0">${backdrop(TOKEN_HUES)}${tokens}</g>`;
-  const css = '@keyframes ai{0%,40%{opacity:0}50%,90%{opacity:1}100%{opacity:0}}.ai{animation:ai 16s ease-in-out infinite}';
-  const sentence = (figures) => figures.map(([value, label, note]) => `${label} ${value}, ${note}`).join('. ');
-  const title = `GitHub stats: ${sentence(stats)}. ${lastYear.toLocaleString('en-US')} contributions in the last year. AI coding stats: ${sentence(aiStats)}.`;
-  card('stats.svg', { height, theme, title, css, body, grainy: true });
-}
