@@ -1,7 +1,7 @@
 [
   {
     "fullName": "Effect-TS/effect",
-    "stars": 17648,
+    "stars": 17657,
     "prs": 98,
     "pulls": [
       {
@@ -24,7 +24,7 @@
   },
   {
     "fullName": "Emanuele-web04/synara",
-    "stars": 2272,
+    "stars": 2289,
     "prs": 36,
     "pulls": [
       {
@@ -47,9 +47,14 @@
   },
   {
     "fullName": "pingdotgg/t3code",
-    "stars": 69769,
-    "prs": 26,
+    "stars": 72188,
+    "prs": 27,
     "pulls": [
+      {
+        "title": "fix(server): Word files whose main part is not word/document.xml reach the agent",
+        "number": 40777,
+        "mergedAt": "2026-11-22T12:28:53Z"
+      },
       {
         "title": "fix(server): PowerPoint speaker notes leave out the notes page's slide number, date, header and footer",
         "number": 40568,
@@ -59,41 +64,36 @@
         "title": "fix(server): a stop-on-settle action no longer holds back automatic settlement",
         "number": 40489,
         "mergedAt": "2026-11-21T19:51:16Z"
-      },
-      {
-        "title": "fix(desktop): a forward moves off a port this machine serves on IPv6 loopback",
-        "number": 40423,
-        "mergedAt": "2026-11-21T17:31:33Z"
       }
     ],
     "image": "data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTI4IiBoZWlnaHQ9IjEyOCIgdmlld0JveD0iMCAwIDEyOCAxMjgiIGZpbGw9Im5vbmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+CjxwYXRoIGQ9Ik0wIDEwQzAgNC40NzcxNSA0LjQ3NzE1IDAgMTAgMEgxMThDMTIzLjUyMyAwIDEyOCA0LjQ3NzE1IDEyOCAxMFYxMThDMTI4IDEyMy41MjMgMTIzLjUyMyAxMjggMTE4IDEyOEgxMEM0LjQ3NzE1IDEyOCAwIDEyMy41MjMgMCAxMThWMTBaIiBmaWxsPSJibGFjayIvPgo8cGF0aCBkPSJNMzMuNDUwOSA5M1Y0Ny41NkgxNS41MzA5VjM3SDY0LjMzMDlWNDcuNTZINDYuNDEwOVY5M0gzMy40NTA5Wk04Ni43MjUzIDkzLjk2QzgyLjgzMiA5My45NiA3OC45NjUzIDkzLjQ1MzMgNzUuMTI1MyA5Mi40NEM3MS4yODUzIDkxLjM3MzMgNjguMDMyIDg5Ljg4IDY1LjM2NTMgODcuOTZMNzAuNDA1MyA3OC4wNEM3Mi41Mzg2IDc5LjU4NjcgNzUuMDE4NiA4MC44MTMzIDc3Ljg0NTMgODEuNzJDODAuNjcyIDgyLjYyNjcgODMuNTI1MyA4My4wOCA4Ni40MDUzIDgzLjA4Qzg5LjY1ODYgODMuMDggOTIuMjE4NiA4Mi40NCA5NC4wODUzIDgxLjE2Qzk1Ljk1MiA3OS44OCA5Ni44ODUzIDc4LjEyIDk2Ljg4NTMgNzUuODhDOTYuODg1MyA3My43NDY3IDk2LjA1ODYgNzIuMDY2NyA5NC40MDUzIDcwLjg0QzkyLjc1MiA2OS42MTMzIDkwLjA4NTMgNjkgODYuNDA1MyA2OUg4MC40ODUzVjYwLjQ0TDk2LjA4NTMgNDIuNzZMOTcuNTI1MyA0Ny40SDY4LjE2NTNWMzdIMTA3LjM2NVY0NS40TDkxLjg0NTMgNjMuMDhMODUuMjg1MyA1OS4zMkg4OS4wNDUzQzk1LjkyNTMgNTkuMzIgMTAxLjEyNSA2MC44NjY3IDEwNC42NDUgNjMuOTZDMTA4LjE2NSA2Ny4wNTMzIDEwOS45MjUgNzEuMDI2NyAxMDkuOTI1IDc1Ljg4QzEwOS45MjUgNzkuMDI2NyAxMDkuMDk5IDgxLjk4NjcgMTA3LjQ0NSA4NC43NkMxMDUuNzkyIDg3LjQ4IDEwMy4yNTkgODkuNjkzMyA5OS44NDUzIDkxLjRDOTYuNDMyIDkzLjEwNjcgOTIuMDU4NiA5My45NiA4Ni43MjUzIDkzLjk2WiIgZmlsbD0id2hpdGUiLz4KPC9zdmc+Cg=="
   },
   {
     "fullName": "solidjs/solid",
-    "stars": 36904,
-    "prs": 15,
+    "stars": 36923,
+    "prs": 20,
     "pulls": [
       {
-        "title": "fix(babel-plugin, compiler): keep the props of a static spread of a member or call",
-        "number": 5149,
-        "mergedAt": "2026-11-21T11:11:43Z"
+        "title": "fix(solid): a hydrated stream claims its first buffered value before later yields or a throw",
+        "number": 5153,
+        "mergedAt": "2026-11-22T11:16:53Z"
       },
       {
-        "title": "fix(compiler): keep import() expressions dynamic in JSX",
-        "number": 5148,
-        "mergedAt": "2026-11-21T11:11:39Z"
+        "title": "fix(babel-plugin, compiler): accept whitespace between table cells in template validation",
+        "number": 5155,
+        "mergedAt": "2026-11-22T11:00:07Z"
       },
       {
-        "title": "fix(babel-plugin): keep the insert anchor after a child that renders nothing",
-        "number": 5147,
-        "mergedAt": "2026-11-21T11:11:34Z"
+        "title": "fix(babel-plugin, compiler): skip a pre's leading line break in the DOM template walk",
+        "number": 5154,
+        "mergedAt": "2026-11-22T11:00:02Z"
       }
     ],
     "image": "data:image/png;base64,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"
   },
   {
     "fullName": "mui/material-ui",
-    "stars": 99381,
+    "stars": 99388,
     "prs": 10,
     "pulls": [
       {
@@ -116,7 +116,7 @@
   },
   {
     "fullName": "sharkdp/bat",
-    "stars": 61354,
+    "stars": 61374,
     "prs": 4,
     "pulls": [
       {
@@ -139,7 +139,7 @@
   },
   {
     "fullName": "alchemy-run/alchemy",
-    "stars": 2039,
+    "stars": 2071,
     "prs": 3,
     "pulls": [
       {
@@ -162,7 +162,7 @@
   },
   {
     "fullName": "react/react-native",
-    "stars": 126993,
+    "stars": 126997,
     "prs": 2,
     "pulls": [
       {
@@ -180,7 +180,7 @@
   },
   {
     "fullName": "withastro/astro",
-    "stars": 64121,
+    "stars": 64139,
     "prs": 2,
     "pulls": [
       {
@@ -198,7 +198,7 @@
   },
   {
     "fullName": "ianstormtaylor/slate",
-    "stars": 31749,
+    "stars": 31750,
     "prs": 2,
     "pulls": [
       {
@@ -265,7 +265,7 @@
   },
   {
     "fullName": "trpc/trpc",
-    "stars": 40845,
+    "stars": 40851,
     "prs": 1,
     "pulls": [
       {
@@ -278,7 +278,7 @@
   },
   {
     "fullName": "floating-ui/floating-ui",
-    "stars": 32820,
+    "stars": 32821,
     "prs": 1,
     "pulls": [
       {
@@ -317,21 +317,21 @@
   },
   {
     "fullName": "oxc-project/oxc",
-    "stars": 23531,
+    "stars": 23562,
     "prs": 1,
     "pulls": [],
     "image": "data:image/jpeg;base64,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"
   },
   {
     "fullName": "e2e-inc/e2e",
-    "stars": 14111,
+    "stars": 14122,
     "prs": 1,
     "pulls": [],
     "image": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAFAAAABQCAIAAAABc2X6AAACvUlEQVR4nOyZTUgUYRjH/7Ot+blUZhBiBhWRYocMBJVgO1QH6WIdQg/bNdhj1KWCiAjq0i0i+jgUQRB93LKCjNA+ILNMjb5HyWCXDWNZc7PdcOQ/NJs5xuzUO7PP/5nD89O9/Hj3eefl3WB1JItCSoCNCIuwCIuwCIuwCIuwCIuwCIuwCIuwCIuwb4SDbNxK9i9vkDSNnUeFj+9Gx2aCXW70Inqa4FFhTUNAmeWVGXZhhu/2I/6VYJehEXauRXPpXjrcgDXVBKMeDGJ4lGBNXQ1a6wlG6TF09RE8scLtLdjRQjBq/4U/CjetxeGO3O9FV5/McD5mOPDPXr/ZbH4+rOgMLy5H6UKCUeMppCYJ1pQVY1EZwajJ70gkCYrP8JFObN1AcJabj3H0CkFZ4coQaqoIzrKkgp36M6xs8r/CT98iuIDgLP3v2aksfPY29BhCpbnv1fEUwWcrDODQLqxaTjBqy0FVhAtuhl0Rdu3UoOrBo7YKRdZZGYkjPUXw3wzrcXZAtA3bGgl2uT+AE9cIHhL+tWqXoXE1wS56jJ23ZljluL7C7z7j0SuCXd6MsfPWptWwEiVFBKNe6phIE/y3wqf2zHLwGHT/vkpmeJYZlk0rH5vWgYsoL849ePj2pBVtQ/M6grPcG8CZWwRlV7huBcLrCc4y9oWdzLBCM6zH8PwDwVlG416Y4ZlnaSh330okkfxGsKaiBJXW+7qJNGLz/kXqP6+weemxs9Wk6WffeVzqJljT3oxjEYJRd54hcpLgiRnWNPu/zPGvOT6sqHABbVozz+Vu9A6bNP08ec3ut/QMYe85glGfEuy8smmZ2d6EjfO+AHjxEVd7CN5aYTOb6tEZJtjl+kPXhWWG8zTDZmUymPpBsEsmww6enWHVUnBfaREWYREWYREWYREWYREWYREWYREWYREWYf8J/xwAB5WbUZdw5rQAAAAASUVORK5CYII="
   },
   {
     "fullName": "rolldown/rolldown",
-    "stars": 14038,
+    "stars": 14044,
     "prs": 1,
     "pulls": [
       {
@@ -357,7 +357,7 @@
   },
   {
     "fullName": "voidzero-dev/vite-plus",
-    "stars": 6641,
+    "stars": 6646,
     "prs": 1,
     "pulls": [
       {
@@ -396,7 +396,7 @@
   },
   {
     "fullName": "alchemy-run/distilled",
-    "stars": 545,
+    "stars": 549,
     "prs": 1,
     "pulls": [
       {
@@ -409,7 +409,7 @@
   },
   {
     "fullName": "Effect-TS/tsgo",
-    "stars": 346,
+    "stars": 347,
     "prs": 1,
     "pulls": [
       {
