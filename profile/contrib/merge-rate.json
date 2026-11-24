@@ -1,7 +1,7 @@
 {
-  "landed": 233,
-  "declined": 19,
-  "rate": 92,
+  "landed": 252,
+  "declined": 20,
+  "rate": 93,
   "declinedPulls": [
     "https://github.com/openai/codex/pull/8348",
     "https://github.com/pingdotgg/t3code/pull/1308",
@@ -21,6 +21,7 @@
     "https://github.com/Effect-TS/effect/pull/10246",
     "https://github.com/Effect-TS/effect/pull/10352",
     "https://github.com/mui/material-ui/pull/49738",
-    "https://github.com/pingdotgg/t3code/pull/33802"
+    "https://github.com/pingdotgg/t3code/pull/33802",
+    "https://github.com/Effect-TS/effect/pull/10837"
   ]
 }
