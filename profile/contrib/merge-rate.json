@@ -1,7 +1,7 @@
 {
-  "landed": 252,
-  "declined": 20,
-  "rate": 93,
+  "landed": 270,
+  "declined": 24,
+  "rate": 92,
   "declinedPulls": [
     "https://github.com/openai/codex/pull/8348",
     "https://github.com/pingdotgg/t3code/pull/1308",
@@ -20,8 +20,12 @@
     "https://github.com/Effect-TS/effect/pull/10245",
     "https://github.com/Effect-TS/effect/pull/10246",
     "https://github.com/Effect-TS/effect/pull/10352",
+    "https://github.com/pingdotgg/t3code/pull/30801",
     "https://github.com/mui/material-ui/pull/49738",
     "https://github.com/pingdotgg/t3code/pull/33802",
-    "https://github.com/Effect-TS/effect/pull/10837"
+    "https://github.com/Effect-TS/effect/pull/10837",
+    "https://github.com/solidjs/solid/pull/5169",
+    "https://github.com/solidjs/solid/pull/5172",
+    "https://github.com/solidjs/solid/pull/5175"
   ]
 }
