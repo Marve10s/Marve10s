@@ -1,30 +1,30 @@
 [
   {
     "fullName": "Effect-TS/effect",
-    "stars": 17674,
-    "prs": 106,
+    "stars": 17688,
+    "prs": 108,
     "pulls": [
+      {
+        "title": "Fix stream atoms reporting the previous run's value when a run completes empty",
+        "number": 10835,
+        "mergedAt": "2026-11-26T00:21:14Z"
+      },
+      {
+        "title": "Fix Stream async iterators dropping values during overlapping reads",
+        "number": 10891,
+        "mergedAt": "2026-11-25T21:35:55Z"
+      },
       {
         "title": "Preserve DateTime offsets when setting parts in a repeated hour",
         "number": 10892,
         "mergedAt": "2026-11-25T01:41:16Z"
-      },
-      {
-        "title": "Decode Anthropic text documents from base64 data URLs",
-        "number": 10896,
-        "mergedAt": "2026-11-25T00:45:01Z"
-      },
-      {
-        "title": "Fix Atom.subscriptionRef setters throwing while the ref is being updated",
-        "number": 10893,
-        "mergedAt": "2026-11-25T00:33:19Z"
       }
     ],
     "image": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAIAAAACACAAAAADmVT4XAAAEbklEQVR42u2Zb2gURxTA37qEpIcml0pQj2iJwZCGKtR4/SCRQlNBJVFiQCT9E61BRRqkWmhKDdiQqjSGkFZU/IMEgv8SUdsQlWCFUo4GKQlBq0c+SA8RD4qbtGeXsAnPDztvM5u7826zsxco8/ty3Lu9/c3NvJl5OwcgkUgkEolEIpFIJBKJROIGX3Mk1l4wZ3plZwQRUft0jvyFd5DRt3IO9BXdE2gxeWvjvMzqy+/hDEY2ZVBfeHEK4+kvzpBeOaBjQrQv1Ez437+PSRmt8Vxfeg1fS2iNp/qCExOYiovepULW11pKPSLqB7xJhTd2hNPRIyI+2p8nXK/ufpauHhFxrMkn1r9hxIkeEfHJJwIHYuWAUz0i4uC7gvTZ303Nxo+otwoZh+q0cy+eaIPi3j97PSJim+sGdLtrwFiq+6fcxiPu2j/hugfm33bVAdWuGwBQ9dds9cbJxQL8AP4zxqz8v70jRA8AUNrnXK81ZgnzA8D6+870ertfpB4A1DYn/uG3BOshcNbZenyjRKh+9fmXTlNgsvcDYfplP1l5vf77VDXZSN1lqxfEPDUqDX+zG0a3KQDFl1+nj+xSAGqj7N0/TdkCGtBCN+9ZYgaCD5PptWZz/13YQQvHL+53Q3hq3mponRXJaY0l9Pcusi4poYWjXFgDrvATK3Ahfm38s5Yft3rWxnVOdfF0MEGsJYeLlt+166P7+BKw4g8WHhNQHmcdoUfBIVuRV/V4Wh877Oc+WdRD8WEBIwAAb3exJkz+/CGXVPN2sCY8+5Kfb0sOv6BJu1FACpoEumjMB9/jwmr9U0S9cwEXyjtG/RXZLkwPABC8R93aXciFffuai7i3yu7nNCOFLAE2tozSgO9JdknlMLvEOOHF0Zl6lMZhIOGhlO80ddLNUg/0ANzJkHEy7hcqH0eo9+s80gNwTynaQfujX8Ug+0DvzPfQD6Dup50mzBW8yy5RtdCzwgNp/ip+DVywh6rkW2vNSGkX26P/PbWK/17AL8YfHMfoXr7DfUdoM7pdBpDbSiVC70L+ayXX0fhGSAPuICI+2MCHiuiBzfhxLx1chPnNCPI7dUScEtIHIVPQZ5tbwdCMUqCRX3iyGzUzXOTQlZA6lmDGIVvibxud1usdtp9aQ3MlJMIPsJ0Sf6iSD2cft1LfdjKXd4mFJ9rmi2kAFBynNfCGbZaZ4xDdamsW9T6OBAXpAQCKaYs32m2pXhsKf+vnAzWPaDPcJXQzBCg7Nc7S7Yelya7x7Rxi+t/rc5zcPD0KaGzHkpyKb6YZOVzp8NbpUk1VWDjBuYP1J4LeJLjzOdTPaULcnXEImNvCKqGpq97+b5F77D+Wjee5HVmxDnJ/XeupHgCgmJbh2GcUqqSDXPty7BlVNA79ZQAAuefY2/FG4XVgEnwtMasymu79geUZ0gMAvPnVEzYO7PXlBZHrXjqoDTQQiGicDmRYDwDgO0v+fnHncc4wj860j+ZIDwBq/WPN4ypYIpFIJBKJRCKRSCQSyf+fV50TnvSFTLPrAAAAAElFTkSuQmCC"
   },
   {
     "fullName": "pingdotgg/t3code",
-    "stars": 77907,
+    "stars": 79717,
     "prs": 43,
     "pulls": [
       {
@@ -47,7 +47,7 @@
   },
   {
     "fullName": "Emanuele-web04/synara",
-    "stars": 2310,
+    "stars": 2322,
     "prs": 36,
     "pulls": [
       {
@@ -70,7 +70,7 @@
   },
   {
     "fullName": "solidjs/solid",
-    "stars": 36954,
+    "stars": 36966,
     "prs": 28,
     "pulls": [
       {
@@ -93,7 +93,7 @@
   },
   {
     "fullName": "mui/material-ui",
-    "stars": 99392,
+    "stars": 99399,
     "prs": 14,
     "pulls": [
       {
@@ -116,7 +116,7 @@
   },
   {
     "fullName": "sharkdp/bat",
-    "stars": 61464,
+    "stars": 61514,
     "prs": 4,
     "pulls": [
       {
@@ -139,7 +139,7 @@
   },
   {
     "fullName": "react/react-native",
-    "stars": 127000,
+    "stars": 127010,
     "prs": 3,
     "pulls": [
       {
@@ -161,7 +161,7 @@
   },
   {
     "fullName": "alchemy-run/alchemy",
-    "stars": 2106,
+    "stars": 2114,
     "prs": 3,
     "pulls": [
       {
@@ -184,7 +184,7 @@
   },
   {
     "fullName": "withastro/astro",
-    "stars": 64184,
+    "stars": 64210,
     "prs": 2,
     "pulls": [
       {
@@ -202,7 +202,7 @@
   },
   {
     "fullName": "ianstormtaylor/slate",
-    "stars": 31751,
+    "stars": 31756,
     "prs": 2,
     "pulls": [
       {
@@ -220,7 +220,7 @@
   },
   {
     "fullName": "nicklockwood/SwiftFormat",
-    "stars": 8957,
+    "stars": 8960,
     "prs": 2,
     "pulls": [
       {
@@ -256,7 +256,7 @@
   },
   {
     "fullName": "react-hook-form/react-hook-form",
-    "stars": 44925,
+    "stars": 44927,
     "prs": 1,
     "pulls": [
       {
@@ -269,7 +269,7 @@
   },
   {
     "fullName": "trpc/trpc",
-    "stars": 40854,
+    "stars": 40870,
     "prs": 1,
     "pulls": [
       {
@@ -282,7 +282,7 @@
   },
   {
     "fullName": "floating-ui/floating-ui",
-    "stars": 32814,
+    "stars": 32817,
     "prs": 1,
     "pulls": [
       {
@@ -321,21 +321,21 @@
   },
   {
     "fullName": "oxc-project/oxc",
-    "stars": 23596,
+    "stars": 23612,
     "prs": 1,
     "pulls": [],
     "image": "data:image/jpeg;base64,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"
   },
   {
     "fullName": "e2e-inc/e2e",
-    "stars": 14206,
+    "stars": 14347,
     "prs": 1,
     "pulls": [],
     "image": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAFAAAABQCAIAAAABc2X6AAACvUlEQVR4nOyZTUgUYRjH/7Ot+blUZhBiBhWRYocMBJVgO1QH6WIdQg/bNdhj1KWCiAjq0i0i+jgUQRB93LKCjNA+ILNMjb5HyWCXDWNZc7PdcOQ/NJs5xuzUO7PP/5nD89O9/Hj3eefl3WB1JItCSoCNCIuwCIuwCIuwCIuwCIuwCIuwCIuwCIuwb4SDbNxK9i9vkDSNnUeFj+9Gx2aCXW70Inqa4FFhTUNAmeWVGXZhhu/2I/6VYJehEXauRXPpXjrcgDXVBKMeDGJ4lGBNXQ1a6wlG6TF09RE8scLtLdjRQjBq/4U/CjetxeGO3O9FV5/McD5mOPDPXr/ZbH4+rOgMLy5H6UKCUeMppCYJ1pQVY1EZwajJ70gkCYrP8JFObN1AcJabj3H0CkFZ4coQaqoIzrKkgp36M6xs8r/CT98iuIDgLP3v2aksfPY29BhCpbnv1fEUwWcrDODQLqxaTjBqy0FVhAtuhl0Rdu3UoOrBo7YKRdZZGYkjPUXw3wzrcXZAtA3bGgl2uT+AE9cIHhL+tWqXoXE1wS56jJ23ZljluL7C7z7j0SuCXd6MsfPWptWwEiVFBKNe6phIE/y3wqf2zHLwGHT/vkpmeJYZlk0rH5vWgYsoL849ePj2pBVtQ/M6grPcG8CZWwRlV7huBcLrCc4y9oWdzLBCM6zH8PwDwVlG416Y4ZlnaSh330okkfxGsKaiBJXW+7qJNGLz/kXqP6+weemxs9Wk6WffeVzqJljT3oxjEYJRd54hcpLgiRnWNPu/zPGvOT6sqHABbVozz+Vu9A6bNP08ec3ut/QMYe85glGfEuy8smmZ2d6EjfO+AHjxEVd7CN5aYTOb6tEZJtjl+kPXhWWG8zTDZmUymPpBsEsmww6enWHVUnBfaREWYREWYREWYREWYREWYREWYREWYREWYf8J/xwAB5WbUZdw5rQAAAAASUVORK5CYII="
   },
   {
     "fullName": "rolldown/rolldown",
-    "stars": 14056,
+    "stars": 14068,
     "prs": 1,
     "pulls": [
       {
@@ -348,7 +348,7 @@
   },
   {
     "fullName": "TanStack/virtual",
-    "stars": 7203,
+    "stars": 7207,
     "prs": 1,
     "pulls": [
       {
@@ -361,7 +361,7 @@
   },
   {
     "fullName": "voidzero-dev/vite-plus",
-    "stars": 6658,
+    "stars": 6664,
     "prs": 1,
     "pulls": [
       {
@@ -374,7 +374,7 @@
   },
   {
     "fullName": "dcastil/tailwind-merge",
-    "stars": 5703,
+    "stars": 5702,
     "prs": 1,
     "pulls": [
       {
@@ -400,7 +400,7 @@
   },
   {
     "fullName": "alchemy-run/distilled",
-    "stars": 552,
+    "stars": 553,
     "prs": 1,
     "pulls": [
       {
@@ -413,7 +413,7 @@
   },
   {
     "fullName": "Effect-TS/tsgo",
-    "stars": 351,
+    "stars": 350,
     "prs": 1,
     "pulls": [
       {
@@ -465,7 +465,7 @@
   },
   {
     "fullName": "lloydrichards/effect-boxes",
-    "stars": 31,
+    "stars": 32,
     "prs": 1,
     "pulls": [
       {
