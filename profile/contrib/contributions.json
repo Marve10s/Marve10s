@@ -1,7 +1,7 @@
 [
   {
     "fullName": "Effect-TS/effect",
-    "stars": 17688,
+    "stars": 17716,
     "prs": 108,
     "pulls": [
       {
@@ -24,7 +24,7 @@
   },
   {
     "fullName": "pingdotgg/t3code",
-    "stars": 79717,
+    "stars": 81131,
     "prs": 43,
     "pulls": [
       {
@@ -47,7 +47,7 @@
   },
   {
     "fullName": "Emanuele-web04/synara",
-    "stars": 2322,
+    "stars": 2329,
     "prs": 36,
     "pulls": [
       {
@@ -70,7 +70,7 @@
   },
   {
     "fullName": "solidjs/solid",
-    "stars": 36966,
+    "stars": 36976,
     "prs": 28,
     "pulls": [
       {
@@ -93,7 +93,7 @@
   },
   {
     "fullName": "mui/material-ui",
-    "stars": 99399,
+    "stars": 99404,
     "prs": 14,
     "pulls": [
       {
@@ -116,7 +116,7 @@
   },
   {
     "fullName": "sharkdp/bat",
-    "stars": 61514,
+    "stars": 61530,
     "prs": 4,
     "pulls": [
       {
@@ -139,7 +139,7 @@
   },
   {
     "fullName": "react/react-native",
-    "stars": 127010,
+    "stars": 127011,
     "prs": 3,
     "pulls": [
       {
@@ -161,7 +161,7 @@
   },
   {
     "fullName": "alchemy-run/alchemy",
-    "stars": 2114,
+    "stars": 2126,
     "prs": 3,
     "pulls": [
       {
@@ -184,7 +184,7 @@
   },
   {
     "fullName": "withastro/astro",
-    "stars": 64210,
+    "stars": 64241,
     "prs": 2,
     "pulls": [
       {
@@ -220,7 +220,7 @@
   },
   {
     "fullName": "nicklockwood/SwiftFormat",
-    "stars": 8960,
+    "stars": 8961,
     "prs": 2,
     "pulls": [
       {
@@ -256,7 +256,7 @@
   },
   {
     "fullName": "react-hook-form/react-hook-form",
-    "stars": 44927,
+    "stars": 44928,
     "prs": 1,
     "pulls": [
       {
@@ -269,7 +269,7 @@
   },
   {
     "fullName": "trpc/trpc",
-    "stars": 40870,
+    "stars": 40881,
     "prs": 1,
     "pulls": [
       {
@@ -282,7 +282,7 @@
   },
   {
     "fullName": "floating-ui/floating-ui",
-    "stars": 32817,
+    "stars": 32823,
     "prs": 1,
     "pulls": [
       {
@@ -295,7 +295,7 @@
   },
   {
     "fullName": "cheeriojs/cheerio",
-    "stars": 30554,
+    "stars": 30557,
     "prs": 1,
     "pulls": [
       {
@@ -308,7 +308,7 @@
   },
   {
     "fullName": "immerjs/immer",
-    "stars": 29003,
+    "stars": 29004,
     "prs": 1,
     "pulls": [
       {
@@ -321,21 +321,21 @@
   },
   {
     "fullName": "oxc-project/oxc",
-    "stars": 23612,
+    "stars": 23625,
     "prs": 1,
     "pulls": [],
     "image": "data:image/jpeg;base64,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"
   },
   {
     "fullName": "e2e-inc/e2e",
-    "stars": 14347,
+    "stars": 14428,
     "prs": 1,
     "pulls": [],
     "image": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAFAAAABQCAIAAAABc2X6AAACvUlEQVR4nOyZTUgUYRjH/7Ot+blUZhBiBhWRYocMBJVgO1QH6WIdQg/bNdhj1KWCiAjq0i0i+jgUQRB93LKCjNA+ILNMjb5HyWCXDWNZc7PdcOQ/NJs5xuzUO7PP/5nD89O9/Hj3eefl3WB1JItCSoCNCIuwCIuwCIuwCIuwCIuwCIuwCIuwCIuwb4SDbNxK9i9vkDSNnUeFj+9Gx2aCXW70Inqa4FFhTUNAmeWVGXZhhu/2I/6VYJehEXauRXPpXjrcgDXVBKMeDGJ4lGBNXQ1a6wlG6TF09RE8scLtLdjRQjBq/4U/CjetxeGO3O9FV5/McD5mOPDPXr/ZbH4+rOgMLy5H6UKCUeMppCYJ1pQVY1EZwajJ70gkCYrP8JFObN1AcJabj3H0CkFZ4coQaqoIzrKkgp36M6xs8r/CT98iuIDgLP3v2aksfPY29BhCpbnv1fEUwWcrDODQLqxaTjBqy0FVhAtuhl0Rdu3UoOrBo7YKRdZZGYkjPUXw3wzrcXZAtA3bGgl2uT+AE9cIHhL+tWqXoXE1wS56jJ23ZljluL7C7z7j0SuCXd6MsfPWptWwEiVFBKNe6phIE/y3wqf2zHLwGHT/vkpmeJYZlk0rH5vWgYsoL849ePj2pBVtQ/M6grPcG8CZWwRlV7huBcLrCc4y9oWdzLBCM6zH8PwDwVlG416Y4ZlnaSh330okkfxGsKaiBJXW+7qJNGLz/kXqP6+weemxs9Wk6WffeVzqJljT3oxjEYJRd54hcpLgiRnWNPu/zPGvOT6sqHABbVozz+Vu9A6bNP08ec3ut/QMYe85glGfEuy8smmZ2d6EjfO+AHjxEVd7CN5aYTOb6tEZJtjl+kPXhWWG8zTDZmUymPpBsEsmww6enWHVUnBfaREWYREWYREWYREWYREWYREWYREWYREWYf8J/xwAB5WbUZdw5rQAAAAASUVORK5CYII="
   },
   {
     "fullName": "rolldown/rolldown",
-    "stars": 14068,
+    "stars": 14074,
     "prs": 1,
     "pulls": [
       {
@@ -348,7 +348,7 @@
   },
   {
     "fullName": "TanStack/virtual",
-    "stars": 7207,
+    "stars": 7210,
     "prs": 1,
     "pulls": [
       {
@@ -361,7 +361,7 @@
   },
   {
     "fullName": "voidzero-dev/vite-plus",
-    "stars": 6664,
+    "stars": 6668,
     "prs": 1,
     "pulls": [
       {
